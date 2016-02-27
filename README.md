@@ -1,7 +1,8 @@
 # CMSC 128 AB-5L Project
 
 ###IMPORTANT!
-  * Please read the wiki for our coding conventions and workflow
+  * Never ever push to the *master* branch
+  * Please read [our project wiki](https://github.com/christinejuruena69/128AB5LProject/wiki) for our coding conventions and workflow
 
 ###Requirements:
   * [nodejs](https://github.com/creationix/nvm)
