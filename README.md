@@ -1,5 +1,8 @@
 # CMSC 128 AB-5L Project
 
+###IMPORTANT!
+  * Please read the wiki for our coding conventions and workflow
+
 ###Requirements:
   * [nodejs](https://github.com/creationix/nvm)
   * [meteor js](http://www.meteor.com/)
