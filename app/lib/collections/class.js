@@ -29,6 +29,10 @@ StudentSchema = new SimpleSchema({
     bias: {
         type: Number,
         defaultValue: 0
+    },
+    isBlackListed: {
+        type: Boolean,
+        defaultValue: false
     }
 });
 
