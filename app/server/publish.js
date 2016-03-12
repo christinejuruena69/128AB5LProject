@@ -18,3 +18,25 @@
 Meteor.publish('myClasses', function(flags) {
     // like return Class.find(flags);
 });
+
+Meteor.publish('getViewStates', function(section, flags) {
+    /*
+        if(Meteor.user) {
+            //something
+        }
+
+        check (section, String);
+        check (flags, { something });
+        flags = _.assignInWith(flags, { section });
+
+        return View.find(flags);
+    */
+});
+
+Meteor.publish('getStudentList', function(section, flags) {
+
+});
+
+Meteor.publish('getStudentList', function(flags) {
+    // like return Class.find(flags);
+});
