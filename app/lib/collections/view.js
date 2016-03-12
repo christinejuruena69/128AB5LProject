@@ -7,9 +7,12 @@ StudentViewSchema = StudentSchema.pick(['fullName', 'studentNumber', 'image', 'n
 // It includes the names of the groups as well
 ViewState = new SimpleSchema({
     student: {
-        type: [StudentViewSchema]
+        type: [StudentViewSchema] //N Random Students
     },
     section: {
+        type: String
+    },
+    lecturer: {
         type: String
     },
     group: {
@@ -21,6 +24,12 @@ ViewState = new SimpleSchema({
     },
     viewType: {
         type: String
+    },
+    createdAt: {
+        type: Date, //time stamp
+        autoValue: function() {
+            return new Date();
+        }
     }
 });
 
