@@ -7,6 +7,28 @@ StudentSchema = new SimpleSchema({
     },
     studentNumber: {
         type: String
+    },
+    image: {
+        type: String,
+        optional: true
+    },
+    nickname: {
+        type: String
+    },
+    birthday: {
+        type: Date, //Can be converted to date
+        optional: true
+    },
+    section: {
+        type: String
+    },
+    points: {
+        type: Number,
+        defaultValue: 0
+    },
+    bias: {
+        type: Number,
+        defaultValue: 0
     }
 });
 
@@ -14,6 +36,10 @@ StudentSchema = new SimpleSchema({
 ClassSchema = new SimpleSchema({
     courseTitle: {
         type: String
+    },
+    semester: {
+        type: String,
+        optional: true
     },
     lecturer: {
         type: String
@@ -28,6 +54,7 @@ ClassSchema = new SimpleSchema({
 Class.attachSchema(ClassSchema);
 
 if (Meteor.isServer) {
+
     Class.allow({
         insert: function (userId, doc) {
             return false;
