@@ -1,13 +1,15 @@
 View = new Mongo.Collection('view');
 
 // Pick only the attributes we need for the view page
-StudentViewSchema = StudentSchema.pick(['fullName', 'studentNumber', 'image', 'nickname', 'section']);
+Schema.StudentViewSchema = Schema.StudentSchema.pick([
+    'fullName', 'studentNumber', 'image', 'nickname', 'section'
+]);
 
 // All the flags for the view go here
 // It includes the names of the groups as well
-ViewState = new SimpleSchema({
+Schema.ViewState = new SimpleSchema({
     student: {
-        type: [StudentViewSchema] //N Random Students
+        type: [Schema.StudentViewSchema] //N Random Students
     },
     section: {
         type: String
@@ -20,7 +22,7 @@ ViewState = new SimpleSchema({
     },
     'group.$': {
         // Can split the array using _.chunk(array, groupsize)
-        type: [StudentViewSchema] //Each group is an array of students.
+        type: [Schema.StudentViewSchema] //Each group is an array of students.
     },
     viewType: {
         type: String
@@ -36,13 +38,13 @@ ViewState = new SimpleSchema({
 // We only need an array of ViewStates.
 // This is in case the professor chooses to revert
 // back to the previous view state
-ViewSchema = new SimpleSchema({
+Schema.ViewSchema = new SimpleSchema({
     view: {
-        type: [ViewState]
+        type: [Schema.ViewState]
     }
 });
 
-View.attachSchema(ViewSchema);
+View.attachSchema(Schema.ViewSchema);
 
 if (Meteor.isServer) {
 

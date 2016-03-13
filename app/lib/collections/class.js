@@ -1,7 +1,10 @@
 Class = new Mongo.Collection('class');
 
+Schema = {};
+
+
 // Schema for student
-StudentSchema = new SimpleSchema({
+Schema.StudentSchema = new SimpleSchema({
     fullname: {
         type: String
     },
@@ -37,7 +40,7 @@ StudentSchema = new SimpleSchema({
 });
 
 // Schema for the class
-ClassSchema = new SimpleSchema({
+Schema.ClassSchema = new SimpleSchema({
     courseTitle: {
         type: String
     },
@@ -49,13 +52,13 @@ ClassSchema = new SimpleSchema({
         type: String
     },
     students: {
-        type: [StudentSchema],
+        type: [Schema.StudentSchema],
         minCount: 1
     }
 
 });
 
-Class.attachSchema(ClassSchema);
+Class.attachSchema(Schema.ClassSchema);
 
 if (Meteor.isServer) {
 
