@@ -23,3 +23,5 @@ twbs:bootstrap
 aldeed:simple-schema
 dburles:collection-helpers
 aldeed:collection2
+accounts-password
+accounts-ui
