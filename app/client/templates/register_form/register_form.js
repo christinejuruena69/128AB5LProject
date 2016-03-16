@@ -6,19 +6,23 @@ Template.RegisterForm.events({
     'submit form': function(event, template) {
         var userData = {};
 
+        // Stop html from going to action
         event.preventDefault();
 
-        if(template.find('#password1').value !==
-            template.find('#password2').value) {
+        // Password verifier
+        if(event.target['password1'].value !==
+            event.target['password2'].value) {
                 alert('Passwords don\'t match');
                 return false;
         }
 
-        userData.username = template.find('#username').value;
-        userData.fullName = template.find('#Name').value;
-        // userData.type = template.find('#username').value;
+        //Get form data
+        userData.username = event.target['username'].value;
+        userData.fullName = event.target['Name'].value;
+        userData.type = event.target['Account-Type'].value;
+        userData.password = event.target['password1'].value;
 
-        // event.stopPropagation();
+
         console.log(userData);
 
         return false;
