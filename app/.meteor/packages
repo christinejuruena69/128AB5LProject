@@ -24,5 +24,6 @@ aldeed:simple-schema
 dburles:collection-helpers
 aldeed:collection2
 accounts-password
-accounts-ui
+accounts-ui             #Baka nga di na kakailanganin
 accounts-base
+msavin:mongol           # Help view data in database

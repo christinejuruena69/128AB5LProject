@@ -13,7 +13,7 @@ Template.LoginForm.events({
         userData.password = event.target['password'].value;
 
         // console.log(userData);
-        Meteor.loginWithPassword(username, password, function(err) {
+        Meteor.loginWithPassword(userData.username, userData.password, function(err) {
             if(err) {
                 return console.log(err.reason);
             }
