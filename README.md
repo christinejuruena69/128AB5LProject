@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/christinejuruena69/128AB5LProject.png?label=ready&title=Ready)](https://waffle.io/christinejuruena69/128AB5LProject)
 # CMSC 128 AB-5L Project
 
 ###IMPORTANT!
