@@ -38,5 +38,9 @@ Meteor.publish('getStudentList', function(section, flags) {
 });
 
 Meteor.publish('getAccounts', function(flags) {
-    // like return Class.find(flags);
+    // like return Accounts.find(flags);
+});
+
+Meteor.publish('getOneViewState', function(section, flags) {
+
 });
