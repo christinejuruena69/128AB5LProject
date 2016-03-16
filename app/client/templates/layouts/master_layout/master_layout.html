@@ -1,3 +1,13 @@
 <template name="MasterLayout">
+    <!-- Temporary thing -->
+    <a href="/">Index</a>
+    {{#if currentUser}}
+        <p>Logged in as {{ currentUser.username }}</p>
+        <button id="logout">Log Off</button>
+    {{else}}
+        <a href="/register">Register</a>
+        <a href="/login">Log in</a>
+    {{/if}}
+
     {{> yield}}
 </template>
