@@ -22,8 +22,17 @@ Template.RegisterForm.events({
         userData.type = event.target['Account-Type'].value;
         userData.password = event.target['password1'].value;
 
+        // console.log(userData);
+        Accounts.createUser(userData, function(err) {
+            if(err) {
+                return console.log(err.reason);
+            }
 
-        console.log(userData);
+            console.log('success!');
+
+            // Redirect user to index page
+            Router.go('/login');
+        });
 
         return false;
     },

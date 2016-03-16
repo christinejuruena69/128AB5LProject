@@ -15,3 +15,9 @@ Router.route('/register', {
     controller: 'HomeController',
     where: 'client'
 });
+
+Router.route('/login', {
+    name: 'LoginForm',
+    controller: 'HomeController',
+    where: 'client'
+});
