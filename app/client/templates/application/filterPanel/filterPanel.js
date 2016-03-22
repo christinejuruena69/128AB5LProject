@@ -1,14 +1,14 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.FilterPanel.events({});
+Template.filterPanel.events({});
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
-Template.FilterPanel.helpers({});
+Template.filterPanel.helpers({});
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.FilterPanel.onCreated(function () {});
-Template.FilterPanel.onRendered(function () {});
-Template.FilterPanel.onDestroyed(function () {});
+Template.filterPanel.onCreated(function () {});
+Template.filterPanel.onRendered(function () {});
+Template.filterPanel.onDestroyed(function () {});
