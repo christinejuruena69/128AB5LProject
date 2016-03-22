@@ -1,0 +1,17 @@
+<template name="accountAndclassCards">
+    {{#each data}}
+        <div class="accountAndclassCards">
+            <div class="col-md-4 col-sm-5 col-xs-6">
+                <div class="thumbnail card">
+                    <div class="caption">
+                        {{#if determineUser }}
+                            {{>classCard}}
+                        {{else}}
+                            {{>accountCard}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</template>

@@ -1,5 +1,8 @@
 <template name="Home">
-    <div class="home">
-        <h1>Find me in app/client/templates/home/home</h1>
+    <div class="home"> {{ >accountHeader }}
+        <div class="cardType"> {{ >cardType }}
+            <input type="button" class="adminbtn" value="Admin">
+            <input type="button" class="teacherbtn" value="Teacher"> </div>
+        <div class="mainWindow"> {{> accountAndclassCards}} </div>
     </div>
 </template>

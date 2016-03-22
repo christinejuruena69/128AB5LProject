@@ -1,0 +1,36 @@
+<template name="filterPanel">
+    <button name="numberOfStudents" id="numberOfStudents"> N Volunteers</button>
+    <button name="isGroup" id="isGroup">Grouping</button>
+    <br>
+    <hr>
+    <div id="numberOfVolunteers">
+        Number of Volunteers: <input type="number" id="input-number" name="input-number" ><br>
+    </div>
+    <p style="font-weight: bold; padding-left: 27px">Section:</p>
+    <div id="sections">
+        <input type="radio" name="sectionChoice" id="selectAll"> Select All
+        <input type="radio" name="sectionChoice"> Custom <br><br>
+        <span id="labSections">
+            <input type="radio" name="labSection"> 1L
+            <input type="radio" name="labSection"> 2L
+            <input type="radio" name="labSection"> 3L <br>
+            <input type="radio" name="labSection"> 4L
+            <input type="radio" name="labSection"> 5L
+            <input type="radio" name="labSection"> 6L
+        </span>
+    </div>
+    <br><br>
+    Select by:
+    <select>
+        <option value="Default">Default</option>
+        <option value="Gender">Gender</option>
+        <option value="Batch">Batch</option>
+        <option value="Points">Points</option>
+    </select>
+
+    <br><br><br><br><br>
+    <input type="checkbox" name="Bias" value="Bias">Bias
+    <input type="checkbox" name="Blacklist" value="Blacklist">Blacklist
+    <br><br><br><br><br><br>
+    <button name="Randomize" id="Randomize">Randomize</button>
+</template>
