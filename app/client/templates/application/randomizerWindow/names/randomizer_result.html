@@ -2,24 +2,26 @@
     <div class="results">
         <div class="row">
             <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4>
-                  Randomizer Result:
-                </h4>
-              </div>
-              <table class="table table-fixed">
-                <thead>
-                  <tr>
-                    <th class="col-xs-8">Name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {{#each results}}
-                    <tr><td class="col-xs-2">{{> resultItem}}</td></tr>
-                    {{/each}}
-                </tbody>
-              </table>
+                <div class="panel-heading">
+                    <h4>
+                        Randomizer Result:
+                    </h4>
+                </div>
+                <table class="table table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-8">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each results}}
+                            <tr>
+                                <td class="col-xs-2">{{> resultItem}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</template>     
+</template>

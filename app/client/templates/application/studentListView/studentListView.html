@@ -1,71 +1,61 @@
-  <template name="studentListView">
+<template name="studentListView">
     <div class="container">
-
-
         <div class="col-xs-12 col-sm-12 col-md-12 sub-header">
-          <h1 class="pull-left">CMSC 128
+            <h1 class="pull-left">CMSC 128
             <h3 class="pull-right">Number of Students: 123</h3>
             <p id="course-title">Introduction to Software Engineering</p>
-          </h1>
+            </h1>
         </div>
-
-
         <div class="form-group-sm col-xs-4 col-sm-3 col-md-2">
-          <input type="text" class="form-control" placeholder=" Search">
-        </div>
-
+            <input type="text" class="form-control" placeholder=" Search"> </div>
         <div class="dropdown pull-right">
-         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort by
-         <span class="caret"></span></button>
-         <ul class="dropdown-menu">
-           <li><a href="#">Student Number</a></li>
-           <li><a href="#">Full Name</a></li>
-           <li><a href="#">Nickname</a></li>
-           <li><a href="#">Course</a></li>
-           <li><a href="#">College</a></li>
-           <li><a href="#">Points</a></li>
-           <li><a href="#">Bias</a></li>
-           <li><a href="#">Blaclisted</a></li>
-         </ul>
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort by <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Student Number</a></li>
+                <li><a href="#">Full Name</a></li>
+                <li><a href="#">Nickname</a></li>
+                <li><a href="#">Course</a></li>
+                <li><a href="#">College</a></li>
+                <li><a href="#">Points</a></li>
+                <li><a href="#">Bias</a></li>
+                <li><a href="#">Blaclisted</a></li>
+            </ul>
         </div>
-
         <table class="table table-striped table-hover col-xs-12 col-sm-12 col-md-12">
-          <thead>
-            <tr>
-              <th>Student Number</th>
-              <th>Full Name</th>
-              <th>Nickname</th>
-              <th>Course</th>
-              <th>College</th>
-              <th>Points</th>
-              <th>Bias</th>
-              <th>Blacklisted</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2015-12345</td>
-              <td>Juan dela Cruz</td>
-              <td>Juan</td>
-              <td>BS CS</td>
-              <td>CAS</td>
-              <td>0</td>
-              <td>100%</td>
-              <td>No</td>
-            </tr>
-            <tr>
-              <td>2015-12346</td>
-              <td>Juana dela Cruz</td>
-              <td>Mary</td>
-              <td>BS DevCom</td>
-              <td>CDC</td>
-              <td>19</td>
-              <td>15%</td>
-              <td>Yes</td>
-            </tr>
-          </tbody>
+            <thead>
+                <tr>
+                    <th>Student Number</th>
+                    <th>Full Name</th>
+                    <th>Nickname</th>
+                    <th>Course</th>
+                    <th>College</th>
+                    <th>Points</th>
+                    <th>Bias</th>
+                    <th>Blacklisted</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2015-12345</td>
+                    <td>Juan dela Cruz</td>
+                    <td>Juan</td>
+                    <td>BS CS</td>
+                    <td>CAS</td>
+                    <td>0</td>
+                    <td>100%</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>2015-12346</td>
+                    <td>Juana dela Cruz</td>
+                    <td>Mary</td>
+                    <td>BS DevCom</td>
+                    <td>CDC</td>
+                    <td>19</td>
+                    <td>15%</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
         </table>
-
-
-      </div>
-    </template>
+    </div>
+</template>

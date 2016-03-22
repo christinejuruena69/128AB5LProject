@@ -1,8 +1,9 @@
 /* CSS declarations go here */
 
 * {
-	border-radius: 0 !important;
+    border-radius: 0 !important;
 }
+
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -45,6 +46,7 @@
     margin-right: -250px;
 }
 
+
 /* Sidebar Styles */
 
 .sidebar-nav {
@@ -71,11 +73,10 @@
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #ffffff;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
     text-decoration: none;
 }
 
@@ -96,7 +97,7 @@
 }
 
 .navbar-text {
-	font-size: 20px;
+    font-size: 20px;
 }
 
 .btn.outline {
@@ -135,9 +136,10 @@
         position: relative;
         margin-right: 0;
     }
+
 }
-#header.smaller{
+
+#header.smaller {
     height: 40px;
     position: fixed;
 }
-

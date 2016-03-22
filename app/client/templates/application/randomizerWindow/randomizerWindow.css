@@ -1,52 +1,53 @@
-div.randomizerWindow{
-	height: 100%;
-
-}
-.randHeader{
-	background-color: white;
-	height: 50px;
-	width: 100%;
-	border-color: black;
-	border: 3px 3px 3px 3px;
-	border-style: solid;
+div.randomizerWindow {
+    height: 100%;
 }
 
-.filterPanel{
-	background-color: white;
-	height: 100%;
-	width: 250px;
-	border-color: black;
-	border: 3px 3px 3px 3px;
-	float: left;
-	border-style: solid;
+.randHeader {
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    border-color: black;
+    border: 3px 3px 3px 3px;
+    border-style: solid;
 }
 
-.names{
-	background-color: white;
-	height: 330px;
-	width: 80%;
-	float: left;
-	padding: 35px;
-	float: left;
+.filterPanel {
+    background-color: white;
+    height: 100%;
+    width: 250px;
+    border-color: black;
+    border: 3px 3px 3px 3px;
+    float: left;
+    border-style: solid;
 }
 
-.results{
-	padding: 35px;
-	background-color: white;
-	height: 300px;
-	width: 80%;
-	float: left;
+.names {
+    background-color: white;
+    height: 330px;
+    width: 80%;
+    float: left;
+    padding: 35px;
+    float: left;
 }
 
-button{
-	background-color: blue;
+.results {
+    padding: 35px;
+    background-color: white;
+    height: 300px;
+    width: 80%;
+    float: left;
 }
 
- .table-fixed thead {
-  width: 100%;
+button {
+    background-color: blue;
 }
+
+.table-fixed thead {
+    width: 100%;
+}
+
 .names .row .panel-default .table-fixed tbody {
-  height: 150px;
-  overflow-y: auto;
-  width: 100%;
+    height: 150px;
+    overflow-y: auto;
+    width: 100%;
 }

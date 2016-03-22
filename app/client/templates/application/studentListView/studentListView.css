@@ -1,11 +1,11 @@
-table.table td table.table th{
-   text-align: center;
+table.table td table.table th {
+    text-align: center;
 }
 
 p#course-title {
-  position:absolute;
+    position: absolute;
 }
 
 div.sub-header {
-  margin-bottom: 5%;
+    margin-bottom: 5%;
 }
