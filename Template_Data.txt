@@ -1,0 +1,309 @@
+// 15 templates
+
+header = {
+    //time - 1 day
+    //difficulty- EZ
+    // dependency -accountLogged in
+
+    title,
+    logo,
+    >breadcrumbs
+};
+
+sidebar = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency -
+        // >teacherTemplate
+        // >adminTemplate
+
+    account: Meteor.Account.user,
+    >teacherTemplate
+    >adminTemplate
+}
+
+sidebar > teacherTemplate = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency
+    button: profile,
+    button: classes //shows classCards in mainDiv
+}
+
+sidebar > adminTemplate = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency -
+    button: profile,
+    button: accounts //show accounts in mainDiv
+}
+
+maindiv{
+
+
+}
+
+maindiv > teacher/ classCards = {
+    // Teacher lang
+
+    //time - 1 day
+    //difficulty - EZ
+    //dependency - classId, classList,
+    classes: [{
+        courseCode,
+        courseTitle,
+        studentList,
+        semYear,
+        classId,
+        button: randomizer,
+        button: viewStudents,
+        'click viewStudents'() {
+            GO TO STUDENT LIST
+            > studentListView
+        },
+        'click randomizer'(classId) {
+            GO TO RANDOMIZER
+            > randomizeWindow //replaces mainDiv
+        }
+    }];
+    // Bawal gumawa ng bagong class ang teacher, kailangang admin ang gumawa
+}
+
+maindiv > admin/accountCards = {
+    // Admin lang
+
+        //time - 1 day
+        //difficulty - EZ
+        //dependency - accountId, accountList
+    accounts: {
+        username,
+        name,
+        picture,
+        accountType,
+        'click this'() {
+            go to page of account profile
+            > viewAccount
+        },
+        userId,
+        'deactivate-account'(userId) {
+        },
+        'delete-account'(userId) {}
+    },
+    'create-account'() {
+    },
+}
+
+maindiv > admin/viewAccount(userId) = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency -classList, > classCards,
+
+// For header
+    Name,
+    accountType,
+    username,
+    button: addClass,
+    'click addClass'() {
+        create new class
+    },
+
+// For body
+    classes: {
+        courseCode,
+        courseTitle,
+        studentList,
+        semYear,
+        classId,
+        button: uploadClassList,
+        'click uploadClassList'() {
+            //file input
+            upload student list to server
+        },
+        button: deleteClass
+        'click deleteClass'(classID) {
+            delete class
+        }
+    }
+    
+}
+
+maindiv > teacher/studentListView(accountId, classId) {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency - studentList, classInformation(courseCode, courseTitle, etc)
+
+    courseCode,
+    courseTitle,
+    sem,
+    numberOfStudents (length of student array),
+    students: [{
+   
+        studentNumber,
+        name,
+        nickname,
+        course,
+        labSection,
+        college,
+        points,
+        currentBias,
+        isBlackListed,
+        pencil-button: editStudent, //1 for each student row
+        'click editStudent'(id) {
+        		//clicks pencil, edit text, once entered saved na yung data
+            edit all fields in student
+        }
+    }];
+    button: sortby{
+    	includes all the columns 
+    }
+    input-text: searchBar,
+    'keyup searchBar'() {
+        filter students by whats in searchbar
+    },
+    'click tableHeader'() {
+        sort depending on which header was clicked
+    }
+    // Teacher can toggle if randomizer will apply bias
+    // teacher can blacklist student here
+}
+
+randomizerWindow = {
+    //time - 1 day
+    //difficulty - EZ
+	//////dependency - filterPanel, randomizerDiv
+    >randomizerDiv
+    >filterPanel
+}
+
+randomizerWindow > randomizerDiv = {
+    //time - 2 days
+    //difficulty - EZ
+    //dependency - (backend) studentList, filterPanelOptions, randomizeFucntion
+
+    studentList: [{
+        name,
+        nickname,
+        studentNumber,
+        section,
+        picture
+    }],
+    volunteersList: [{
+        name,
+        nickname,
+        studentNumber,
+        section,
+        picture
+    }],
+    
+}
+
+randomizerWindow > filterPanel = {
+    //time - 2 days
+    //difficulty - EZ(?)
+    //dependency -labsections, student Attributes(e.g gender, batch, bias, )
+
+    // dalawang tabs
+    // first tab is for n students
+    // second tab is for single student
+    isGroup,
+    numberOfStudents,
+    input-number: "number of students", // <input type="number" name="" id="">
+    'edit input-number'() {
+        change numberOfStudents
+    },
+    radioButton: selectAll,
+    'toggle selectAll'() {
+        all lab sections get toggled
+    },
+    radioButton: custom,
+    'toggle selectAll'() {
+    		checkBox: labSection
+			 'toggle labSection'() {
+				  this labsection is part of the pool of students to be selected
+			 },    
+      },
+    
+    tabs: selectBy,
+    'select selectBy'() {
+        // You can select multiple options
+        options: {
+            tab: lab section,
+            tab: gender,
+            'click gender'() {
+                show options for gender(male/female),
+                default is both
+            },
+            tab: batch,
+            'click batch'() {
+                display all batches available (checkbox)
+            },
+            tab: points,
+            'click points'() {
+                display whether with or without points
+            }
+        }
+    },
+    button: randomize,
+    'click randomize'(settingsObject, classList) {
+        Randomize from classlist based on settings
+    },
+    checkbox: bias,
+    'click bias'() {
+        consider bias or not
+    },
+    checkbox: blacklist,
+    'click blacklist'() {
+        consider blacklist or not
+    },
+
+    // For groups
+    numberOfGroups,
+    groupIntoHowMany
+}
+
+mainClassView = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency - randomizedResult
+
+    isSingleStudent,
+    >singleStudentTemplate,
+    >groupTemplate
+    course,
+    courseTitle
+}
+
+mainClassView > singleStudentTemplate = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency - randomizedResult
+
+    name,
+    picture
+}
+
+mainClassView > nStudentTemplate = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency - randomizedResult
+	//max ppl to diplay: 6
+    
+
+    students:[{
+    //grid view
+    //max 6 ppl 
+        name,
+        picture
+    }]
+}
+
+mainClassView > groupTemplate = {
+    //time - 1 day
+    //difficulty - EZ
+    //dependency - randomizedResult
+
+    // Array of arrays of studentnames that are selected
+    groups: [
+        [name]
+    ]
+}
