@@ -1,0 +1,19 @@
+<template name="classCard">
+    <div class="accountAndclassCards">
+        <h3 id="thumbnail-label">
+        {{coursecode}}
+        <a class="anchorjs-link" href="#thumbnail-label"></a>
+        <span>
+            <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-th-large pull-right"></span>
+            </span>
+            <ul class="dropdown-menu pull-right">
+                <li><a href="{{pathFor route='studentListView'}}">Modify student list</a></li>
+            </ul>
+        </span>
+        </h3>
+        <p>{{coursetitle}}</p>
+        <a href="{{pathFor route='randomizerWindow'}}">randomizerWindow</a>
+        <button class="pull-right card-button">123 Students</button>
+    </div>
+</template>

@@ -6,7 +6,7 @@ Meteor.methods({
         if (this.isSimulation) {
             // do some client stuff while waiting for
             // result from server.
-            //   return;
+            // return;
         }
         // server method logic
     }

@@ -1,7 +1,7 @@
-Template.MasterLayout.helpers({
+Template.masterLayout.helpers({
 });
 
-Template.MasterLayout.events({
+Template.masterLayout.events({
     'click #logout': function(event) {
         event.preventDefault();
         Meteor.logout();
