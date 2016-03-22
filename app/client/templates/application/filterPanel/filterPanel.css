@@ -1,41 +1,45 @@
-    #filterPanel{
-        float: left;
-        border: 1px solid black;
-        margin-top: 200px;
-        z-index: 1000px;
-        width: 300px;
-        height: 100%; 
-    }
+#filterPanel {
+    float: left;
+    border: 1px solid black;
+    margin-top: 200px;
+    z-index: 1000px;
+    width: 300px;
+    height: 100%;
+}
 
-    #numberOfStudents{
-        float: left;
-        width: 50%;
-    }
-    #isGroup{
-        float: right;
-        width: 50%;
-    }
+#numberOfStudents {
+    float: left;
+    width: 50%;
+}
 
-    #input-number{
-        width: 40px;
-        margin-left: 20px;
-    }
-    #numberOfVolunteers{
-        margin-top: 30px;
-        margin-bottom: 20px;
-        margin-left: -30px;
-        text-align: center;
-    }
-    #sections{
-        border: 1px solid black;
-        width: 275px;
-        height: 100px;
-        margin-left: 10px;
-    }
-    #labSections{
-        margin-left: 53px;
-    }
-    #Randomize{
-        text-align: center;
-    }
-    
+#isGroup {
+    float: right;
+    width: 50%;
+}
+
+#input-number {
+    width: 40px;
+    margin-left: 20px;
+}
+
+#numberOfVolunteers {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: -30px;
+    text-align: center;
+}
+
+#sections {
+    border: 1px solid black;
+    width: 275px;
+    height: 100px;
+    margin-left: 10px;
+}
+
+#labSections {
+    margin-left: 53px;
+}
+
+#Randomize {
+    text-align: center;
+}

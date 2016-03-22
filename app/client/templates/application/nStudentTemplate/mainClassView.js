@@ -1,16 +1,15 @@
-var studentsData = [
+var studentsData = [{
+    text: 'Samantha Marasigan'
+}, {
+    text: 'Rohana Monzon'
+}, {
+    text: 'Wendi Angeli Meniolas'
+}, {
+    text: 'Ricka Faye Sison'
+}];
 
-      { text: 'Samantha Marasigan' },
+Template.mainClassView.helpers({
+    studentslist: studentsData
+});
 
-      { text: 'Rohana Monzon' },
-  
-      { text: 'Wendi Angeli Meniolas' },
-
-      { text: 'Ricka Faye Sison' }
-
-    ];
-
-  Template.mainClassView.helpers({
-    studentslist: studentsData  
-
-  });
+Template.mainClassView.events({});
