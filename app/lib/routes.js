@@ -38,3 +38,8 @@ Router.route('/mainClassView', {
     name: 'mainClassView',
     template: 'mainClassView'
 });
+
+Router.route('/studentListView', {
+    name: 'studentListView',
+    template: 'studentListView'
+});
