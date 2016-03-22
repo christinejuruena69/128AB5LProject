@@ -1,22 +1,25 @@
-div.account-body-header{
-  z-index: 10px;
-  width: 100%;
-  height: 50px;
-  background-color: #607d8b;
+div.account-body-header {
+    z-index: 10px;
+    width: 100%;
+    height: 50px;
+    background-color: #607d8b;
 }
-div.account-body-header div.icon-divs button.btn.btn-link{
-  color: black;
-}
-div.account-body-header div.icon-divs span{
-  font-size: 120%;
-}
-div.account-body-header div.icon-divs{
-  margin-top: -35px;
-  margin-right: 100px;
-  float: right;
 
+div.account-body-header div.icon-divs button.btn.btn-link {
+    color: black;
 }
-div.account-body-header h6{
-  margin-top: -10px;
-  padding-top: 20px;
+
+div.account-body-header div.icon-divs span {
+    font-size: 120%;
+}
+
+div.account-body-header div.icon-divs {
+    margin-top: -35px;
+    margin-right: 100px;
+    float: right;
+}
+
+div.account-body-header h6 {
+    margin-top: -10px;
+    padding-top: 20px;
 }
