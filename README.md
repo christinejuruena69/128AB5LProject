@@ -27,3 +27,25 @@ git clone https://github.com/christinejuruena69/128AB5LProject.git
 ```
 iron run
 ```
+
+### Initial Accounts
+On server startup, two accounts shall be automatically generated. They are as follows:
+```
+{
+    username: admin,
+    password: admin,
+    profile: {
+        type: admin
+    }
+},
+{
+    username: teacher,
+    password: teacher,
+    profile: {
+        type: teacher
+    }
+}
+```
+
+* **To login**, go to **/login** and typing the credentials of these accounts.
+* **To create an account**, you can go to **/register** and type the accounts you want to make
