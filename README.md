@@ -32,17 +32,17 @@ iron run
 On server startup, two accounts shall be automatically generated. They are as follows:
 ```
 {
-    username: admin,
-    password: admin,
+    username: 'admin',
+    password: 'admin',
     profile: {
-        type: admin
+        type: 'admin'
     }
 },
 {
-    username: teacher,
-    password: teacher,
+    username: 'teacher',
+    password: 'teacher',
     profile: {
-        type: teacher
+        type: 'teacher'
     }
 }
 ```
