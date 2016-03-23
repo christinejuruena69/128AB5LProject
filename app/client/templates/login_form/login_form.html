@@ -1,7 +1,31 @@
 <template name="LoginForm">
-    <form>
-        <input type="text" name="username" id="username">
-        <input type="password" name="password" id="password">
-        <input type="submit" value="Log in">
-    </form>
+    <div class="container">
+        <form class="form-horizontal">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Login</legend>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="textinput">Username</label>
+                    <div class="col-md-4">
+                        <input id="textinput" name="username" type="text" placeholder="username" class="form-control input-md" required="">
+                    </div>
+                </div>
+                <!-- Password input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="passwordinput">Password</label>
+                    <div class="col-md-4">
+                        <input id="passwordinput" name="password" type="password" placeholder="" class="form-control input-md" required="">
+                    </div>
+                </div>
+                <!-- Log in -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="button"></label>
+                    <div class="col-md-4">
+                        <input type="submit" id="login-button" name="button" class="btn btn-success" value="Log in">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </template>
