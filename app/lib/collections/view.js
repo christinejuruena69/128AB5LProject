@@ -11,12 +11,6 @@ Schema.ViewState = new SimpleSchema({
     student: {
         type: [Schema.StudentViewSchema] //N Random Students
     },
-    section: {
-        type: String
-    },
-    lecturer: {
-        type: String
-    },
     group: {
         type: Array
     },
@@ -39,6 +33,15 @@ Schema.ViewState = new SimpleSchema({
 // This is in case the professor chooses to revert
 // back to the previous view state
 Schema.ViewSchema = new SimpleSchema({
+    courseTitle: {
+        type: String
+    },
+    lecturer: {
+        type: String
+    },
+    section: {
+        type: String
+    },
     view: {
         type: [Schema.ViewState]
     }
