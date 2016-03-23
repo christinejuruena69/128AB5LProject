@@ -3,7 +3,7 @@
 Meteor.startup(function () {
 
     function start() {
-        console.log('Executing ClassData.js');
+        Meteor.call('Bootstrap/CreateClassData');
     }
 
     start();
