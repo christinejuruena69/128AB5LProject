@@ -45,6 +45,19 @@ Meteor.methods({
         /* Space to include future error type-checking and whatnots */
 
         Class.update({'_id' : classId}, {$set:classToEdit});
+    },
+
+    'editView': function (viewId, viewToEdit) { //Contains two arguments: the ID of the class to edit and the details to update the class with
+        // check(viewToEdit, { //Checks the validity of the types of passed variables. The use of this function will be dependent on the UI's implementation of editClass.
+        //     courseTitle: String,
+        //     lecturer: String,
+        //     section: String,
+        //     view: [Schema.ViewState]
+        // });
+
+        /* Space to include future error type-checking and whatnots */
+
+        View.update({'_id' : viewId}, {$set:viewToEdit});
     }
 });
 
