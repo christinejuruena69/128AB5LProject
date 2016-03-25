@@ -45,8 +45,6 @@ Meteor.methods({
         /* Space to include future error type-checking and whatnots */
 
         Class.update({'_id' : classId}, {$set:classToEdit});
-
-        console.log("editClass executed");
     }
 });
 
