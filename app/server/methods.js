@@ -35,15 +35,6 @@ Meteor.methods({
     },
 
     'editClass': function (classId, classToEdit) { //Contains two arguments: the ID of the class to edit and the details to update the class with
-        // check(classToEdit, { //Checks the validity of the types of passed variables. The use of this function will be dependent on the UI's implementation of editClass.
-        //     courseTitle: String,
-        //     semester: String,
-        //     lecturer: String,
-        //     students: [Schema.StudentSchema]
-        // });
-
-        /* Space to include future error type-checking and whatnots */
-
         Class.update({'_id' : classId}, {$set:classToEdit});
     }
 });
