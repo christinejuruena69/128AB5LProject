@@ -34,13 +34,13 @@ Meteor.publish('getViewStates', function(section, flags) {
     var userId = this.userId;
 
     //checks if user is loggedd in
-    if(userId){
+    if(!userId){
         throw new Meteor.Error(401, 'you must be logged in!');
     }
 
-    //checks if user exists
-    if(Meteor.users.findOne({userId: userId})) {
-        //check if user is teacher
+    //checks if user exists and if it is a teacher
+    if(Meteor.users.findOne({userId: userId, type: 'teacher'})) {
+        //
     }
 
 });
