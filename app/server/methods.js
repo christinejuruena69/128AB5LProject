@@ -12,7 +12,7 @@ Meteor.methods({
             birthday: new Date(),
             section: '1-L'
         };
-        var studentArray =  _.fill(new Array(100), StudentData);
+        var studentArray =  _.fill(new Array(10), StudentData);
         var sampleClass = {
             courseTitle: 'sampleClass',
             semester: '1st Semester AY 2015-2016',
@@ -35,3 +35,5 @@ Meteor.methods({
 
     }
 });
+
+
