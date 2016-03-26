@@ -41,6 +41,17 @@ Meteor.publish('getAccounts', function(flags) {
     // like return Accounts.find(flags);
 });
 
-Meteor.publish('getOneViewState', function(section, flags) {
+Meteor.publish('getOneViewState', function(section) {
+    var currentUserId = this.userId;
+    var currentUser = Meteor.users.findOne({userId : currentUserId});
 
+    if (!currentUserId) {
+        return [];
+    }
+
+    if (currentUser.profile.type !== 'teacher') {
+        return [];
+    }
+
+    return View.find ({ section : section });
 });
