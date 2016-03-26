@@ -49,4 +49,3 @@ On server startup, two accounts shall be automatically generated. They are as fo
 
 * **To login**, go to **/login** and typing the credentials of these accounts.
 * **To create an account**, you can go to **/register** and type the accounts you want to make
- 

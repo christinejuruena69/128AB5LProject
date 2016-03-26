@@ -42,4 +42,3 @@ Meteor.methods({
         View.update({'_id' : viewId}, {$set:viewToEdit});
     }
 });
-
