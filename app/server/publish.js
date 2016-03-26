@@ -43,9 +43,9 @@ Meteor.publish('getAccounts', function(flags) {
     // like return Accounts.find(flags);
 });
 
-Meteor.publish('getOneViewState', function () {
+Meteor.publish('getOneViewState', function (section) {
     var currentUserId = this.userId;
-    var currentUser = Meteor.users.findOne ({userId:currentUserId});
+    var currentUser = Meteor.users.findOne ({userId : currentUserId});
 
     if (!currentUserId) {
         return [];
@@ -55,5 +55,5 @@ Meteor.publish('getOneViewState', function () {
         return [];
     }
 
-    return View.find ();
+    return View.find ({ section : section});
 });
