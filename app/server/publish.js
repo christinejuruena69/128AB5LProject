@@ -44,3 +44,7 @@ Meteor.publish('getAccounts', function(flags) {
 Meteor.publish('getOneViewState', function(section, flags) {
 
 });
+
+Meteor.publish('class', function () {
+  return Class.find();
+});

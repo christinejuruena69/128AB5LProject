@@ -5,7 +5,7 @@ Template.addClass.events({
         e.preventDefault();
     
         var bday = new Date($(e.target).find('[name=birthday]').val()),
-            student1 = []
+            student1 = [],
             user = Meteor.user();
 
         student1.push({
@@ -35,8 +35,7 @@ Template.addClass.events({
                 return throwError(error.reason);
             }
 
-            // re-route to home
-            alert('Class '+class1.courseTitle+' successfully added!');
+            // re-route to home if success
             Router.go('/');
         });
     }

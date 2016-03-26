@@ -67,7 +67,7 @@ if (Meteor.isServer) {
     Class.allow({
         insert: function (userId, doc) {
             var user = Meteor.users.find({_id: userId});
-            if( user.profile.type === Admin){
+            if( user.profile.type === 'Admin'){
                 return true;
             }
             else{
@@ -81,7 +81,7 @@ else if(Meteor.isClient){
     Class.allow({
         insert: function (userId, doc) {
             var user = Meteor.users.find({_id: userId});
-            if( user.profile.type === Admin){
+            if( user.profile.type === 'Admin'){
                 return true;
             }
             else{
@@ -116,7 +116,7 @@ Meteor.methods({
             };
         }
         else {
-            throw new Meteor.Error('invalid', 'Access denied');
+            throw new Meteor.Error('403', 'Forbidden');
         }
     }
 });
