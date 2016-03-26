@@ -31,6 +31,22 @@ Meteor.publish('getViewStates', function(section, flags) {
 
         return View.find(flags);
     */
+    var userId = this.userId;
+
+    //checks if user is loggedd in
+    if(!userId){
+        throw new Meteor.Error(401, 'you must be logged in!');
+    }
+
+    //checks if user exists and if it is a teacher
+    if(Meteor.users.findOne({userId: userId, profile.type: 'teacher'})) {
+        check (section, String);
+        //check (flags, { something });
+        flags = _.assignInWith(flags, { section });
+
+        return View.find(flags);
+    }
+
 });
 
 Meteor.publish('getStudentList', function(section, flags) {
