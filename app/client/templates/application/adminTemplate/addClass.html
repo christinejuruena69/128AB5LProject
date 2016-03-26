@@ -1,0 +1,60 @@
+<template name="addClass">
+  <form class="add class form">
+    <div class="form-group">
+      <label class="control-label" for="courseTitle">Course Title</label>
+      <div class="controls">
+          <input name="courseTitle" id="courseTitle" type="text" value="" placeholder="Course Title" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="semester">Semester</label>
+      <div class="controls">
+          <input name="semester" id="semester" type="text" value="" placeholder="Semester" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="lecturer">Lecturer</label>
+      <div class="controls">
+          <input name="lecturer" id="lecturer" type="text" value="" placeholder="Lecturer" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="fullname">Full name</label>
+      <div class="controls">
+          <input name="fullname" id="fullname" type="text" value="" placeholder="Full name" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="studentNumber">Student Number</label>
+      <div class="controls">
+          <input name="studentNumber" id="studentNumber" type="text" value="" placeholder="Student Number" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="nickname">Nickname</label>
+      <div class="controls">
+          <input name="nickname" id="nickname" type="text" value="" placeholder="Nickname" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="birthday">Birthday</label>
+      <div class="controls">
+          <input name="birthday" id="birthday" type="date" value="" placeholder="Birthday" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="section">Section</label>
+      <div class="controls">
+          <input name="section" id="section" type="text" value="" placeholder="Section" class="form-control"/>
+      </div>
+    </div>
+
+    <input type="submit" value="Add Class" class="btn btn-primary"/>
+  </form>
+</template>
+
+
+<!-- <template name="addClass">
+  {{> quickForm id="addClass" type="insert" schema=Schema.ClassSchema collection=Class}}
+</template> -->
