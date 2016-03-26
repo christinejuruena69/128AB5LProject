@@ -19,20 +19,18 @@ Meteor.publish('myClasses', function(flags) {
     // like return Class.find(flags);
 });
 
-Meteor.publish('getViewStates', function () {
-    var currentUserId = this.userId;
-    var currentUser = Meteor.users.findOne ({userId : currentUserId});
+Meteor.publish('getViewStates', function(section, flags) {
+    /*
+        if(Meteor.user) {
+            //something
+        }
 
-    if (!currentUserId) {
-        return [];
-    }
+        check (section, String);
+        check (flags, { something });
+        flags = _.assignInWith(flags, { section });
 
-    if (currentUser.profile.type !== 'teacher') {
-        return [];
-    }
-
-    return View.find ({ lecturer: currentUser.username });
-
+        return View.find(flags);
+    */
 });
 
 Meteor.publish('getStudentList', function(section, flags) {
