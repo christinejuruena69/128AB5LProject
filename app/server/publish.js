@@ -19,7 +19,7 @@ Meteor.publish('myClasses', function(flags) {
     // like return Class.find(flags);
 });
 
-Meteor.publish('getViewStates', function(section, flags) {
+Meteor.publish('getViewStates', function(flags) {
     /*
         if(Meteor.user) {
             //something
@@ -31,21 +31,18 @@ Meteor.publish('getViewStates', function(section, flags) {
 
         return View.find(flags);
     */
-    var userId = this.userId;
+    var currentUserId = this.userId;
+    var currentUser = Meteor.users.findOne({userId:currentUserId});
 
-    //checks if user is loggedd in
-    if(!userId){
-        throw new Meteor.Error(401, 'you must be logged in!');
+    if(!currentUserId){
+        return [];
     }
 
-    //checks if user exists and if it is a teacher
-    if(Meteor.users.findOne({userId: userId, profile.type: 'teacher'})) {
-        check (section, String);
-        //check (flags, { something });
-        flags = _.assignInWith(flags, { section });
-
-        return View.find(flags);
+    if(currentUser.profile.type !== 'teacher') {
+        return [];
     }
+
+    return View.find({ lecturer: currentUser.username });
 
 });
 
