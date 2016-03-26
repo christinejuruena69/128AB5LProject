@@ -41,3 +41,9 @@ Router.route('/studentListView', {
     name: 'studentListView',
     template: 'studentListView'
 });
+
+// test route for Admin/AddClass
+Router.route('/addClass', {
+  name: 'addClass',
+  template: 'addClass'
+});

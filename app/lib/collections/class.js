@@ -2,7 +2,6 @@ Class = new Mongo.Collection('class');
 
 Schema = {};
 
-
 // Schema for student
 Schema.StudentSchema = new SimpleSchema({
     fullname: {
@@ -41,6 +40,9 @@ Schema.StudentSchema = new SimpleSchema({
 
 // Schema for the class
 Schema.ClassSchema = new SimpleSchema({
+    userId: {
+        type: String
+    },
     courseTitle: {
         type: String
     },
@@ -64,17 +66,18 @@ if (Meteor.isServer) {
 
     Class.allow({
         insert: function (userId, doc) {
-            return false;
+            return true;
         },
         update: function (userId, doc, fieldNames, modifier) {
-            return false;
+            return true;
         },
         remove: function (userId, doc) {
-            return false;
+            return true;
         }
     });
-
-    Class.deny({
+}
+else if(Meteor.isClient){
+     Class.allow({
         insert: function (userId, doc) {
             return true;
         },
@@ -86,3 +89,35 @@ if (Meteor.isServer) {
         }
     });
 }
+
+Meteor.methods({
+
+    'Admin/AddClass': function(classAttributes) {
+
+        // meteor add check 
+        // to use the check function
+        check(classAttributes, {
+            userId: String,
+            courseTitle: String,
+            semester: String,
+            lecturer: String,
+            students: [Schema.StudentSchema]
+        });
+
+        var user = Meteor.user();
+
+        if( user.profile.type === 'Admin' ){
+
+            var classId = Class.insert(classAttributes);
+
+            return {
+                _id: classId
+            };
+        }
+        else {
+            return {
+                error: 'Access denied.'
+            };
+        }
+    }
+});

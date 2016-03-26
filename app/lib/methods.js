@@ -9,5 +9,5 @@ Meteor.methods({
             // return;
         }
         // server method logic
-    }
+    },
 });
