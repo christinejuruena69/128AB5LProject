@@ -66,26 +66,27 @@ if (Meteor.isServer) {
 
     Class.allow({
         insert: function (userId, doc) {
-            return true;
-        },
-        update: function (userId, doc, fieldNames, modifier) {
-            return true;
-        },
-        remove: function (userId, doc) {
-            return true;
+            var user = Meteor.users.find({_id: userId});
+            if( user.profile.type === Admin){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     });
 }
 else if(Meteor.isClient){
-     Class.allow({
+
+    Class.allow({
         insert: function (userId, doc) {
-            return true;
-        },
-        update: function (userId, doc, fieldNames, modifier) {
-            return true;
-        },
-        remove: function (userId, doc) {
-            return true;
+            var user = Meteor.users.find({_id: userId});
+            if( user.profile.type === Admin){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     });
 }
@@ -115,9 +116,7 @@ Meteor.methods({
             };
         }
         else {
-            return {
-                error: 'Access denied.'
-            };
+            throw new Meteor.Error('invalid', 'Access denied');
         }
     }
 });
