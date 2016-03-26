@@ -19,18 +19,7 @@ Meteor.publish('myClasses', function(flags) {
     // like return Class.find(flags);
 });
 
-Meteor.publish('getViewStates', function(flags) {
-    /*
-        if(Meteor.user) {
-            //something
-        }
-
-        check (section, String);
-        check (flags, { something });
-        flags = _.assignInWith(flags, { section });
-
-        return View.find(flags);
-    */
+Meteor.publish('getViewStates', function() {
     var currentUserId = this.userId;
     var currentUser = Meteor.users.findOne({userId:currentUserId});
 
