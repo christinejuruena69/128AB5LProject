@@ -32,7 +32,6 @@ Meteor.publish('getViewStates', function () {
     }
 
     return View.find ({ lecturer : currentUser.username });
-
 });
 
 Meteor.publish('getStudentList', function(section, flags) {
