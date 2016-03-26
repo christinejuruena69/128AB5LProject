@@ -41,7 +41,7 @@ Meteor.publish('getViewStates', function(section, flags) {
     //checks if user exists and if it is a teacher
     if(Meteor.users.findOne({userId: userId, profile.type: 'teacher'})) {
         check (section, String);
-        check (flags, { something });
+        //check (flags, { something });
         flags = _.assignInWith(flags, { section });
 
         return View.find(flags);
