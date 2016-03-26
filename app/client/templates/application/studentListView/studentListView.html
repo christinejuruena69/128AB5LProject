@@ -14,8 +14,6 @@
                 <li><a href="#">Student Number</a></li>
                 <li><a href="#">Full Name</a></li>
                 <li><a href="#">Nickname</a></li>
-                <li><a href="#">Course</a></li>
-                <li><a href="#">College</a></li>
                 <li><a href="#">Points</a></li>
                 <li><a href="#">Bias</a></li>
                 <li><a href="#">Blaclisted</a></li>
@@ -27,34 +25,14 @@
                     <th>Student Number</th>
                     <th>Full Name</th>
                     <th>Nickname</th>
-                    <th>Course</th>
-                    <th>College</th>
                     <th>Points</th>
                     <th>Bias</th>
                     <th>Blacklisted</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>2015-12345</td>
-                    <td>Juan dela Cruz</td>
-                    <td>Juan</td>
-                    <td>BS CS</td>
-                    <td>CAS</td>
-                    <td>0</td>
-                    <td>100%</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>2015-12346</td>
-                    <td>Juana dela Cruz</td>
-                    <td>Mary</td>
-                    <td>BS DevCom</td>
-                    <td>CDC</td>
-                    <td>19</td>
-                    <td>15%</td>
-                    <td>Yes</td>
-                </tr>
+                {{> studentsList}}
             </tbody>
         </table>
     </div>
