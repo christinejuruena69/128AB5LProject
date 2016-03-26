@@ -67,7 +67,8 @@ if (Meteor.isServer) {
             return false;
         },
         update: function (userId, doc, fieldNames, modifier) {
-            return false;
+            return true;
+            
         },
         remove: function (userId, doc) {
             return false;
@@ -79,10 +80,23 @@ if (Meteor.isServer) {
             return true;
         },
         update: function (userId, doc, fieldNames, modifier) {
-            return true;
+            return false;
         },
         remove: function (userId, doc) {
             return true;
         }
     });
+}
+
+if (Meteor.isClient){
+    Template.studentInfo.events({
+        "click .delete": function (event){
+            event.preventDefault();
+            var classID = this.classID;
+            
+            Class.update({ '_id': classID}, { $pull: { students: {studentNumber: this.studentNumber} } }, {multi: true});
+            
+        }
+    })
+    
 }
