@@ -34,10 +34,6 @@ Meteor.methods({
         start();
     },
 
-    'editClass': function (classId, classToEdit) { //Contains two arguments: the ID of the class to edit and the details to update the class with
-        Class.update({'_id' : classId}, {$set:classToEdit});
-    },
-
     'editView': function (viewId, viewToEdit) { //Contains two arguments: the ID of the class to edit and the details to update the class with
         View.update({'_id' : viewId}, {$set:viewToEdit});
     }
