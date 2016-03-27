@@ -9,7 +9,7 @@ Template.studentListView.events({
             var course = event.target.course.value;
             var points = event.target.points.value;
             var bias = event.target.bias.value;
-            class.insert({
+            Collection.insert({
                 studentNumber : studNum,
                 fullname : fullname,
                 nickname : nickname,

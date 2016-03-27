@@ -28,7 +28,6 @@
                     <th>Full Name</th>
                     <th>Nickname</th>
                     <th>Course</th>
-                    
                     <th>College</th>
                     <th>Points</th>
                     <th>Bias</th>
@@ -58,17 +57,12 @@
                 </tr>
             </tbody>
         </table>
-            <form class="addStudent">
-                Add Student<br>
-                Student Number: <input type = "text" name = "studNum"><br>
-                Full Name: <input type = "text" name = "fullName"><br>
-                Nickname: <input type = "text" name = "nickname"><br>
-                Course: <input type = "text" name = "course"><br>
-                College: <input type = "text" name = "college"><br>
-                Points: <input type = "text" name = "points"><br>
-                Bias: <input type = "text" name = "bias"><br>
-                Blacklisted: <input type = "text" name = "blacklisted"><br>
-                <input type = "submit" value = "Add"><br>
-        </form>
+        <script>
+        	function div_show(){
+        		document.getElementById('abc').style.display' = "block";
+        	}
+        </script>
+        <button name = "addStudent" onclick = "div_show()">Add Student</button>
     </div>
+    
 </template>

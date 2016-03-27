@@ -38,7 +38,15 @@ Meteor.publish('getStudentList', function(section, flags) {
 
 Meteor.publish('getAccounts', function(flags) {
     // like return Accounts.find(flags);
-
+        var currentUserId = this. userID;
+        var currentUser = Meteor.users.find({userId : currentUserId});
+        if(!currentUserId){
+            return [];
+        }
+        
+        if(currentUser.profile.type !== 'teacher'){
+            
+        }
         
 });
 
