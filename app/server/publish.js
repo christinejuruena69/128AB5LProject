@@ -38,7 +38,13 @@ Meteor.publish('getStudentList', function(section, flags) {
 });
 
 Meteor.publish('getAccounts', function(flags) {
-    // like return Accounts.find(flags);
+
+    if(Meteor.users.findOne({ _id: this.userId }).profile.type === 'Admin') {
+        return Meteor.users.find({}, {_id: 1, username: 1, profile: 1});
+    }
+    else {
+        return [];
+    }
 });
 
 Meteor.publish('getOneViewState', function(section, flags) {
