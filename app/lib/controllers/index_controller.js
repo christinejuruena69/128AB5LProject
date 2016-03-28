@@ -1,4 +1,4 @@
-HomeController = RouteController.extend({
+IndexController = RouteController.extend({
     // A place to put your subscriptions
     // this.subscribe('items');
     // // add the subscription to the waitlist
@@ -14,13 +14,7 @@ HomeController = RouteController.extend({
     // example, the "dataNotFound" plugin calls this function to see if it
     // returns a null value, and if so, renders the not found template.
     // return Posts.findOne({_id: this.params._id});
-    data: function () {
-        return [
-            Meteor.subscribe('allUserData'),
-            Meteor.subscribe('myClasses'),
-            Meteor.subscribe('getViewStates')
-        ];
-    },
+    data: function () {},
     // You can provide any of the hook options
     onRun: function () {
         this.next();
@@ -31,9 +25,9 @@ HomeController = RouteController.extend({
     onBeforeAction: function () {
         if (!Meteor.userId()) {
             // If not logged in go to root
-            Router.go('/');
-        } else {
             this.next();
+        } else {
+            Router.go('/home');
         }
     },
     // The same thing as providing a function as the second parameter. You can
