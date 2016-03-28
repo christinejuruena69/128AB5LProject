@@ -1,1 +1,1 @@
-Meteor.subscribe('getAccounts');
+Meteor.subscribe('allUserData');
