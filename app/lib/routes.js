@@ -22,22 +22,26 @@ Router.route('/login', {
     where: 'client'
 });
 
-Router.route('/viewTeacherAccount', {
-    name: 'viewTeacherAccount',
-    template: 'viewTeacherAccount'
+Router.route('/ViewTeacherAccount', {
+    name: 'ViewTeacherAccount',
+    template: 'ViewTeacherAccount',
+    where: 'client'
 });
 
 Router.route('/randomizer', {
-    name: 'randomizerWindow',
-    template: 'randomizerWindow'
+    name: 'RandomizerWindow',
+    template: 'RandomizerWindow',
+    where: 'client'
 });
 
 Router.route('/mainClassView', {
     name: 'mainClassView',
-    template: 'mainClassView'
+    template: 'mainClassView',
+    where: 'client'
 });
 
 Router.route('/studentListView', {
-    name: 'studentListView',
-    template: 'studentListView'
+    name: 'StudentListView',
+    template: 'StudentListView',
+    where: 'client'
 });

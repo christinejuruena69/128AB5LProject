@@ -2,14 +2,14 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.viewTeacherAccount.events({
+Template.ViewTeacherAccount.events({
 });
 
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
 
-Template.viewTeacherAccount.helpers({
+Template.ViewTeacherAccount.helpers({
     loadCourses : function() {
         Session.set('adminAccount', false);
         Session.set('teacherAccount', true);
@@ -20,11 +20,11 @@ Template.viewTeacherAccount.helpers({
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.viewTeacherAccount.onCreated(function () {
+Template.ViewTeacherAccount.onCreated(function () {
 });
 
-Template.viewTeacherAccount.onRendered(function () {
+Template.ViewTeacherAccount.onRendered(function () {
 });
 
-Template.viewTeacherAccount.onDestroyed(function () {
+Template.ViewTeacherAccount.onDestroyed(function () {
 });

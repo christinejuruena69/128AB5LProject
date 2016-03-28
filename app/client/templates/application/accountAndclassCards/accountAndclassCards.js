@@ -40,17 +40,32 @@ var courseData = [{
 }, {
     coursecode: 'CMSC125',
     coursetitle: 'operating system'
+},{
+    coursecode: 'CMSC141',
+    coursetitle: 'Stuff'
+},{
+    coursecode: 'CMSC142',
+    coursetitle: 'stuff'
+},{
+    coursecode: 'CMSC125',
+    coursetitle: 'operating system'
+},{
+    coursecode: 'CMSC125',
+    coursetitle: 'operating system'
+},{
+    coursecode: 'CMSC125',
+    coursetitle: 'operating system'
 }];
 
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.accountAndclassCards.events({});
+Template.AccountAndclassCards.events({});
 
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
-Template.accountAndclassCards.helpers({
+Template.AccountAndclassCards.helpers({
     // data : empty,
     determineUser: function () {
         if (Session.get('teacherAccount')) {
@@ -73,6 +88,6 @@ Template.accountAndclassCards.helpers({
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.accountAndclassCards.onCreated(function () {});
-Template.accountAndclassCards.onRendered(function () {});
-Template.accountAndclassCards.onDestroyed(function () {});
+Template.AccountAndclassCards.onCreated(function () {});
+Template.AccountAndclassCards.onRendered(function () {});
+Template.AccountAndclassCards.onDestroyed(function () {});
