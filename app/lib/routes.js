@@ -5,11 +5,16 @@ Router.configure({
 });
 
 Router.route('/', {
-    name: 'Home',
+    name: 'Index',
     controller: 'HomeController',
     where: 'client'
 });
 
+Router.route('/home', {
+    name: 'Home',
+    controller: 'HomeController',
+    where: 'client'
+});
 Router.route('/register', {
     name: 'RegisterForm',
     controller: 'HomeController',
