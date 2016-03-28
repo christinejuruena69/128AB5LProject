@@ -1,5 +1,5 @@
 Template.header.events({
-    'click': function() {
+    'click #sidebar-toggle': function() {
         $("#wrapper").toggleClass("toggled");
     }
 });
