@@ -44,6 +44,9 @@ Schema.ClassSchema = new SimpleSchema({
     courseTitle: {
         type: String
     },
+    courseCode: {
+        type: String
+    },
     semester: {
         type: String,
         optional: true

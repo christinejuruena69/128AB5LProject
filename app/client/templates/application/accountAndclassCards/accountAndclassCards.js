@@ -66,22 +66,34 @@ Template.AccountAndclassCards.events({});
 /* Home: Helpers */
 /*****************************************************************************/
 Template.AccountAndclassCards.helpers({
-    // data : empty,
-    determineUser: function () {
-        if (Session.get('teacherAccount')) {
-            // data: courseData;
-            // determineData();
-            return true;
-        } else {
-            // determineData();
-            return false;
+    isTeacher: function() {
+        // return true;
+        var user = Meteor.user();
+
+        if(!!user || !!user.profile || !!user.profile.type) {
+            return;
+        }
+        else {
+            return user.profile.type === 'Teacher';
         }
     },
-    data: function () {
-        // alert(userdata);
-        if (Session.get('teacherAccount')) {
-            return courseData;
-        } else return accountsData;
+    isAdmin: function() {
+
+        var user = Meteor.user();
+
+        if(!!user && !!user.profile && !!user.profile.type) {
+            return false;
+        }
+        else {
+            return user.profile.type === 'Admin';
+        }
+
+    },
+    class: function () {
+        return Class.find({});
+    },
+    account: function() {
+        return Meteor.users.find({});
     }
 });
 

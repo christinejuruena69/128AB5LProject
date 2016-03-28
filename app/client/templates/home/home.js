@@ -3,7 +3,6 @@
 /*****************************************************************************/
 Template.Home.events({
     'click .adminbtn': function () {
-        console.log("Pressed"); //this fn is called properly
         Session.set('teacherAccount', false);
         Session.set('adminAccount', true);
     },

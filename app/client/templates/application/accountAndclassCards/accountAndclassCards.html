@@ -1,17 +1,32 @@
 <template name="AccountAndclassCards">
-    {{#each data}}
+    {{#if isTeacher}}
+        {{#each class}}
+            {{> ClassCard}}
+        {{/each}}
+    {{else}}
+        {{#if isAdmin}}
+            {{#each account}}
+                {{> AccountCard}}
+            {{/each}}
+        {{else}}
+            <p>Nope!</p>
+        {{/if}}
+    {{/if}}
+    <!-- {{#each data}}
         <div class="account-and-classcards">
             <div class="col-md-4 col-sm-5 col-xs-6">
                 <div class="thumbnail card">
                     <div class="caption">
-                        {{#if determineUser }}
-                            {{>ClassCard}}
+                    {{#if isTeacher}}
+                        {{> ClassCard}}
                         {{else}}
-                            {{>AccountCard}}
+                            {{#if isAdmin}}
+                                {{> AccountCard}}
+                            {{/if}}
                         {{/if}}
                     </div>
                 </div>
             </div>
         </div>
-    {{/each}}
+    {{/each}} -->
 </template>
