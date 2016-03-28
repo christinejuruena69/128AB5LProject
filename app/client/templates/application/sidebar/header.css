@@ -4,8 +4,7 @@
 
 #dashboard {
     color: #9d9d9d;
-    margin-top: 12px;
-    margin-bottom: 8px;
+    margin: 4px;
     font-size: 20px;
     float: left;
     height: 50px;
@@ -23,6 +22,7 @@
     float: left;
 	font-size: 20px;
 	cursor: pointer;
+	margin: 0px;
     padding: 15px 15px;
 	border-radius: 50%;
 	text-align: center;

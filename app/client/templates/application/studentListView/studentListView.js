@@ -1,23 +1,23 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.studentListView.events({
+Template.StudentListView.events({
 });
 
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
-Template.studentListView.helpers({
+Template.StudentListView.helpers({
 });
 
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.studentListView.onCreated(function () {
+Template.StudentListView.onCreated(function () {
 });
 
-Template.studentListView.onRendered(function () {
+Template.StudentListView.onRendered(function () {
 });
 
-Template.studentListView.onDestroyed(function () {
+Template.StudentListView.onDestroyed(function () {
 });
