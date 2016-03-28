@@ -1,5 +1,5 @@
-Template.accountHeader.helpers({
-    determineUser : function(){
+Template.AccountHeader.helpers({
+    determineUser: function(){
         if(Session.get('teacherAccount')) {
             return true;
         }
