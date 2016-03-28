@@ -5,8 +5,8 @@
 Meteor.methods({
     'Bootstrap/CreateClassData': function () {
 
-        teacher = Meteor.users.findOne({ username: 'teacher' });
-        // console.log('Teacher id: ' + teacher._id);
+        var teacher = Meteor.users.findOne({ username: 'teacher' });
+
         _ = lodash;
         var StudentData = {
             fullname: 'Jonathan Secant',
