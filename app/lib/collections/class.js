@@ -2,7 +2,6 @@ Class = new Mongo.Collection('class');
 
 Schema = {};
 
-
 // Schema for student
 Schema.StudentSchema = new SimpleSchema({
     fullname: {
@@ -41,6 +40,9 @@ Schema.StudentSchema = new SimpleSchema({
 
 // Schema for the class
 Schema.ClassSchema = new SimpleSchema({
+    userId: {
+        type: String
+    },
     courseTitle: {
         type: String
     },
@@ -64,30 +66,59 @@ if (Meteor.isServer) {
 
     Class.allow({
         insert: function (userId, doc) {
-            return false;
-        },
-        update: function (userId, doc, fieldNames, modifier) {
-            return false;
-        },
-        remove: function (userId, doc) {
-            return false;
+            var user = Meteor.users.find({_id: userId});
+            if( user.profile.type === 'Admin'){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     });
+}
+else if(Meteor.isClient){
 
-    Class.deny({
+    Class.allow({
         insert: function (userId, doc) {
-            return true;
-        },
-        update: function (userId, doc, fieldNames, modifier) {
-            return true;
-        },
-        remove: function (userId, doc) {
-            return true;
+            var user = Meteor.users.find({_id: userId});
+            if( user.profile.type === 'Admin'){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     });
 }
 
 Meteor.methods({
+
+    'Admin/AddClass': function(classAttributes) {
+
+        // meteor add check 
+        // to use the check function
+        check(classAttributes, {
+            userId: String,
+            courseTitle: String,
+            semester: String,
+            lecturer: String,
+            students: [Schema.StudentSchema]
+        });
+
+        var user = Meteor.user();
+
+        if( user.profile.type === 'Admin' ){
+
+            var classId = Class.insert(classAttributes);
+
+            return {
+                _id: classId
+            };
+        }
+        else {
+            throw new Meteor.Error(403, 'Forbidden');
+        }
+    },
 
     'editClass': function (classId, classToEdit) { //Contains two arguments: the ID of the class to edit and the details to update the class with
         Class.update({'_id' : classId}, {$set:classToEdit});

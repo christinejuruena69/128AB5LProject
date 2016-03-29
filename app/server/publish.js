@@ -26,3 +26,7 @@ Meteor.publish('allUserData', function (user) {
         return;
     }
 });
+
+Meteor.publish('class', function () {
+  return Class.find();
+});

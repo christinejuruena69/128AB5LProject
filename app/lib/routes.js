@@ -45,3 +45,8 @@ Router.route('/studentListView', {
     template: 'StudentListView',
     where: 'client'
 });
+
+Router.route('/addClass', {
+  name: 'addClass',
+  template: 'addClass'
+});
