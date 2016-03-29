@@ -7,9 +7,21 @@ var studentsData = [{
 }, {
     text: 'Ricka Faye Sison'
 }];
-
-Template.mainClassView.helpers({
-    studentslist: studentsData
+/*****************************************************************************/
+/* MainClassView: Event Handlers */
+/*****************************************************************************/
+Template.MainClassView.events({
 });
+/*****************************************************************************/
+/* MainClassView: Helpers */
+/*****************************************************************************/
+Template.MainClassView.helpers({
+	studentslist: studentsData   
+});
+/*****************************************************************************/
+/* MainClassView: Lifecycle Hooks */
+/*****************************************************************************/
 
-Template.mainClassView.events({});
+Template.MainClassView.onCreated(function () {});
+Template.MainClassView.onRendered(function () {});
+Template.MainClassView.onDestroyed(function () {});

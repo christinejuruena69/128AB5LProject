@@ -1,14 +1,19 @@
 /*****************************************************************************/
-/* FilterPanel: Event Handlers */
+/* CardType: Event Handlers */
 /*****************************************************************************/
-Template.FilterPanel.events({});
+Template.CardType.events({
+});
 /*****************************************************************************/
-/* FilterPanel: Helpers */
+/* CardType: Helpers */
 /*****************************************************************************/
-Template.FilterPanel.helpers({});
+Template.CardType.helpers({
+   
+});
+
 /*****************************************************************************/
-/* FilterPanel: Lifecycle Hooks */
+/* CardType: Lifecycle Hooks */
 /*****************************************************************************/
-Template.FilterPanel.onCreated(function () {});
-Template.FilterPanel.onRendered(function () {});
-Template.FilterPanel.onDestroyed(function () {});
+
+Template.CardType.onCreated(function () {});
+Template.CardType.onRendered(function () {});
+Template.CardType.onDestroyed(function () {});

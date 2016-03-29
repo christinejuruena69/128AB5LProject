@@ -1,14 +1,18 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* NStudentView: Event Handlers */
 /*****************************************************************************/
-Template.randomizerWindow.events({});
+Template.NStudentView.events({
+});
 /*****************************************************************************/
-/* Home: Helpers */
+/* NStudentView: Helpers */
 /*****************************************************************************/
-Template.randomizerWindow.helpers({});
+Template.NStudentView.helpers({
+   
+});
 /*****************************************************************************/
-/* Home: Lifecycle Hooks */
+/* NStudentView: Lifecycle Hooks */
 /*****************************************************************************/
-Template.randomizerWindow.onCreated(function () {});
-Template.randomizerWindow.onRendered(function () {});
-Template.randomizerWindow.onDestroyed(function () {});
+
+Template.NStudentView.onCreated(function () {});
+Template.NStudentView.onRendered(function () {});
+Template.NStudentView.onDestroyed(function () {});

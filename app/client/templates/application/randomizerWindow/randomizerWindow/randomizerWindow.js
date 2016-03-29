@@ -1,14 +1,14 @@
 /*****************************************************************************/
-/* FilterPanel: Event Handlers */
+/* RandomizerWindow: Event Handlers */
 /*****************************************************************************/
-Template.FilterPanel.events({});
+Template.RandomizerWindow.events({});
 /*****************************************************************************/
-/* FilterPanel: Helpers */
+/* RandomizerWindow: Helpers */
 /*****************************************************************************/
-Template.FilterPanel.helpers({});
+Template.RandomizerWindow.helpers({});
 /*****************************************************************************/
-/* FilterPanel: Lifecycle Hooks */
+/* RandomizerWindow: Lifecycle Hooks */
 /*****************************************************************************/
-Template.FilterPanel.onCreated(function () {});
-Template.FilterPanel.onRendered(function () {});
-Template.FilterPanel.onDestroyed(function () {});
+Template.RandomizerWindow.onCreated(function () {});
+Template.RandomizerWindow.onRendered(function () {});
+Template.RandomizerWindow.onDestroyed(function () {});

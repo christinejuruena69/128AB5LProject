@@ -1,14 +1,18 @@
 /*****************************************************************************/
-/* FilterPanel: Event Handlers */
+/* NStudentItem: Event Handlers */
 /*****************************************************************************/
-Template.FilterPanel.events({});
+Template.NStudentItem.events({
+});
 /*****************************************************************************/
-/* FilterPanel: Helpers */
+/* NStudentItem: Helpers */
 /*****************************************************************************/
-Template.FilterPanel.helpers({});
+Template.NStudentItem.helpers({
+   
+});
 /*****************************************************************************/
-/* FilterPanel: Lifecycle Hooks */
+/* NStudentItem: Lifecycle Hooks */
 /*****************************************************************************/
-Template.FilterPanel.onCreated(function () {});
-Template.FilterPanel.onRendered(function () {});
-Template.FilterPanel.onDestroyed(function () {});
+
+Template.NStudentItem.onCreated(function () {});
+Template.NStudentItem.onRendered(function () {});
+Template.NStudentItem.onDestroyed(function () {});

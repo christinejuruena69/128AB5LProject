@@ -24,6 +24,10 @@ Template.Home.helpers({
         return Session.get('teacherAccount');
     }
 });
+/*****************************************************************************/
+/* Home: Lifecycle Hooks */
+/*****************************************************************************/
+
 Template.Home.onCreated(function () {});
 Template.Home.onRendered(function () {});
 Template.Home.onDestroyed(function () {});
