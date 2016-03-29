@@ -58,12 +58,12 @@ var courseData = [{
 }];
 
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* AccountAndclassCards: Event Handlers */
 /*****************************************************************************/
 Template.AccountAndclassCards.events({});
 
 /*****************************************************************************/
-/* Home: Helpers */
+/* AccountAndclassCards: Helpers */
 /*****************************************************************************/
 Template.AccountAndclassCards.helpers({
     // data : empty,
@@ -86,7 +86,7 @@ Template.AccountAndclassCards.helpers({
 });
 
 /*****************************************************************************/
-/* Home: Lifecycle Hooks */
+/* AccountAndclassCards: Lifecycle Hooks */
 /*****************************************************************************/
 Template.AccountAndclassCards.onCreated(function () {});
 Template.AccountAndclassCards.onRendered(function () {});
