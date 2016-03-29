@@ -4,6 +4,9 @@
 
 Meteor.methods({
     'Bootstrap/CreateClassData': function () {
+
+        var teacher = Meteor.users.findOne({ username: 'teacher' });
+
         _ = lodash;
         var StudentData = {
             fullname: 'Jonathan Secant',
@@ -12,11 +15,11 @@ Meteor.methods({
             birthday: new Date(),
             section: '1-L'
         };
-        var studentArray =  _.fill(new Array(100), StudentData);
+        var studentArray =  _.fill(new Array(10), StudentData);
         var sampleClass = {
             courseTitle: 'sampleClass',
             semester: '1st Semester AY 2015-2016',
-            lecturer: 'teacher',
+            lecturer: teacher._id,
             students: studentArray
         };
 
@@ -25,6 +28,7 @@ Meteor.methods({
             if(Class.find({ courseTitle: 'sampleClass' }).count() === 0) {
                 console.log('Inserting dummy data for Class');
                 Class.insert(sampleClass);
+                console.log('Finished inserting dummy data for Class');
             }
             else {
                 console.log('Dummy Class data exists already');
@@ -32,6 +36,5 @@ Meteor.methods({
         }
 
         start();
-
     }
 });

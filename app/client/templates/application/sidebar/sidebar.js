@@ -2,6 +2,9 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.sideBar.events({
+	'click #sidebar-wrapper': function() {
+		$("#wrapper").toggleClass("toggled");
+	}
 });
 
 /*****************************************************************************/

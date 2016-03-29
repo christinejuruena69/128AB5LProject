@@ -118,5 +118,10 @@ Meteor.methods({
         else {
             throw new Meteor.Error(403, 'Forbidden');
         }
+    },
+
+    'editClass': function (classId, classToEdit) { //Contains two arguments: the ID of the class to edit and the details to update the class with
+        Class.update({'_id' : classId}, {$set:classToEdit});
     }
+
 });

@@ -1,35 +1,35 @@
-div.accountAndclassCards ul.dropdown-menu {
+div.account-and-classcards ul.dropdown-menu {
     position: relative;
     margin-left: -999px;
 }
 
-div.accountAndclassCards span.glyphicon-th-large {
+div.account-and-classcards span.glyphicon-th-large {
     cursor: pointer;
 }
 
-div.accountAndclassCards button.card-button {
+div.account-and-classcards button.card-button {
     background-color: white;
     border: 1px solid #41ffed;
     padding: 5px 10px;
 }
 
-div.accountAndclassCards div.card {
+div.account-and-classcards div.card {
     position: relative;
     background-color: #1ABC9C;
     height: 200px;
 }
 
-div.accountAndclassCards div.card:hover {
+div.account-and-classcards div.card:hover {
     background-color: #006551;
 }
 
 
-div.accountAndclassCards h3.#thumbnail-label {
+div.account-and-classcards h3.#thumbnail-label {
     color: white;
     font-weight: bold;
 }
 
-div.accountAndclassCards p {
+div.account-and-classcards p {
     line-height: 14px;
     color: white;
 }
