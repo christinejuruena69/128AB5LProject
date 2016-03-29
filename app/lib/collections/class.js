@@ -116,7 +116,7 @@ Meteor.methods({
             };
         }
         else {
-            throw new Meteor.Error('403', 'Forbidden');
+            throw new Meteor.Error(403, 'Forbidden');
         }
     }
 });
