@@ -42,8 +42,8 @@ Meteor.publish('getAccounts', function(flags) {
 });
 
 Meteor.publish('getOneViewState', function(section) {
-    var currentUserId = this.userId;
-    var currentUser = Meteor.users.findOne({userId : currentUserId});
+    var currentUserId = this.userId,
+        currentUser = Meteor.users.findOne({userId : currentUserId});
 
     if (!currentUserId) {
         return [];
