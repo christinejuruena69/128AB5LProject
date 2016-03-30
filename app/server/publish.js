@@ -20,8 +20,8 @@ Meteor.publish('myClasses', function(flags) {
 });
 
 Meteor.publish('getViewStates', function () {
-    var currentUserId = this.userId;
-    var currentUser = Meteor.users.findOne({userId : currentUserId});
+    var currentUserId = this.userId,
+        currentUser = Meteor.users.findOne({userId : currentUserId});
 
     if (!currentUserId) {
         return [];
