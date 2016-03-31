@@ -1,26 +1,24 @@
-/*****************************************************************************/
-/* SideBar: Event Handlers */
-/*****************************************************************************/
-Template.SideBar.events({
-	'click #sidebar-wrapper': function() {
-		$("#wrapper").toggleClass("toggled");
-	}
-});
 
 /*****************************************************************************/
-/* SideBar: Helpers */
+/* Header: Event Handlers */
 /*****************************************************************************/
-Template.SideBar.helpers({
+Template.Header.events({
+    'click #sidebar-toggle': function() {
+        $("#wrapper").toggleClass("toggled");
+    }
 });
 
-/*****************************************************************************/
-/* SideBar: Lifecycle Hooks */
-/*****************************************************************************/
-Template.SideBar.onCreated(function () {
-});
 
-Template.SideBar.onRendered(function () {
+/*****************************************************************************/
+/* Header: Helpers */
+/*****************************************************************************/
+Template.Header.helpers({
+   
 });
+/*****************************************************************************/
+/* Header: Lifecycle Hooks */
+/*****************************************************************************/
 
-Template.SideBar.onDestroyed(function () {
-});
+Template.Header.onCreated(function () {});
+Template.Header.onRendered(function () {});
+Template.Header.onDestroyed(function () {});

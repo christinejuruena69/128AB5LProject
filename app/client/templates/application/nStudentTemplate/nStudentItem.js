@@ -1,18 +1,18 @@
 /*****************************************************************************/
-/* Index: Event Handlers */
+/* NStudentItem: Event Handlers */
 /*****************************************************************************/
-Template.Index.events({
+Template.NStudentItem.events({
 });
 /*****************************************************************************/
-/* Index: Helpers */
+/* NStudentItem: Helpers */
 /*****************************************************************************/
-Template.Index.helpers({
+Template.NStudentItem.helpers({
    
 });
 /*****************************************************************************/
-/* Index: Lifecycle Hooks */
+/* NStudentItem: Lifecycle Hooks */
 /*****************************************************************************/
 
-Template.Index.onCreated(function () {});
-Template.Index.onRendered(function () {});
-Template.Index.onDestroyed(function () {});
+Template.NStudentItem.onCreated(function () {});
+Template.NStudentItem.onRendered(function () {});
+Template.NStudentItem.onDestroyed(function () {});

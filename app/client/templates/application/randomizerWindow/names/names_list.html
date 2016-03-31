@@ -7,18 +7,19 @@
                         Students List
                     </h4>
                 </div>
-                <table class="table table-fixed">
-                    <thead>
-                        <tr>
-                            <th class="col-xs-8">Name</th>
-                        </tr>
-                    </thead>
-                    <tbody> {{#each names}}
-                        <tr>
-                            <td class="col-xs-2">{{> nameItem}}</td>
-                        </tr> {{/each}}
-                    </tbody>
-                </table>
+        <table class="table table-fixed">
+            <thead>
+                <tr>
+                    <th class="col-xs-8">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each names}}
+                    <tr><td class="col-xs-2">{{> nameItem}}</td></tr>
+                {{/each}}
+            </tbody>
+        </table>
+
             </div>
         </div>
     </div>

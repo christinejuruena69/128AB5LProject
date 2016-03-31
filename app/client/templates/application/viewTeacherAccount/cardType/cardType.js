@@ -1,18 +1,19 @@
 /*****************************************************************************/
-/* Index: Event Handlers */
+/* CardType: Event Handlers */
 /*****************************************************************************/
-Template.Index.events({
+Template.CardType.events({
 });
 /*****************************************************************************/
-/* Index: Helpers */
+/* CardType: Helpers */
 /*****************************************************************************/
-Template.Index.helpers({
+Template.CardType.helpers({
    
 });
+
 /*****************************************************************************/
-/* Index: Lifecycle Hooks */
+/* CardType: Lifecycle Hooks */
 /*****************************************************************************/
 
-Template.Index.onCreated(function () {});
-Template.Index.onRendered(function () {});
-Template.Index.onDestroyed(function () {});
+Template.CardType.onCreated(function () {});
+Template.CardType.onRendered(function () {});
+Template.CardType.onDestroyed(function () {});

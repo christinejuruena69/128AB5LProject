@@ -1,18 +1,18 @@
 /*****************************************************************************/
-/* Index: Event Handlers */
+/* NStudentView: Event Handlers */
 /*****************************************************************************/
-Template.Index.events({
+Template.NStudentView.events({
 });
 /*****************************************************************************/
-/* Index: Helpers */
+/* NStudentView: Helpers */
 /*****************************************************************************/
-Template.Index.helpers({
+Template.NStudentView.helpers({
    
 });
 /*****************************************************************************/
-/* Index: Lifecycle Hooks */
+/* NStudentView: Lifecycle Hooks */
 /*****************************************************************************/
 
-Template.Index.onCreated(function () {});
-Template.Index.onRendered(function () {});
-Template.Index.onDestroyed(function () {});
+Template.NStudentView.onCreated(function () {});
+Template.NStudentView.onRendered(function () {});
+Template.NStudentView.onDestroyed(function () {});
