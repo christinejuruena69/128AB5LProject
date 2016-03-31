@@ -23,7 +23,7 @@ Template.AccountAndClassCards.helpers({
 
         return Class.find();
     },
-    accounts: function() {
+    account: function() {
 
         return Meteor.users.find();
     }

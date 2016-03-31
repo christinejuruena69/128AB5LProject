@@ -1,11 +1,12 @@
 <template name="AccountAndClassCards">
     {{#if currentUser}}
-        Logged in.
         {{#if isTeacher}}
-            Teacher
+            {{#each class}}
+                {{> ClassCard}}
+            {{/each}}
         {{/if}}
         {{#if isAdmin}}
-            {{#each accounts}}
+            {{#each account}}
                 {{> AccountCard}}
             {{/each}}
         {{/if}}
