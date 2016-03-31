@@ -5,7 +5,9 @@
             Teacher
         {{/if}}
         {{#if isAdmin}}
-            Admin
+            {{#each accounts}}
+                {{> AccountCard}}
+            {{/each}}
         {{/if}}
     {{/if}}
     <!--

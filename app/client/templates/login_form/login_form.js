@@ -13,7 +13,6 @@ Template.LoginForm.events({
             if(err) {
                 return console.log(err.reason);
             }
-            console.log('success!');
 
             Router.go('/');
         });
