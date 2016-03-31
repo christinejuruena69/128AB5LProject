@@ -2,30 +2,29 @@
     {{#if currentUser}}
         {{#if isTeacher}}
             {{#each class}}
-                {{> ClassCard}}
+                <div class="account-and-classcards">
+                    <div class="col-md-4 col-sm-5 col-xs-6">
+                        <div class="thumbnail card">
+                            <div class="caption">
+                                {{> ClassCard}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {{/each}}
         {{/if}}
         {{#if isAdmin}}
             {{#each account}}
-                {{> AccountCard}}
+                <div class="account-and-classcards">
+                    <div class="col-md-4 col-sm-5 col-xs-6">
+                        <div class="thumbnail card">
+                            <div class="caption">
+                                {{> AccountCard}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {{/each}}
         {{/if}}
     {{/if}}
-    <!--
-        <div class="account-and-classcards">
-            <div class="col-md-4 col-sm-5 col-xs-6">
-                <div class="thumbnail card">
-                    <div class="caption">
-                    {{#if isTeacher}}
-                        {{> ClassCard}}
-                        {{else}}
-                            {{#if isAdmin}}
-                                {{> AccountCard}}
-                            {{/if}}
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    {{/each}} -->
 </template>
