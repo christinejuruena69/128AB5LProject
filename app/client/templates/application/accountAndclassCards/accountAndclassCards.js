@@ -67,11 +67,11 @@ Template.AccountAndclassCards.events({});
 /*****************************************************************************/
 Template.AccountAndclassCards.helpers({
     isTeacher: function() {
-        // return true;
+        return true;
         var user = Meteor.user();
-
+        // console.log(user);
         if(!!user || !!user.profile || !!user.profile.type) {
-            return;
+            return ;
         }
         else {
             return user.profile.type === 'Teacher';
