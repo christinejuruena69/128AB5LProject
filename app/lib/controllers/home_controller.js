@@ -1,13 +1,19 @@
 HomeController = RouteController.extend({
-    subscriptions: function () {
-        return [
-            Meteor.subscribe('allUserData'),
-            Meteor.subscribe('myClasses'),
-            Meteor.subscribe('getViewStates')
-        ];
+    subscriptions: function () {},
+    waitOn: function() {
+        // return [
+        //     Meteor.subscribe('myClasses'),
+        //     Meteor.subscribe('allUserData'),
+        //     Meteor.subscribe('getViewStates')
+        // ];
     },
-    waitOn: function () {},
-    data: function () {},
+    data: function () {
+        // return [
+        //     Meteor.subscribe('allUserData'),
+        //     Meteor.subscribe('myClasses'),
+        //     Meteor.subscribe('getViewStates')
+        // ];
+    },
     onRun: function () {
         this.next();
     },
@@ -23,6 +29,11 @@ HomeController = RouteController.extend({
     },
     action: function () {
         this.render();
+        // if (this.ready()) {
+        //     this.render();
+        // } else {
+        //     this.render('spinner');
+        // }
     },
     onAfterAction: function () {},
     onStop: function () {}

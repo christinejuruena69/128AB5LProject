@@ -1,22 +1,19 @@
-<template name="AccountCard">
-    <div class="account-and-classcards">
+<template name="ClassCard">
+    <div class="classcards">
         <h3 id="thumbnail-label">
-        
-        <a href="{{pathFor route='ViewTeacherAccount'}}">{{name}}</a>
+        {{courseCode}}
         <a class="anchorjs-link" href="#thumbnail-label"></a>
         <span>
             <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="glyphicon glyphicon-th-large pull-right"></span>
             </span>
             <ul class="dropdown-menu pull-right">
-                <li><a href="#">Delete Account</a></li>
-                <li><a href="#">Deativate account</a></li>
+                <li><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
             </ul>
         </span>
-        <h6>{{username}}</h6>
-        <h6>{{acounttype}}</h6>
-        <h6>Admin account</h6>        
-        
         </h3>
+        <p>{{courseTitle}}</p>
+        <a href="{{pathFor route='RandomizerWindow'}}">randomizerWindow</a>
+        <button class="pull-right card-button">{{ students.length }}</button>
     </div>
 </template>

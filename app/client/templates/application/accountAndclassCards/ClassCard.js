@@ -1,12 +1,12 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.AccountAndclassCards.events({});
+Template.ClassCard.events({});
 
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
-Template.AccountAndclassCards.helpers({
+Template.ClassCard.helpers({
     studentCount: function() {
         return this.studens.length;
     }
@@ -15,6 +15,6 @@ Template.AccountAndclassCards.helpers({
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.AccountAndclassCards.onCreated(function () {});
-Template.AccountAndclassCards.onRendered(function () {});
-Template.AccountAndclassCards.onDestroyed(function () {});
+Template.ClassCard.onCreated(function () {});
+Template.ClassCard.onRendered(function () {});
+Template.ClassCard.onDestroyed(function () {});

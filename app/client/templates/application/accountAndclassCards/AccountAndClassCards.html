@@ -1,13 +1,15 @@
-<template name="AccountAndclassCards">
+<template name="AccountAndClassCards">
     {{#if isTeacher}}
-        {{#each class}}
+        <p>TEACHER!</p>
+        <!-- {{#each class}}
             {{> ClassCard}}
-        {{/each}}
+        {{/each}} -->
     {{else}}
         {{#if isAdmin}}
-            {{#each account}}
+            <p>Admin</p>
+            <!-- {{#each account}}
                 {{> AccountCard}}
-            {{/each}}
+            {{/each}} -->
         {{else}}
             <p>Nope!</p>
         {{/if}}

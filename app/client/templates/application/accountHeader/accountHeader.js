@@ -1,10 +1,12 @@
 Template.AccountHeader.helpers({
-    determineUser: function(){
-        if(Session.get('teacherAccount')) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    username: function() {
+        return Meteor.user().username;
     }
 });
+Template.AccountHeader.events({});
+/*****************************************************************************/
+/* AccountHeader: Lifecycle Hooks */
+/*****************************************************************************/
+Template.AccountHeader.onCreated(function () {});
+Template.AccountHeader.onRendered(function () {});
+Template.AccountHeader.onDestroyed(function () {});

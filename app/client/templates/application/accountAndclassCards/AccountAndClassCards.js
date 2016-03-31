@@ -58,16 +58,16 @@ var courseData = [{
 }];
 
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* AccountAndClassCards: Event Handlers */
 /*****************************************************************************/
-Template.AccountAndclassCards.events({});
+Template.AccountAndClassCards.events({});
 
 /*****************************************************************************/
-/* Home: Helpers */
+/* AccountAndClassCards: Helpers */
 /*****************************************************************************/
-Template.AccountAndclassCards.helpers({
+Template.AccountAndClassCards.helpers({
     isTeacher: function() {
-        return true;
+        // return true;
         var user = Meteor.user();
         // console.log(user);
         if(!!user || !!user.profile || !!user.profile.type) {
@@ -90,16 +90,16 @@ Template.AccountAndclassCards.helpers({
 
     },
     class: function () {
-        return Class.find({});
+        return Class.find();
     },
     account: function() {
-        return Meteor.users.find({});
+        return Meteor.users.find();
     }
 });
 
 /*****************************************************************************/
-/* Home: Lifecycle Hooks */
+/* AccountAndClassCards: Lifecycle Hooks */
 /*****************************************************************************/
-Template.AccountAndclassCards.onCreated(function () {});
-Template.AccountAndclassCards.onRendered(function () {});
-Template.AccountAndclassCards.onDestroyed(function () {});
+Template.AccountAndClassCards.onCreated(function () {});
+Template.AccountAndClassCards.onRendered(function () {});
+Template.AccountAndClassCards.onDestroyed(function () {});

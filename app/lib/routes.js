@@ -1,5 +1,5 @@
 Router.configure({
-    loadingTemplate: 'Loading',
+    loadingTemplate: 'spinner',
     notFoundTemplate: 'NotFound'
 });
 
