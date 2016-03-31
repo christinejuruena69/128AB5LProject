@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button class="btn navbar-btn navbar-left menu-button" id="sidebar-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
-                <a id="dashboard">CSVS</a>
+                <a id="dashboard" href="{{pathFor route='Index'}}">CSVS</a>
 
                 {{#if currentUser}}
                     <input type="button" class="logout-button" value="Logout">

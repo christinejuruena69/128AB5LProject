@@ -24,12 +24,12 @@ Router.route('/home', {
     where: 'client'
 });
 
-// Router.route('/register', {
-//     name: 'RegisterForm',
-//     layoutTemplate: 'MasterLayout',
-//     controller: 'IndexController',
-//     where: 'client'
-// });
+Router.route('/register', {
+    name: 'RegisterForm',
+    layoutTemplate: 'MasterLayout',
+    controller: 'IndexController',
+    where: 'client'
+});
 //
 
 // Router.route('/ViewTeacherAccount', {
