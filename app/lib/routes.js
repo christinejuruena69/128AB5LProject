@@ -10,12 +10,20 @@ Router.route('/', {
     where: 'client'
 });
 
-// Router.route('/home', {
-//     name: 'Home',
-//     layoutTemplate: 'MasterLayout',
-//     controller: 'HomeController',
-//     where: 'client'
-// });
+Router.route('/login', {
+    name: 'LoginForm',
+    layoutTemplate: 'MasterLayout',
+    controller: 'IndexController',
+    where: 'client'
+});
+
+Router.route('/home', {
+    name: 'Home',
+    layoutTemplate: 'MasterLayout',
+    controller: 'HomeController',
+    where: 'client'
+});
+
 // Router.route('/register', {
 //     name: 'RegisterForm',
 //     layoutTemplate: 'MasterLayout',
@@ -23,12 +31,6 @@ Router.route('/', {
 //     where: 'client'
 // });
 //
-// Router.route('/login', {
-//     name: 'LoginForm',
-//     layoutTemplate: 'MasterLayout',
-//     controller: 'IndexController',
-//     where: 'client'
-// });
 
 // Router.route('/ViewTeacherAccount', {
 //     name: 'ViewTeacherAccount',

@@ -16,6 +16,14 @@ Template.Home.events({
 /* Home: Helpers */
 /*****************************************************************************/
 Template.Home.helpers({
+    'username': function() {
+        if(Meteor.user() && Meteor.user().username) {
+            return Meteor.user().username;
+        }
+        else {
+            return 'Not Logged in!';
+        }
+    },
     'adminAccount': function () {
         return Session.get('adminAccount');
     },

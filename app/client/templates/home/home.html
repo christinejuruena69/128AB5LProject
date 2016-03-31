@@ -1,13 +1,14 @@
 <template name="Home">
     <div class="home">
-    	{{> AccountHeader }}
+        <div class="center">
+            <h1>You are logged in as {{ username }}</h1>
+        </div>
+    <!-- {{> AccountHeader }}
         <div class="cardType">
-        	<!-- {{> CardType }} -->
-            <!-- <input type="button" class="adminbtn" value="Admin">
-            <input type="button" class="teacherbtn" value="Teacher">  -->
+        	{{> CardType }}
         </div>
         <div class="mainWindow">
         	{{> AccountAndclassCards}}
-        </div>
+        </div> -->
     </div>
 </template>
