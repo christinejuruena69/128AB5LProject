@@ -10,7 +10,16 @@ Template.Sidebar.events({
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
-Template.Sidebar.helpers({});
+Template.Sidebar.helpers({
+    username: function() {
+        if(Meteor.user() && Meteor.user().username) {
+            return Meteor.user().username;
+        }
+        else {
+            return "Not logged in";
+        }
+    }
+});
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
