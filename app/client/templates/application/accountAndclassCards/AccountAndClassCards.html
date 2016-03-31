@@ -1,20 +1,14 @@
 <template name="AccountAndClassCards">
-    {{#if isTeacher}}
-        <p>TEACHER!</p>
-        <!-- {{#each class}}
-            {{> ClassCard}}
-        {{/each}} -->
-    {{else}}
+    {{#if currentUser}}
+        Logged in.
+        {{#if isTeacher}}
+            Teacger
+        {{/if}}
         {{#if isAdmin}}
-            <p>Admin</p>
-            <!-- {{#each account}}
-                {{> AccountCard}}
-            {{/each}} -->
-        {{else}}
-            <p>Nope!</p>
+            Admin
         {{/if}}
     {{/if}}
-    <!-- {{#each data}}
+    <!--
         <div class="account-and-classcards">
             <div class="col-md-4 col-sm-5 col-xs-6">
                 <div class="thumbnail card">
