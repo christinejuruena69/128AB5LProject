@@ -1,14 +1,14 @@
 /*****************************************************************************/
-/* RandomizerWindow: Event Handlers */
+/* Home: Event Handlers */
 /*****************************************************************************/
-Template.RandomizerWindow.events({});
+Template.randomizerWindow.events({});
 /*****************************************************************************/
-/* RandomizerWindow: Helpers */
+/* Home: Helpers */
 /*****************************************************************************/
-Template.RandomizerWindow.helpers({});
+Template.randomizerWindow.helpers({});
 /*****************************************************************************/
-/* RandomizerWindow: Lifecycle Hooks */
+/* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.RandomizerWindow.onCreated(function () {});
-Template.RandomizerWindow.onRendered(function () {});
-Template.RandomizerWindow.onDestroyed(function () {});
+Template.randomizerWindow.onCreated(function () {});
+Template.randomizerWindow.onRendered(function () {});
+Template.randomizerWindow.onDestroyed(function () {});

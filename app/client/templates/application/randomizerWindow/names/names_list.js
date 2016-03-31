@@ -21,19 +21,7 @@ var namesData = [{
 }, {
     name: 'Klmno Pqrst'
 }];
-/*****************************************************************************/
-/* NamesList: Event Handlers */
-/*****************************************************************************/
-Template.NamesList.events({});
-/*****************************************************************************/
-/* NamesList: Helpers */
-/*****************************************************************************/
-Template.NamesList.helpers({
+
+Template.namesList.helpers({
     names: namesData
 });
-/*****************************************************************************/
-/* NamesList: Lifecycle Hooks */
-/*****************************************************************************/
-Template.NamesList.onCreated(function () {});
-Template.NamesList.onRendered(function () {});
-Template.NamesList.onDestroyed(function () {});
