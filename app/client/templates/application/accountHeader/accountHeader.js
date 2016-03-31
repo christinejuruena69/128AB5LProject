@@ -1,6 +1,9 @@
 Template.AccountHeader.helpers({
     username: function() {
         return Meteor.user().username;
+    },
+    accountType: function() {
+        return Meteor.user().profile.type;
     }
 });
 Template.AccountHeader.events({});
