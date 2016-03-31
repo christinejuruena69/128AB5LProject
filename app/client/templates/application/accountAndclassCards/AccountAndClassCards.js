@@ -20,9 +20,11 @@ Template.AccountAndClassCards.helpers({
         return !!(type === 'Admin');
     },
     class: function () {
+
         return Class.find();
     },
     account: function() {
+
         return Meteor.users.find();
     }
 });
