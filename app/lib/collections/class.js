@@ -41,6 +41,9 @@ Schema.StudentSchema = new SimpleSchema({
 
 // Schema for the class
 Schema.ClassSchema = new SimpleSchema({
+    userId: {
+        type: String
+    },
     courseTitle: {
         type: String
     },
@@ -74,7 +77,13 @@ if (Meteor.isServer) {
 
     Class.allow({
         insert: function (userId, doc) {
-            return false;
+            var user = Meteor.users.findOne({ _id: userId });
+            if( user.profile.type === 'Admin'){
+                return true;
+            }
+            else{
+                return false;
+            }
         },
         update: function (userId, doc, fieldNames, modifier) {
             return false;
@@ -86,7 +95,13 @@ if (Meteor.isServer) {
 
     Class.deny({
         insert: function (userId, doc) {
-            return true;
+            var user = Meteor.users.find({_id: userId});
+            if( user.profile.type === 'Admin'){
+                return false;
+            }
+            else{
+                return true;
+            }
         },
         update: function (userId, doc, fieldNames, modifier) {
             return true;
