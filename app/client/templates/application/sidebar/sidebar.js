@@ -2,7 +2,7 @@
 /* SideBar: Event Handlers */
 /*****************************************************************************/
 
-Template.Sidebar.events({
+Template.SideBar.events({
     'click #sidebar-wrapper': function () {
         $("#wrapper")
             .toggleClass("toggled");
@@ -11,7 +11,7 @@ Template.Sidebar.events({
 /*****************************************************************************/
 /* SideBar: Helpers */
 /*****************************************************************************/
-Template.Sidebar.helpers({
+Template.SideBar.helpers({
     username: function() {
         if(Meteor.user() && Meteor.user().username) {
             return Meteor.user().username;
