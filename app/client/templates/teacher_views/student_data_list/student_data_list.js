@@ -1,17 +1,23 @@
 /*****************************************************************************/
-/* Index: Event Handlers */
+/* StudentDataList: Event Handlers */
 /*****************************************************************************/
-Template.Index.events({
+Template.StudentDataList.events({
 });
+
 /*****************************************************************************/
-/* Index: Helpers */
+/* StudentDataList: Helpers */
 /*****************************************************************************/
-Template.Index.helpers({
-   
+Template.StudentDataList.helpers({
 });
+
 /*****************************************************************************/
-/* Index: Lifecycle Hooks */
+/* StudentDataList: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Index.onCreated(function () {});
-Template.Index.onRendered(function () {});
-Template.Index.onDestroyed(function () {});
+Template.StudentDataList.onCreated(function () {
+});
+
+Template.StudentDataList.onRendered(function () {
+});
+
+Template.StudentDataList.onDestroyed(function () {
+});

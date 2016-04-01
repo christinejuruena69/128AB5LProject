@@ -1,0 +1,30 @@
+<template name="AccountAndClassCards">
+    {{#if currentUser}}
+        {{#if isTeacher}}
+            {{#each class}}
+                <div class="account-and-classcards">
+                    <div class="col-md-4 col-sm-5 col-xs-6">
+                        <div class="thumbnail card">
+                            <div class="caption">
+                                {{> ClassCard}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+        {{#if isAdmin}}
+            {{#each account}}
+                <div class="account-and-classcards">
+                    <div class="col-md-4 col-sm-5 col-xs-6">
+                        <div class="thumbnail card">
+                            <div class="caption">
+                                {{> AccountCard}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+    {{/if}}
+</template>

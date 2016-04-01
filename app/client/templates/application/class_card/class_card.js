@@ -1,17 +1,20 @@
 /*****************************************************************************/
-/* Index: Event Handlers */
+/* Home: Event Handlers */
 /*****************************************************************************/
-Template.Index.events({
+Template.ClassCard.events({});
+
+/*****************************************************************************/
+/* Home: Helpers */
+/*****************************************************************************/
+Template.ClassCard.helpers({
+    studentCount: function() {
+        return this.studens.length;
+    }
 });
+
 /*****************************************************************************/
-/* Index: Helpers */
+/* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Index.helpers({
-   
-});
-/*****************************************************************************/
-/* Index: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Index.onCreated(function () {});
-Template.Index.onRendered(function () {});
-Template.Index.onDestroyed(function () {});
+Template.ClassCard.onCreated(function () {});
+Template.ClassCard.onRendered(function () {});
+Template.ClassCard.onDestroyed(function () {});

@@ -1,0 +1,20 @@
+<template name="CardType">
+    <div class="account-body-header">
+        {{#if currentUser}}
+            <h6  class="accntype">{{ dataType }}</h6>
+        {{/if}}
+        <div class="icon-divs">
+            <button type="button" class="btn btn-link">
+            <span class="glyphicon glyphicon-plus"></span>
+            </button>
+
+            <button type="button" class="btn btn-link">
+            <span class="glyphicon glyphicon-th-large"></span>
+            </button>
+            <button type="button" class="btn btn-link">
+            <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+
+        </div>
+    </div>
+</template>
