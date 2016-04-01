@@ -1,6 +1,8 @@
 <template name="CardType">
     <div class="account-body-header">
-        <h6  class="accntype">{{ dataType }}</h6>
+        {{#if currentUser}}
+            <h6  class="accntype">{{ dataType }}</h6>
+        {{/if}}
         <div class="icon-divs">
             <button type="button" class="btn btn-link">
             <span class="glyphicon glyphicon-plus"></span>
