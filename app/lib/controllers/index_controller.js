@@ -1,6 +1,6 @@
-HomeController = RouteController.extend({
+IndexController = RouteController.extend({
     subscriptions: function () {},
-    waitOn: function() {},
+    waitOn: function () {},
     data: function () {},
     onRun: function () {
         this.next();
@@ -10,9 +10,9 @@ HomeController = RouteController.extend({
     },
     onBeforeAction: function () {
         if (!Meteor.userId()) {
-            Router.go('/');
-        } else {
             this.next();
+        } else {
+            Router.go('/home');
         }
     },
     action: function () {

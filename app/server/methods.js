@@ -18,6 +18,7 @@ Meteor.methods({
         var studentArray =  _.fill(new Array(10), StudentData);
         var sampleClass = {
             courseTitle: 'sampleClass',
+            courseCode: 'CMSC 128',
             semester: '1st Semester AY 2015-2016',
             lecturer: teacher._id,
             students: studentArray

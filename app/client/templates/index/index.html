@@ -1,20 +1,16 @@
 <template name="Index">
     <div class="row">
-        <div class="col-lg-12 index"> 
-        	<!-- Navigation -->
-        <div id="bigcircle"> </div>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
+        <div class="container index">
+            <h1>Welcome to CSVS</h1>
+            <h4><a href="{{ pathFor route='LoginForm' }}">Login Here!</a></h4>
+            <h4><a href="{{ pathFor route='RegisterForm' }}">Register Here!</a></h4>
 
         </div>
+        <!-- <div class="col-lg-12 index">
+        <div id="bigcircle"> </div>
+        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
+
+
+    </div> -->
     </div>
 </template>

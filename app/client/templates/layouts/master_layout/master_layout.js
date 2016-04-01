@@ -1,10 +1,10 @@
-Template.masterLayout.helpers({
+Template.MasterLayout.helpers({
 });
 
-Template.masterLayout.events({
+Template.MasterLayout.events({
     'click #logout': function(event) {
         event.preventDefault();
         Meteor.logout();
-        Router.go('/login');
+        // Router.go('/login');
     }
 });
