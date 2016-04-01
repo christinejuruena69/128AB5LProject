@@ -17,13 +17,6 @@ Router.route('/login', {
     where: 'client'
 });
 
-Router.route('/home', {
-    name: 'Home',
-    layoutTemplate: 'MasterLayout',
-    controller: 'HomeController',
-    where: 'client'
-});
-
 Router.route('/register', {
     name: 'RegisterForm',
     layoutTemplate: 'MasterLayout',
@@ -31,6 +24,19 @@ Router.route('/register', {
     where: 'client'
 });
 
+Router.route('/home', {
+    name: 'Home',
+    layoutTemplate: 'MasterLayout',
+    controller: 'HomeController',
+    where: 'client'
+});
+
+Router.route('/add-class', {
+    name: 'AddClass',
+    layoutTemplate: 'MasterLayout',
+    controller: 'HomeController',
+    where: 'client'
+});
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 
 // Router.route('/ViewTeacherAccount', {
