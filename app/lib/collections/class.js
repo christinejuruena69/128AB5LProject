@@ -41,6 +41,9 @@ Schema.StudentSchema = new SimpleSchema({
 
 // Schema for the class
 Schema.ClassSchema = new SimpleSchema({
+    userId: {
+        type: String
+    },
     courseTitle: {
         type: String
     },
@@ -64,7 +67,32 @@ Schema.ClassSchema = new SimpleSchema({
 Class.attachSchema(Schema.ClassSchema);
 
 Meteor.methods({
-    'editClass': function (classId, classToEdit) {
+    'Admin/AddClass': function(classAttributes) {
+
+        check(classAttributes, {
+            userId: String,
+            courseTitle: String,
+            semester: String,
+            lecturer: String,
+            students: [Schema.StudentSchema]
+        });
+
+        var user = Meteor.user();
+
+        if( user.profile.type === 'Admin' ){
+
+            var classId = Class.insert(classAttributes);
+
+            return {
+                _id: classId
+            };
+        }
+        else {
+            throw new Meteor.Error(403, 'Forbidden');
+        }
+    },
+
+    'User/editClass': function (classId, classToEdit) {
         //Contains two arguments: the ID of the class to edit and the details to update the class with
         Class.update({'_id' : classId}, {$set:classToEdit});
     }
@@ -74,7 +102,13 @@ if (Meteor.isServer) {
 
     Class.allow({
         insert: function (userId, doc) {
-            return false;
+            var user = Meteor.users.findOne({ _id: userId });
+            if( user.profile.type === 'Admin'){
+                return true;
+            }
+            else{
+                return false;
+            }
         },
         update: function (userId, doc, fieldNames, modifier) {
             return false;
@@ -86,7 +120,13 @@ if (Meteor.isServer) {
 
     Class.deny({
         insert: function (userId, doc) {
-            return true;
+            var user = Meteor.users.find({_id: userId});
+            if( user.profile.type === 'Admin'){
+                return false;
+            }
+            else{
+                return true;
+            }
         },
         update: function (userId, doc, fieldNames, modifier) {
             return true;

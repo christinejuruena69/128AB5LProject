@@ -21,6 +21,7 @@ Meteor.methods({
             courseCode: 'CMSC 128',
             semester: '1st Semester AY 2015-2016',
             lecturer: teacher._id,
+            userId: teacher._id,
             students: studentArray
         };
 
