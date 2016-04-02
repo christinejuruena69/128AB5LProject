@@ -11,7 +11,7 @@ Template.filterPanel.events({
 			  }
 			return;
 		}
-	}
+	},
 	
 	'click #custom': function (){
 		checkboxes = $('.labSection');
