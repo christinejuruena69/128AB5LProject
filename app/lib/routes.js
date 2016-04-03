@@ -46,12 +46,12 @@ Router.route('/add-class', {
 //     where: 'client'
 // });
 //
-// Router.route('/randomizer', {
-//     name: 'RandomizerWindow',
-//     template: 'RandomizerWindow',
-//     controller: 'HomeController',
-//     where: 'client'
-// });
+ Router.route('/randomizer', {
+     name: 'RandomizerWindow',
+     template: 'RandomizerWindow',
+     controller: 'HomeController',
+     where: 'client'
+ });
 //
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',
