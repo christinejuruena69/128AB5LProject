@@ -3,7 +3,7 @@
 /*****************************************************************************/
 Template.filterPanel.events({
 	'click #selectAll': function (){
-		checkboxes = $('.labSection');
+		var checkboxes = $('.labSection');
 		if(document.getElementById('selectAll').checked == true){
 			  for(var i=0, n=checkboxes.length;i<n;i++) {
 			  	checkboxes[i].name = i;
@@ -14,7 +14,7 @@ Template.filterPanel.events({
 	},
 	
 	'click #custom': function (){
-		checkboxes = $('.labSection');
+		var checkboxes = $('.labSection');
 		if(document.getElementById('custom').checked == true){
 			  for(var i=0, n=checkboxes.length;i<n;i++) {
 			  	checkboxes[i].checked = false;
