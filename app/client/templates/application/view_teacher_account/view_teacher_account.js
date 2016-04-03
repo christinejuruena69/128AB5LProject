@@ -10,11 +10,7 @@ Template.ViewTeacherAccount.events({
 /*****************************************************************************/
 
 Template.ViewTeacherAccount.helpers({
-    loadCourses : function() {
-        Session.set('adminAccount', false);
-        Session.set('teacherAccount', true);
-        return true;
-    }
+   
 });
 
 /*****************************************************************************/
