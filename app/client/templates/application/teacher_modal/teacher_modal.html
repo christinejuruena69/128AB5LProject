@@ -1,0 +1,36 @@
+<template name="TeacherModal">
+     <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add subject</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="name">Course Code</label>
+                        <span class="">
+                            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md">
+                            
+                        </span>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="email">Course Title</label>
+                        <span class="">
+                            <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
+                            
+                        </span>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group" id="emails">
+                        <label class="col-md-4 control-label" for="phone">Semester </label>
+                        <button type="button" class="btn btn-link" id="add-email">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <span class="">
+                            <input  type="email" id="emailadd" name="emailadd" placeholder="Email address" class="form-control input-md email-adress">
+                        </span>
+                        
+                    </div>
+                    
+                </div>
+</template>

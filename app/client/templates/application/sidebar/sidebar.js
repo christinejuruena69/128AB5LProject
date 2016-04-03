@@ -19,6 +19,14 @@ Template.SideBar.helpers({
         else {
             return "Not logged in";
         }
+    },
+    dataType: function() {
+
+        var type = Meteor.users.findOne({
+            _id: Meteor.userId()
+        }).profile.type;
+
+        return (type === 'Teacher') ? 'Classes' : 'Accounts';
     }
 });
 /*****************************************************************************/

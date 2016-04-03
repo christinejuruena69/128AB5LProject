@@ -1,17 +1,21 @@
 <template name="SideBar">
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand"></li>
-                <li>
-                    <p>{{ username }}</p>
-                </li>
-                <li> <a href="/">profile</a> </li>
-                <li> <a href="/">Classes</a> </li>
-            </ul>
-        </div>
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"></li>
+            <li>
+                <p>{{ username }}</p>
+            </li>
+            <li> <a href="/">profile</a> </li>
+            <li>
+                {{#if currentUser}}
+                <a href="/">{{ dataType }}</a>
+                {{/if}}
+            </li>
+        </ul>
     </div>
-    <!--Navbar for every page
-    For further editing pa ng properties kasi medyo bland-->
-    {{> Header}}
+</div>
+<!--Navbar for every page
+For further editing pa ng properties kasi medyo bland-->
+{{> Header}}
 </template>
