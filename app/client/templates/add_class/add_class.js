@@ -23,8 +23,8 @@ Template.AddClass.events({
         });
 
         var class1 = {
-            userId: user._id,
             courseTitle: $(e.target).find('[name=courseTitle]').val(),
+            courseCode: $(e.target).find('[name=courseCode]').val(),
             semester: $(e.target).find('[name=semester]').val(),
             lecturer: $(e.target).find('[name=lecturer]').val(),
             students: student1

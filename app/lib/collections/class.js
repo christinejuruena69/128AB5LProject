@@ -41,9 +41,6 @@ Schema.StudentSchema = new SimpleSchema({
 
 // Schema for the class
 Schema.ClassSchema = new SimpleSchema({
-    userId: {
-        type: String
-    },
     courseTitle: {
         type: String
     },
@@ -70,14 +67,16 @@ Meteor.methods({
     'Admin/AddClass': function(classAttributes) {
 
         check(classAttributes, {
-            userId: String,
             courseTitle: String,
+            courseCode: String,
             semester: String,
             lecturer: String,
             students: [Schema.StudentSchema]
         });
 
         var user = Meteor.user();
+
+        Meteor.users.find({});
 
         if( user.profile.type === 'Admin' ){
 
