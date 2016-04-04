@@ -74,20 +74,33 @@ Meteor.methods({
             students: [Schema.StudentSchema]
         });
 
-        var user = Meteor.user();
+        // get currently logged in user and lecturer
+        var loggedInUser = Meteor.user(),
+            lecturer1 = Meteor.users.findOne({
+                'profile.fullName': classAttributes.lecturer
+            });        
 
-        Meteor.users.find({});
+        // if lecturer is in the database
+        if( lecturer1.profile.fullName === classAttributes.lecturer ){
 
-        if( user.profile.type === 'Admin' ){
+            // if currently logged in user is an admin
+            if( loggedInUser.profile.type === 'Admin' ){
+                
+                // change lecturer attribute to its id
+                classAttributes.lecturer = lecturer1._id;
+                
+                var classId = Class.insert(classAttributes);
 
-            var classId = Class.insert(classAttributes);
-
-            return {
-                _id: classId
-            };
+                return {
+                    _id: classId
+                };
+          }
+          else {
+              throw new Meteor.Error(403, 'Forbidden');
+          }
         }
-        else {
-            throw new Meteor.Error(403, 'Forbidden');
+        else{
+          throw new Meteor.Error(404, 'Not Found');
         }
     },
 
