@@ -79,7 +79,7 @@ if (Meteor.isServer) {
 Meteor.methods({
     'editView': function (viewId, viewToEdit) { //Contains two arguments: the ID of the class to edit and the details to update the class with
         var id = Meteor.userId();
-        if(id === null){
+        if(id === null || id !== classToEdit.lecturer){
             throw new Meteor.Error(403, 'Forbidden');
             return;
         }
