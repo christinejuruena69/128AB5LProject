@@ -66,6 +66,13 @@ Class.attachSchema(Schema.ClassSchema);
 Meteor.methods({
     'Admin/AddClass': function(classAttributes) {
 
+        var id = Meteor.userId();
+
+        if( id === null){
+            throw new Meteor.Error(403, 'Forbidden');
+            return ;
+        }
+
         check(classAttributes, {
             courseTitle: String,
             courseCode: String,
@@ -94,13 +101,13 @@ Meteor.methods({
                 return {
                     _id: classId
                 };
-          }
-          else {
-              throw new Meteor.Error(403, 'Forbidden');
-          }
+            }
+            else {
+                throw new Meteor.Error(403, 'Forbidden');
+            }
         }
         else{
-          throw new Meteor.Error(404, 'Not Found');
+            throw new Meteor.Error(404, 'Not Found');
         }
     },
 
