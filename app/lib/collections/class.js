@@ -41,9 +41,6 @@ Schema.StudentSchema = new SimpleSchema({
 
 // Schema for the class
 Schema.ClassSchema = new SimpleSchema({
-    userId: {
-        type: String
-    },
     courseTitle: {
         type: String
     },
@@ -69,26 +66,48 @@ Class.attachSchema(Schema.ClassSchema);
 Meteor.methods({
     'Admin/AddClass': function(classAttributes) {
 
+        var id = Meteor.userId();
+
+        if( id === null){
+            throw new Meteor.Error(403, 'Forbidden');
+            return ;
+        }
+
         check(classAttributes, {
-            userId: String,
             courseTitle: String,
+            courseCode: String,
             semester: String,
             lecturer: String,
             students: [Schema.StudentSchema]
         });
 
-        var user = Meteor.user();
+        // get currently logged in user and lecturer
+        var loggedInUser = Meteor.user(),
+            lecturer1 = Meteor.users.findOne({
+                'profile.fullName': classAttributes.lecturer
+            });        
 
-        if( user.profile.type === 'Admin' ){
+        // if lecturer is in the database
+        if( lecturer1.profile.fullName === classAttributes.lecturer ){
 
-            var classId = Class.insert(classAttributes);
+            // if currently logged in user is an admin
+            if( loggedInUser.profile.type === 'Admin' ){
+                
+                // change lecturer attribute to its id
+                classAttributes.lecturer = lecturer1._id;
+                
+                var classId = Class.insert(classAttributes);
 
-            return {
-                _id: classId
-            };
+                return {
+                    _id: classId
+                };
+            }
+            else {
+                throw new Meteor.Error(403, 'Forbidden');
+            }
         }
-        else {
-            throw new Meteor.Error(403, 'Forbidden');
+        else{
+            throw new Meteor.Error(404, 'Not Found');
         }
     },
 
