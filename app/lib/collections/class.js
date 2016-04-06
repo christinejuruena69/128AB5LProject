@@ -94,7 +94,6 @@ Meteor.methods({
 
     'User/editClass': function (classId, classToEdit) {
         //Contains two arguments: the ID of the class to edit and the details to update the class with
-        //check(Meteor.userId(), String);
         var id = Meteor.userId();
         if(id === null){
             throw new Meteor.Error(403, 'Forbidden');
