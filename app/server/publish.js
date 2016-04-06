@@ -37,3 +37,15 @@ Meteor.publish('allUserData', function (user) {
         return;
     }
 });
+
+Meteor.publish('oneView', function(id) {
+
+    var user = Meteor.users.findOne({ _id: this.userId});
+
+    if(user && user.profile.type === 'Admin') {
+        return View.find({ lecturer: id });
+    }
+    else {
+        return;
+    }
+});
