@@ -1,38 +1,34 @@
 <template name="UpdateDetails">
-  <form class="main form page">
-    <div class="form-group">
-      <label class="control-label" for="fullName">Full name</label>
-      <div class="controls">
-          <input name="fullName" id="fullName" type="text" value="{{fullName}}" placeholder="Full name" class="form-control"/>        
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label" for="email">E-mail Address</label>
-      <div class="controls">
-          <input name="email" id="email" type="text" value="{{email}}" placeholder="E-mail Address" class="form-control"/>          
-      </div>
-    </div>
-    <input type="submit" value="Edit Post" class="btn btn-primary submit"/>
-    <hr/>
-  </form>    
+    <form class="main form page">
+        <div class="form-group">
+            <label class="control-label" for="fullName">Full name</label>
+                <div class="controls">
+                    <input name="fullName" id="fullName" type="text" value="{{fullName}}" placeholder="Full name" class="form-control"/>        
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="email">E-mail Address</label>
+            <div class="controls">
+                <input name="email" id="email" type="text" value="{{email}}" placeholder="E-mail Address" class="form-control"/>          
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="oldPassword">Old Password</label>
+            <div class="controls">
+                <input name="oldPassword" id="oldPassword" type="password" value="" placeholder="Old Password" class="form-control"/>          
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="newPassword">New Password</label>
+            <div class="controls">
+                <input name="newPassword" id="newPassword" type="password" value="" placeholder="New Password" class="form-control"/>          
+            </div>
+        </div>
+    
+        <input type="submit" value="Edit Post" class="btn btn-primary submit"/>
+        <hr/>
+    </form>    
 </template>
-
-<!-- 
-    meteor add joshowens:simple-form
-    to use simple-form
-    _________________________________
-
-  <form method="POST" role="form">
-      <legend>Update Details</legend>
-
-      <div class="form-group">
-          {{text_field 'fullName' value this.fullName}}
-      </div>
-
-      <div class="form-group">
-          {{text_area 'description'}}
-      </div>
-
-      {{submit_button 'Add'}}
-  </form>
-  -->

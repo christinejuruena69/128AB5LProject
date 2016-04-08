@@ -1,42 +1,49 @@
 // Projects = new Meteor.Collection('projects');
 
 Template.updateDetails.onCreated(function() {
-  Session.set('updateDetailsErrors', {});
+    Session.set('updateDetailsErrors', {});
 });
 
 Template.updateDetails.events({
-  'submit form': function(e) {
-    e.preventDefault();
 
-    var user = Meteor.user();
+    'submit form': function(e) {
 
-    user.fullname = $(e.target).find('[name=fullname]').val();
-    user.email = $(e.target).find('[name=email]').val();
- 
-    Meteor.users.update(user.userId, {$set: user}, function(error) {
-      if (error) {
-        throwError(error.reason);
-        console.log('Error');
-      } else {        
-        Router.go('/');
-        console.log('Success');
-      }
-    });
+        e.preventDefault();
 
-  }
-});
+        var userDetails = {
+            fullname: $(e.target).find('[name=fullname]').val(),
+            email: $(e.target).find('[name=email]').val(),
+            oldPassword: $(e.target).find('[name=oldPassword]').val(),
+            newPassword: $(e.target).find('[name=newPassword]').val()
+        };
 
+        // get current user
+        var user = Meteor.user();
 
+        // to avoid passing null value
+        if( userDetails.fullname === null ){
+            userDetails.fullname = user.profile.fullName;
+        }
+        if( userDetails.email === null ){
+            userDetails.email = user.emails.address;
+        }
+        if( userDetails.oldPassword === null ){
+            userDetails.oldPassword = user.password;
+        }
+        if( userDetails.newPassword === null ){
+            userDetails.newPassword = user.password;
+        }
 
-/*
-  simple form syntax
-  ___________________
+        Meteor.call('User/UpdateDetails', userDetails, function(error) {
 
-  Template.updateDetails.events({
-    'submit form': function(event) {
-        event.preventDefault();
-        var data = SimpleForm.processForm(event.target);        
-        Projects.insert(data);
+            if (error) {
+                throwError(error.reason);
+                console.log('Error');
+            }
+            else {      
+                Router.go('/');
+                console.log('Success');
+            }
+        });
     }
-  });
-*/
+});
