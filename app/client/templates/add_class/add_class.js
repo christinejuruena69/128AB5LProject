@@ -47,7 +47,7 @@ Template.AddClass.events({
 /* AddClass: Helpers */
 /*****************************************************************************/
 Template.AddClass.helpers({
-    displayLecturers: function(){
+    displayLecturers: function() {
         return Meteor.users.find({'profile.type': 'Teacher'});
     }
 });

@@ -37,7 +37,16 @@ Router.route('/add-class', {
     controller: 'HomeController',
     where: 'client'
 });
+
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
+// @Todo: Set data context for dynamic routes
+
+// Router.route('/classview/:_id', {
+//     name: 'ViewTeacherAccount',
+//     template: 'ViewTeacherAccount',
+//     controller: 'HomeController',
+//     where: 'client'
+// });
 
 // Router.route('/ViewTeacherAccount', {
 //     name: 'ViewTeacherAccount',
