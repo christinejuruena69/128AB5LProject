@@ -7,18 +7,16 @@ Meteor.methods({
             email: String,
             oldPassword: String,
             newPassword: String
-        });           
+        });
 
         // change password
         Accounts.changePassword(userDetails.oldPassword, userDetails.newPassword, function(error) {
 
             if (error) {
                 throwError(error.reason);
-                console.log('Error');
             }
             else {      
                 Router.go('/');
-                console.log('Success');
             }
         });
         
