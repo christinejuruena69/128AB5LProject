@@ -53,6 +53,12 @@ Router.route('/randomizer', {
     controller: 'HomeController',
     where: 'client'
 });
+Router.route('/newrandomizer', {
+    name: 'NewRandomizerWindow',
+    template: 'NewRandomizerWindow',
+    controller: 'HomeController',
+    where: 'client'
+});
 //
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',
