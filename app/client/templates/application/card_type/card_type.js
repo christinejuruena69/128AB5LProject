@@ -5,6 +5,7 @@ Template.CardType.events({
         newspan.innerHTML = '<span class=""><input  type="email" id="emailadd" name="emailadd" placeholder="Email address" class="form-control input-md"></span>';
         document.getElementById('emails').appendChild(newspan);
     }
+
 });
 
 Template.CardType.helpers({

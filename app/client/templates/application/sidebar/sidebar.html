@@ -1,10 +1,15 @@
 <template name="SideBar">
 <div id="wrapper">
     <div id="sidebar-wrapper">
+     <div class="teacherPic">
+        </div>
         <ul class="sidebar-nav">
             <li class="sidebar-brand"></li>
             <li>
-                <p>{{ username }}</p>
+                {{#if currentUser}}
+                <label>Logged in as: {{ username }}</label>
+                <label>{{ accountType }} account</label>
+                {{/if}}
             </li>
             <li> <a href="/">profile</a> </li>
             <li>
