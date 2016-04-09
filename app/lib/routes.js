@@ -38,6 +38,11 @@ Router.route('/add-class', {
     where: 'client'
 });
 
+Router.route('/update-details', {
+    name: 'UpdateDetails',
+    layoutTemplate: 'MasterLayout'
+});
+
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 // @Todo: Set data context for dynamic routes
 
