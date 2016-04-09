@@ -16,7 +16,7 @@ div.account-and-classcards button.card-button {
 div.account-and-classcards div.card {
     position: relative;
     background-color: #1ABC9C;
-    height: 200px;
+    height: 150px;
 }
 
 div.account-and-classcards div.card:hover {

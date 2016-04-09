@@ -133,3 +133,14 @@
     }
 
 }
+
+
+ div.teacherPic {
+    border-radius: 50% !important;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background: #009688;
+    display: block;
+    padding-bottom: 50px;
+}

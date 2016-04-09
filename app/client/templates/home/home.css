@@ -1,12 +1,13 @@
 /*****************************************************************************/
 /* Home: Style */
 /*****************************************************************************/
+
 .home {
 	padding-top: 88px;
    float: none;
     margin: 0 auto;
-    background-color: #ECECEA;
-    z-index: 1000;
+    /*background-color: #ECECEA;*/
+    /*z-index: 1000;*/
 }
 
 div.cardType{
