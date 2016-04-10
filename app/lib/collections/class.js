@@ -134,8 +134,7 @@ Meteor.methods({
                     }
                 }                    
             });
-
-            
+   
         //check if current user is the lecturer of the class
         if( loggedInUser.profile.fullName === lecturer ){
 
@@ -150,8 +149,6 @@ Meteor.methods({
         else{
             throw new Meteor.Error(403, 'Forbidden');
         }
-
-        
     }
 });
 
