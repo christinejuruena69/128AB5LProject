@@ -114,6 +114,44 @@ Meteor.methods({
     'User/editClass': function (classId, classToEdit) {
         //Contains two arguments: the ID of the class to edit and the details to update the class with
         Class.update({'_id' : classId}, {$set:classToEdit});
+    },
+
+    'deleteStudent': function(studentNumber, lecturer, classId){
+        
+        var id = Meteor.userId();
+
+        //check if a user is loggedin
+        if( id === null){
+            throw new Meteor.Error(403, 'Forbidden');
+            return ;
+        }
+        
+        var loggedInUser = Meteor.user(),
+            student = Class.findOne({
+                'students':{
+                    $elemMatch:{
+                        'studentNumber': studentNumber
+                    }
+                }                    
+            });
+
+            
+        //check if current user is the lecturer of the class
+        if( loggedInUser.profile.fullName === lecturer ){
+
+            //checks if student is in the class list
+            if(student._id === classId){
+                Class.update({'_id' : classId}, {$pull: { students: { studentNumber: studentNumber} } }, {multi: true});
+            }
+            else{
+                throw new Meteor.Error(404, 'Not Found');
+            }
+        }
+        else{
+            throw new Meteor.Error(403, 'Forbidden');
+        }
+
+        
     }
 });
 
@@ -130,7 +168,14 @@ if (Meteor.isServer) {
             }
         },
         update: function (userId, doc, fieldNames, modifier) {
-            return false;
+            var user = Meteor.users.findOne({ _id: userId });
+            
+            if( user.profile.type === 'Teacher' ){
+                return true;
+            }
+            else{
+                return false;
+            }
         },
         remove: function (userId, doc) {
             return false;
@@ -148,7 +193,14 @@ if (Meteor.isServer) {
             }
         },
         update: function (userId, doc, fieldNames, modifier) {
-            return true;
+            var user = Meteor.users.findOne({ _id: userId });
+            
+            if( user.profile.type === 'Teacher' ){
+                return false;
+            }
+            else{
+                return true;
+            }
         },
         remove: function (userId, doc) {
             return true;

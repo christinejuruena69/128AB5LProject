@@ -1,38 +1,25 @@
-var studentdummylist = [
-	{
-		studentNumber: "2011-00541",
-		fullname: "Paolo Bandong",
-		nickname: "Paolo",
-		points: 0,
-		bias: 0,
-		isBlackListed: true
-	},
-	{
-		studentNumber: "2013-12345",
-		fullname: "John Secant",
-		nickname: "Johnny",
-		points: 0,
-		bias: 0,
-		isBlackListed: true	
-	}
-]
-
 /*****************************************************************************/
 /* StudentList: Event Handlers */
 /*****************************************************************************/
 Template.StudentList.events({
+	'click .Delete': function(){
+		var studentNumber = this.studentNumber;
+		var lecturer = this.lecturer;
+		var classId = this.classid;
+
+		Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
+		// display the error to the user and abort
+		if (error)
+			return alert(error.reason);
+		});
+		
+	}
 });
 
 /*****************************************************************************/
 /* StudentList: Helpers */
 /*****************************************************************************/
 Template.StudentList.helpers({
-	/*'student': function(){
-		var id = "GeZyiqyZ3KAtxjQBh";
-		console.log(Class.find({_id: id}, {_id: 0, students: 1}).fetch());
-		return Class.find({_id: id}, {_id: 0, students: 1}).fetch();
-	}*/
-	student: studentdummylist
 });
 
 /*****************************************************************************/
