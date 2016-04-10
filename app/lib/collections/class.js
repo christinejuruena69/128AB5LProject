@@ -139,20 +139,14 @@ Meteor.methods({
                     }
                 }                    
             });
-   
+
+            
         //check if current user is the lecturer of the class
         if( loggedInUser.profile.fullName === lecturer ){
 
             //checks if student is in the class list
             if(student._id === classId){
-                Class.update(
-                    {'_id' : classId}, 
-                    {$pull: 
-                        { students: 
-                            { studentNumber: studentNumber} 
-                        } 
-                    }, 
-                    {multi: true});
+                Class.update({'_id' : classId}, {$pull: { students: { studentNumber: studentNumber} } }, {multi: true});
             }
             else{
                 throw new Meteor.Error(404, 'Not Found');
@@ -161,37 +155,8 @@ Meteor.methods({
         else{
             throw new Meteor.Error(403, 'Forbidden');
         }
-    },
 
-    'addStudent': function(student, classId){
-        var id = Meteor.userId();
-
-        if( id === null ){
-            throw new Meteor.Error(403, 'Forbidden');
-            return ;
-        }
         
-        check(student, Schema.StudentSchema);
-
-        var loggedInUser = Meteor.user(),
-            classId1 = Class.findOne({
-                '_id': classId               
-            });
-
-        //check if the class lecturer is the current user and if the current user is of Teacher type    
-        if( id === classId1.lecturer && loggedInUser.profile.type === 'Teacher'){
-            Class.update(
-                { '_id': classId },
-                { $push:
-                    {
-                        'students': student
-                    }
-                }
-            );
-        }
-        else{
-            throw new Meteor.Error(403, 'Forbidden');
-        }
     }
 });
 
