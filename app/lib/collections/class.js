@@ -99,10 +99,6 @@ Meteor.methods({
             throw new Meteor.Error(403, 'Forbidden');
             return;
         }
-
-
-
-
         Class.update({'_id' : classId}, {$set:classToEdit});
     }
 });
