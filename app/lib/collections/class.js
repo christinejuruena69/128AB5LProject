@@ -113,6 +113,11 @@ Meteor.methods({
 
     'User/editClass': function (classId, classToEdit) {
         //Contains two arguments: the ID of the class to edit and the details to update the class with
+        var id = Meteor.userId();
+        if(id === null || id !== classToEdit.lecturer){
+            throw new Meteor.Error(403, 'Forbidden');
+            return;
+        }
         Class.update({'_id' : classId}, {$set:classToEdit});
     }
 });
