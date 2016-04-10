@@ -1,0 +1,53 @@
+div.row ul.dropdown-menu {
+  position: absolute;
+  height: 40px;
+  margin-top: 50%;
+  transform: translateX(115%);
+}
+
+div.row li.menu {
+  display: block;
+  padding: 0px;
+}
+
+div.row div.account-and-classcards {
+  height: 200px;
+  margin-top: 0px;
+  background-color: #1ABC9C;
+}
+
+div.row button.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  margin-top: 18%;
+  margin-left: 80%;
+  margin-right: 3%;
+}
+
+div.row button.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 0px 0px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+div.row button.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+div.row h4.students {
+  margin-top: 2%;
+  letter-spacing: -1px;
+}

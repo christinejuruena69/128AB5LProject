@@ -1,9 +1,12 @@
 <template name="AccountAndClassCards">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     {{#if currentUser}}
         {{#if isTeacher}}
             {{#each class}}
                 <div class="account-and-classcards">
-                    <div class="col-md-4 col-sm-5 col-xs-6">
+                    <div class="col-md-3 col-sm-4 col-xs-5">
                         <div class="thumbnail card">
                             <div class="caption">
                                 {{> ClassCard}}
@@ -16,7 +19,7 @@
         {{#if isAdmin}}
             {{#each account}}
                 <div class="account-and-classcards">
-                    <div class="col-md-4 col-sm-5 col-xs-6">
+                    <div class="col-md-3 col-sm-4 col-xs-5">
                         <div class="thumbnail card">
                             <div class="caption">
                                 {{> AccountCard}}
