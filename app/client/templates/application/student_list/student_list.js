@@ -2,18 +2,18 @@
 /* StudentList: Event Handlers */
 /*****************************************************************************/
 Template.StudentList.events({
-	'click .Delete': function(){
-		var studentNumber = this.studentNumber;
-		var lecturer = this.lecturer;
-		var classId = this.classid;
+    'click .Delete': function(){
+        var studentNumber = this.studentNumber;
+        var lecturer = this.lecturer;
+        var classId = this.classid;
 
-		Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
-		// display the error to the user and abort
-		if (error)
-			return alert(error.reason);
-		});
-		
-	}
+        Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
+        // display the error to the user and abort
+        if (error)
+            return alert(error.reason);
+        });
+        
+    }
 });
 
 /*****************************************************************************/
