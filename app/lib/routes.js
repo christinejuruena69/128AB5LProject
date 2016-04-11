@@ -67,9 +67,9 @@ Router.route('/newrandomizer', {
 //     where: 'client'
 // });
 //
-// Router.route('/studentListView', {
-//     name: 'StudentListView',
-//     template: 'StudentListView',
-//     controller: 'HomeController',
-//     where: 'client'
-// });
+ Router.route('/studentListView', {
+     name: 'StudentListView',
+     template: 'StudentListView',
+     controller: 'HomeController',
+     where: 'client'
+ });

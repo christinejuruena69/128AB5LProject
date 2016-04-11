@@ -1,0 +1,64 @@
+div.account-card ul.dropdown-menu {
+  position: absolute;
+}
+
+div.account-card li.first {
+  display: block;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+div.account-card {
+  background-color: #1ABC9C;
+  height: 200px;
+}
+
+div.account-card:hover {
+  background-color: #006551;
+}
+
+div.account-card ul.dropdown-menu {
+  position: relative;
+  margin-left: -999px;
+}
+
+div.account-card div.account-and-classcards {
+  margin-top: 0px;
+  background-color: #1ABC9C;
+}
+
+div.account-card button.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  margin-top: 15%;
+  margin-left: 80%;
+  margin-right: 3%;
+}
+
+div.account-card button.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 0px 0px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+div.account-card button.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+div.account-card h4.students {
+  margin-top: 2%;
+  letter-spacing: -1px;
+}
