@@ -1,20 +1,23 @@
 <template name="AccountCard">
-    <div class="account-and-classcards">
+  <div class="account-card col-md-12 col-sm-12 col-xs-12">
         <h3 id="thumbnail-label">
         <!-- <a href="{{pathFor route='ViewTeacherAccount'}}">{{profile.fullName}}</a> -->
-        <label id="accountlink"> {{profile.fullName}} </label>
+        <label id="accountlink"><a href="#" class="title">{{profile.fullName}}</a></label>
         <a class="anchorjs-link" href="#thumbnail-label"></a>
-        <span>
-            <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-th-large pull-right"></span>
+        <span class="dropdown">
+            <span class="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                <span class="glyphicon glyphicon-option-vertical pull-right"></span>
             </span>
-            <ul class="dropdown-menu pull-right">
-                <li><a href="#">Delete Account</a></li>
-                <li><a href="#">Deativate account</a></li>
+            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu">
+                <li class="first"><a href="#">Delete Account</a></li>
+                <li class="first"><a href="#">Deativate account</a></li>
             </ul>
         </span>
-        <h6>{{username}}</h6>
-        
+
         </h3>
-    </div>
+        <p>
+          {{username}}
+        </p>
+
+  </div>
 </template>
