@@ -179,7 +179,7 @@ Meteor.methods({
             });
 
         //check if the class lecturer is the current user and if the current user is of Teacher type    
-        if( id === classId1.lecturer && loggedInUser.profile.type === 'Teacher'){
+        if( loggedInUser._id === classId1.lecturer && loggedInUser.profile.type === 'Teacher'){
             Class.update(
                 { '_id': classId },
                 { $push:
