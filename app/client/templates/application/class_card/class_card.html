@@ -1,7 +1,7 @@
 <template name="ClassCard">
     <div class="classcards">
         <h3 id="thumbnail-label">
-        {{courseCode}}
+        {{ courseCode }}
         <a class="anchorjs-link" href="#thumbnail-label"></a>
         <span>
             <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -9,7 +9,7 @@
             </span>
         </span>
         </h3>
-        <p>{{courseTitle}}</p>
+        <p>{{ courseTitle }}</p>
         <a href="{{pathFor route='RandomizerWindow'}}">randomizerWindow</a><br>
         <a href="{{pathFor route='StudentListView'}}">Modify student list</a>
         <button class="pull-right card-button">{{ students.length }}</button>

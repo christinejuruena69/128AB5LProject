@@ -90,18 +90,18 @@ Router.route('/studentListView/:_id', {
     data: function () {
         return Class.findOne({
             _id: this.params._id
-        })
+        });
     }
 });
 
 Router.route('/profile/:_id', {
+    // TODO: Add a layout template
     name: 'ViewTeacherAccount',
-    template: 'MasterLayout',
     controller: 'HomeController',
     where: 'client',
     data: function () {
         return Meteor.users.findOne({
             _id: this.params._id
-        })
+        });
     }
 });
