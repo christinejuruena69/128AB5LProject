@@ -2,7 +2,8 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.TeacherModal.events({
-	 'submit form': function(e) {
+	 'submit .add-class-form': function(e) {
+
         e.preventDefault();
 
         var bday = new Date($(e.target).find('[name=birthday]').val()),
@@ -33,11 +34,12 @@ Template.TeacherModal.events({
 
             // alert if error
             if(error){
-                return throwError(error.reason);
+                return throwError (error.reason);
             }
 
             // re-route to home if success
-            Router.go('/');
+            // Router.go('/');
+            alert('Okay');
         });
     }
 });
