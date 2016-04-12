@@ -84,7 +84,7 @@ Meteor.methods({
         // get currently logged in user and lecturer
         var loggedInUser = Meteor.user(),
             lecturer1 = Meteor.users.findOne({
-                'profile.fullName': classAttributes.lecturer
+                '_id': classAttributes.lecturer
             });        
 
         // if lecturer is in the database
