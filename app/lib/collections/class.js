@@ -88,7 +88,7 @@ Meteor.methods({
             });        
 
         // if lecturer is in the database
-        if( lecturer1.profile.fullName === classAttributes.lecturer ){
+        if( lecturer1._id === classAttributes.lecturer ){
 
             // if currently logged in user is an admin
             if( loggedInUser.profile.type === 'Admin' ){
@@ -152,8 +152,7 @@ Meteor.methods({
                         { students: 
                             { studentNumber: studentNumber} 
                         } 
-                    }, 
-                    {multi: true});
+                    });
             }
             else {
                 throw new Meteor.Error(404, 'Not Found');
