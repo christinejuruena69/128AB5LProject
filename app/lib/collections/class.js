@@ -93,9 +93,6 @@ Meteor.methods({
             // if currently logged in user is an admin
             if( loggedInUser.profile.type === 'Admin' ){
                 
-                // change lecturer attribute to its id
-                classAttributes.lecturer = lecturer1._id;
-                
                 var classId = Class.insert(classAttributes);
 
                 return {
