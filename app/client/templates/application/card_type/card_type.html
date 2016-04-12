@@ -5,8 +5,8 @@
         {{/if}}
 
         <div class="icon-divs">
-            <!-- <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> -->
-            <button type="button" class="btn btn-link" >
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#admin-modal">
+            <!-- <button type="button" class="btn btn-link" > -->
             <span class="glyphicon glyphicon-plus" ></span>
             </button>
             <button type="button" class="btn btn-link" id="grid-view">
@@ -18,17 +18,15 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                {{#if currentUser}}
+                <!-- {{#if currentUser}}
                     {{> DynamicTemplate template=getTemplate}}
-                {{/if}}
+                {{/if}} -->
+                {{> AdminModal}}
                 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                </div>
+                
             </div>
         </div>
     </div>

@@ -1,10 +1,10 @@
 // Projects = new Meteor.Collection('projects');
 
-Template.updateDetails.onCreated(function() {
+Template.UpdateDetails.onCreated(function() {
     Session.set('updateDetailsErrors', {});
 });
 
-Template.updateDetails.events({
+Template.UpdateDetails.events({
 
     'submit form': function(e) {
 
@@ -40,7 +40,7 @@ Template.updateDetails.events({
                 throwError(error.reason);
                 console.log('Error');
             }
-            else {      
+            else {
                 Router.go('/');
                 console.log('Success');
             }

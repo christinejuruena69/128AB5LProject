@@ -1,10 +1,9 @@
 <template name="AdminModal">
-    <div class="modal-header">
+    <!-- <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Add user</h4>
     </div>
     <div class="modal-body">
-        <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="name">Name</label>
             <span class="">
@@ -12,7 +11,6 @@
                 
             </span>
         </div>
-        <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="email">Username</label>
             <span class="">
@@ -20,7 +18,6 @@
                 
             </span>
         </div>
-        <!-- Text input-->
         <div class="form-group" id="emails">
             <label class="col-md-4 control-label" for="phone">Email </label>
             <button type="button" class="btn btn-link" id="add-email">
@@ -34,14 +31,92 @@
         <div class="form-group" id="user-type-div">
             <label class="col-md-4 control-label" for="email">User type</label>
             <br />
-            <!-- Single button dropdown-->
             <div class="radio">
                 <label><input type="radio" name="usertype">Admin</label>
                 <label><input type="radio" name="usertype">Teacher</label>
             </div>
-                                
-
-            
         </div>
     </div>
+ -->
+
+
+
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+        <h4 class="modal-title" id="myModalLabel">Add subject</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <h1>Add Class</h1>
+            <form class="add class form">
+                <!-- form portion for course information -->
+                <div class="form-group">
+                    <label class="control-label" for="courseTitle">Course Title</label>
+                    <div class="controls">
+                        <input name="courseTitle" id="courseTitle" type="text" value="" placeholder="Course Title" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="courseCode">Course Code</label>
+                    <div class="controls">
+                        <input name="courseCode" id="courseCode" type="text" value="" placeholder="Course Code" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="semester">Semester</label>
+                    <div class="controls">
+                        <input name="semester" id="semester" type="text" value="" placeholder="Semester" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="lecturer">Lecturer</label>
+                    <select class="form-control" name="lecturer" id="lecturer">
+                        {{#each displayLecturers}}
+                        <option value="{{_id}}">{{profile.fullName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <!-- form portion for students -->
+                <div class="form-group">
+                    <label class="control-label" for="fullname">Full name</label>
+                    <div class="controls">
+                        <input name="fullname" id="fullname" type="text" value="" placeholder="Full name" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="studentNumber">Student Number</label>
+                    <div class="controls">
+                        <input name="studentNumber" id="studentNumber" type="text" value="" placeholder="Student Number" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="nickname">Nickname</label>
+                    <div class="controls">
+                        <input name="nickname" id="nickname" type="text" value="" placeholder="Nickname" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="birthday">Birthday</label>
+                    <div class="controls">
+                        <input name="birthday" id="birthday" type="date" value="" placeholder="Birthday" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="section">Section</label>
+                    <div class="controls">
+                        <input name="section" id="section" type="text" value="" placeholder="Section" class="form-control" />
+                    </div>
+                </div>
+                <input type="submit" value="Add Class" class="btn btn-primary" />
+            </form>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!-- <button type="submit" class="btn btn-primary">Add Class</button> -->
+                </div>
+
 </template>
