@@ -1,14 +1,18 @@
 <template name="RandomizerWindow">
     <div class="randomizer-window">
         <div class="filter-panel">
-            {{>filterPanel}}
+            {{> filterPanel}}
         </div>
         <div class="randomizer-main">
             <div class="main1">
-                {{> namesList}}
+                <h3>Names</h3>
+                <ul>
+                    {{#each this.students}}
+                        <li>{{fullname}}</li>
+                    {{/each}}
+                </ul>
             </div>
             <div class="main2">
-                {{> randomizerResult}}
             </div>
         </div>
     </div>

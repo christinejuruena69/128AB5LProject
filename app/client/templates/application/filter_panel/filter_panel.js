@@ -2,6 +2,15 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.filterPanel.events({
+
+    'click #Randomize': function(){
+        var array = this.students;
+        var randomIndex = Math.floor( Math.random() * array.length );
+        var element = array[randomIndex];
+
+        console.log(element.fullname);
+    },
+
 	'click #selectAll': function (){
 		var checkboxes = $('.labSection');
 		if(document.getElementById('selectAll').checked == true){
