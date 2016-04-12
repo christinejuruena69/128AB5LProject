@@ -43,6 +43,14 @@ Router.route('/update-details', {
     layoutTemplate: 'MasterLayout'
 });
 
+Router.route('/404', {
+    name: 'NotFound'
+});
+
+Router.route('/403', {
+    name: 'Forbidden'
+});
+
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 // @Todo: Set data context for dynamic routes
 
@@ -73,34 +81,27 @@ Router.route('/update-details', {
 //     controller: 'HomeController',
 //     where: 'client'
 // });
-//
- Router.route('/studentListView/:_id', {
-     name: 'StudentListView',
-     template: 'StudentListView',
-     controller: 'HomeController',
-     where: 'client',
-     data: function () {
-            return Class.findOne({
-                _id: this.params._id
-            })
-    }
- });
-/*
-{
-     name: 'StudentListView',
-     template: 'StudentListView',
-     controller: 'HomeController',
-     where: 'client'
- }
 
- function (){
-    id = this.params._id;
-    this.render(StudentListView, {
-        data: function () {
-            return Class.findOne({
-                _id: id
-            });
-        }
-    });
- }
- */
+Router.route('/studentListView/:_id', {
+    name: 'StudentListView',
+    template: 'StudentListView',
+    controller: 'HomeController',
+    where: 'client',
+    data: function () {
+        return Class.findOne({
+            _id: this.params._id
+        });
+    }
+});
+
+Router.route('/profile/:_id', {
+    // TODO: Add a layout template
+    name: 'ViewTeacherAccount',
+    controller: 'HomeController',
+    where: 'client',
+    data: function () {
+        return Meteor.users.findOne({
+            _id: this.params._id
+        });
+    }
+});

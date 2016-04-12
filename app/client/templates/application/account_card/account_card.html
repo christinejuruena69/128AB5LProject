@@ -1,7 +1,7 @@
 <template name="AccountCard">
     <div class="account-and-classcards">
         <h3 id="thumbnail-label">
-            <a href="#">{{ name }}</a>
+            <a href="{{pathFor route='ViewTeacherAccount'}}">{{ profile.fullName }}</a>
             <a class="anchorjs-link" href="#thumbnail-label"></a>
             <span>
                 <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
