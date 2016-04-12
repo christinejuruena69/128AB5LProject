@@ -1,6 +1,5 @@
 <template name="StudentList">
-  
-    {{#each student}}
+    {{#each this.students}}
         <tr>
             <td>{{studentNumber}}</td>
             <td>{{fullname}}</td>
@@ -8,8 +7,7 @@
             <td>{{points}}</td>
             <td>{{bias}}</td>
             <td>{{isBlackListed}}</td>
-            <td class="Delete"><button>x</button></td>
+            <td><button class="Delete">x</button></td>
         </tr>
     {{/each}}
-  
 </template>

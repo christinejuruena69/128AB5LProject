@@ -74,9 +74,33 @@ Router.route('/update-details', {
 //     where: 'client'
 // });
 //
- Router.route('/studentListView', {
+ Router.route('/studentListView/:_id', {
+     name: 'StudentListView',
+     template: 'StudentListView',
+     controller: 'HomeController',
+     where: 'client',
+     data: function () {
+            return Class.findOne({
+                _id: this.params._id
+            })
+    }
+ });
+/*
+{
      name: 'StudentListView',
      template: 'StudentListView',
      controller: 'HomeController',
      where: 'client'
- });
+ }
+
+ function (){
+    id = this.params._id;
+    this.render(StudentListView, {
+        data: function () {
+            return Class.findOne({
+                _id: id
+            });
+        }
+    });
+ }
+ */

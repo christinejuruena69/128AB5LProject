@@ -8,6 +8,7 @@ Template.StudentListView.events({
 /* StudentListView: Helpers */
 /*****************************************************************************/
 Template.StudentListView.helpers({
+
 });
 
 /*****************************************************************************/
