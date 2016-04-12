@@ -1,6 +1,6 @@
 <template name="ViewTeacherAccount">
-    <div class="view-teacher-account">
-        <div class="view-teacher-account-header" id="acchead">
+    <div class="view-teacher-account col-md-8 col-md-offset-2">
+        <div class="view-teacher-account-header " id="acchead">
             <!-- <div class="teacherAccPic"></div> -->
             <h3> {{ profile.fullName }} </h3>
             <h6> {{ username }}</h6>
@@ -13,6 +13,9 @@
         </div>
         <div class="view-teacher-account-body">
             <!-- insert account cards here -->
+            <div class="main-window">
+            {{> AccountAndClassCards}}
+            </div>
         </div>
     </div>
 </template>

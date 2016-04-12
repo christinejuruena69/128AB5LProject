@@ -104,6 +104,7 @@ Router.route('/studentListView/:_id', {
 Router.route('/profile/:_id', {
     // TODO: Add a layout template
     name: 'ViewTeacherAccount',
+    layoutTemplate: 'MasterLayout',        
     controller: 'HomeController',
     where: 'client',
     data: function () {
