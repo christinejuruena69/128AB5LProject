@@ -37,6 +37,13 @@ Router.route('/add-class', {
     controller: 'HomeController',
     where: 'client'
 });
+
+Router.route('/edit-class', {
+   name: 'EditClass',
+   layoutTemplate: 'MasterLayout',
+   controller: 'HomeController',
+   where: 'client' 
+});
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 
 // Router.route('/ViewTeacherAccount', {
