@@ -68,12 +68,19 @@ Router.route('/403', {
 //     where: 'client'
 // });
 //
-// Router.route('/randomizer', {
-//     name: 'RandomizerWindow',
-//     template: 'RandomizerWindow',
-//     controller: 'HomeController',
-//     where: 'client'
-// });
+
+Router.route('/randomizer', {
+    name: 'RandomizerWindow',
+    template: 'RandomizerWindow',
+    controller: 'HomeController',
+    where: 'client'
+});
+Router.route('/newrandomizer', {
+    name: 'NewRandomizerWindow',
+    template: 'NewRandomizerWindow',
+    controller: 'HomeController',
+    where: 'client'
+});
 //
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',

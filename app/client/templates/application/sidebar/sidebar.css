@@ -19,7 +19,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #16a085;
+    background: #74AFAD;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -132,4 +132,15 @@
         margin-right: 0;
     }
 
+}
+
+
+ div.teacherPic {
+    border-radius: 50% !important;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background: #009688;
+    display: block;
+    padding-bottom: 50px;
 }
