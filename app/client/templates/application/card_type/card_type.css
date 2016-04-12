@@ -5,7 +5,9 @@ div.account-body-header {
     /*background-color: white;*/
     /*background-color: #607d8b;*/
 }
-
+.modal-content .admin{
+        
+}
 div.account-body-header div.icon-divs button.btn.btn-link {
     color: black;
 }

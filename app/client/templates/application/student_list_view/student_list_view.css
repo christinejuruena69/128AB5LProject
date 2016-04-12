@@ -2,13 +2,17 @@ table.table td table.table th {
     text-align: center;
 }
 
+
 p#course-title {
     position: absolute;
 }
 
 div.sub-header {
-    margin-bottom: 5%;
-    margin-top: 100px;
+    /*margin-bottom: 5%;*/
+    padding-top: 50px;
+    line-height: 10px;
+    float: left;
+
 }
 
 li.menu {

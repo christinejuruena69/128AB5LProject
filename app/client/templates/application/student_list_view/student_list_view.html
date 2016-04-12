@@ -1,17 +1,19 @@
 <template name="StudentListView">
-<div class="container-fluid">
+
+<div class=" col-md-8 col-md-offset-2">
     <div class="col-xs-12 col-sm-12 col-md-12 sub-header">
-        <h1 class="pull-left">{{courseCode}}
-        <p id="course-title">{{courseTitle}}</p><br>
-        <h3 class="pull-right">Number of Students: {{students.length}}</h3><br><br>
-        </h1>
+        <h1 class="">{{courseCode}}</h1>
+        <h3 class="" id="course-title">{{courseTitle}}</h3>
+        <h4 class="pull-right">Number of Students: {{students.length}}</h4>        
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-student"> Add Student
+        <!-- <button type="button" class="btn btn-link" > -->
+
+        <span class="glyphicon glyphicon-plus-md" > </span>
+       
+        </button>
     </div>
     
     <div class="form-group-sm col-xs-4 col-sm-3 col-md-2">
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-student">
-        <!-- <button type="button" class="btn btn-link" > -->
-        <span class="glyphicon glyphicon-plus" > Add Student</span>
-        </button>
         
         <input type="text" class="form-control" placeholder=" Search"> </div>
 
