@@ -156,9 +156,7 @@ Meteor.methods({
         else {
             throw new Meteor.Error(403, 'Forbidden');
             return;
-        }
-    
-        
+        }   
     }
 });
 
