@@ -1,6 +1,9 @@
 <template name="StudentList">
     {{#each this.students}}
-        <tr>
+        
+                <!-- <tr role="button" data-toggle="modal" data-target="#editModal"> -->
+                <tr>
+            
             <td>{{studentNumber}}</td>
             <td>{{fullname}}</td>
             <td>{{nickname}}</td>
@@ -10,4 +13,6 @@
             <td><button class="Delete">x</button></td>
         </tr>
     {{/each}}
+
+
 </template>

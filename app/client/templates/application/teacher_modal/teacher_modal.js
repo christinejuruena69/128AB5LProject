@@ -1,14 +1,25 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.RandomizerWindow.events({});
+Template.TeacherModal.events({
+	 
+});
+
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
-Template.RandomizerWindow.helpers({});
+Template.TeacherModal.helpers({
+	
+});
+
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.RandomizerWindow.onCreated(function () {});
-Template.RandomizerWindow.onRendered(function () {});
-Template.RandomizerWindow.onDestroyed(function () {});
+Template.TeacherModal.onCreated(function () {
+});
+
+Template.TeacherModal.onRendered(function () {
+});
+
+Template.TeacherModal.onDestroyed(function () {
+});

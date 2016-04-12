@@ -1,17 +1,33 @@
 <template name="ClassCard">
-    <div class="classcards">
-        <h3 id="thumbnail-label">
-        {{courseCode}}
-        <a class="anchorjs-link" href="#thumbnail-label"></a>
-        <span>
-            <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-th-large pull-right"></span>
-            </span>
-        </span>
-        </h3>
-        <p>{{courseTitle}}</p>
-        <a href="{{pathFor route='RandomizerWindow'}}">randomizerWindow</a><br>
-        <a href="{{pathFor route='StudentListView'}}">Modify student list</a>
-        <button class="pull-right card-button">{{ students.length }}</button>
+  <div class="row table-row">
+    <a href="{{pathFor route='RandomizerWindow'}}">
+    <div class="col-md-3 col-sm-4 col-xs-5">
+     <img src="/dice.png" alt="dice" class="dice center-block"/>
     </div>
+  </a>
+        <div class="account-and-classcards col-md-9 col-sm-10 col-xs-11">
+        <h3 id="thumbnail-label">
+
+        <span class="dropdown">
+            <span class="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                <span class="glyphicon glyphicon-option-vertical pull-right"></span>
+            </span>
+
+            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu">
+                <li class="menu"><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
+            </ul>
+        </span>
+
+        <a href="#" class="title">{{courseCode}}</a>
+
+        </h3>
+        <p>
+          {{courseTitle}}
+        </p>
+        <button type="button" class="btn btn-default btn-circle btn-lg pull-right">
+          <span class="text-center">{{ students.length }}</span>
+        </button>
+        <h4 class="students pull-right">Students</h4>
+    </div>
+  </div>
 </template>

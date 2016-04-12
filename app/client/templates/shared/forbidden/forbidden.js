@@ -1,21 +1,23 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* Forbidden: Event Handlers */
 /*****************************************************************************/
-Template.Home.events({});
-/*****************************************************************************/
-/* Home: Helpers */
-/*****************************************************************************/
-Template.Home.helpers({
-	
-});
-/*****************************************************************************/
-/* Home: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Home.onCreated(function () {
-    Meteor.subscribe('myClasses');
-    Meteor.subscribe('allUserData');
-    Meteor.subscribe('getViewStates');
+Template.Forbidden.events({
 });
 
-Template.Home.onRendered(function () {});
-Template.Home.onDestroyed(function () {});
+/*****************************************************************************/
+/* Forbidden: Helpers */
+/*****************************************************************************/
+Template.Forbidden.helpers({
+});
+
+/*****************************************************************************/
+/* Forbidden: Lifecycle Hooks */
+/*****************************************************************************/
+Template.Forbidden.onCreated(function () {
+});
+
+Template.Forbidden.onRendered(function () {
+});
+
+Template.Forbidden.onDestroyed(function () {
+});
