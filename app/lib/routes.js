@@ -60,12 +60,19 @@ Router.route('/update-details', {
 //     where: 'client'
 // });
 //
-// Router.route('/randomizer', {
-//     name: 'RandomizerWindow',
-//     template: 'RandomizerWindow',
-//     controller: 'HomeController',
-//     where: 'client'
-// });
+
+Router.route('/randomizer', {
+    name: 'RandomizerWindow',
+    template: 'RandomizerWindow',
+    controller: 'HomeController',
+    where: 'client'
+});
+Router.route('/newrandomizer', {
+    name: 'NewRandomizerWindow',
+    template: 'NewRandomizerWindow',
+    controller: 'HomeController',
+    where: 'client'
+});
 //
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',
@@ -87,10 +94,14 @@ Router.route('/update-details', {
  });
 /*
 {
+=======
+ Router.route('/studentListView', {
+>>>>>>> 5ce2f13abbe59cbcc585691e701423a1d52f7f4d
      name: 'StudentListView',
      template: 'StudentListView',
      controller: 'HomeController',
      where: 'client'
+<<<<<<< HEAD
  }
 
  function (){
@@ -104,3 +115,4 @@ Router.route('/update-details', {
     });
  }
  */
+ // });
