@@ -9,7 +9,7 @@ Template.EditClass.events({
 /*****************************************************************************/
 Template.EditClass.helpers({
     class: function() {
-        return Class.find({});
+        return Class.findOne({ userId: Meteor.userId() });
     }
 });
 

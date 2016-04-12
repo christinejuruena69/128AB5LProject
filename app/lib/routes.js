@@ -41,8 +41,11 @@ Router.route('/add-class', {
 Router.route('/edit-class', {
    name: 'EditClass',
    layoutTemplate: 'MasterLayout',
-   controller: 'IndexController',
-   where: 'client' 
+   controller: 'HomeController',
+   where: 'client',
+   subscriptions: function(){
+        return Meteor.subscribe('class');
+    } 
 });
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 
