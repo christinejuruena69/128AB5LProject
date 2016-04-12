@@ -44,6 +44,14 @@ Router.route('/update-details', {
 });
 
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
+// @Todo: Set data context for dynamic routes
+
+// Router.route('/classview/:_id', {
+//     name: 'ViewTeacherAccount',
+//     template: 'ViewTeacherAccount',
+//     controller: 'HomeController',
+//     where: 'client'
+// });
 
 // Router.route('/ViewTeacherAccount', {
 //     name: 'ViewTeacherAccount',
@@ -66,9 +74,33 @@ Router.route('/update-details', {
 //     where: 'client'
 // });
 //
- Router.route('/studentListView', {
+ Router.route('/studentListView/:_id', {
+     name: 'StudentListView',
+     template: 'StudentListView',
+     controller: 'HomeController',
+     where: 'client',
+     data: function () {
+            return Class.findOne({
+                _id: this.params._id
+            })
+    }
+ });
+/*
+{
      name: 'StudentListView',
      template: 'StudentListView',
      controller: 'HomeController',
      where: 'client'
- });
+ }
+
+ function (){
+    id = this.params._id;
+    this.render(StudentListView, {
+        data: function () {
+            return Class.findOne({
+                _id: id
+            });
+        }
+    });
+ }
+ */

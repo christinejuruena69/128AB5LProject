@@ -4,8 +4,8 @@
 Template.StudentList.events({
     'click .Delete': function(){
         var studentNumber = this.studentNumber;
-        var lecturer = this.lecturer;
-        var classId = this.classid;
+        var classId = Template.parentData()._id;
+        var lecturer = Template.parentData().lecturer;
 
         Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
         // display the error to the user and abort

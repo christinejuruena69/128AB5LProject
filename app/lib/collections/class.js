@@ -121,6 +121,48 @@ Meteor.methods({
         Class.update({'_id' : classId}, {$set:classToEdit});
     },
 
+    'deleteStudent': function(studentNumber, lecturer, classId){
+        
+        var id = Meteor.userId();
+
+        //check if a user is loggedin
+        if( id === null){
+            throw new Meteor.Error(403, 'Forbidden');
+            return ;
+        }
+        
+        var loggedInUser = Meteor.user(),
+            student = Class.findOne({
+                'students':{
+                    $elemMatch:{
+                        'studentNumber': studentNumber
+                    }
+                }                    
+            });
+   
+        //check if current user is the lecturer of the class
+        if( loggedInUser.profile.fullName === lecturer ){
+
+            //checks if student is in the class list
+            if(student._id === classId){
+                Class.update(
+                    {'_id' : classId}, 
+                    {$pull: 
+                        { students: 
+                            { studentNumber: studentNumber} 
+                        } 
+                    }, 
+                    {multi: true});
+            }
+            else {
+                throw new Meteor.Error(404, 'Not Found');
+            }
+        }
+        else {
+            throw new Meteor.Error(403, 'Forbidden');
+        }
+    },
+
     'addStudent': function(student, classId){
         var id = Meteor.userId();
 

@@ -1,9 +1,9 @@
 <template name="StudentListView">
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-12 col-md-12 sub-header">
-            <h1 class="pull-left">CMSC 128
-            <h3 class="pull-right">Number of Students: 123</h3>
-            <p id="course-title">Introduction to Software Engineering</p>
+            <h1 class="pull-left">{{courseCode}}
+            <p id="course-title">{{courseTitle}}</p><br>
+            <h3 class="pull-right">Number of Students: {{students.length}}</h3><br><br>    
             </h1>
         </div>
 
