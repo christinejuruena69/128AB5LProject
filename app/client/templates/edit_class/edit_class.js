@@ -2,16 +2,17 @@
 /* EditClass: Event Handlers */
 /*****************************************************************************/
 Template.EditClass.events({
-    'submit form': function (event, template) {
+    'submit form': function (e, template) {
         console.log('Submitted');
         event.preventDefault();
         // Stop html from going to action
 
         //Get form data
-        var editedClass = {},
-            courseTitle = event.target['courseTitle'].value,
-            courseCode = event.target['courseCode'].value,
-            semester = event.target['semester'].value;
+        var editedClass = {
+            courseTitle: $(e.target).find('[name=courseTitle]').val(),
+            courseCode: $(e.target).find('[name=courseCode]').val(),
+            semester: $(e.target).find('[name=semester]').val()
+        };
 
         Meteor.call('User/editClass', editedClass, function(error, result){
 
