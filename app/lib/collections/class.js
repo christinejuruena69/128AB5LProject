@@ -133,7 +133,7 @@ Meteor.methods({
         
         var loggedInUser = Meteor.user(),
             student = Class.findOne({
-                '_id': classId
+                '_id': classId,
                 'students':{
                     $elemMatch:{
                         'studentNumber': studentNumber
