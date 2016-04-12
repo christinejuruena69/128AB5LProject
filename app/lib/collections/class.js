@@ -92,7 +92,7 @@ Meteor.methods({
         }
     },
 
-    'User/editClass': function (classId, classToEdit) {
+    'User/editClass': function (classToEdit) {
         //Contains two arguments: the ID of the class to edit and the details to update the class with
         var id = Meteor.userId();
         if(id === null || id !== classToEdit.lecturer){
@@ -103,7 +103,7 @@ Meteor.methods({
 
 
 
-        Class.update({'_id' : classId}, {$set:classToEdit});
+        Class.update({'userId' : Meteor.userId()}, {$set:classToEdit});
     }
 });
 
