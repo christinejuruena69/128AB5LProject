@@ -106,7 +106,7 @@ Meteor.methods({
                 throw new Meteor.Error(403, 'Forbidden');
             }
         }
-        else{
+        else {
             throw new Meteor.Error(404, 'Not Found');
         }
     },
@@ -133,6 +133,7 @@ Meteor.methods({
         
         var loggedInUser = Meteor.user(),
             student = Class.findOne({
+                '_id': classId,
                 'students':{
                     $elemMatch:{
                         'studentNumber': studentNumber
@@ -140,22 +141,23 @@ Meteor.methods({
                 }                    
             });
 
-            
         //check if current user is the lecturer of the class
-        if( loggedInUser.profile.fullName === lecturer ){
+        if( loggedInUser._id === lecturer ){
 
             //checks if student is in the class list
             if(student._id === classId){
                 Class.update({'_id' : classId}, {$pull: { students: { studentNumber: studentNumber} } }, {multi: true});
             }
-            else{
+            else {
                 throw new Meteor.Error(404, 'Not Found');
+                return;
             }
         }
-        else{
+        else {
             throw new Meteor.Error(403, 'Forbidden');
+            return;
         }
-
+    
         
     }
 });
@@ -168,7 +170,7 @@ if (Meteor.isServer) {
             if( user.profile.type === 'Admin'){
                 return true;
             }
-            else{
+            else {
                 return false;
             }
         },
@@ -178,7 +180,7 @@ if (Meteor.isServer) {
             if( user.profile.type === 'Teacher' ){
                 return true;
             }
-            else{
+            else {
                 return false;
             }
         },
@@ -193,7 +195,7 @@ if (Meteor.isServer) {
             if( user.profile.type === 'Admin'){
                 return false;
             }
-            else{
+            else {
                 return true;
             }
         },
@@ -203,7 +205,7 @@ if (Meteor.isServer) {
             if( user.profile.type === 'Teacher' ){
                 return false;
             }
-            else{
+            else {
                 return true;
             }
         },
