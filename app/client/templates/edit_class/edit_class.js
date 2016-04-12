@@ -8,6 +8,9 @@ Template.EditClass.events({
 /* EditClass: Helpers */
 /*****************************************************************************/
 Template.EditClass.helpers({
+    class: function() {
+        return Class.find({});
+    }
 });
 
 /*****************************************************************************/

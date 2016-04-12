@@ -37,3 +37,8 @@ Meteor.publish('allUserData', function (user) {
         return;
     }
 });
+
+Meteor.publish('class', function(){
+    var currentUser = this._id;
+    return Class.find({ _id: currentUser })
+});
