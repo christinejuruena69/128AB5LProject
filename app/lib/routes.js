@@ -60,12 +60,17 @@ Router.route('/update-details', {
 //     where: 'client'
 // });
 //
-// Router.route('/randomizer', {
-//     name: 'RandomizerWindow',
-//     template: 'RandomizerWindow',
-//     controller: 'HomeController',
-//     where: 'client'
-// });
+Router.route('/randomizer/:_id', {
+    name: 'RandomizerWindow',
+    template: 'RandomizerWindow',
+    controller: 'HomeController',
+    where: 'client',
+    data: function(){
+        return Class.findOne({
+            _id: this.params._id
+        })
+    }
+});
 //
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',
