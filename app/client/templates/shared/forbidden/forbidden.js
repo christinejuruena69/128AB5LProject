@@ -1,28 +1,23 @@
-
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* Forbidden: Event Handlers */
 /*****************************************************************************/
-Template.ViewTeacherAccount.events({
+Template.Forbidden.events({
 });
 
 /*****************************************************************************/
-/* Home: Helpers */
+/* Forbidden: Helpers */
 /*****************************************************************************/
-
-Template.ViewTeacherAccount.helpers({
-    loadCourses : function() {
-        return false;
-    }
+Template.Forbidden.helpers({
 });
 
 /*****************************************************************************/
-/* Home: Lifecycle Hooks */
+/* Forbidden: Lifecycle Hooks */
 /*****************************************************************************/
-Template.ViewTeacherAccount.onCreated(function () {
+Template.Forbidden.onCreated(function () {
 });
 
-Template.ViewTeacherAccount.onRendered(function () {
+Template.Forbidden.onRendered(function () {
 });
 
-Template.ViewTeacherAccount.onDestroyed(function () {
+Template.Forbidden.onDestroyed(function () {
 });

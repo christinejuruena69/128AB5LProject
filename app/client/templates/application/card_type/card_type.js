@@ -18,13 +18,7 @@ Template.CardType.helpers({
         }).profile.type;
 
         return (type === 'Teacher') ? 'Classes' : 'Accounts';
-    },
-    isTeacher: function() {
-
-        var type = Meteor.users.findOne({_id: Meteor.userId()}).profile.type;
-
-        return !!(type === 'Teacher');
-    },
+    },    
     isAdmin: function() {
 
         var type = Meteor.users.findOne({_id: Meteor.userId()}).profile.type;
