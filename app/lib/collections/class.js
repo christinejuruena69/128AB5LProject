@@ -133,6 +133,7 @@ Meteor.methods({
         
         var loggedInUser = Meteor.user(),
             student = Class.findOne({
+                '_id': classId
                 'students':{
                     $elemMatch:{
                         'studentNumber': studentNumber
@@ -141,7 +142,7 @@ Meteor.methods({
             });
    
         //check if current user is the lecturer of the class
-        if( loggedInUser.profile.fullName === lecturer ){
+        if( loggedInUser._id === lecturer ){
 
             //checks if student is in the class list
             if(student._id === classId){
