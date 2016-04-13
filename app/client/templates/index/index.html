@@ -1,16 +1,13 @@
 <template name="Index">
-    <div class="row">
-        <div class="container index">
-            <h1>Welcome to CSVS</h1>
-            <h4><a href="{{ pathFor route='LoginForm' }}">Login Here!</a></h4>
-            <h4><a href="{{ pathFor route='RegisterForm' }}">Register Here!</a></h4>
+  <div class="background">
+    <div class="fade-in logo" id="bigcircle">
 
-        </div>
-        <!-- <div class="col-lg-12 index">
-        <div id="bigcircle"> </div>
-        <h4 class="intro-text"> <a href="{{pathFor route='LoginForm'}}">Login </a> </h4>
-
-
-    </div> -->
     </div>
+    <div id="login-div">
+      <button class="btn fade-in login-btn" id="login-button">L O G I N</button>
+    </div>
+    <div class="fade-in sign-up" id="sign-up-div">
+      <p>Doesn't have an account? <a href="{{ pathFor route='RegisterForm'}}">Sign up</a></p>
+    </div>
+  </div>
 </template>

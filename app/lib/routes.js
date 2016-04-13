@@ -5,7 +5,6 @@ Router.configure({
 
 Router.route('/', {
     name: 'Index',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });
