@@ -11,14 +11,12 @@ Router.route('/', {
 
 Router.route('/login', {
     name: 'LoginForm',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });
 
 Router.route('/register', {
     name: 'RegisterForm',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });

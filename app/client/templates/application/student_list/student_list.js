@@ -20,7 +20,7 @@ Template.StudentList.events({
     'click .down': function() {
         $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
     },
-    'click tr': function() {
+    'click .editclass': function() {
         var table = document.getElementById("student-table");
         if (table != null) {
             for (var i = 0; i < table.rows.length; i++) {
