@@ -115,12 +115,9 @@ Meteor.methods({
             throw new Meteor.Error(403, 'Forbidden');
             return;
         }
-        Class.update({'_id' : classId}, {$set:classToEdit});
+        Class.update({'lecturer' : Meteor.userId()}, {$set:classToEdit});
     },
 
-<<<<<<< HEAD
-        Class.update({'lecturer' : Meteor.userId()}, {$set:classToEdit});
-=======
     'deleteStudent': function(studentNumber, lecturer, classId){
         
         var id = Meteor.userId();
@@ -193,7 +190,6 @@ Meteor.methods({
         else {
             throw new Meteor.Error(403, 'Forbidden');
         }
->>>>>>> c2e9c1acdfe5e7663b071acdf22020641a7fb907
     }
 });
 
