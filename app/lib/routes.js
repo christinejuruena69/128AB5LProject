@@ -39,7 +39,7 @@ Router.route('/add-class', {
 });
 
 
-Router.route('/edit-class', {
+Router.route('/edit-class/:_id', {
     name: 'EditClass',
     layoutTemplate: 'MasterLayout',
     controller: 'HomeController',
