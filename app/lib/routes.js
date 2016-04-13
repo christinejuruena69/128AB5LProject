@@ -70,6 +70,7 @@ Router.route('/403', {
 //
 Router.route('/randomizer/:_id', {
     name: 'RandomizerWindow',
+    layoutTemplate: 'MasterLayout',    
     template: 'RandomizerWindow',
     controller: 'HomeController',
     where: 'client',
@@ -92,6 +93,7 @@ Router.route('/randomizer/:_id', {
 
 Router.route('/studentListView/:_id', {
     name: 'StudentListView',
+    layoutTemplate: 'MasterLayout',    
     template: 'StudentListView',
     controller: 'HomeController',
     where: 'client',
@@ -108,6 +110,7 @@ Router.route('/studentListView/:_id', {
 Router.route('/profile/:_id', {
     // TODO: Add a layout template
     name: 'ViewTeacherAccount',
+    layoutTemplate: 'MasterLayout',        
     controller: 'HomeController',
     where: 'client',
     waitOn: function() {

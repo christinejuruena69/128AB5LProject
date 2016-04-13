@@ -1,3 +1,6 @@
+div.account-card a{
+  color: #3B3738;
+}
 div.account-card ul.dropdown-menu {
   position: absolute;
 }

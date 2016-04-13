@@ -1,17 +1,41 @@
 <template name="Header">
-    <nav class="navbar navbar navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="col-md-4">
-                    <button class="btn navbar-btn navbar-left menu-button" id="sidebar-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
-                    <a id="dashboard" href="{{pathFor route='Index'}}">CSVS</a>
-                </div>
+<nav class="navbar navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="col-md-4">
+                <button class="btn navbar-btn navbar-left menu-button" id="sidebar-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                <a id="dashboard" href="{{pathFor route='Index'}}">CSVS</a>
+            </div>
+            <div class="col-md-offset-7 col-md-1" id="left-menu">
+                
+               <!--  <div class="dropdown account">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Account
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">
+                            {{#if currentUser}}
+                            <label>Logged in as: {{ username }}</label>
+                            <label>{{ accountType }} account</label>
+                            {{/if}}
+                        </a></li>
+                        <li> <a href="/">profile</a> </li>
+                        <li>
+                            {{#if currentUser}}
+                            <a href="/">{{ dataType }}</a>
+                            {{/if}}
+                        </li>
+                    </ul>
+                </div> -->
                 {{#if currentUser}}
-                    <div class="col-md-offset-7 col-md-1">
-                        <a href="#" class="btn btn-sm btn-danger logout-button">Logout <span class="glyphicon glyphicon-share-alt"></span></a>
-                    </div>
+                <a href="#" class="btn btn-sm btn-danger logout-button">Logout <span class="glyphicon glyphicon-share-alt"></span></a>
                 {{/if}}
             </div>
+            
+            
+            
         </div>
-    </nav>
+    </div>
+</nav>
 </template>
