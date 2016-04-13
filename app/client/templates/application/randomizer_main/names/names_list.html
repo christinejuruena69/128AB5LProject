@@ -1,4 +1,4 @@
-<template name="namesList">
+<template name="NamesList">
     <div class="names">
         <div class="row">
             <div class="panel panel-default">
@@ -20,15 +20,15 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each names}}
+                {{#each this.students}}
                     <tr>
-                        <td width="20%">{{> nameItem}}</td>
-                        <td width="15%">Nickname</td>
-                        <td width="15%">Student Number</td>
-                        <td width="15%">Section</td>
-                        <td width="15%">Points</td>
-                        <td width="10%">Bias</td>
-                        <td width="10%">Blacklist</td>
+                        <td width="20%">{{ fullname}}</td>
+                        <td width="15%">{{ nickname}}</td>
+                        <td width="15%">{{ studentNumber}}</td>
+                        <td width="15%">{{ section}}</td>
+                        <td width="15%">{{ points}}</td>
+                        <td width="10%">{{ bias}}</td>
+                        <td width="10%">{{ isBlackListed }}</td>
                     </tr>
                 {{/each}}
             </tbody>

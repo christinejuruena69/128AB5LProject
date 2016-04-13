@@ -8,4 +8,11 @@ Template.Header.events({
     }
 });
 
-Template.Header.helpers({});
+Template.Header.helpers({
+	username: function() {
+        return Meteor.user().username;
+    },
+    accountType: function() {
+        return Meteor.user().profile.type;
+    }
+});

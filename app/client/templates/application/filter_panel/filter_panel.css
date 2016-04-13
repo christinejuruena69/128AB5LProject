@@ -1,7 +1,7 @@
 #filterPanel{
 		float: left;
 		border: 1px solid black;
-		margin-top: 200px;
+		/*margin-top: 200px;*/
 		z-index: 1000px;
 		width: 300px;
 		height: 600px; 
