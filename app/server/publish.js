@@ -49,10 +49,11 @@ Meteor.publish('allUserData', function (user) {
     }
 });
 
-<<<<<<< HEAD
+
 Meteor.publish('class', function(){
     return Class.find();
-=======
+});
+
 Meteor.publish('oneView', function(id) {
 
     var user = Meteor.users.findOne({ _id: this.userId});
@@ -63,5 +64,5 @@ Meteor.publish('oneView', function(id) {
     else {
         return;
     }
->>>>>>> c2e9c1acdfe5e7663b071acdf22020641a7fb907
+
 });
