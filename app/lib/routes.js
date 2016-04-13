@@ -38,7 +38,7 @@ Router.route('/add-class', {
     where: 'client'
 });
 
-<<<<<<< HEAD
+
 Router.route('/edit-class', {
    name: 'EditClass',
    layoutTemplate: 'MasterLayout',
@@ -48,7 +48,7 @@ Router.route('/edit-class', {
         return Meteor.subscribe('class');
     } 
 });
-=======
+
 Router.route('/update-details', {
     name: 'UpdateDetails',
     layoutTemplate: 'MasterLayout'
@@ -61,8 +61,6 @@ Router.route('/404', {
 Router.route('/403', {
     name: 'Forbidden'
 });
-
->>>>>>> c2e9c1acdfe5e7663b071acdf22020641a7fb907
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 // @Todo: Set data context for dynamic routes
 
