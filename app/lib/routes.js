@@ -40,13 +40,18 @@ Router.route('/add-class', {
 
 
 Router.route('/edit-class', {
-   name: 'EditClass',
-   layoutTemplate: 'MasterLayout',
-   controller: 'HomeController',
-   where: 'client',
-   subscriptions: function(){
+    name: 'EditClass',
+    layoutTemplate: 'MasterLayout',
+    controller: 'HomeController',
+    where: 'client',
+    subscriptions: function() {
         return Meteor.subscribe('oneClass', this.params._id);
-    } 
+    },
+    data: function() {
+        return Class.findOne({
+            _id: this.params._id
+        });
+    }
 });
 
 Router.route('/update-details', {

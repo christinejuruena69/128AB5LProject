@@ -50,10 +50,6 @@ Meteor.publish('allUserData', function (user) {
 });
 
 
-Meteor.publish('class', function(){
-    return Class.find();
-});
-
 Meteor.publish('oneView', function(id) {
 
     var user = Meteor.users.findOne({ _id: this.userId});
