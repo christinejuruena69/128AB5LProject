@@ -134,3 +134,6 @@ Router.route('/profile/:_id', {
         });
     }
 });
+
+Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
+Router.onBeforeAction('dataNotFound', {only: 'StudentListView'});
