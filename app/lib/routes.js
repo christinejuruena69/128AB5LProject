@@ -74,6 +74,9 @@ Router.route('/randomizer/:_id', {
     template: 'RandomizerWindow',
     controller: 'HomeController',
     where: 'client',
+    waitOn: function() {
+        return Meteor.subscribe('oneClass', this.params._id);
+    },
     data: function(){
         return Class.findOne({
             _id: this.params._id
@@ -94,6 +97,9 @@ Router.route('/studentListView/:_id', {
     template: 'StudentListView',
     controller: 'HomeController',
     where: 'client',
+    waitOn: function() {
+        return Meteor.subscribe('oneClass', this.params._id);
+    },
     data: function () {
         return Class.findOne({
             _id: this.params._id
@@ -107,6 +113,9 @@ Router.route('/profile/:_id', {
     layoutTemplate: 'MasterLayout',        
     controller: 'HomeController',
     where: 'client',
+    waitOn: function() {
+        return Meteor.subscribe('oneUser', this.params._id);
+    },
     data: function () {
         return Meteor.users.findOne({
             _id: this.params._id
