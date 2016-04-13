@@ -5,21 +5,18 @@ Router.configure({
 
 Router.route('/', {
     name: 'Index',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });
 
 Router.route('/login', {
     name: 'LoginForm',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });
 
 Router.route('/register', {
     name: 'RegisterForm',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });
@@ -38,6 +35,22 @@ Router.route('/add-class', {
     where: 'client'
 });
 
+
+Router.route('/edit-class/:_id', {
+    name: 'EditClass',
+    layoutTemplate: 'MasterLayout',
+    controller: 'HomeController',
+    where: 'client',
+    subscriptions: function() {
+        return Meteor.subscribe('oneClass', this.params._id);
+    },
+    data: function() {
+        return Class.findOne({
+            _id: this.params._id
+        });
+    }
+});
+
 Router.route('/update-details', {
     name: 'UpdateDetails',
     layoutTemplate: 'MasterLayout'
@@ -50,7 +63,6 @@ Router.route('/404', {
 Router.route('/403', {
     name: 'Forbidden'
 });
-
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 // @Todo: Set data context for dynamic routes
 

@@ -49,6 +49,7 @@ Meteor.publish('allUserData', function (user) {
     }
 });
 
+
 Meteor.publish('oneView', function(id) {
 
     var user = Meteor.users.findOne({ _id: this.userId});
@@ -59,4 +60,5 @@ Meteor.publish('oneView', function(id) {
     else {
         return;
     }
+
 });
