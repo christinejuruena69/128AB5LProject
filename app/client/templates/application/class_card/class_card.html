@@ -17,13 +17,16 @@
                 <li class="menu"><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
             </ul>
         </span>
+        
 
         <a href="#" class="title">{{courseCode}}</a>
-
+        
         </h3>
         <p>
           {{courseTitle}}
         </p>
+        <a href="{{ pathFor route='EditClass' }}">Edit details</a>
+        <button type="button" class="btn btn-default btn-circle btn-lg pull-right">
         <button type="button" class="btn btn-default btn-circle btn-lg pull-right" onclick="window.location.href='{{pathFor route='StudentListView'}}'">
           <span class="text-center">{{ students.length }}</span>
         </button>
