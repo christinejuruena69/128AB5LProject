@@ -1,20 +1,39 @@
 <template name="CardType">
     <div class="account-body-header">
         {{#if currentUser}}
-            <h6  class="accntype">{{ dataType }}</h6>
+        <h6  class="accntype">{{ dataType }}</h6>
         {{/if}}
-        <div class="icon-divs">
-            <button type="button" class="btn btn-link">
-            <span class="glyphicon glyphicon-plus"></span>
-            </button>
 
-            <button type="button" class="btn btn-link">
+        <div class="icon-divs">
+            {{#if currentUser}}
+                {{#if isAdmin }}
+                
+
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#admin-modal">
+                    <!-- <button type="button" class="btn btn-link" > -->
+                    <span class="glyphicon glyphicon-plus" ></span>
+                    </button>
+                {{/if}}
+            {{/if}}
+            <button type="button" class="btn btn-link" id="grid-view">
             <span class="glyphicon glyphicon-th-large"></span>
             </button>
-            <button type="button" class="btn btn-link">
-            <span class="glyphicon glyphicon-align-justify"></span>
+            <button type="button" class="btn btn-link" id="table-view">
+            <span class="glyphicon glyphicon-align-justify"> </span>
             </button>
-
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- {{#if currentUser}}
+                    {{> DynamicTemplate template=getTemplate}}
+                {{/if}} -->
+                {{> AdminModal}}
+                
+                
+            </div>
         </div>
     </div>
 </template>

@@ -1,12 +1,15 @@
 <template name="Header">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button class="btn navbar-btn navbar-left menu-button" id="sidebar-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
-                <a id="dashboard" href="{{pathFor route='Index'}}">CSVS</a>
-
+                <div class="col-md-4">
+                    <button class="btn navbar-btn navbar-left menu-button" id="sidebar-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                    <a id="dashboard" href="{{pathFor route='Index'}}">CSVS</a>
+                </div>
                 {{#if currentUser}}
-                    <input type="button" class="logout-button" value="Logout">
+                    <div class="col-md-offset-7 col-md-1">
+                        <a href="#" class="btn btn-sm btn-danger logout-button">Logout <span class="glyphicon glyphicon-share-alt"></span></a>
+                    </div>
                 {{/if}}
             </div>
         </div>

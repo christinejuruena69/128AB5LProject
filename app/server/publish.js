@@ -11,8 +11,20 @@ Meteor.publish('oneClass', function(id) {
 
     var user = Meteor.users.findOne({ _id: this.userId});
 
+    if(user) {
+        return Class.find({ _id: id });
+    }
+    else {
+        return;
+    }
+});
+
+Meteor.publish('oneUser', function(id) {
+
+    var user = Meteor.users.findOne({ _id: this.userId});
+
     if(user && user.profile.type === 'Admin') {
-        return Class.find({ lecturer: id });
+        return Meteor.users.find({ _id: id });
     }
     else {
         return;
@@ -20,7 +32,6 @@ Meteor.publish('oneClass', function(id) {
 });
 
 Meteor.publish('getViewStates', function() {
-
     return View.find({ lecturer: this.userId });
 });
 
@@ -38,6 +49,19 @@ Meteor.publish('allUserData', function (user) {
     }
 });
 
+<<<<<<< HEAD
 Meteor.publish('class', function(){
     return Class.find();
+=======
+Meteor.publish('oneView', function(id) {
+
+    var user = Meteor.users.findOne({ _id: this.userId});
+
+    if(user && user.profile.type === 'Admin') {
+        return View.find({ lecturer: id });
+    }
+    else {
+        return;
+    }
+>>>>>>> c2e9c1acdfe5e7663b071acdf22020641a7fb907
 });

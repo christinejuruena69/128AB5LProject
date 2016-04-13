@@ -7,7 +7,6 @@ Meteor.methods({
 
         var teacher = Meteor.users.findOne({ username: 'teacher' });
 
-        _ = lodash;
         var StudentData = {
             fullname: 'Jonathan Secant',
             studentNumber: '2013-12345',
@@ -15,7 +14,7 @@ Meteor.methods({
             birthday: new Date(),
             section: '1-L'
         };
-        var studentArray =  _.fill(new Array(10), StudentData);
+        var studentArray =  lodash.fill(new Array(10), StudentData);
         var sampleClass = {
             courseTitle: 'sampleClass',
             courseCode: 'CMSC 128',
@@ -35,6 +34,7 @@ Meteor.methods({
             else {
                 console.log('Dummy Class data exists already');
             }
+
         }
 
         start();

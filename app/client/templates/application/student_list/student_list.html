@@ -1,0 +1,18 @@
+<template name="StudentList">
+    {{#each this.students}}
+        
+                <!-- <tr role="button" data-toggle="modal" data-target="#editModal"> -->
+                <tr>
+            
+            <td>{{studentNumber}}</td>
+            <td>{{fullname}}</td>
+            <td>{{nickname}}</td>
+            <td>{{points}}</td>
+            <td>{{bias}}</td>
+            <td>{{isBlackListed}}</td>
+            <td><button class="Delete">x</button></td>
+        </tr>
+    {{/each}}
+
+
+</template>
