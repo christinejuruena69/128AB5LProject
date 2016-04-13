@@ -45,7 +45,7 @@ Router.route('/edit-class', {
    controller: 'HomeController',
    where: 'client',
    subscriptions: function(){
-        return Meteor.subscribe('class');
+        return Meteor.subscribe('oneClass', this.params._id);
     } 
 });
 
