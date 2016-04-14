@@ -16,7 +16,7 @@
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -100%);
+	transform: translate(-50%, -80%);
 	text-align: center;
 	line-height: 200px;
 }
@@ -25,14 +25,14 @@
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, 150%);
+	transform: translate(-50%, 200%);
 }
 
 #sign-up-div {
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, 475%);
+	transform: translate(-50%, 540%);
 }
 
 @-webkit-keyframes fadeIn {
@@ -74,12 +74,18 @@
 
 .fade-in.login-btn {
 	border-radius: 0px !important;
-	font-size: 15px;
+	background: white;
+	font-size: 20px;
 	padding: 12px;
+	width: 150px;
 
 	-webkit-animation-delay: 1.5s;
 	-moz-animation-delay: 1.5s;
 	animation-delay: 1.5s;
+}
+
+.fade-in.login-btn:hover {
+	background: lightblue;
 }
 
 .fade-in.sign-up {
@@ -89,5 +95,5 @@
 }
 
 .fade-in.sign-up p {
-	font-size: 14px;
+	font-size: 16px;
 }
