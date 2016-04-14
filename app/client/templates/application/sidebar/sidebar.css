@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 #wrapper {
-    padding-left: 0;
+    padding-right: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -8,16 +8,16 @@
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-right: 250px;
 }
 
 #sidebar-wrapper {
     z-index: 10000;
     position: fixed;
-    left: 250px;
+    right: 250px;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-right: -250px;
     overflow-y: auto;
     background: #74AFAD;
     -webkit-transition: all 0.5s ease;
@@ -27,7 +27,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 550px;
 }
 
 #page-content-wrapper {
@@ -107,11 +107,11 @@
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 0;
+        padding-right: 0;
     }
 
     #wrapper.toggled {
-        padding-left: 250px;
+        padding-right: 250px;
     }
 
     #sidebar-wrapper {
@@ -119,7 +119,7 @@
     }
 
     #wrapper.toggled #sidebar-wrapper {
-        width: 250px;
+        width: 500px;
     }
 
     #page-content-wrapper {
