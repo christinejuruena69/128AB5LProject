@@ -4,3 +4,11 @@
 .login-form {
     margin-top: 75px;
 }
+
+.form-control.input-md {
+  border-radius: 0 !important;
+}
+
+#login-button {
+  border-radius: 0;
+}
