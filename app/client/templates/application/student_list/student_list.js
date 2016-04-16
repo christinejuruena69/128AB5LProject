@@ -6,12 +6,20 @@ Template.StudentList.events({
         var studentNumber = this.studentNumber;
         var classId = Template.parentData()._id;
         var lecturer = Template.parentData().lecturer;
+        var message = "Delete student " + studentNumber + "?";
 
-        Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
+        var a = confirm(message);
+        if(a == true){
+            var b = confirm("Are you sure?");
+            if (b == true) {
+                Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
             // display the error to the user and abort
-            if (error)
-                return alert(error.reason);
-        });
+                    if (error)
+                    return alert(error.reason);
+                });
+            };
+        }
+
 
     },
     'click .up': function() {
