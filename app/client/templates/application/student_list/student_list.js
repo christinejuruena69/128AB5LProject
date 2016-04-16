@@ -13,7 +13,7 @@ Template.StudentList.events({
             var b = confirm("Are you sure?");
             if (b == true) {
                 Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
-            // display the error to the user and abort
+                    // display the error to the user and abort
                     if (error)
                     return alert(error.reason);
                 });
