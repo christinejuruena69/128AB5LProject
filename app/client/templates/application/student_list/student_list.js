@@ -9,9 +9,9 @@ Template.StudentList.events({
         var message = "Delete student " + studentNumber + "?";
 
         var prompt1 = confirm(message);
-        if(a == true){
+        if(prompt1 == true){
             var prompt2 = confirm("Are you sure?");
-            if (b == true) {
+            if (prompt2 == true) {
                 Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
                     // display the error to the user and abort
                     if (error)
