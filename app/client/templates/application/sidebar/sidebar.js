@@ -12,13 +12,19 @@ Template.SideBar.events({
 /* SideBar: Helpers */
 /*****************************************************************************/
 Template.SideBar.helpers({
-    username: function() {
-        if(Meteor.user() && Meteor.user().username) {
-            return Meteor.user().username;
-        }
-        else {
-            return "Not logged in";
-        }
+     username: function() {
+        return Meteor.user().username;
+    },
+    accountType: function() {
+        return Meteor.user().profile.type;
+    },
+    dataType: function() {
+
+        var type = Meteor.users.findOne({
+            _id: Meteor.userId()
+        }).profile.type;
+
+        return (type === 'Teacher') ? 'Classes' : 'Accounts';
     }
 });
 /*****************************************************************************/

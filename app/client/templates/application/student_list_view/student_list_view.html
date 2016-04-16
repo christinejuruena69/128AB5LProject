@@ -1,45 +1,21 @@
 <template name="StudentListView">
-    <div class="container-fluid">
-        <div class="col-xs-12 col-sm-12 col-md-12 sub-header">
-            <h1 class="pull-left">{{courseCode}}
-            <p id="course-title">{{courseTitle}}</p><br>
-            <h3 class="pull-right">Number of Students: {{students.length}}</h3><br><br>    
-            </h1>
-        </div>
 
-        <form class="addStudentForm">
-        <!-- form for student information -->
-            <div class="form-group">
-                <label class="control-label" for="fullname">Full name</label>
-                <div class="controls">
-                    <input name="fullname" id="fullname" type="text" value="" placeholder="Full name" class="form-control" /> </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="studentNumber">Student Number</label>
-                <div class="controls">
-                    <input name="studentNumber" id="studentNumber" type="text" value="" placeholder="Student Number" class="form-control" /> </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="nickname">Nickname</label>
-                <div class="controls">
-                    <input name="nickname" id="nickname" type="text" value="" placeholder="Nickname" class="form-control" /> </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="birthday">Birthday</label>
-                <div class="controls">
-                    <input name="birthday" id="birthday" type="date" value="" placeholder="Birthday" class="form-control" /> </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="section">Section</label>
-                <div class="controls">
-                    <input name="section" id="section" type="text" value="" placeholder="Section" class="form-control" /> </div>
-            </div>
-            <input type="submit" value="Add Student" class="btn btn-primary" />
-        </form>
-        <!-- end of student form -->
+<div class=" col-md-8 col-md-offset-2">
+    <div class="col-xs-12 col-sm-12 col-md-12 sub-header">
+        <h1 class="">{{courseCode}}</h1>
+        <h3 class="" id="course-title">{{courseTitle}}</h3>
+        <h4 class="pull-right">Number of Students: {{students.length}}</h4>        
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-student"> Add Student
+        <!-- <button type="button" class="btn btn-link" > -->
 
-        <div class="form-group-sm col-xs-4 col-sm-3 col-md-2">
-            <input type="text" class="form-control" placeholder=" Search"> </div>
+        <span class="glyphicon glyphicon-plus-md" > </span>
+       
+        </button>
+    </div>
+    
+    <div class="form-group-sm col-xs-4 col-sm-3 col-md-2">
+        
+        <input type="text" class="form-control" placeholder=" Search"> </div>
 
         <div class="dropdown pull-right">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort by <span class="caret"></span></button>
@@ -54,12 +30,13 @@
                 <li><a href="#">Blaclisted</a></li>
             </ul>
         </div>
-        <table class="table table-striped table-hover col-xs-12 col-sm-12 col-md-12">
+        <table class="table table-striped table-hover col-xs-12 col-sm-12 col-md-12" id="student-table">
             <thead>
                 <tr>
                     <th>Student Number</th>
                     <th>Full Name</th>
                     <th>Nickname</th>
+                    <th>Section</th>
                     <th>Points</th>
                     <th>Bias</th>
                     <th>Blacklisted</th>
@@ -68,7 +45,113 @@
             </thead>
             <tbody>
                 {{> StudentList}}
+
             </tbody>
         </table>
     </div>
-</template>
+    <!--modal-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 id="modal-full-name"></h4>
+                    <h5 id="modal-std-no"></h5>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nickname" class="control-label">Nickname:</label>
+                            <input type="text" class="form-control" id="modal-nickname">
+                        </div>
+                        <div class="form-group">
+                            <label for="course" class="control-label">Course:</label>
+                            <input type="text" class="form-control" id="modal-course">
+                        </div>
+                        <div class="form-group">
+                            <label for="college" class="control-label">College:</label>
+                            <input type="text" class="form-control" id="modal-college">
+                        </div>
+                        <div class="input-group spinner">
+                            <label for="bias" class="control-label">Bias:</label>
+                            <input type="text" class="form-control" id="modal-bias" max="100" min="0">
+                            <div class="input-group-btn-vertical">
+                                <button class="btn btn-default up" type="button">
+                                <span class="dropup">
+                                    <i class="caret center-block"></i>
+                                </span>
+                                </button>
+                                <button class="btn btn-default down" type="button"><i class="caret center-block"></i></button>
+                            </div>
+                        </div>
+                        <div class="row blacklist">
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" aria-label="...">
+                                    </span>
+                                    <button class="btn btn-default" type="button">Blacklisted</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal-->
+    <!--modal add student-->
+    <div class="modal fade" id="add-student" tabindex="-1" role="dialog" aria-labelledby="addstudentmodal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add student</h4>
+                    <h4 id="modal-full-name"></h4>
+                    <h5 id="modal-std-no"></h5>
+                </div>
+                <div class="modal-body">
+                    <form class="addStudentForm">
+                        <!-- form for student information -->
+                        <div class="form-group">
+                            <label class="control-label" for="fullname">Full name</label>
+                            <div class="controls">
+                                <input name="fullname" id="fullname" type="text" value="" placeholder="Full name" class="form-control" /> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="studentNumber">Student Number</label>
+                                <div class="controls">
+                                    <input name="studentNumber" id="studentNumber" type="text" value="" placeholder="Student Number" class="form-control" /> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="nickname">Nickname</label>
+                                    <div class="controls">
+                                        <input name="nickname" id="nickname" type="text" value="" placeholder="Nickname" class="form-control" /> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="birthday">Birthday</label>
+                                        <div class="controls">
+                                            <input name="birthday" id="birthday" type="date" value="" placeholder="Birthday" class="form-control" /> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="section">Section</label>
+                                            <div class="controls">
+                                                <input name="section" id="section" type="text" value="" placeholder="Section" class="form-control" /> </div>
+                                            </div>
+                                            <input type="submit" value="Add Student" class="btn btn-primary" />
+                                        </form>
+                                        <!-- end of student form -->
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--modal-->
+                        </template>

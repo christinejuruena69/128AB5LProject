@@ -1,0 +1,46 @@
+<template name="EditClass">
+  <div class="edit-class">
+      <br>
+      <br>
+      <br>
+      <div class="register-form">
+            <form class="form-horizontal">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend align="center">Edit your class</legend>
+                    <br>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="courseTitle">Course Title</label>
+                        <div class="col-md-4">
+                            <input id="courseTitle" name="courseTitle" value="{{courseTitle}}" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="courseCode">Course Code</label>
+                        <div class="col-md-4">
+                            <input id="courseCode" name="courseCode" value="{{courseCode}}" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="semester">Semester</label>
+                        <div class="col-md-4">
+                            <input id="semester" name="semester" value="{{semester}}" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                   
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="submit"></label>
+                        <div class="col-md-8">
+                            <input type="submit" id="submit" name="submit" class="btn btn-success" value="Save"/>
+                            <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+      </div>
+  </div>
+</template>

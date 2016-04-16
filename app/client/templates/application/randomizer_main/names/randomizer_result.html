@@ -1,4 +1,4 @@
-<template name="randomizerResult">
+<template name="RandomizerResult">
     <div class="results">
         <div class="row">
             <div class="panel panel-default">
@@ -7,16 +7,28 @@
                         Randomizer Result:
                     </h4>
                 </div>
-                <table class="table table-fixed">
+                <table class="table table-fixed" id="randomizer-result-table">
                     <thead>
                         <tr>
-                            <th class="col-xs-8">Name</th>
+                            <th width="19%">Name</th>
+                            <th width="15%"> Nickname</th>
+                            <th width="15%">Student Number</th>
+                            <th width="15%">Section</th>
+                            <th width="15%">Points</th>
+                            <th width="10%">Bias</th>
+                            <th width="10%">Blacklist</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each results}}
                             <tr>
-                                <td class="col-xs-2">{{> resultItem}}</td>
+                                <td width="20%">{{ results}}</td>
+                                <td width="15%">Nickname</td>
+                                <td width="15%">Student Number</td>
+                                <td width="15%">Section</td>
+                                <td width="15%">Points</td>
+                                <td width="10%">Bias</td>
+                                <td width="10%">Blacklist</td>
                             </tr>
                         {{/each}}
                     </tbody>
