@@ -11,14 +11,12 @@ Router.route('/', {
 
 Router.route('/login', {
     name: 'LoginForm',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });
 
 Router.route('/register', {
     name: 'RegisterForm',
-    layoutTemplate: 'MasterLayout',
     controller: 'IndexController',
     where: 'client'
 });
@@ -136,3 +134,6 @@ Router.route('/profile/:_id', {
         });
     }
 });
+
+Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
+Router.onBeforeAction('dataNotFound', {only: 'StudentListView'});

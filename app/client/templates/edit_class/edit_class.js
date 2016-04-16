@@ -11,7 +11,8 @@ Template.EditClass.events({
         var editedClass = {
             courseTitle: $(e.target).find('[name=courseTitle]').val(),
             courseCode: $(e.target).find('[name=courseCode]').val(),
-            semester: $(e.target).find('[name=semester]').val()
+            semester: $(e.target).find('[name=semester]').val(),
+            _id: this._id
         };
 
         Meteor.call('User/editClass', editedClass, function(error, result){
