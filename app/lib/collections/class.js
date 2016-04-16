@@ -170,6 +170,8 @@ Meteor.methods({
         
         check(student, Schema.StudentSchema);
 
+        
+        
         var loggedInUser = Meteor.user(),
             classId1 = Class.findOne({
                 '_id': classId               
