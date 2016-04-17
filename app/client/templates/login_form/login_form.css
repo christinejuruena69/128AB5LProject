@@ -35,7 +35,22 @@
   border-radius: 0;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   float: right;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }
 
 #login-logo {
@@ -43,6 +58,10 @@
   margin-top: 20px;
   margin-bottom: 50px;
   color: #2D3E50;
+
+  -webkit-animation:spin 2s linear infinite;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:spin 2s linear infinite;
+	animation:spin 2s linear infinite;
 }
 
 
