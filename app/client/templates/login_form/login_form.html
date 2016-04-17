@@ -1,34 +1,17 @@
 <template name="LoginForm">
-    <div class="login-form">
-        <div class="container">
-            <form class="form-horizontal">
-                <fieldset>
-                    <!-- Form Name -->
-                    <legend>Login</legend>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Username</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="username" type="text" placeholder="username" class="form-control input-md" required="">
-                        </div>
-                    </div>
-                    <!-- Password input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="passwordinput">Password</label>
-                        <div class="col-md-4">
-                            <input id="passwordinput" name="password" type="password" placeholder="" class="form-control input-md" required="">
-                        </div>
-                    </div>
-                    <!-- Log in -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="button"></label>
-                        <div class="col-md-4">
-                            <input type="submit" id="login-button" name="button" class="btn btn-success" value="Log in">
-                        </div>
-                    </div>
-                </fieldset>
+      <div class="container" id="login-form">
+      <span class="glyphicon glyphicon-refresh" id="login-logo"></span>
+            <form class="form-inline" id="login-frm">
+              <div class="form-group">
+                <label class="sr-only" for="textinput">Email address</label>
+                <input type="text" name="username" class="form-control" id="textinput" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="passwordinput">Password</label>
+                <input type="password" name="password" class="form-control" id="passwordinput" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-primary" id="submit-button">Sign in</button>
             </form>
-        </div>
-
-    </div>
+            
+      </div>
 </template>

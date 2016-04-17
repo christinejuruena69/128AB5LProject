@@ -1,6 +1,63 @@
 /*****************************************************************************/
 /* LoginForm: Style */
 /*****************************************************************************/
-.login-form {
-    margin-top: 75px;
+#login-form {
+    margin-top: 150px;
+    text-align: center;
+    background: transparent;
+}
+
+#textinput {
+  border-radius: 0;
+  border: none;
+  background: #2D3E50;
+  color: white;
+  padding: 24px 12px 24px 12px;
+  width: 285px;
+}
+
+#passwordinput {
+  border-radius: 0;
+  border: none;
+  background: #17BA9F;
+  color: white;
+  padding: 24px 12px 24px 12px;
+  width: 285px;
+}
+
+#login-frm {
+  font-size: 0;
+}
+
+#submit-button {
+  background-color: gray;
+  border: none;
+  border-radius: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  float: right;
+}
+
+#login-logo {
+  font-size: 80px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  color: #2D3E50;
+}
+
+
+input::-webkit-input-placeholder {
+color: #CFD8DC !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: #CFD8DC !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #CFD8DC !important;
+}
+
+input:-ms-input-placeholder {
+color: #CFD8DC !important;
 }
