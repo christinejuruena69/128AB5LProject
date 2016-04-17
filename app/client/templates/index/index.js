@@ -2,7 +2,7 @@
 /* Index: Event Handlers */
 /*****************************************************************************/
 Template.Index.events({
-  'click #login-button': function() {
+  'click #index-login-button': function() {
       Router.go('LoginForm');
   }
 });

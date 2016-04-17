@@ -2,15 +2,13 @@
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	background-color: lightblue;
+	background: url('students-cover6.jpg');
 	background-size: cover;
+	background-position: center;
 }
 
 #bigcircle {
 	border-radius: 50%;
-	background-image: url("/13001262_1172287736128620_8391246164034799721_n.jpg");
-	background-size: 328px;
-	background-position: center;
 	width: 250px;
 	height: 250px;
 	position: fixed;
@@ -18,21 +16,15 @@
 	left: 50%;
 	transform: translate(-50%, -80%);
 	text-align: center;
-	line-height: 200px;
+	line-height: 250px;
+	font-size: 40px;
 }
 
 #login-div {
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, 200%);
-}
-
-#sign-up-div {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, 540%);
+	transform: translate(-50%, 90%);
 }
 
 @-webkit-keyframes fadeIn {
@@ -66,34 +58,29 @@
 
 }
 
-.fade-in.logo {
+.fade-in.login-btn {
 	-webkit-animation-delay: 0.7s;
 	-moz-animation-delay: 0.7s;
 	animation-delay: 0.7s;
 }
 
-.fade-in.login-btn {
-	border-radius: 0px !important;
-	background: white;
-	font-size: 20px;
-	padding: 12px;
+.fade-in.login-btn:focus {
+	outline: none;
+}
+
+#index-login-button {
+	border-radius: 50% !important;
+	border-width: 1px;
+	border-color: white;
 	width: 150px;
-
-	-webkit-animation-delay: 1.5s;
-	-moz-animation-delay: 1.5s;
-	animation-delay: 1.5s;
+	height: 150px;
+	background: transparent;
+	color: white;
+	letter-spacing: 5px;
+	font-size: 20px;
 }
 
-.fade-in.login-btn:hover {
-	background: lightblue;
-}
-
-.fade-in.sign-up {
-	-webkit-animation-delay: 1.5s;
-	-moz-animation-delay: 1.5s;
-	animation-delay: 1.5s;
-}
-
-.fade-in.sign-up p {
-	font-size: 16px;
+#index-login-button:hover {
+	transform: rotateY(360deg);
+	transition-duration: 1s;
 }
