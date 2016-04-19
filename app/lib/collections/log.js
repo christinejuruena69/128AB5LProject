@@ -1,5 +1,20 @@
 Log = new Mongo.Collection('log');
 
+Schema.LogSchema = new SimpleSchema({
+    user: {
+        type: String
+    },
+    log: {
+        type: String
+    },
+    createdAt: {
+        type: Date, //time stamp
+        autoValue: function() {
+            return new Date();
+        }
+    }
+});
+
 if (Meteor.isServer) {
     Log.allow({
         insert: function (userId, doc) {
