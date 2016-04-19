@@ -2,20 +2,23 @@
 
 <div class=" col-md-8 col-md-offset-2">
     <div class="col-xs-12 col-sm-12 col-md-12 sub-header">
-        <h1 class="">{{courseCode}}</h1>
-        <h3 class="" id="course-title">{{courseTitle}}</h3>
-        <h4 class="pull-right">Number of Students: {{students.length}}</h4>        
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-student"> Add Student
-        <!-- <button type="button" class="btn btn-link" > -->
-
-        <span class="glyphicon glyphicon-plus-md" > </span>
-       
+      <div class="col-md-7 col-sm-7 col-xs-7">
+        <h1 id="course-code">{{courseCode}}</h1>
+        <h4 id="course-title">{{courseTitle}}</h4>
+      </div>
+      <div class="col-md-1 col-sm-1 col-xs-1">
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-4 add-student">
+        <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#add-student">
+          <span class="glyphicon glyphicon-plus"> </span> Add Student
         </button>
+        <h4 class="pull-right">Number of Students: {{students.length}}</h4>
+      </div>
     </div>
-    
+
     <div class="form-group-sm col-xs-4 col-sm-3 col-md-2">
-        
-        <input type="text" class="form-control" placeholder=" Search"> </div>
+
+       </div>
 
         <div class="dropdown pull-right">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort by <span class="caret"></span></button>
@@ -30,24 +33,29 @@
                 <li><a href="#">Blaclisted</a></li>
             </ul>
         </div>
-        <table class="table table-striped table-hover col-xs-12 col-sm-12 col-md-12" id="student-table">
+        
+        <div id="table">
+            {{> reactiveTable collection=this.students settings=tableSettings}}
+        </div>
+
+        <!--  <table class="table table-striped table-hover col-xs-12 col-sm-12 col-md-12" id="student-table">
             <thead>
                 <tr>
-                    <th>Student Number</th>
-                    <th>Full Name</th>
-                    <th>Nickname</th>
-                    <th>Section</th>
-                    <th>Points</th>
-                    <th>Bias</th>
-                    <th>Blacklisted</th>
-                    <th>Delete</th>
+                    <th class="text-center">Student Number</th>
+                    <th class="text-center">Full Name</th>
+                    <th class="text-center">Nickname</th>
+                    <th class="text-center">Section</th>
+                    <th class="text-center">Points</th>
+                    <th class="text-center">Bias</th>
+                    <th class="text-center">Blacklisted</th>
+                    <th class="text-center">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 {{> StudentList}}
-
             </tbody>
         </table>
+         -->
     </div>
     <!--modal-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
@@ -60,39 +68,37 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
+                        <div class="form-group tooltip-select">
                             <label for="nickname" class="control-label">Nickname:</label>
                             <input type="text" class="form-control" id="modal-nickname">
+                            <span class="tooltip">
+                            <span class="tootltip-text">Change the nickname of the student</span>
+                          </span>
                         </div>
-                        <div class="form-group">
-                            <label for="course" class="control-label">Course:</label>
-                            <input type="text" class="form-control" id="modal-course">
+                        <div class="form-group tooltip-select">
+                            <label for="section" class="control-label">Section:</label>
+                            <input type="text" class="form-control" id="modal-section">
+                            <span class="tooltip">
+                            <span class="tootltip-text">Change the section of the student</span>
+                          </span>
                         </div>
-                        <div class="form-group">
-                            <label for="college" class="control-label">College:</label>
-                            <input type="text" class="form-control" id="modal-college">
-                        </div>
-                        <div class="input-group spinner">
+                        <div class="form-group tooltip-select col-md-2 col-sm-2 col-xs-2">
                             <label for="bias" class="control-label">Bias:</label>
-                            <input type="text" class="form-control" id="modal-bias" max="100" min="0">
-                            <div class="input-group-btn-vertical">
-                                <button class="btn btn-default up" type="button">
-                                <span class="dropup">
-                                    <i class="caret center-block"></i>
-                                </span>
-                                </button>
-                                <button class="btn btn-default down" type="button"><i class="caret center-block"></i></button>
-                            </div>
+                            <input type="number" class="form-control" id="modal-bias" max="100" min="0">
+                            <span class="tooltip">
+                            <span class="tootltip-text">Increase/decrease the chances of a student being called</span>
+                          </span>
                         </div>
-                        <div class="row blacklist">
-                            <div class="col-lg-6">
+                        <div class="row blacklist tooltip-select">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="checkbox" aria-label="...">
+                                        <input type="checkbox" class="blacklisted-check" aria-label="...">
                                     </span>
-                                    <button class="btn btn-default" type="button">Blacklisted</button>
+                                    <button class="btn btn-default blacklisted" type="button">Blacklisted</button>
                                 </div>
-                            </div>
+                                <span class="tooltip">
+                                <span class="tootltip-text">If a student is blacklisted, he/she wont be chosen by the randomizer</span>
+                              </span>
                         </div>
                     </form>
                 </div>
@@ -145,7 +151,7 @@
                                             <input type="submit" value="Add Student" class="btn btn-primary" />
                                         </form>
                                         <!-- end of student form -->
-                                        
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -116,6 +116,27 @@ Router.route('/studentListView/:_id', {
         return Class.findOne({
             _id: this.params._id
         });
+    },
+    onBeforeAction: function() {
+        var classObject = Class.findOne({
+            _id: this.params._id
+        });
+        if( !Meteor.userId() ) {
+            Router.go('/403');
+        }
+        else {
+            if( classObject == null ) {
+                Router.go('/404');
+            }
+            else {
+                if( classObject.lecturer === Meteor.userId() ) {
+                    this.next();
+                }
+                else {
+                    Router.go('/403');
+                }
+            }
+        }
     }
 });
 
@@ -136,4 +157,4 @@ Router.route('/profile/:_id', {
 });
 
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
-Router.onBeforeAction('dataNotFound', {only: 'StudentListView'});
+

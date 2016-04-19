@@ -1,17 +1,15 @@
 <template name="StudentList">
     {{#each this.students}}
-        
-                <tr  >
-                <!-- <tr> -->
-            
-            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass">{{studentNumber}}</td>
-            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass">{{fullname}}</td>
-            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass">{{nickname}}</td>
-            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass">{{section}}</td>
-            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass">{{points}}</td>
-            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass">{{bias}}</td>
-            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass">{{isBlackListed}}</td>
-            <td><button class="Delete">x</button></td>
+
+        <tr>
+            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass text-center">{{studentNumber}}</td>
+            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass text-center">{{fullname}}</td>
+            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass text-center">{{nickname}}</td>
+            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass text-center">{{section}}</td>
+            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass text-center">{{points}}</td>
+            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass text-center">{{bias}}</td>
+            <td role="button" data-toggle="modal" data-target="#editModal" class="editclass text-center">{{isBlackListed}}</td>
+            <td><button class="Delete center-block">x</button></td>
         </tr>
     {{/each}}
 
