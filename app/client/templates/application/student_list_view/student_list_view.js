@@ -40,8 +40,6 @@ Template.StudentListView.events({
                 $(e.target).find('[name=studentNumber]').val("");
                 $(e.target).find('[name=section]').val("");
                 $(e.target).find('[name=nickname]').val("");
-
-                studentNumberArray
             }
             else {
                 alert("Student Number already exists!");
