@@ -1,6 +1,82 @@
 /*****************************************************************************/
 /* LoginForm: Style */
 /*****************************************************************************/
-.login-form {
-    margin-top: 75px;
+#login-form {
+    margin-top: 150px;
+    text-align: center;
+    background: transparent;
+}
+
+#textinput {
+  border-radius: 0;
+  border: none;
+  background: #2D3E50;
+  color: white;
+  padding: 24px 12px 24px 12px;
+  width: 285px;
+}
+
+#passwordinput {
+  border-radius: 0;
+  border: none;
+  background: #17BA9F;
+  color: white;
+  padding: 24px 12px 24px 12px;
+  width: 285px;
+}
+
+#login-frm {
+  font-size: 0;
+}
+
+#submit-button {
+  background-color: gray;
+  border: none;
+  border-radius: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  float: right;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+#login-logo {
+  font-size: 80px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  color: #2D3E50;
+
+  -webkit-animation:spin 2s linear infinite;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:spin 2s linear infinite;
+	animation:spin 2s linear infinite;
+}
+
+
+input::-webkit-input-placeholder {
+color: #CFD8DC !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: #CFD8DC !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #CFD8DC !important;
+}
+
+input:-ms-input-placeholder {
+color: #CFD8DC !important;
 }
