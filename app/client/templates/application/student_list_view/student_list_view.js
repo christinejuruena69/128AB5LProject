@@ -19,20 +19,40 @@ Template.StudentListView.events({
             },
             user = Meteor.user(),
             classId = this._id;
+        
+        var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
+        var studentNumberArray = [];
 
-        Meteor.call('addStudent', student, classId, function(error, result) {
+        for( std of this.students ){
+            studentNumberArray.push(std.studentNumber);
+        }
 
-            if (error) {
-                return throwError(error.reason);
+        if( studentNumberChecker.test(student.studentNumber) ){
+            if( studentNumberArray.indexOf(student.studentNumber) === -1 ){
+                Meteor.call('addStudent', student, classId, function(error, result) {
+                    if (error) {
+                        return throwError(error.reason);
+                    }
+                });
+                
+                $(e.target).find('[name=birthday]').val("");
+                $(e.target).find('[name=fullname]').val("");
+                $(e.target).find('[name=studentNumber]').val("");
+                $(e.target).find('[name=section]').val("");
+                $(e.target).find('[name=nickname]').val("");
+
+                studentNumberArray
             }
-        });
+            else {
+                alert("Student Number already exists!");
+            }
 
-        $(e.target).find('[name=birthday]').val("");
-        $(e.target).find('[name=fullname]').val("");
-        $(e.target).find('[name=studentNumber]').val("");
-        $(e.target).find('[name=section]').val("");
-        $(e.target).find('[name=nickname]').val("");
+        }
+        else {
+            alert("Invalid Student Number");    
+        }
     },
+
     'click .up': function() {
         $('.spinner input').val(parseInt($('.spinner input').val(), 10) + 1);
     },
@@ -53,10 +73,16 @@ Template.StudentListView.events({
             document.getElementById("modal-full-name").innerHTML = tableCell.cells[1].innerHTML;
             document.getElementById("modal-std-no").innerHTML = tableCell.cells[0].innerHTML;
             document.getElementById("modal-nickname").value = tableCell.cells[2].innerHTML;
-            document.getElementById("modal-course").value = tableCell.cells[3].innerHTML;
-            document.getElementById("modal-college").value = tableCell.cells[4].innerHTML;
-            document.getElementById("modal-bias").value = tableCell.cells[6].innerHTML;
+            document.getElementById("modal-section").value = tableCell.cells[3].innerHTML;
+            document.getElementById("modal-bias").value = tableCell.cells[5].innerHTML;
         }
+    },
+    'click .blacklisted': function() {
+    if ($('.blacklisted-check').is(':checked')) {
+        $('.blacklisted-check').prop("checked", false);
+    } else {
+        $('.blacklisted-check').prop("checked", true);
+    }
     }
 });
 

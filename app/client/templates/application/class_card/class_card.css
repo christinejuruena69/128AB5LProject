@@ -1,13 +1,11 @@
 div.row ul.dropdown-menu {
   position: absolute;
-  height: 40px;
-  margin-top: 50%;
-  transform: translateX(115%);
+  margin-top: 30px;
 }
 
-div.row li.menu {
-  display: block;
-  padding: 0px;
+div.row li#menu {
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 div.row div.account-and-classcards {
@@ -17,6 +15,7 @@ div.row div.account-and-classcards {
 }
 
 div.row button.btn-circle {
+  position: static;
   width: 30px;
   height: 30px;
   text-align: center;
@@ -24,9 +23,9 @@ div.row button.btn-circle {
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
-  margin-top: 18%;
   margin-left: 80%;
   margin-right: 3%;
+  z-index: 11;
 }
 
 div.row button.btn-circle.btn-lg {
@@ -48,6 +47,45 @@ div.row button.btn-circle.btn-xl {
 }
 
 div.row h4.students {
+  position: relative;
   margin-top: 2%;
   letter-spacing: -1px;
+}
+
+@-webkit-keyframes shakeit {
+0% { -webkit-transform: rotate(0deg) translate(2px, 1px); }
+10% { -webkit-transform: rotate(2deg) translate(1px, 2px); }
+20% { -webkit-transform: rotate(-2deg) translate(3px, 0px) ; }
+30% { -webkit-transform: rotate(0deg) translate(0px, -2px); }
+40% { -webkit-transform: rotate(-2deg) translate(-1px, 1px); }
+50% { -webkit-transform: rotate(2deg) translate(1px, -2px); }
+60% { -webkit-transform: rotate(0deg) translate(3px, -1px); }
+70% { -webkit-transform: rotate(2deg) translate(-2px, -1px); }
+80% { -webkit-transform: rotate(-2deg) translate(1px, 1px); }
+90% { -webkit-transform: rotate(0deg) translate(-2px, -2px); }
+100% { -webkit-transform: rotate(2deg) translate(-1px, 2px); }
+}
+@keyframes shakeit {
+0% { transform: rotate(0deg) translate(2px, 1px); }
+10% { transform: rotate(2deg) translate(1px, 2px); }
+20% { transform: rotate(-2deg) translate(3px, 0px) ; }
+30% { transform: rotate(0deg) translate(0px, -2px); }
+40% { transform: rotate(-2deg) translate(-1px, 1px); }
+50% { transform: rotate(2deg) translate(1px, -2px); }
+60% { transform: rotate(0deg) translate(3px, -1px); }
+70% { transform: rotate(2deg) translate(-2px, -1px); }
+80% { transform: rotate(-2deg) translate(1px, 1px); }
+90% { transform: rotate(0deg) translate(-2px, -2px); }
+100% { transform: rotate(2deg) translate(-1px, 2px); }
+}
+
+img.dice:hover {
+-webkit-animation-name: shakeit;
+-webkit-animation-duration: 1s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: infinite;
+animation-name: shakeit;
+animation-duration: 1s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
 }
