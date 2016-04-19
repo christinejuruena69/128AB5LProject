@@ -82,9 +82,8 @@ Template.StudentListView.helpers({
     tableSettings : function() {
             return {
                 fields: [
-                    { key: 'studentNumber', label: 'Student Number' },
-                    { key: 'fullname', label: 'Full Name'},
-                    { key: 'nickname', label: 'Nickname'},
+                    { key: 'fullname', label: '', tmpl: Template.StudentCard},
+                    { key: 'studentNumber', label: 'Name'},
                     { key: 'section', label: 'Section'},
                     { key: 'points', label: 'Points'},
                     { key: 'bias', label: 'Bias'}
