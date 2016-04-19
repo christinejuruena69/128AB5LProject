@@ -73,10 +73,16 @@ Template.StudentListView.events({
             document.getElementById("modal-full-name").innerHTML = tableCell.cells[1].innerHTML;
             document.getElementById("modal-std-no").innerHTML = tableCell.cells[0].innerHTML;
             document.getElementById("modal-nickname").value = tableCell.cells[2].innerHTML;
-            document.getElementById("modal-course").value = tableCell.cells[3].innerHTML;
-            document.getElementById("modal-college").value = tableCell.cells[4].innerHTML;
-            document.getElementById("modal-bias").value = tableCell.cells[6].innerHTML;
+            document.getElementById("modal-section").value = tableCell.cells[3].innerHTML;
+            document.getElementById("modal-bias").value = tableCell.cells[5].innerHTML;
         }
+    },
+    'click .blacklisted': function() {
+    if ($('.blacklisted-check').is(':checked')) {
+        $('.blacklisted-check').prop("checked", false);
+    } else {
+        $('.blacklisted-check').prop("checked", true);
+    }
     }
 });
 
