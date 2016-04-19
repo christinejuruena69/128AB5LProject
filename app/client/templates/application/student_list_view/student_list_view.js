@@ -69,8 +69,8 @@ Template.StudentListView.events({
     
     'click .reactive-table tbody tr': function (event) {
     event.preventDefault();
-    var post = this;
-    // checks if the actual clicked element has the class `delete`
+    //Place to trigger a modal for editing or deleting currently selected student
+    
     
   }
 });
