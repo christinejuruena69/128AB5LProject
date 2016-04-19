@@ -1,7 +1,10 @@
 Log = new Mongo.Collection('log');
 
 Schema.LogSchema = new SimpleSchema({
-    user: {
+    userId: {
+        type: String
+    },
+    accountType: {
         type: String
     },
     log: {
