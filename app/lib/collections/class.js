@@ -73,6 +73,8 @@ Meteor.methods({
             return ;
         }
 
+        Meteor.call('User/Log', 'Trying to create class');
+
         check(classAttributes, {
             courseTitle: String,
             courseCode: String,
@@ -85,25 +87,34 @@ Meteor.methods({
         var loggedInUser = Meteor.user(),
             lecturer1 = Meteor.users.findOne({
                 '_id': classAttributes.lecturer
-            });        
+            });
 
         // if lecturer is in the database
-        if( lecturer1._id === classAttributes.lecturer ){
+        if(lecturer1 && lecturer1._id === classAttributes.lecturer ){
 
             // if currently logged in user is an admin
             if( loggedInUser.profile.type === 'Admin' ){
-                
+
                 var classId = Class.insert(classAttributes);
+
+                if(classId) {
+                    Meteor.call('User/Log', 'Admin/AddClass - Success');
+                }
 
                 return {
                     _id: classId
                 };
             }
             else {
+                Meteor.call('User/Log', 'Admin/AddClass - Forbidden');
+
                 throw new Meteor.Error(403, 'Forbidden');
             }
         }
         else {
+
+            Meteor.call('User/Log', 'Admin/AddClass - Lecturer not found');
+
             throw new Meteor.Error(404, 'Not Found');
         }
     },
@@ -119,7 +130,7 @@ Meteor.methods({
     },
 
     'deleteStudent': function(studentNumber, lecturer, classId){
-        
+
         var id = Meteor.userId();
 
         //check if a user is loggedin
@@ -127,7 +138,7 @@ Meteor.methods({
             throw new Meteor.Error(403, 'Forbidden');
             return ;
         }
-        
+
         var loggedInUser = Meteor.user(),
             student = Class.findOne({
                 '_id': classId,
@@ -135,20 +146,20 @@ Meteor.methods({
                     $elemMatch:{
                         'studentNumber': studentNumber
                     }
-                }                    
+                }
             });
-   
+
         //check if current user is the lecturer of the class
         if( loggedInUser._id === lecturer ){
 
             //checks if student is in the class list
             if(student._id === classId){
                 Class.update(
-                    {'_id' : classId}, 
-                    {$pull: 
-                        { students: 
-                            { studentNumber: studentNumber} 
-                        } 
+                    {'_id' : classId},
+                    {$pull:
+                        { students:
+                            { studentNumber: studentNumber}
+                        }
                     });
             }
             else {
@@ -167,17 +178,17 @@ Meteor.methods({
             throw new Meteor.Error(403, 'Forbidden');
             return ;
         }
-        
+
         check(student, Schema.StudentSchema);
 
-        
-        
+
+
         var loggedInUser = Meteor.user(),
             classId1 = Class.findOne({
-                '_id': classId               
+                '_id': classId
             });
 
-        //check if the class lecturer is the current user and if the current user is of Teacher type    
+        //check if the class lecturer is the current user and if the current user is of Teacher type
         if( loggedInUser._id === classId1.lecturer && loggedInUser.profile.type === 'Teacher'){
             Class.update(
                 { '_id': classId },
@@ -208,7 +219,7 @@ if (Meteor.isServer) {
         },
         update: function (userId, doc, fieldNames, modifier) {
             var user = Meteor.users.findOne({ _id: userId });
-            
+
             if( user.profile.type === 'Teacher' ){
                 return true;
             }
@@ -233,7 +244,7 @@ if (Meteor.isServer) {
         },
         update: function (userId, doc, fieldNames, modifier) {
             var user = Meteor.users.findOne({ _id: userId });
-            
+
             if( user.profile.type === 'Teacher' ){
                 return false;
             }

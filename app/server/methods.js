@@ -38,9 +38,5 @@ Meteor.methods({
         }
 
         start();
-    },
-
-    'User/Log': function(log) {
-
     }
 });

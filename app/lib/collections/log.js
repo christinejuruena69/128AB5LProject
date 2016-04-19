@@ -18,6 +18,29 @@ Schema.LogSchema = new SimpleSchema({
     }
 });
 
+Meteor.methods({
+    'User/Log': function(log) {
+
+        check(log, String);
+        check(Meteor.userId(), String);
+
+        var userId = Meteor.userId(),
+            accountType;
+
+        if(userId) {
+
+            accountType = Meteor.users.findOne({ _id: userId })
+                        .profile.type;
+
+            Log.insert({
+                userId,
+                accountType,
+                log
+            });
+        }
+    }
+});
+
 if (Meteor.isServer) {
     Log.allow({
         insert: function (userId, doc) {
