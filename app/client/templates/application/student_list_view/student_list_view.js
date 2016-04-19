@@ -61,13 +61,14 @@ Template.StudentListView.events({
     },
     'click tr': function() {
         var table = document.getElementById("student-table");
+        
         if (table != null) {
             for (var i = 0; i < table.rows.length; i++) {
                 table.rows[i].onclick = function() {
                     tableText(this);
                 };
             }
-    }
+        }
 
         function tableText(tableCell) {
             document.getElementById("modal-full-name").innerHTML = tableCell.cells[1].innerHTML;
@@ -78,12 +79,32 @@ Template.StudentListView.events({
         }
     },
     'click .blacklisted': function() {
-    if ($('.blacklisted-check').is(':checked')) {
-        $('.blacklisted-check').prop("checked", false);
-    } else {
-        $('.blacklisted-check').prop("checked", true);
+        if ($('.blacklisted-check').is(':checked')) {
+            $('.blacklisted-check').prop("checked", false);
+        } 
+        else {
+            $('.blacklisted-check').prop("checked", true);
+        }
+    },
+    'click #saveEdited': function() {
+        var studentNumber,
+            nickname,
+            section,
+            bias,
+            classId = this._id;
+
+        studentNumber = document.getElementById("modal-std-no").innerHTML;
+        nickname = document.getElementById("modal-nickname").value;
+        section = document.getElementById("modal-section").value;
+        bias = document.getElementById("modal-bias").value;
+
+        Meteor.call('Teacher/editStudent', studentNumber, nickname, section, bias, classId, function(error, result) {
+            if (error) {
+                return throwError(error.reason);
+            }
+        });
     }
-    }
+
 });
 
 /*****************************************************************************/
