@@ -15,20 +15,20 @@ Meteor.methods({
             if (error) {
                 throwError(error.reason);
             }
-            else {      
+            else {
                 Router.go('/');
             }
         });
-        
+
         // change email
         Meteor.users.update(
-            {'_id':Meteor.user()._id},
+            {'_id': Meteor.user()._id},
             {$set:{'emails' : {'address': userDetails.email}}}
         );
 
         // change profile.fullName
         Meteor.users.update(
-            {'_id':Meteor.user()._id},
+            {'_id': Meteor.user()._id},
             {$set:{'profile':{'fullName': userDetails.fullname}}}
         );
     }
