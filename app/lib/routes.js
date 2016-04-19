@@ -122,21 +122,18 @@ Router.route('/studentListView/:_id', {
             _id: this.params._id
         });
         if( !Meteor.userId() ) {
-            this.render("Index");
-            return pause();
+            Router.go('/403');
         }
         else {
             if( classObject == null ) {
-                this.render('Home');
-                return pause();
+                Router.go('/404');
             }
             else {
                 if( classObject.lecturer === Meteor.userId() ) {
                     this.next();
                 }
                 else {
-                    this.render('Home');
-                    return pause();
+                    Router.go('/403');
                 }
             }
         }
