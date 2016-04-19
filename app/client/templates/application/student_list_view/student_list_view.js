@@ -21,30 +21,27 @@ Template.StudentListView.events({
             classId = this._id;
         
         var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
-        var studentNumberArray = [];
-
-        for( std of this.students ){
-            studentNumberArray.push(std.studentNumber);
-        }
 
         if( studentNumberChecker.test(student.studentNumber) ){
-            if( studentNumberArray.indexOf(student.studentNumber) === -1 ){
-                Meteor.call('addStudent', student, classId, function(error, result) {
-                    if (error) {
-                        return throwError(error.reason);
-                    }
-                });
-                
-                $(e.target).find('[name=birthday]').val("");
-                $(e.target).find('[name=fullname]').val("");
-                $(e.target).find('[name=studentNumber]').val("");
-                $(e.target).find('[name=section]').val("");
-                $(e.target).find('[name=nickname]').val("");
+            
+            for( studentEntry of this.students ){
+                if( studentEntry.studentNumber === student.studentNumber ){
+                    alert("Student Number already exists!");
+                }
+                else {
+                    Meteor.call('addStudent', student, classId, function(error, result) {
+                        if (error) {
+                            return throwError(error.reason);
+                        }
+                    });
+                      
+                    $(e.target).find('[name=birthday]').val("");
+                    $(e.target).find('[name=fullname]').val("");
+                    $(e.target).find('[name=studentNumber]').val("");
+                    $(e.target).find('[name=section]').val("");
+                    $(e.target).find('[name=nickname]').val("");
+                }
             }
-            else {
-                alert("Student Number already exists!");
-            }
-
         }
         else {
             alert("Invalid Student Number");    
