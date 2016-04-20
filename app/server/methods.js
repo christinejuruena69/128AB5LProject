@@ -36,8 +36,6 @@ Meteor.methods({
             }
 
         }
-        
-        
 
         start();
     }

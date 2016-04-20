@@ -34,16 +34,17 @@ Template.RegisterForm.events({
                 fullName
             }, function (err) {
                 if (err) {
-                    return console.log(err.reason);
+                    if(err.reason === "Login forbidden") {
+                        // Alert success
+                        return notify('Created account ' + username + ' successfully', 'good');
+                    }
+                    return notify(err.reason, 'bad');
                 }
-                console.log('success!');
-                // Redirect user to index page
-                Router.go('/');
             });
         }
         else {
             // Invalid password case
-            console.log('Password error!');
+            notify('Password error!', 'bad');
         }
 
         return false;

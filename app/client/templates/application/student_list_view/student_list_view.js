@@ -43,6 +43,7 @@ Template.StudentListView.events({
     },
     'click tr': function () {
         var table = document.getElementById("student-table");
+        
         if (table != null) {
             for (var i = 0; i < table.rows.length; i++) {
                 table.rows[i].onclick = function () {
@@ -59,20 +60,41 @@ Template.StudentListView.events({
             document.getElementById("modal-bias").value = tableCell.cells[5].innerHTML;
         }
     },
-    'click .blacklisted': function () {
+
+    'click .blacklisted': function() {
         if ($('.blacklisted-check').is(':checked')) {
             $('.blacklisted-check').prop("checked", false);
-        } else {
+        } 
+        else {
             $('.blacklisted-check').prop("checked", true);
         }
     },
-    
+    'click #saveEdited': function() {
+        var studentNumber,
+            nickname,
+            section,
+            bias,
+            classId = this._id;
+
+        studentNumber = document.getElementById("modal-std-no").innerHTML;
+        nickname = document.getElementById("modal-nickname").value;
+        section = document.getElementById("modal-section").value;
+        bias = document.getElementById("modal-bias").value;
+
+        Meteor.call('Teacher/editStudent', studentNumber, nickname, section, bias, classId, function(error, result) {
+            if (error) {
+                return throwError(error.reason);
+            }
+        });
+    },
+
     'click .reactive-table tbody tr': function (event) {
-    event.preventDefault();
-    //Place to trigger a modal for editing or deleting currently selected student
+        event.preventDefault();
+        //Place to trigger a modal for editing or deleting currently selected student
     
     
-  }
+    }
+
 });
 
 /*****************************************************************************/
@@ -82,11 +104,12 @@ Template.StudentListView.helpers({
     tableSettings : function() {
             return {
                 fields: [
-                    { key: 'fullname', label: '', tmpl: Template.StudentCard},
-                    { key: 'studentNumber', label: 'Name'},
+                    { key: 'fullname', label: 'Name', tmpl: Template.StudentCard},
+                    { key: 'studentNumber', label: 'studentNumber'},
                     { key: 'section', label: 'Section'},
                     { key: 'points', label: 'Points'},
-                    { key: 'bias', label: 'Bias'}
+                    { key: 'bias', label: 'Bias'},
+                    { key: 'isBlackListed', label: 'Blacklisted'}
                 ]
             };
         }

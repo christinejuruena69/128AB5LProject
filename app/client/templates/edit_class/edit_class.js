@@ -19,6 +19,7 @@ Template.EditClass.events({
 
             // alert if error
             if(error){
+                notify(error.reason, 'bad');
                 return throwError(error.reason);
             }
 
