@@ -1,8 +1,10 @@
 /*****************************************************************************/
 /* StudentListView: Event Handlers */
 /*****************************************************************************/
+
+
 Template.StudentListView.events({
-    'submit form': function(e) {
+    'submit form': function (e) {
         e.preventDefault();
 
         var birthday = new Date($(e.target).find('[name=birthday]').val()),
@@ -19,52 +21,32 @@ Template.StudentListView.events({
             },
             user = Meteor.user(),
             classId = this._id;
-        
-        var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
-        var studentNumberArray = [];
 
-        for( std of this.students ){
-            studentNumberArray.push(std.studentNumber);
-        }
+        Meteor.call('addStudent', student, classId, function (error, result) {
 
-        if( studentNumberChecker.test(student.studentNumber) ){
-            if( studentNumberArray.indexOf(student.studentNumber) === -1 ){
-                Meteor.call('addStudent', student, classId, function(error, result) {
-                    if (error) {
-                        return throwError(error.reason);
-                    }
-                });
-                
-                $(e.target).find('[name=birthday]').val("");
-                $(e.target).find('[name=fullname]').val("");
-                $(e.target).find('[name=studentNumber]').val("");
-                $(e.target).find('[name=section]').val("");
-                $(e.target).find('[name=nickname]').val("");
-
-                studentNumberArray
+            if (error) {
+                return throwError(error.reason);
             }
-            else {
-                alert("Student Number already exists!");
-            }
+        });
 
-        }
-        else {
-            alert("Invalid Student Number");    
-        }
+        $(e.target).find('[name=birthday]').val("");
+        $(e.target).find('[name=fullname]').val("");
+        $(e.target).find('[name=studentNumber]').val("");
+        $(e.target).find('[name=section]').val("");
+        $(e.target).find('[name=nickname]').val("");
     },
-
-    'click .up': function() {
+    'click .up': function () {
         $('.spinner input').val(parseInt($('.spinner input').val(), 10) + 1);
     },
-    'click .down': function() {
+    'click .down': function () {
         $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
     },
-    'click tr': function() {
+    'click tr': function () {
         var table = document.getElementById("student-table");
         
         if (table != null) {
             for (var i = 0; i < table.rows.length; i++) {
-                table.rows[i].onclick = function() {
+                table.rows[i].onclick = function () {
                     tableText(this);
                 };
             }
@@ -78,6 +60,7 @@ Template.StudentListView.events({
             document.getElementById("modal-bias").value = tableCell.cells[5].innerHTML;
         }
     },
+
     'click .blacklisted': function() {
         if ($('.blacklisted-check').is(':checked')) {
             $('.blacklisted-check').prop("checked", false);
@@ -103,6 +86,13 @@ Template.StudentListView.events({
                 return throwError(error.reason);
             }
         });
+    },
+
+    'click .reactive-table tbody tr': function (event) {
+        event.preventDefault();
+        //Place to trigger a modal for editing or deleting currently selected student
+    
+    
     }
 
 });
@@ -111,7 +101,17 @@ Template.StudentListView.events({
 /* StudentListView: Helpers */
 /*****************************************************************************/
 Template.StudentListView.helpers({
-
+    tableSettings : function() {
+            return {
+                fields: [
+                    { key: 'fullname', label: '', tmpl: Template.StudentCard},
+                    { key: 'studentNumber', label: 'Name'},
+                    { key: 'section', label: 'Section'},
+                    { key: 'points', label: 'Points'},
+                    { key: 'bias', label: 'Bias'}
+                ]
+            };
+        }
 });
 
 /*****************************************************************************/
