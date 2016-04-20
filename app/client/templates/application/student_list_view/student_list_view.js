@@ -23,7 +23,6 @@ Template.StudentListView.events({
             classId = this._id;
         
         var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
-        var studentsChecker = 0;
 
         for( studentEntry of this.students ){
             if( studentEntry.studentNumber === student.studentNumber ){
@@ -74,11 +73,10 @@ Template.StudentListView.events({
             bias,
             classId = this._id;
 
-        studentNumber = document.getElementById("modal-std-no").innerHTML;
-        nickname = document.getElementById("modal-nickname").value;
-        section = document.getElementById("modal-section").value;
-        bias = document.getElementById("modal-bias").value;
-
+        studentNumber = $("#modal-std-no").html();
+        nickname = $("#modal-nickname").val();
+        section = $("#modal-section").val();
+        bias = $("#modal-bias").val();
         Meteor.call('Teacher/editStudent', studentNumber, nickname, section, bias, classId, function(error, result) {
             if (error) {
                 return throwError(error.reason);
@@ -111,11 +109,11 @@ Template.StudentListView.events({
         event.preventDefault();
         //Place to trigger a modal for editing or deleting currently selected student
         $('#editModal').modal('show');
-        document.getElementById("modal-full-name").innerHTML = this.fullname;
-        document.getElementById("modal-std-no").innerHTML = this.studentNumber;
-        document.getElementById("modal-nickname").value = this.nickname;
-        document.getElementById("modal-section").value = this.section;
-        document.getElementById("modal-bias").value = this.bias;    
+        $("#modal-full-name").html(this.fullname);
+        $("#modal-std-no").html(this.studentNumber);
+        $("#modal-nickname").val(this.nickname);
+        $("#modal-section").val(this.section);
+        $("#modal-bias").val(this.bias);    
     }
 
 });
