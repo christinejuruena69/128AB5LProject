@@ -34,13 +34,11 @@ Template.AdminModal.events({
 
             // alert if error
             if(error){
-                return throwError (error.reason);
+                return notify(error.reason, 'bad');
             }
 
-            // re-route to home if success
-            // Router.go('/');
-            ///insert hereee
-             $("#admin-modal").hide('hide');
+            notify('Successfully added class', 'good');
+            $("#admin-modal").hide('hide');
 
              // $('#your-modal-id').modal('hide');
 $('body').removeClass('modal-open');
