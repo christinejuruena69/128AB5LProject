@@ -35,21 +35,16 @@ Template.RegisterForm.events({
             }, function (err) {
                 if (err) {
                     if(err.reason === "Login forbidden") {
-                        //Successfully created account still throws an error
-                        // To prevent loging in directly
-                        // Add expected action here (Probably a notif that the acc creation was a
-                        // success)
+                        // Alert success
+                        notify('Created account ' + username + ' successfully', 'good');
                     }
-                    return console.log("Nope:" + err.reason);
+                    return notify(err.reason, 'bad');
                 }
-                console.log('success!');
-                // Redirect user to index page
-                Router.go('/');
             });
         }
         else {
             // Invalid password case
-            console.log('Password error!');
+            notify('Password error!', 'bad');
         }
 
         return false;
