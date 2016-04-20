@@ -1,20 +1,23 @@
 /*****************************************************************************/
-/* Index: Event Handlers */
+/* Blankcard: Event Handlers */
 /*****************************************************************************/
-Template.Index.events({
-  'click #index-login-button': function() {
-      Router.go('LoginForm');
-  }
+Template.Blankcard.events({
 });
-/*****************************************************************************/
-/* Index: Helpers */
-/*****************************************************************************/
-Template.Index.helpers({
 
+/*****************************************************************************/
+/* Blankcard: Helpers */
+/*****************************************************************************/
+Template.Blankcard.helpers({
 });
+
 /*****************************************************************************/
-/* Index: Lifecycle Hooks */
+/* Blankcard: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Index.onCreated(function () {});
-Template.Index.onRendered(function () {});
-Template.Index.onDestroyed(function () {});
+Template.Blankcard.onCreated(function () {
+});
+
+Template.Blankcard.onRendered(function () {
+});
+
+Template.Blankcard.onDestroyed(function () {
+});

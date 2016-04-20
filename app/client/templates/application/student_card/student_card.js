@@ -1,20 +1,23 @@
 /*****************************************************************************/
-/* Index: Event Handlers */
+/* StudentCard: Event Handlers */
 /*****************************************************************************/
-Template.Index.events({
-  'click #index-login-button': function() {
-      Router.go('LoginForm');
-  }
+Template.StudentCard.events({
 });
-/*****************************************************************************/
-/* Index: Helpers */
-/*****************************************************************************/
-Template.Index.helpers({
 
+/*****************************************************************************/
+/* StudentCard: Helpers */
+/*****************************************************************************/
+Template.StudentCard.helpers({
 });
+
 /*****************************************************************************/
-/* Index: Lifecycle Hooks */
+/* StudentCard: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Index.onCreated(function () {});
-Template.Index.onRendered(function () {});
-Template.Index.onDestroyed(function () {});
+Template.StudentCard.onCreated(function () {
+});
+
+Template.StudentCard.onRendered(function () {
+});
+
+Template.StudentCard.onDestroyed(function () {
+});
