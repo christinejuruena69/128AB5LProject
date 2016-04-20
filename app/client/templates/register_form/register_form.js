@@ -34,7 +34,13 @@ Template.RegisterForm.events({
                 fullName
             }, function (err) {
                 if (err) {
-                    return console.log(err.reason);
+                    if(err.reason === "Login forbidden") {
+                        //Successfully created account still throws an error
+                        // To prevent loging in directly
+                        // Add expected action here (Probably a notif that the acc creation was a
+                        // success)
+                    }
+                    return console.log("Nope:" + err.reason);
                 }
                 console.log('success!');
                 // Redirect user to index page
