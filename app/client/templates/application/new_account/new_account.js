@@ -1,9 +1,8 @@
 /*****************************************************************************/
-/* RegisterForm: Event Handlers */
+/* NewAccount: Event Handlers */
 /*****************************************************************************/
-Template.RegisterForm.events({
+Template.NewAccount.events({
     'submit form': function (event, template) {
-        console.log('Submitted');
         event.preventDefault();
         // Stop html from going to action
 
@@ -34,35 +33,30 @@ Template.RegisterForm.events({
                 fullName
             }, function (err) {
                 if (err) {
-                    return console.log(err.reason);
+                    if(err.reason === "Login forbidden") {
+                        // Alert success
+                        return notify('Created account ' + username + ' successfully', 'good');
+                    }
+                    return notify(err.reason, 'bad');
                 }
-                console.log('success!');
-                // Redirect user to index page
-                Router.go('/');
             });
         }
         else {
             // Invalid password case
-            console.log('Password error!');
+            return notify('Password Error!', 'bad');
         }
 
-        return false;
-    },
-    'click #cancel': function (event, template) {
-        event.preventDefault();
-        console.log('clicked cancel');
-        Router.go('/');
         return false;
     }
 });
 
 /*****************************************************************************/
-/* RegisterForm: Helpers */
+/* NewAccount: Helpers */
 /*****************************************************************************/
-Template.RegisterForm.helpers({});
+Template.NewAccount.helpers({});
 /*****************************************************************************/
-/* RegisterForm: Lifecycle Hooks */
+/* NewAccount: Lifecycle Hooks */
 /*****************************************************************************/
-Template.RegisterForm.onCreated(function () {});
-Template.RegisterForm.onRendered(function () {});
-Template.RegisterForm.onDestroyed(function () {});
+Template.NewAccount.onCreated(function () {});
+Template.NewAccount.onRendered(function () {});
+Template.NewAccount.onDestroyed(function () {});

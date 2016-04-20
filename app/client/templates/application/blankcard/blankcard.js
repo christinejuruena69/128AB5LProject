@@ -1,23 +1,23 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* Blankcard: Event Handlers */
 /*****************************************************************************/
-Template.Home.events({});
-
-/*****************************************************************************/
-/* Home: Helpers */
-/*****************************************************************************/
-Template.Home.helpers({});
-
-/*****************************************************************************/
-/* Home: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Home.onCreated(function () {
-    Meteor.subscribe('myClasses');
-    Meteor.subscribe('allUserData');
-    Meteor.subscribe('getViewStates');
-    Meteor.subscribe('myLogs');
+Template.Blankcard.events({
 });
 
-Template.Home.onRendered(function () {});
+/*****************************************************************************/
+/* Blankcard: Helpers */
+/*****************************************************************************/
+Template.Blankcard.helpers({
+});
 
-Template.Home.onDestroyed(function () {});
+/*****************************************************************************/
+/* Blankcard: Lifecycle Hooks */
+/*****************************************************************************/
+Template.Blankcard.onCreated(function () {
+});
+
+Template.Blankcard.onRendered(function () {
+});
+
+Template.Blankcard.onDestroyed(function () {
+});

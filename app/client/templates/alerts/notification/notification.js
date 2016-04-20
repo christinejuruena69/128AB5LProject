@@ -1,23 +1,32 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* Notification: Event Handlers */
 /*****************************************************************************/
-Template.Home.events({});
+Template.Notification.events({
 
-/*****************************************************************************/
-/* Home: Helpers */
-/*****************************************************************************/
-Template.Home.helpers({});
-
-/*****************************************************************************/
-/* Home: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Home.onCreated(function () {
-    Meteor.subscribe('myClasses');
-    Meteor.subscribe('allUserData');
-    Meteor.subscribe('getViewStates');
-    Meteor.subscribe('myLogs');
 });
 
-Template.Home.onRendered(function () {});
+/*****************************************************************************/
+/* Notification: Helpers */
+/*****************************************************************************/
+Template.Notification.helpers({
 
-Template.Home.onDestroyed(function () {});
+});
+
+/*****************************************************************************/
+/* Notification: Lifecycle Hooks */
+/*****************************************************************************/
+Template.Notification.onCreated(function () {});
+
+Template.Notification.onRendered(function () {
+
+    var notification = this.data;
+
+    Meteor.setTimeout(function () {
+        Notification.remove(notification._id);
+    }, 3000);
+
+});
+
+Template.Notification.onDestroyed(function () {
+
+});

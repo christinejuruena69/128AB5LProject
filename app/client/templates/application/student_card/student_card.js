@@ -1,23 +1,23 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* StudentCard: Event Handlers */
 /*****************************************************************************/
-Template.Home.events({});
-
-/*****************************************************************************/
-/* Home: Helpers */
-/*****************************************************************************/
-Template.Home.helpers({});
-
-/*****************************************************************************/
-/* Home: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Home.onCreated(function () {
-    Meteor.subscribe('myClasses');
-    Meteor.subscribe('allUserData');
-    Meteor.subscribe('getViewStates');
-    Meteor.subscribe('myLogs');
+Template.StudentCard.events({
 });
 
-Template.Home.onRendered(function () {});
+/*****************************************************************************/
+/* StudentCard: Helpers */
+/*****************************************************************************/
+Template.StudentCard.helpers({
+});
 
-Template.Home.onDestroyed(function () {});
+/*****************************************************************************/
+/* StudentCard: Lifecycle Hooks */
+/*****************************************************************************/
+Template.StudentCard.onCreated(function () {
+});
+
+Template.StudentCard.onRendered(function () {
+});
+
+Template.StudentCard.onDestroyed(function () {
+});
