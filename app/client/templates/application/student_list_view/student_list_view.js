@@ -23,33 +23,32 @@ Template.StudentListView.events({
             classId = this._id;
         
         var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
+        var studentsChecker = 0;
 
-        if( studentNumberChecker.test(student.studentNumber) ){
-            
-            for( studentEntry of this.students ){
-                if( studentEntry.studentNumber === student.studentNumber ){
-                    notify('Student Number already exists!', 'bad');
-                    return;
-                }
-                else {
-                    Meteor.call('addStudent', student, classId, function(error, result) {
-                        if (error) {
-                            return throwError(error.reason);
-                        }
-                    });
-                    
-                    notify('Successfully Added Student!', 'good'); 
-                    $(e.target).find('[name=birthday]').val('');
-                    $(e.target).find('[name=fullname]').val('');
-                    $(e.target).find('[name=studentNumber]').val('');
-                    $(e.target).find('[name=section]').val('');
-                    $(e.target).find('[name=nickname]').val('');
-                }
+        for( studentEntry of this.students ){
+            if( studentEntry.studentNumber === student.studentNumber ){
+                notify('Student Number already exists!', 'bad');
+                return;
             }
         }
+        if( studentNumberChecker.test(student.studentNumber) ){
+
+            Meteor.call('addStudent', student, classId, function(error, result) {
+                if (error) {
+                    return throwError(error.reason);
+                }
+            });
+                    
+            notify('Successfully Added Student!', 'good'); 
+            $(e.target).find('[name=birthday]').val('');
+            $(e.target).find('[name=fullname]').val('');
+            $(e.target).find('[name=studentNumber]').val('');
+            $(e.target).find('[name=section]').val('');
+            $(e.target).find('[name=nickname]').val('');
+            
+        }
         else {
-            notify('Invalid Student Number', 'bad');   
-            return;
+            notify('Invalid Student Number', 'bad');
         }
 
     },
