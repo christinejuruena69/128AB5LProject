@@ -21,19 +21,36 @@ Template.StudentListView.events({
             },
             user = Meteor.user(),
             classId = this._id;
+        
+        var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
+        var studentsChecker = 0;
 
-        Meteor.call('addStudent', student, classId, function (error, result) {
-
-            if (error) {
-                return throwError(error.reason);
+        for( studentEntry of this.students ){
+            if( studentEntry.studentNumber === student.studentNumber ){
+                notify('Student Number already exists!', 'bad');
+                return;
             }
-        });
+        }
+        if( studentNumberChecker.test(student.studentNumber) ){
 
-        $(e.target).find('[name=birthday]').val("");
-        $(e.target).find('[name=fullname]').val("");
-        $(e.target).find('[name=studentNumber]').val("");
-        $(e.target).find('[name=section]').val("");
-        $(e.target).find('[name=nickname]').val("");
+            Meteor.call('addStudent', student, classId, function(error, result) {
+                if (error) {
+                    return throwError(error.reason);
+                }
+            });
+                    
+            notify('Successfully Added Student!', 'good'); 
+            $(e.target).find('[name=birthday]').val('');
+            $(e.target).find('[name=fullname]').val('');
+            $(e.target).find('[name=studentNumber]').val('');
+            $(e.target).find('[name=section]').val('');
+            $(e.target).find('[name=nickname]').val('');
+            
+        }
+        else {
+            notify('Invalid Student Number', 'bad');
+        }
+
     },
     'click .up': function () {
         $('.spinner input').val(parseInt($('.spinner input').val(), 10) + 1);
