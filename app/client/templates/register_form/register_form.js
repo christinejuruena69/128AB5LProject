@@ -36,7 +36,7 @@ Template.RegisterForm.events({
                 if (err) {
                     if(err.reason === "Login forbidden") {
                         // Alert success
-                        notify('Created account ' + username + ' successfully', 'good');
+                        return notify('Created account ' + username + ' successfully', 'good');
                     }
                     return notify(err.reason, 'bad');
                 }
