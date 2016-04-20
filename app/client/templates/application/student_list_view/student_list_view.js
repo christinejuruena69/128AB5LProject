@@ -4,7 +4,7 @@
 
 
 Template.StudentListView.events({
-    'submit form': function (e) {
+    'submit form#addStudent': function (e) {
         e.preventDefault();
 
         var birthday = new Date($(e.target).find('[name=birthday]').val()),
@@ -41,25 +41,6 @@ Template.StudentListView.events({
     'click .down': function () {
         $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
     },
-    'click tr': function () {
-        var table = document.getElementById("student-table");
-        
-        if (table != null) {
-            for (var i = 0; i < table.rows.length; i++) {
-                table.rows[i].onclick = function () {
-                    tableText(this);
-                };
-            }
-        }
-
-        function tableText(tableCell) {
-            document.getElementById("modal-full-name").innerHTML = tableCell.cells[1].innerHTML;
-            document.getElementById("modal-std-no").innerHTML = tableCell.cells[0].innerHTML;
-            document.getElementById("modal-nickname").value = tableCell.cells[2].innerHTML;
-            document.getElementById("modal-section").value = tableCell.cells[3].innerHTML;
-            document.getElementById("modal-bias").value = tableCell.cells[5].innerHTML;
-        }
-    },
 
     'click .blacklisted': function() {
         if ($('.blacklisted-check').is(':checked')) {
@@ -69,7 +50,7 @@ Template.StudentListView.events({
             $('.blacklisted-check').prop("checked", true);
         }
     },
-    'click #saveEdited': function() {
+    'click button#saveEdited': function() {
         var studentNumber,
             nickname,
             section,
@@ -88,11 +69,36 @@ Template.StudentListView.events({
         });
     },
 
+    'click button#deleteStudent': function() {
+        var studentNumber = document.getElementById("modal-std-no").innerHTML;
+        var lecturer = this.lecturer;
+        var classId = this._id;
+        var message = "Delete student " + studentNumber + "?";
+
+        var verificationPrompt1 = confirm(message);
+        if(verificationPrompt1 == true){
+            var verificationPrompt2 = confirm("Are you sure?");
+            if (verificationPrompt2 == true) {
+                Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
+                    // display the error to the user and abort
+                    if (error)
+                    return alert(error.reason);
+                });
+            };
+        }
+
+        $('#editModal').modal('hide');
+    },
+
     'click .reactive-table tbody tr': function (event) {
         event.preventDefault();
         //Place to trigger a modal for editing or deleting currently selected student
-    
-    
+        $('#editModal').modal('show');
+        document.getElementById("modal-full-name").innerHTML = this.fullname;
+        document.getElementById("modal-std-no").innerHTML = this.studentNumber;
+        document.getElementById("modal-nickname").value = this.nickname;
+        document.getElementById("modal-section").value = this.section;
+        document.getElementById("modal-bias").value = this.bias;    
     }
 
 });
