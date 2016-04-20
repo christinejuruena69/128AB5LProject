@@ -64,14 +64,7 @@
                     <input name="semester" id="semester" type="text" value="" placeholder="Semester" class="form-control" />
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label" for="lecturer">Lecturer</label>
-                <select class="form-control" name="lecturer" id="lecturer">
-                    {{#each displayLecturers}}
-                    <option value="{{_id}}">{{profile.fullName}}</option>
-                    {{/each}}
-                </select>
-            </div>
+                    <input name="lecturer" id="lecturer" type="hidden" value="{{ _id }}" placeholder="Lecturer" class="form-control" />
             <!-- form portion for students -->
             <div class="form-group">
                 <label class="control-label" for="fullname">Full name</label>
