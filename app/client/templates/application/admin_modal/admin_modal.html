@@ -1,0 +1,50 @@
+<template name="AdminModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add subject</h4>
+    </div>
+    <div class="modal-body">
+        <h1>Add Class</h1>
+        <form class="add class form">
+            <!-- form portion for course information -->
+            <!-- course title -->
+            <div class="form-group">
+                <label class="control-label" for="courseTitle">Course Title</label>
+                <div class="controls">
+                    <input name="courseTitle" id="courseTitle" type="text" value="" placeholder="Course Title" class="form-control" />
+                </div>
+            </div>
+            <!-- course code -->
+            <div class="form-group">
+                <label class="control-label" for="courseCode">Course Code</label>
+                <div class="controls">
+                    <input name="courseCode" id="courseCode" type="text" value="" placeholder="Course Code" class="form-control" />
+                </div>
+            </div>
+            <!-- semester -->
+            <div class="form-group">
+                <label class="control-label" for="semester">Semester</label>
+                <select class="form-control" id="semester" name="semester">
+                    <option value="1st Sem">1st Sem</option>
+                    <option value="2nd Sem">2nd Sem</option>
+                    <option value="Mid-year">Mid-year</option>
+                </select>
+            </div>
+            <!-- academic year -->
+            <div class="form-group">
+                <label class="control-label" for="academicYear">Academic Year</label>
+                <select class="form-control" id="academicYear" name="academicYear">
+                    {{#each displayYear}}
+                    <option value="{{this.minYear}} - {{this.maxYear}}">{{this.minYear}} - {{this.maxYear}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <!-- lecturer -->
+            <input name="lecturer" id="lecturer" type="hidden" value="{{ _id }}" placeholder="Lecturer" class="form-control" />
+            <input type="submit" value="Add Class" class="btn btn-primary" />
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</template>
