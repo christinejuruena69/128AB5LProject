@@ -3,7 +3,6 @@
 /*****************************************************************************/
 Template.NewAccount.events({
     'submit form': function (event, template) {
-        console.log('Submitted');
         event.preventDefault();
         // Stop html from going to action
 
@@ -34,16 +33,17 @@ Template.NewAccount.events({
                 fullName
             }, function (err) {
                 if (err) {
-                    return console.log(err.reason);
+                    if(err.reason === "Login forbidden") {
+                        // Alert success
+                        return notify('Created account ' + username + ' successfully', 'good');
+                    }
+                    return notify(err.reason, 'bad');
                 }
-                console.log('success!');
-                // Redirect user to index page
-                Router.go('/');
             });
         }
         else {
             // Invalid password case
-            console.log('Password error!');
+            return notify('Password Error!', 'bad');
         }
 
         return false;
