@@ -12,7 +12,7 @@ Template.EditClass.events({
             courseTitle: $(e.target).find('[name=courseTitle]').val(),
             courseCode: $(e.target).find('[name=courseCode]').val(),
             semester: $(e.target).find('[name=semester]').val(),
-            _id: this._id
+            _id: this.classId
         };
 
         Meteor.call('User/editClass', editedClass, function(error, result){
@@ -35,7 +35,16 @@ Template.EditClass.events({
 Template.EditClass.helpers({
     class: function() {
         return Class.findOne({ userId: Meteor.userId() });
-    }
+    },
+    courseTitle: function() {
+        return Class.findOne({ _id:this.classId }).courseTitle;
+    },
+    courseCode: function() {
+        return Class.findOne({ _id:this.classId }).courseCode;
+    },
+    semester: function() {
+        return Class.findOne({ _id:this.classId }).semester;
+    },
 });
 
 /*****************************************************************************/
@@ -45,6 +54,7 @@ Template.EditClass.onCreated(function () {
 });
 
 Template.EditClass.onRendered(function () {
+    console.log(this.classId);
 });
 
 Template.EditClass.onDestroyed(function () {

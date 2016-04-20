@@ -14,7 +14,7 @@
             </span>
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                <li id="menu"><a data-toggle="modal" data-target="#admin-modal">Edit card details</a></li>
+                <li id="menu"><a data-toggle="modal" data-target="#admin-modal-editclass">Edit card details</a></li>
                 <li id="menu"><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
             </ul>
         </span>
@@ -33,60 +33,11 @@
     </div>
   </div>
 
-  <div class="modal fade" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="admin-modal-editclass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content admin">
-              <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="myModalLabel">Add Account</h4>
-</div>
-<div class="modal-body">
-        <div class="register-form">
-            <form class="form-horizontal">
-                <fieldset>
-                    <!-- Form Name -->
-                    <legend align="center">Edit your class</legend>
-                    <br>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="courseTitle">Course Title</label>
-                        <div class="col-md-4">
-                            <input id="courseTitle" name="courseTitle" value="{{courseTitle}}" class="form-control input-md" required="" type="text">
-                        </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="courseCode">Course Code</label>
-                        <div class="col-md-4">
-                            <input id="courseCode" name="courseCode" value="{{courseCode}}" class="form-control input-md" required="" type="text">
-                        </div>
-                    </div>
-                    <!-- Password input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="semester">Semester</label>
-                        <div class="col-md-4">
-                            <input id="semester" name="semester" value="{{semester}}" class="form-control input-md" required="" type="text">
-                        </div>
-                    </div>
-                   
-                    <!-- Button (Double) -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="submit"></label>
-                        <div class="col-md-8">
-                            <input type="submit" id="submit" name="submit" class="btn btn-success" value="Save"/>
-                            <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-      </div>
-    
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <!-- <button type="submit" class="btn btn-primary">Add Class</button> -->
-</div>
-          </div>
+            {{>EditClass classId=_id}}
         </div>
     </div>
+   </div>
 </template>
