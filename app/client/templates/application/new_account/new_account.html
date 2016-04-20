@@ -1,0 +1,77 @@
+<template name="NewAccount">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Add Account</h4>
+</div>
+<div class="modal-body">
+        <h1>Add Account</h1>
+        <form class="form-horizontal">
+                <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Name">Full Name</label>
+                        <div class="col-md-4">
+                            <input id="Name" name="Name" placeholder="Full Name" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="username">Username</label>
+                        <div class="col-md-4">
+                            <input id="username" name="username" placeholder="username" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="password1">Password</label>
+                        <div class="col-md-4">
+                            <input id="password1" name="password1" placeholder="password" class="form-control input-md" required="" type="password">
+                        </div>
+                    </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="password2">Re-enter password</label>
+                        <div class="col-md-4">
+                            <input id="password2" name="password2" placeholder="password" class="form-control input-md" required="" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="username">Email</label>
+                        <div class="col-md-4">
+                            <input id="email" name="email" placeholder="email" class="form-control input-md" required="" type="email">
+                        </div>
+                    </div>
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Account-Type">Account Type</label>
+                        <div class="col-md-4">
+                            <div class="radio">
+                                <label for="Account-Type-0">
+                                    <input name="Account-Type" id="Account-Type-0" value="Teacher" checked="checked" type="radio"> Teacher
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="Account-Type-1">
+                                    <input name="Account-Type" id="Account-Type-1" value="Admin" type="radio"> Admin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="submit"></label>
+                        <div class="col-md-8">
+                            <input type="submit" id="submit" name="submit" class="btn btn-success" value="Submit"/>
+                            <!-- <button id="submit" name="submit" class="btn btn-success">Submit</button> -->
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+    
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <!-- <button type="submit" class="btn btn-primary">Add Class</button> -->
+</div>
+</template>
