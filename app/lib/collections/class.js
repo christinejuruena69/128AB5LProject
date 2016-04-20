@@ -149,8 +149,7 @@ Meteor.methods({
                         { students: 
                             { studentNumber: studentNumber} 
                         } 
-                    }, 
-                    {multi: true});
+                    });
             }
             else {
                 throw new Meteor.Error(404, 'Not Found');
@@ -171,6 +170,8 @@ Meteor.methods({
         
         check(student, Schema.StudentSchema);
 
+        
+        
         var loggedInUser = Meteor.user(),
             classId1 = Class.findOne({
                 '_id': classId               
