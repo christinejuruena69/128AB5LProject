@@ -191,6 +191,13 @@ Meteor.methods({
         else {
             throw new Meteor.Error(403, 'Forbidden');
         }
+    },
+
+    'Teacher/editStudent': function(studentNumber, nickname, section, bias, classId) {
+        Class.update(
+            { '_id': classId, "students.studentNumber": studentNumber },
+            { $set: { "students.$.nickname": nickname, "students.$.section": section, "students.$.bias": bias } }
+        );
     }
 });
 
