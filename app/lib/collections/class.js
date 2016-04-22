@@ -9,7 +9,8 @@ Schema.StudentSchema = new SimpleSchema({
         type: String
     },
     studentNumber: {
-        type: String
+        type: String,
+        regEx: /^[0-9]{4}-[0-9]{5}$/
     },
     image: {
         type: String,
@@ -23,7 +24,8 @@ Schema.StudentSchema = new SimpleSchema({
         optional: true
     },
     section: {
-        type: String
+        type: String,
+        regEx: /\d-L/
     },
     points: {
         type: Number,
@@ -167,7 +169,7 @@ Meteor.methods({
                 '_id': classId
             });
 
-        //check if the class lecturer is the current user and if the current user is of Teacher type    
+        //check if the class lecturer is the current user and if the current user is of Teacher type
         if (loggedInUser._id === classId1.lecturer && loggedInUser.profile.type === 'Teacher') {
             Class.update({ '_id': classId }, {
                 $push: {
