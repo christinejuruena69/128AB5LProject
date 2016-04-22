@@ -3,9 +3,7 @@
 /*****************************************************************************/
 Template.EditClass.events({
     'submit form': function (e, template) {
-        console.log('Submitted');
         event.preventDefault();
-        // Stop html from going to action
 
         //Get form data
         var editedClass = {
@@ -16,7 +14,7 @@ Template.EditClass.events({
         };
 
         Meteor.call('User/editClass', editedClass, function(error, result){
-            // alert if error
+
             if(error){
                 notify(error.reason, 'bad');
                 return throwError(error.reason);
@@ -28,6 +26,7 @@ Template.EditClass.events({
 
             notify(successNotif, 'good');
 
+            $('#admin-modal-editclass-' + editedClass._id).modal('hide');
         });
     }
 });
