@@ -12,19 +12,22 @@ Template.EditClass.events({
             courseTitle: $(e.target).find('[name=courseTitle]').val(),
             courseCode: $(e.target).find('[name=courseCode]').val(),
             semester: $(e.target).find('[name=semester]').val(),
-            _id: this.classId
+            _id: this._id
         };
 
         Meteor.call('User/editClass', editedClass, function(error, result){
-
             // alert if error
             if(error){
                 notify(error.reason, 'bad');
                 return throwError(error.reason);
             }
 
-            // re-route to home if success
-            Router.go('/');
+            var successNotif = 'Successfully edited '
+                + editedClass.courseCode + ': '
+                + editedClass.courseTitle;
+
+            notify(successNotif, 'good');
+
         });
     }
 });
@@ -33,18 +36,9 @@ Template.EditClass.events({
 /* EditClass: Helpers */
 /*****************************************************************************/
 Template.EditClass.helpers({
-    class: function() {
-        return Class.findOne({ userId: Meteor.userId() });
-    },
-    courseTitle: function() {
-        return Class.findOne({ _id:this.classId }).courseTitle;
-    },
-    courseCode: function() {
-        return Class.findOne({ _id:this.classId }).courseCode;
-    },
-    semester: function() {
-        return Class.findOne({ _id:this.classId }).semester;
-    },
+    currentClass: function() {
+        return Class.findOne({ _id: Template.data._id });
+    }
 });
 
 /*****************************************************************************/
@@ -54,7 +48,6 @@ Template.EditClass.onCreated(function () {
 });
 
 Template.EditClass.onRendered(function () {
-    console.log(this.classId);
 });
 
 Template.EditClass.onDestroyed(function () {

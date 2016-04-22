@@ -14,7 +14,7 @@
             </span>
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                <li id="menu"><a data-toggle="modal" data-target="#admin-modal-editclass">Edit card details</a></li>
+                <li id="menu"><a data-toggle="modal" data-target="#admin-modal-editclass-{{ _id }}">Edit card details</a></li>
                 <li id="menu"><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
             </ul>
         </span>
@@ -24,7 +24,8 @@
 
         </h3>
         <p>
-          {{courseTitle}}
+            {{courseTitle}}:
+            {{ _id }}
         </p>
         <button type="button" class="btn btn-default btn-circle btn-lg pull-right" onclick="window.location.href='{{pathFor route='StudentListView'}}'">
           <span class="text-center">{{ students.length }}</span>
@@ -33,11 +34,5 @@
     </div>
   </div>
 
-  <div class="modal fade" id="admin-modal-editclass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content admin">
-            {{>EditClass classId=_id}}
-        </div>
-    </div>
-   </div>
+  {{> EditClass}}
 </template>
