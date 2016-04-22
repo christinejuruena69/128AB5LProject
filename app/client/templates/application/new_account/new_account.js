@@ -17,14 +17,17 @@ Template.NewAccount.events({
 
         function isValidPassword (pwd, pwd2) {
             if (pwd === pwd2) {
+                if(pwd.length < 6) {
+                    notify('Password too short!', 'bad');
+                }
                 return pwd.length >= 6 ? true : false;
             } else {
+                notify('Password does not match', 'bad');
                 return false;
             }
         }
 
         if(isValidPassword(password, password2)) {
-            // note this is es6 JSON notation
             Accounts.createUser({
                 username,
                 password,
@@ -34,18 +37,20 @@ Template.NewAccount.events({
             }, function (err) {
                 if (err) {
                     if(err.reason === "Login forbidden") {
-                        // Alert success
                         return notify('Created account ' + username + ' successfully', 'good');
                     }
                     return notify(err.reason, 'bad');
                 }
             });
+            event.target['username'].value = "";
+            event.target['Name'].value = "";
+            event.target['Account-Type'].value = "";
+            event.target['password1'].value = "";
+            event.target['password2'].value = "";
+            event.target['email'].value = "";
+            $("#admin-modal").modal('hide');
         }
-        else {
-            // Invalid password case
-            return notify('Password Error!', 'bad');
-        }
-
+        
         return false;
     }
 });
@@ -60,3 +65,4 @@ Template.NewAccount.helpers({});
 Template.NewAccount.onCreated(function () {});
 Template.NewAccount.onRendered(function () {});
 Template.NewAccount.onDestroyed(function () {});
+
