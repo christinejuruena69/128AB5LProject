@@ -1,6 +1,7 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
+
 import jsonQuery from 'json-query';
 Template.RandomizerWindow.events({
     
@@ -45,8 +46,11 @@ Template.RandomizerWindow.events({
             current = jsonQuery(['[*section=?]', '6-L'], {data:data}).value;
             result = result.concat(current);
         }
-        console.log(result);
-        Session.set("list", result);
+        for (var i=0; i<result.length; i++){
+            randomList.insert(result[i]);
+        }
+        var tom = randomList.find().fetch();
+        console.log(tom);
     }
 });
 /*****************************************************************************/
@@ -56,6 +60,8 @@ Template.RandomizerWindow.helpers({});
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.RandomizerWindow.onCreated(function () {});
+Template.RandomizerWindow.onCreated(function () {
+
+});
 Template.RandomizerWindow.onRendered(function () {});
 Template.RandomizerWindow.onDestroyed(function () {});

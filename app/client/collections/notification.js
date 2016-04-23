@@ -1,5 +1,6 @@
 // Local (client-only) collection
 Notification = new Mongo.Collection(null);
+randomList = new Mongo.Collection(null);
 
 
 notify = function(message, type) {
