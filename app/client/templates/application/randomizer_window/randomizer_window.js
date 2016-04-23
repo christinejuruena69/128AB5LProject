@@ -29,10 +29,18 @@ Template.RandomizerWindow.events({
         
         
         var result = filterList._collection.find().fetch();
+        if (result.length==0){
+            result = this.students;
+        }
         //Select N results
         
-        randomList.remove({});
         var size = Session.get("nStudent");
+        if (size==0){
+            notify("Number of students is 0. Please select the number of students you wish to get.", "bad");
+            return;
+        }
+        randomList.remove({});
+        
         var unique = [];
         var curr = getRand(result.length-1);
         //Get N unique random indices from the filtered result
