@@ -2,6 +2,12 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 
+getRand = function (n) {
+    var min = 0;
+    var max = n;
+    return Math.floor(Random.fraction() * (max - min + 1)) + min;
+};
+
 import jsonQuery from 'json-query';
 Template.RandomizerWindow.events({
     
@@ -11,7 +17,6 @@ Template.RandomizerWindow.events({
         var current;
         var data = this.students;
         var sectionName = "7-L";
-        console.log(data);
         randomList._collection.remove({});
         
         //Filter by sections
@@ -50,6 +55,8 @@ Template.RandomizerWindow.events({
         
         
         //Select N results
+        console.log(Session.get("nStudent"));
+        console.log(getRand(10));
         
     }
 });

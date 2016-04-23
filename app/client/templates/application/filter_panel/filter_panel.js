@@ -61,6 +61,11 @@ Template.filterPanel.events({
 	'change #section6l' : function(){
 		var x = event.target.checked;
 		Session.set("section6l", x);
+	},
+	
+	'change #nStudent' : function(){
+		var x = event.target.value;
+		Session.set("nStudent", x);
 	}
 });
 /*****************************************************************************/
