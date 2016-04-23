@@ -29,10 +29,6 @@ Template.RandomizerWindow.events({
         
         
         var result = filterList._collection.find().fetch();
-        console.log(result);
-        
-        
-        
         //Select N results
         
         randomList.remove({});
