@@ -2,4 +2,12 @@
 /* Forbidden: Style */
 /*****************************************************************************/
 .forbidden {
+	color: red;
+	position: absolute;
+	left: 0;
+	top: 30%;
+	width: 100%;
+    text-align: center;
+    font-family: "Times New Roman";
+    font-size: 18px;
 }
