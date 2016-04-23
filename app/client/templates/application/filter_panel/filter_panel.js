@@ -195,7 +195,9 @@ Template.filterPanel.events({
 	'change #nStudent' : function(){
 		var x = event.target.value;
 		Session.set("nStudent", x);
-	}
+	},
+	
+	
 
 });
 /*****************************************************************************/
