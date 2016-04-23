@@ -12,9 +12,7 @@ Template.RandomizerWindow.events({
         var data = this.students;
         var sectionName = "7-L";
         console.log(data);
-        var shit = jsonQuery(['[*section=?].fullname', sectionName], {data:data}).value;
-        console.log(shit);
-        
+        randomList._collection.remove({});
         
         //Filter by sections
         if (Session.get("section1l")){
@@ -49,8 +47,6 @@ Template.RandomizerWindow.events({
         for (var i=0; i<result.length; i++){
             randomList.insert(result[i]);
         }
-        var tom = randomList.find().fetch();
-        console.log(tom);
     }
 });
 /*****************************************************************************/
