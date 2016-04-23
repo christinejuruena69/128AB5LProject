@@ -144,21 +144,8 @@ Template.filterPanel.events({
 	},
 	
 	'change #nStudent' : function(){
-		var state = event.target.checked;
-		Session.set("section1l", state);
-		var data = this.students;
-		current = jsonQuery(['[*section=?]', '1-L'], {data:data}).value;
-		if (state){
-			for (var i = 0; i < current.length; i++) {
-				if (!filterList.findOne(current[i])) {
-					filterList.insert(current[i]);
-				}
-			}
-		} else {
-			for (var i = 0; i < current.length; i++) {
-				filterList.remove(current[i]);
-			}
-		}
+		var x = event.target.value;
+		Session.set("nStudent", x);
 	}
 });
 /*****************************************************************************/

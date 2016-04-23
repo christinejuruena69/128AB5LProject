@@ -27,55 +27,21 @@ Template.RandomizerWindow.events({
     
     'click #randomizer-button' : function(){
         
-        var result=[];
-        var current;
-        var data = this.students;
-        randomList._collection.remove({});
         
-        //Filter by sections
-        if (Session.get("section1l")){
-            current = jsonQuery(['[*section=?]', '1-L'], {data:data}).value;
-            result = result.concat(current);
-        }
+        var result = filterList._collection.find().fetch();
+        console.log(result);
         
-        if (Session.get("section2l")){
-            current = jsonQuery(['[*section=?]', '2-L'], {data:data}).value;
-            result = result.concat(current);
-        }
         
-        if (Session.get("section3l")){
-            current = jsonQuery(['[*section=?]', '3-L'], {data:data}).value;
-            result = result.concat(current);
-        }
         
-        if (Session.get("section4l")){
-            current = jsonQuery(['[*section=?]', '4-L'], {data:data}).value;
-            result = result.concat(current);
-        }
-        
-        if (Session.get("section5l")){
-            current = jsonQuery(['[*section=?]', '5-L'], {data:data}).value;
-            result = result.concat(current);
-        }
-        
-        if (Session.get("section6l")){
-            current = jsonQuery(['[*section=?]', '6-L'], {data:data}).value;
-            result = result.concat(current);
-        }
-      
-      
-      
-      
         //Select N results
         
-        
+        randomList.remove({});
         var size = Session.get("nStudent");
         var unique = [];
         var curr = getRand(result.length-1);
         //Get N unique random indices from the filtered result
-        if (result.length > size) {
+        if (result.length > size) { 
             for (i = 0; i < size; i++) {
-
                 while (_.contains(unique, curr)) {
                     curr = getRand(result.length - 1);
                 }
@@ -92,7 +58,6 @@ Template.RandomizerWindow.events({
             }
         } else {
             //Just push all of the results since it is lower than the required students
-
             for (var i = 0; i < result.length; i++) {
                 randomList.insert(result[i]);
             }
@@ -119,7 +84,7 @@ Template.RandomizerWindow.helpers({
         };
     },
     
-    filterList: function () {
+    listFilter: function () {
         return filterList;
     },
     empty: function(){

@@ -15,7 +15,7 @@
                 {{#if empty}}
                     {{> reactiveTable collection=this.students settings=tableSettings}}  
                 {{else}}
-                    {{> reactiveTable collection=filterList settings=tableSettings}}     
+                    {{> reactiveTable collection=listFilter settings=tableSettings}}     
                 {{/if}}
             </div>
             <div id="randomize-button-div">
