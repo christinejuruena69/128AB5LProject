@@ -1,58 +1,124 @@
 <template name="filterPanel">
-   
-<div id="filterPanel" class="container">
-	<ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#volunteers"> N Volunteers </a></li>
-		<li><a data-toggle="tab" href="#grouping"> Grouping </a></li>
-	</ul>
-	
-	<div class="tab-content">
-		<div id="volunteers" class="tab-pane fade in active">
-			<div id="numberOfVolunteers">
-				Number of Volunteers: <input type="number" id="input-number-of-volunteers" name="input-number" ><br>
-			</div>
-			<br><br>
-			Select from:
-			<select>
-				<option value="allstudents">All students</option>
-				<option value="Section">Section</option>
-				<option value="newpool">New Pool</option>
-			</select>		
-			
-		</div>
-		
-		<div id="grouping" class="tab-pane fade">
-			<div id="numberOfVolunteers">
-				Number of Volunteers: <input type="number" id="input-number" name="input-number" ><br>
-			</div>
-			<p style="font-weight: bold; padding-left: 27px">Section:</p>
-			<div id="sections">
-				<input type="radio" name="sectionChoice" id="selectAll"> Select All 
-				<input type="radio" name="sectionChoice" id="custom"> Custom <br /><br />
-				<span id="labSections">
-					<input type="checkbox" name="labSection" class="labSection"> 1L 
-					<input type="checkbox" name="labSection" class="labSection"> 2L 
-					<input type="checkbox" name="labSection" class="labSection"> 3L <br />
-					<input type="checkbox" name="labSection" class="labSection"> 4L 
-					<input type="checkbox" name="labSection" class="labSection"> 5L 
-					<input type="checkbox" name="labSection" class="labSection"> 6L 
-				</span>
-			</div>
-		</div>
-		<br><br>
-		Select by:
-		<select>
-			<option value="Default">Default</option>
-			<option value="Gender">Gender</option>
-			<option value="Batch">Batch</option>
-			<option value="Points">Points</option>
-		</select>
-		
-		<br><br>
-		<input type="checkbox" name="Bias" value="Bias">Bias
-		<input type="checkbox" name="Blacklist" value="Blacklist">Blacklist
-		<br><br><br><br><br><br>
-		<button name="Randomize" id="Randomize">Randomize</button>
-	</div>
-</div>
-</template>
+    <div id="filter-tab">
+        <ul class="nav nav-tabs">
+            <li class="active" id="filter-li"><a class="active" data-toggle="tab" href="#n-volunteers"><h5>N Volunteers</h5></a></li>
+                <li id="filter-li-groupings"><a data-toggle="tab" href="#groupings"><h5>Groupings</h5></a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="n-volunteers" class="tab-pane fade in active">
+                <div id="select-no">
+                    <h5>Number of students: <input type="number" name="quantity" min="1" max="100"></h5>
+                </div>
+                <div id="by-section">
+                    <h5>Sections: <label class="radio-inline"><input type="radio" name="optradio" id="selectAll">Select All</label>
+                    <label class="radio-inline"><input type="radio" name="optradio" id="custom">Custom</label></h5>
+                    <hr>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">1L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">4L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">7L</label>
+                    <br>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">2L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">5L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">8L</label>
+                    <br>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">3L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">6L</label>
+                </div>
+                <div id="select-by">
+                    <h5>Select by:
+                        <select class="select-by-dropdown">
+                            <option><div class="select-by-sex">Sex</div></option>
+                            <option><div class="select-by-batch">Batch</div></option>
+                        </select>
+                    </h5>
+                    <hr>
+                    <div class="tab-content">
+                        <div class="sex-choices">
+                            <div class="male-sex"><label class="radio-inline"><input type="radio" name="optradio" class="sex-choice" value=Male>Male</label></div>
+                            <div class="female-sex"><label class="radio-inline"><input type="radio" name="optradio" class="sex-choice" value="Female">Female</label></div>
+                        </div>
+                        <div class="batch-choices">
+                            <div class="batch10"><label class="radio-inline"><input type="radio" name="optradio">2010</label></div>
+                            <div class="batch11"><label class="radio-inline"><input type="radio" name="optradio">2011</label></div>
+                            <div class="batch12"><label class="radio-inline"><input type="radio" name="optradio">2012</label><br></div>
+                            <div class="batch13"><label class="radio-inline"><input type="radio" name="optradio">2013</label></div>
+                            <div class="batch14"><label class="radio-inline"><input type="radio" name="optradio">2014</label></div>
+                            <div class="batch15"><label class="radio-inline"><input type="radio" name="optradio">2015</label><br></div>
+                            <div class="batch-others"><label class="radio-inline"><input type="radio" name="optradio">Others</label></div>
+                        </div>
+                        <hr>
+                        <div class="filtered-attributes-sex"></div>
+                        <div class="filtered-attributes-batch"></div>
+                    </div>	
+                    <br>
+                </div>
+                <div id="bias-blacklist">
+                        <label class="checkbox-inline"><input type="checkbox" value="">Bias</label><br>
+                        <label class="checkbox-inline"><input type="checkbox" value="">Blacklist</label>
+                </div>
+            </div>
+
+            <div id="groupings" class="tab-pane fade">
+                <div id="select-no">
+                    <h5>Number of groups: <input type="number" name="quantity" min="1" max="100"> </h5>
+                    <hr>
+                </div>
+                <div id="select-no">
+                    <h5>Number of members</h5>
+                    <h5>per group:  <input type="number" name="quantity" min="1" max="100"></h5>
+                    <hr>
+                </div>
+                <div id="by-section">
+                    <h5>Section: <label class="radio-inline"><input type="radio" name="optradio">Select All</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">Custom</label></h5>
+                    <hr>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">1L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">4L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">7L</label>
+                    <br>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">2L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">5L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">8L</label>
+                    <br>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">3L</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" class="labSection">6L</label>
+                </div>
+                <div id="select-by">
+                    <h5>Select by:
+                    <select class="select-by-dropdown">
+                        <option><div class="select-by-sex">Sex</div></option>
+                        <option><div class="select-by-batch">Batch</div></option>
+                    </select>
+                    </h5>
+                    <hr>
+                    <div class="tab-content">
+                        <div class="sex-choices">
+                            <div class="male-sex"><label class="radio-inline"><input type="radio" name="optradio" class="sex-choice" value=Male>Male</label></div>
+                            <div class="female-sex"><label class="radio-inline"><input type="radio" name="optradio" class="sex-choice" value="Female">Female</label></div>
+                        </div>
+                        <div class="batch-choices">
+                            <div class="batch10"><label class="radio-inline"><input type="radio" name="optradio">2010</label></div>
+                            <div class="batch11"><label class="radio-inline"><input type="radio" name="optradio">2011</label></div>
+                            <div class="batch12"><label class="radio-inline"><input type="radio" name="optradio">2012</label><br></div>
+                            <div class="batch13"><label class="radio-inline"><input type="radio" name="optradio">2013</label></div>
+                            <div class="batch14"><label class="radio-inline"><input type="radio" name="optradio">2014</label></div>
+                            <div class="batch15"><label class="radio-inline"><input type="radio" name="optradio">2015</label><br></div>
+                            <div class="batch-others"><label class="radio-inline"><input type="radio" name="optradio">Others</label></div>
+                        </div>
+                        <hr>
+                        <div class="filtered-attributes-sex"></div>
+                        <div class="filtered-attributes-batch"></div>
+                    </div>	
+                    <br>
+                </div>
+                <div id="bias-blacklist">
+                    <label class="checkbox-inline"><input type="checkbox" value="">Bias</label><br>
+                    <label class="checkbox-inline"><input type="checkbox" value="">Blacklist</label>
+                </div>
+            </div>
+        </div>
+    </div>  
+</template>    
+
+
+

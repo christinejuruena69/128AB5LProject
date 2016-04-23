@@ -1,24 +1,32 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* Notification: Event Handlers */
 /*****************************************************************************/
-Template.ClassCard.events({
+Template.Notification.events({
+
 });
 
 /*****************************************************************************/
-/* Home: Helpers */
+/* Notification: Helpers */
 /*****************************************************************************/
-Template.ClassCard.helpers({
-    studentCount: function() {
-        return this.studens.length;
-    },
-    class: function() {
-        return Class.findOne({ userId: Meteor.userId() });
-    }
+Template.Notification.helpers({
+
 });
 
 /*****************************************************************************/
-/* Home: Lifecycle Hooks */
+/* Notification: Lifecycle Hooks */
 /*****************************************************************************/
-Template.ClassCard.onCreated(function () {});
-Template.ClassCard.onRendered(function () {});
-Template.ClassCard.onDestroyed(function () {});
+Template.Notification.onCreated(function () {});
+
+Template.Notification.onRendered(function () {
+
+    var notification = this.data;
+
+    Meteor.setTimeout(function () {
+        Notification.remove(notification._id);
+    }, 3000);
+
+});
+
+Template.Notification.onDestroyed(function () {
+
+});

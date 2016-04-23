@@ -1,0 +1,18 @@
+/*****************************************************************************/s
+/* Notification: Style */
+/*****************************************************************************/
+
+.notification {
+
+}
+
+.alert {
+    animation: fadeOut 2700ms ease-in 0s 1 forwards;
+    -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+    -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+    width: 250px;
+    float: right;
+    clear: both;
+    margin-bottom: 5px;
+    pointer-events: auto;
+}
