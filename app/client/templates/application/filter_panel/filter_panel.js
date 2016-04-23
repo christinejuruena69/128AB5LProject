@@ -1,6 +1,7 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
+import jsonQuery from 'json-query';
 Template.filterPanel.events({
 
     'click #Randomize': function(){
@@ -34,38 +35,130 @@ Template.filterPanel.events({
 	},
 	
 	'change #section1l' : function(){
-		var x = event.target.checked;
-		Session.set("section1l", x);
+		var state = event.target.checked;
+		Session.set("section1l", state);
+		var data = this.students;
+		current = jsonQuery(['[*section=?]', '1-L'], {data:data}).value;
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
+        
 	},
 	
 	'change #section2l' : function(){
-		var x = event.target.checked;
-		Session.set("section2l", x);
+		var state = event.target.checked;
+		Session.set("section2l", state);
+		var data = this.students;
+		current = jsonQuery(['[*section=?]', '2-L'], {data:data}).value;
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
 	},
 	
 	'change #section3l' : function(){
-		var x = event.target.checked;
-		Session.set("section3l", x);
+		var state = event.target.checked;
+		Session.set("section3l", state);
+		var data = this.students;
+		current = jsonQuery(['[*section=?]', '3-L'], {data:data}).value;
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
 	},
 	
 	'change #section4l' : function(){
-		var x = event.target.checked;
-		Session.set("section4l", x);
+		var state = event.target.checked;
+		Session.set("section4l", state);
+		var data = this.students;
+		current = jsonQuery(['[*section=?]', '4-L'], {data:data}).value;
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
 	},
 	
 	'change #section5l' : function(){
-		var x = event.target.checked;
-		Session.set("section5l", x);
+		var state = event.target.checked;
+		Session.set("section5l", state);
+		var data = this.students;
+		current = jsonQuery(['[*section=?]', '5-L'], {data:data}).value;
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
 	},
 	
 	'change #section6l' : function(){
-		var x = event.target.checked;
-		Session.set("section6l", x);
+		var state = event.target.checked;
+		Session.set("section6l", state);
+		var data = this.students;
+		current = jsonQuery(['[*section=?]', '6-L'], {data:data}).value;
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
 	},
 	
 	'change #nStudent' : function(){
-		var x = event.target.value;
-		Session.set("nStudent", x);
+		var state = event.target.checked;
+		Session.set("section1l", state);
+		var data = this.students;
+		current = jsonQuery(['[*section=?]', '1-L'], {data:data}).value;
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
 	}
 });
 /*****************************************************************************/

@@ -19,15 +19,17 @@ fisherYatesShuffle = function(assign, size){
             }
 }
 
+
+
 import jsonQuery from 'json-query';
 Template.RandomizerWindow.events({
     
     
     'click #randomizer-button' : function(){
+        
         var result=[];
         var current;
         var data = this.students;
-        var sectionName = "7-L";
         randomList._collection.remove({});
         
         //Filter by sections
@@ -88,25 +90,53 @@ Template.RandomizerWindow.events({
             for (var i = 0; i < newResult.length; i++) {
                 randomList.insert(newResult[i]);
             }
+        } else {
+            //Just push all of the results since it is lower than the required students
+
+            for (var i = 0; i < result.length; i++) {
+                randomList.insert(result[i]);
+            }
         }
   
-        //Just push all of the results since it is lower than the required students
         
-        for (var i=0; i<result.length; i++){
-            randomList.insert(result[i]);
-        }
         
     }
 });
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
-Template.RandomizerWindow.helpers({});
+Template.RandomizerWindow.helpers({
+    tableSettings: function () {
+        return {
+            fields: [
+                { key: 'fullname', label: 'Name' },
+                { key: 'studentNumber', label: 'Student Number' },
+                { key: 'section', label: 'Section' },
+                { key: 'points', label: 'Points' },
+                { key: 'bias', label: 'Bias' },
+                { key: 'isBlackListed', label: 'Blacklisted' }
+            ]
+        };
+    },
+    
+    filterList: function () {
+        return filterList;
+    },
+    empty: function(){
+        if (!filterList._collection.findOne()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+});
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.RandomizerWindow.onCreated(function () {
 
 });
-Template.RandomizerWindow.onRendered(function () {});
+Template.RandomizerWindow.onRendered(function () {
+    
+});
 Template.RandomizerWindow.onDestroyed(function () {});
