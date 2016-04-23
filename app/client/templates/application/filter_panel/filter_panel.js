@@ -61,7 +61,6 @@ Template.filterPanel.events({
         console.log(element.fullname);
     },
 
-
 	'click #selectAll': function (){
 		var checkboxes = $('.labSection');
 		if(document.getElementById('selectAll').checked == true){
