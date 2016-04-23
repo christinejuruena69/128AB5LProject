@@ -157,3 +157,10 @@ Router.route('/profile/:_id', {
 });
 
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
+
+Router.route('/uploadCSV', {
+    name: 'UploadCSV',
+    template: 'UploadCSV',
+    controller: 'HomeController',
+    where: 'client'
+});
