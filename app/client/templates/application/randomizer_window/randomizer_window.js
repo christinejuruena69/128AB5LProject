@@ -47,6 +47,10 @@ Template.RandomizerWindow.events({
         for (var i=0; i<result.length; i++){
             randomList.insert(result[i]);
         }
+        
+        
+        //Select N results
+        
     }
 });
 /*****************************************************************************/

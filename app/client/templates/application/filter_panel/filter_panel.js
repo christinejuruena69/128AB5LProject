@@ -78,5 +78,6 @@ Template.filterPanel.onRendered(function () {
 	Session.set("section4l", false);
 	Session.set("section5l", false);
 	Session.set("section6l", false);
+	Session.set("nStudent", 0);
 });
 Template.filterPanel.onDestroyed(function () {});
