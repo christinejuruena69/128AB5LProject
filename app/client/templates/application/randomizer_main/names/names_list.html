@@ -1,5 +1,8 @@
 <template name="NamesList">
-    <div class="names">
+    <div id="studentTable">
+            {{> reactiveTable collection=this.students settings=tableSettings}}
+    </div>
+    <!-- <div class="names">
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -35,5 +38,5 @@
         </table>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>

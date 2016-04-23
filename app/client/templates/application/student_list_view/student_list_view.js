@@ -130,7 +130,7 @@ Template.StudentListView.helpers({
                     { key: 'isBlackListed', label: 'Blacklisted'}
                 ]
             };
-        }
+    }
 });
 
 /*****************************************************************************/

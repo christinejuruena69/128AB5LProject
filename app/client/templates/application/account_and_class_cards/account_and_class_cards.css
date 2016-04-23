@@ -39,8 +39,8 @@ div.account-and-classcards div.card {
 }
 
 div.account-and-classcards div.account-and-classcards:hover {
-    background-color: #006551;
-    color: #e1e1e1;
+    /*background-color: #006551;*/
+    /*color: #e1e1e1;*/
 }
 
 @-webkit-keyframes shakeit {
