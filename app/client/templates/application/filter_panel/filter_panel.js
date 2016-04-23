@@ -3,7 +3,56 @@
 /*****************************************************************************/
 import jsonQuery from 'json-query';
 Template.filterPanel.events({
+    'click .male-sex': function() {    
+        $('.filtered-attributes-sex').html("Sex: Male");
+    },
 
+    'click .female-sex': function() {    
+        $('.filtered-attributes-sex').html("Sex: Female");
+    },
+
+    'click .batch10': function() {    
+        $('.filtered-attributes-batch').html("Batch: 2010");
+    },
+
+    'click .batch11': function() {    
+        $('.filtered-attributes-batch').html("Batch: 2011");
+    },
+
+    'click .batch12': function() {    
+        $('.filtered-attributes-batch').html("Batch: 2012");
+    },
+
+    'click .batch13': function() {    
+        $('.filtered-attributes-batch').html("Batch: 2013");
+    },
+
+    'click .batch14': function() {    
+        $('.filtered-attributes-batch').html("Batch: 2014");
+    },
+
+    'click .batch15': function() {    
+        $('.filtered-attributes-batch').html("Batch: 2015");
+    },
+
+    'click .batch-others': function() {    
+        $('.filtered-attributes-batch').html("Batch: Others");
+    },
+
+    'click .select-by-dropdown': function() {
+        var dropdownValue = $( ".select-by-dropdown" ).val();
+        if(dropdownValue == "Sex"){
+            $('.sex-choices').show();
+            $('.batch-choices').hide();
+        }else if(dropdownValue == "Batch"){
+            $('.sex-choices').hide();
+            $('.batch-choices').show();
+        }else{
+            $('.sex-choices').hide();
+            $('.batch-choices').hide();
+        }
+    },   
+    
     'click #Randomize': function(){
         var array = this.students;
         var randomIndex = Math.floor( Math.random() * array.length );
@@ -11,6 +60,7 @@ Template.filterPanel.events({
 
         console.log(element.fullname);
     },
+
 
 	'click #selectAll': function (){
 		var checkboxes = $('.labSection');
@@ -147,6 +197,7 @@ Template.filterPanel.events({
 		var x = event.target.value;
 		Session.set("nStudent", x);
 	}
+
 });
 /*****************************************************************************/
 /* Home: Helpers */

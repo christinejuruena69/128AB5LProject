@@ -17,7 +17,8 @@ Schema.StudentSchema = new SimpleSchema({
         optional: true
     },
     nickname: {
-        type: String
+        type: String,
+        optional: true
     },
     birthday: {
         type: Date, //Can be converted to date
@@ -98,7 +99,8 @@ Meteor.methods({
             return {
                 _id: classId
             };
-        } else {
+        }
+        else {
             throw new Meteor.Error(404, 'Not Found');
             return notify('Lecturer does not exist');
         }
