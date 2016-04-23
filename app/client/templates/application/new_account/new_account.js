@@ -1,9 +1,8 @@
 /*****************************************************************************/
-/* RegisterForm: Event Handlers */
+/* NewAccount: Event Handlers */
 /*****************************************************************************/
-Template.RegisterForm.events({
+Template.NewAccount.events({
     'submit form': function (event, template) {
-        console.log('Submitted');
         event.preventDefault();
         // Stop html from going to action
 
@@ -18,14 +17,17 @@ Template.RegisterForm.events({
 
         function isValidPassword (pwd, pwd2) {
             if (pwd === pwd2) {
+                if(pwd.length < 6) {
+                    notify('Password too short!', 'bad');
+                }
                 return pwd.length >= 6 ? true : false;
             } else {
+                notify('Password does not match', 'bad');
                 return false;
             }
         }
 
         if(isValidPassword(password, password2)) {
-            // note this is es6 JSON notation
             Accounts.createUser({
                 username,
                 password,
@@ -34,35 +36,33 @@ Template.RegisterForm.events({
                 fullName
             }, function (err) {
                 if (err) {
-                    return console.log(err.reason);
+                    if(err.reason === "Login forbidden") {
+                        return notify('Created account ' + username + ' successfully', 'good');
+                    }
+                    return notify(err.reason, 'bad');
                 }
-                console.log('success!');
-                // Redirect user to index page
-                Router.go('/');
             });
-        }
-        else {
-            // Invalid password case
-            console.log('Password error!');
+            event.target['username'].value = "";
+            event.target['Name'].value = "";
+            event.target['Account-Type'].value = "";
+            event.target['password1'].value = "";
+            event.target['password2'].value = "";
+            event.target['email'].value = "";
+
+            $("#admin-modal").modal('hide');
         }
 
-        return false;
-    },
-    'click #cancel': function (event, template) {
-        event.preventDefault();
-        console.log('clicked cancel');
-        Router.go('/');
         return false;
     }
 });
 
 /*****************************************************************************/
-/* RegisterForm: Helpers */
+/* NewAccount: Helpers */
 /*****************************************************************************/
-Template.RegisterForm.helpers({});
+Template.NewAccount.helpers({});
 /*****************************************************************************/
-/* RegisterForm: Lifecycle Hooks */
+/* NewAccount: Lifecycle Hooks */
 /*****************************************************************************/
-Template.RegisterForm.onCreated(function () {});
-Template.RegisterForm.onRendered(function () {});
-Template.RegisterForm.onDestroyed(function () {});
+Template.NewAccount.onCreated(function () {});
+Template.NewAccount.onRendered(function () {});
+Template.NewAccount.onDestroyed(function () {});

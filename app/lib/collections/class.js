@@ -9,21 +9,24 @@ Schema.StudentSchema = new SimpleSchema({
         type: String
     },
     studentNumber: {
-        type: String
+        type: String,
+        regEx: /^[0-9]{4}-[0-9]{5}$/
     },
     image: {
         type: String,
         optional: true
     },
     nickname: {
-        type: String
+        type: String,
+        optional: true
     },
     birthday: {
         type: Date, //Can be converted to date
         optional: true
     },
     section: {
-        type: String
+        type: String,
+        regEx: /\d-L/
     },
     points: {
         type: Number,
@@ -55,8 +58,7 @@ Schema.ClassSchema = new SimpleSchema({
         type: String
     },
     students: {
-        type: [Schema.StudentSchema],
-        minCount: 1
+        type: [Schema.StudentSchema]
     }
 
 });
@@ -66,11 +68,17 @@ Class.attachSchema(Schema.ClassSchema);
 Meteor.methods({
     'Admin/AddClass': function(classAttributes) {
 
-        var id = Meteor.userId();
+        var loggedInUser = Meteor.user(); //id = Meteor.userId();
 
-        if( id === null){
+        // If user is not logged in
+        if (loggedInUser._id === null) {
             throw new Meteor.Error(403, 'Forbidden');
-            return ;
+            return notify('You must log in', 'bad');
+        }
+        // If user is logged in but is not an admin
+        if (loggedInUser.profile.type !== 'Admin') {
+            throw new Meteor.Error(403, 'Forbidden');
+            return notify('Forbidden', 'bad');
         }
 
         check(classAttributes, {
@@ -81,114 +89,96 @@ Meteor.methods({
             students: [Schema.StudentSchema]
         });
 
-        // get currently logged in user and lecturer
-        var loggedInUser = Meteor.user(),
-            lecturer1 = Meteor.users.findOne({
-                '_id': classAttributes.lecturer
-            });        
+        var lecturer1 = Meteor.users.findOne({
+            '_id': classAttributes.lecturer
+        });
 
         // if lecturer is in the database
-        if( lecturer1._id === classAttributes.lecturer ){
-
-            // if currently logged in user is an admin
-            if( loggedInUser.profile.type === 'Admin' ){
-                
-                var classId = Class.insert(classAttributes);
-
-                return {
-                    _id: classId
-                };
-            }
-            else {
-                throw new Meteor.Error(403, 'Forbidden');
-            }
+        if (lecturer1._id === classAttributes.lecturer) {
+            var classId = Class.insert(classAttributes);
+            return {
+                _id: classId
+            };
         }
         else {
             throw new Meteor.Error(404, 'Not Found');
+            return notify('Lecturer does not exist');
         }
     },
 
-    'User/editClass': function (classToEdit) {
+    'User/editClass': function(classToEdit) {
         //Contains two arguments: the ID of the class to edit and the details to update the class with
         var id = Meteor.userId();
-        if(id === null){
+        if (id === null) {
             throw new Meteor.Error(403, 'Forbidden');
             return;
         }
-        Class.update({'lecturer' : Meteor.userId(), _id : classToEdit._id}, {$set:classToEdit});
+        Class.update({ 'lecturer': Meteor.userId(), _id: classToEdit._id }, { $set: classToEdit });
     },
 
-    'deleteStudent': function(studentNumber, lecturer, classId){
-        
+    'deleteStudent': function(studentNumber, lecturer, classId) {
+
         var id = Meteor.userId();
 
         //check if a user is loggedin
-        if( id === null){
+        if (id === null) {
             throw new Meteor.Error(403, 'Forbidden');
-            return ;
+            return;
         }
-        
+
         var loggedInUser = Meteor.user(),
             student = Class.findOne({
                 '_id': classId,
-                'students':{
-                    $elemMatch:{
+                'students': {
+                    $elemMatch: {
                         'studentNumber': studentNumber
                     }
-                }                    
+                }
             });
-   
+
         //check if current user is the lecturer of the class
-        if( loggedInUser._id === lecturer ){
+        if (loggedInUser._id === lecturer) {
 
             //checks if student is in the class list
-            if(student._id === classId){
-                Class.update(
-                    {'_id' : classId}, 
-                    {$pull: 
-                        { students: 
-                            { studentNumber: studentNumber} 
-                        } 
-                    });
-            }
-            else {
+            if (student._id === classId) {
+                Class.update({ '_id': classId }, {
+                    $pull: {
+                        students: { studentNumber: studentNumber }
+                    }
+                });
+            } else {
                 throw new Meteor.Error(404, 'Not Found');
             }
-        }
-        else {
+        } else {
             throw new Meteor.Error(403, 'Forbidden');
         }
     },
 
-    'addStudent': function(student, classId){
+    'addStudent': function(student, classId) {
         var id = Meteor.userId();
 
-        if( id === null ){
+        if (id === null) {
             throw new Meteor.Error(403, 'Forbidden');
-            return ;
+            return;
         }
-        
+
         check(student, Schema.StudentSchema);
 
-        
-        
+
+
         var loggedInUser = Meteor.user(),
             classId1 = Class.findOne({
-                '_id': classId               
+                '_id': classId
             });
 
-        //check if the class lecturer is the current user and if the current user is of Teacher type    
-        if( loggedInUser._id === classId1.lecturer && loggedInUser.profile.type === 'Teacher'){
-            Class.update(
-                { '_id': classId },
-                { $push:
-                    {
-                        'students': student
-                    }
+        //check if the class lecturer is the current user and if the current user is of Teacher type
+        if (loggedInUser._id === classId1.lecturer && loggedInUser.profile.type === 'Teacher') {
+            Class.update({ '_id': classId }, {
+                $push: {
+                    'students': student
                 }
-            );
-        }
-        else {
+            });
+        } else {
             throw new Meteor.Error(403, 'Forbidden');
         }
     }
@@ -197,51 +187,47 @@ Meteor.methods({
 if (Meteor.isServer) {
 
     Class.allow({
-        insert: function (userId, doc) {
+        insert: function(userId, doc) {
             var user = Meteor.users.findOne({ _id: userId });
-            if( user.profile.type === 'Admin'){
+            if (user.profile.type === 'Admin') {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         },
-        update: function (userId, doc, fieldNames, modifier) {
+        update: function(userId, doc, fieldNames, modifier) {
             var user = Meteor.users.findOne({ _id: userId });
-            
-            if( user.profile.type === 'Teacher' ){
+
+            if (user.profile.type === 'Teacher') {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         },
-        remove: function (userId, doc) {
+        remove: function(userId, doc) {
             return false;
         }
     });
 
     Class.deny({
-        insert: function (userId, doc) {
-            var user = Meteor.users.find({_id: userId});
-            if( user.profile.type === 'Admin'){
+        insert: function(userId, doc) {
+            var user = Meteor.users.find({ _id: userId });
+            if (user.profile.type === 'Admin') {
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
         },
-        update: function (userId, doc, fieldNames, modifier) {
+        update: function(userId, doc, fieldNames, modifier) {
             var user = Meteor.users.findOne({ _id: userId });
-            
-            if( user.profile.type === 'Teacher' ){
+
+            if (user.profile.type === 'Teacher') {
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
         },
-        remove: function (userId, doc) {
+        remove: function(userId, doc) {
             return true;
         }
     });

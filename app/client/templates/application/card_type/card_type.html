@@ -1,16 +1,13 @@
 <template name="CardType">
     <div class="account-body-header">
         {{#if currentUser}}
-        <h4  class="accntype">{{ dataType }}</h4>
+            <h4  class="accntype">{{ dataType }}</h4>
         {{/if}}
 
         <div class="icon-divs">
             {{#if currentUser}}
                 {{#if isAdmin }}
-                
-
                     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#admin-modal">
-                    <!-- <button type="button" class="btn btn-link" > -->
                     <span class="glyphicon glyphicon-plus" ></span>
                     </button>
                 {{/if}}
@@ -27,12 +24,7 @@
     <div class="modal fade" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content admin">
-                <!-- {{#if currentUser}}
-                    {{> DynamicTemplate template=getTemplate}}
-                {{/if}} -->
-                {{> AdminModal}}
-                
-                
+                {{> NewAccount}}
             </div>
         </div>
     </div>

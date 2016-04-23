@@ -3,9 +3,7 @@
 /*****************************************************************************/
 Template.EditClass.events({
     'submit form': function (e, template) {
-        console.log('Submitted');
         event.preventDefault();
-        // Stop html from going to action
 
         //Get form data
         var editedClass = {
@@ -17,13 +15,18 @@ Template.EditClass.events({
 
         Meteor.call('User/editClass', editedClass, function(error, result){
 
-            // alert if error
             if(error){
+                notify(error.reason, 'bad');
                 return throwError(error.reason);
             }
 
-            // re-route to home if success
-            Router.go('/');
+            var successNotif = 'Successfully edited '
+                + editedClass.courseCode + ': '
+                + editedClass.courseTitle;
+
+            notify(successNotif, 'good');
+
+            $('#admin-modal-editclass-' + editedClass._id).modal('hide');
         });
     }
 });
@@ -32,8 +35,8 @@ Template.EditClass.events({
 /* EditClass: Helpers */
 /*****************************************************************************/
 Template.EditClass.helpers({
-    class: function() {
-        return Class.findOne({ userId: Meteor.userId() });
+    currentClass: function() {
+        return Class.findOne({ _id: Template.data._id });
     }
 });
 

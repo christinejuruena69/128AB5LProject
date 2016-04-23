@@ -1,61 +1,36 @@
-#filterPanel{
-		float: left;
-		border: 1px solid black;
-		/*margin-top: 200px;*/
-		z-index: 1000px;
-		width: 300px;
-		height: 600px; 
-	}
+div#filter-tab {
+    height: 100%;
+    background-color: #8fa6b1;
+}
 
-	#numberOfStudents{
-		float: left;
-		width: 50%;
-	}
-	#isGroup{
-		float: right;
-		width: 50%;
-	}
-	
-	#input-number{
-		width: 40px;
-		margin-left: 20px;
-	}
 
-	#input-number-of-volunteers{
-		width: 40px;
-		margin-left: 20px;
-	}
-	
-	#input-number-of-members{
-		width: 40px;
-		margin-left: 20px;
-	}
-	
-	#numberOfVolunteers{
-		margin-top: 30px;
-		margin-bottom: 20px;
-		margin-left: -30px;
-		text-align: center;
-	}
-	
-	#numberOfMembers{
-		margin-top: 30px;
-		margin-bottom: 20px;
-		margin-left: -30px;
-		text-align: center;
-	}
-	
-	#sections{
-		border: 1px solid black;
-		width: 275px;
-		height: 100px;
-		margin-left: 10px;
-	}
-	
-	#labSections{
-		margin-left: 53px;
-	}
-	
-	#Randomize{
-		text-align: center;
-	}
+li#filter-li {
+    background-color: #8fa6b1;
+    width: 50%;
+}
+
+div#select-no {
+    background-color: white;
+    height: 100%;
+    width: 92%;
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+    border: 1px;
+    border-radius: 5px;
+
+} 
+
+div#by-section, div#select-by, div#bias-blacklist,
+div#select-bu-content, div#select-by-sex, div#select-by-batch {
+    background-color: white;
+    height: 100%;
+    width: 92%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px;
+    border-radius: 5px;
+}
+
+select#select-by-dropdown {
+    height: 30px;
+}

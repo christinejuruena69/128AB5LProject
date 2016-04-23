@@ -15,11 +15,11 @@ Router.route('/login', {
     where: 'client'
 });
 
-Router.route('/register', {
-    name: 'RegisterForm',
-    controller: 'IndexController',
-    where: 'client'
-});
+// Router.route('/register', {
+//     name: 'RegisterForm',
+//     controller: 'IndexController',
+//     where: 'client'
+// });
 
 Router.route('/home', {
     name: 'Home',
@@ -82,7 +82,7 @@ Router.route('/403', {
 //
 Router.route('/randomizer/:_id', {
     name: 'RandomizerWindow',
-    layoutTemplate: 'MasterLayout',    
+    layoutTemplate: 'MasterLayout',
     template: 'RandomizerWindow',
     controller: 'HomeController',
     where: 'client',
@@ -105,7 +105,7 @@ Router.route('/randomizer/:_id', {
 
 Router.route('/studentListView/:_id', {
     name: 'StudentListView',
-    layoutTemplate: 'MasterLayout',    
+    layoutTemplate: 'MasterLayout',
     template: 'StudentListView',
     controller: 'HomeController',
     where: 'client',
@@ -143,7 +143,7 @@ Router.route('/studentListView/:_id', {
 Router.route('/profile/:_id', {
     // TODO: Add a layout template
     name: 'ViewTeacherAccount',
-    layoutTemplate: 'MasterLayout',        
+    layoutTemplate: 'MasterLayout',
     controller: 'HomeController',
     where: 'client',
     waitOn: function() {
@@ -157,4 +157,3 @@ Router.route('/profile/:_id', {
 });
 
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
-
