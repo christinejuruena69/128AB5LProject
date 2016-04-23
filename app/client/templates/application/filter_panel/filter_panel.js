@@ -197,6 +197,167 @@ Template.filterPanel.events({
 		Session.set("nStudent", x);
 	},
 	
+	'change #2010' : function(){
+		var state = event.target.checked;
+		Session.set("2010", state);
+		var data = this.students;
+		var contains;
+		var current=[];
+		
+		for (var i=0; i<data.length; i++){
+			contains = data[i].studentNumber.indexOf("2010");
+			if (contains == 0){
+				current.push(data[i]);
+			}
+		}
+		
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
+	},
+	
+	'change #2011' : function(){
+		var state = event.target.checked;
+		Session.set("2011", state);
+		var data = this.students;
+		var contains;
+		var current=[];
+		
+		for (var i=0; i<data.length; i++){
+			contains = data[i].studentNumber.indexOf("2011");
+			if (contains == 0){
+				current.push(data[i]);
+			}
+		}
+		
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
+	},
+	
+	'change #2012' : function(){
+		var state = event.target.checked;
+		Session.set("2012", state);
+		var data = this.students;
+		var contains;
+		var current=[];
+		
+		for (var i=0; i<data.length; i++){
+			contains = data[i].studentNumber.indexOf("2012");
+			if (contains == 0){
+				current.push(data[i]);
+			}
+		}
+		
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
+	},
+	
+	'change #2013' : function(){
+		var state = event.target.checked;
+		Session.set("2013", state);
+		var data = this.students;
+		var contains;
+		var current=[];
+		
+		for (var i=0; i<data.length; i++){
+			contains = data[i].studentNumber.indexOf("2013");
+			if (contains == 0){
+				current.push(data[i]);
+			}
+		}
+		
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
+	},
+	
+	'change #2014' : function(){
+		var state = event.target.checked;
+		Session.set("2014", state);
+		var data = this.students;
+		var contains;
+		var current=[];
+		
+		for (var i=0; i<data.length; i++){
+			contains = data[i].studentNumber.indexOf("2014");
+			if (contains == 0){
+				current.push(data[i]);
+			}
+		}
+		
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
+	},
+	
+	'change #2015' : function(){
+		var state = event.target.checked;
+		Session.set("2015", state);
+		var data = this.students;
+		var contains;
+		var current=[];
+		
+		for (var i=0; i<data.length; i++){
+			contains = data[i].studentNumber.indexOf("2015");
+			if (contains == 0){
+				current.push(data[i]);
+			}
+		}
+		
+		if (state){
+			for (var i = 0; i < current.length; i++) {
+				if (!filterList.findOne(current[i])) {
+					filterList.insert(current[i]);
+				}
+			}
+		} else {
+			for (var i = 0; i < current.length; i++) {
+				filterList.remove(current[i]);
+			}
+		}
+	}
 	
 
 });
