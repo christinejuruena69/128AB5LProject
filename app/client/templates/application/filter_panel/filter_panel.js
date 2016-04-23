@@ -86,6 +86,16 @@ Template.filterPanel.events({
 	'change #section1l' : function(){
 		var state = event.target.checked;
 		Session.set("section1l", state);
+		
+		/* Code block to make this filter draw from the results in the adjacent table ONLY and not from the whole classlist
+		var data;
+		var count = filterList._collection.find().fetch();
+		if (count.length==0){ //filterList is currently empty
+			data = this.students;
+		} else {
+			data = filterList._collection.find().fetch();
+		}
+		*/
 		var data = this.students;
 		current = jsonQuery(['[*section=?]', '1-L'], {data:data}).value;
 		if (state){
