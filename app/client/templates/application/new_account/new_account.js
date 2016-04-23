@@ -48,9 +48,10 @@ Template.NewAccount.events({
             event.target['password1'].value = "";
             event.target['password2'].value = "";
             event.target['email'].value = "";
+
             $("#admin-modal").modal('hide');
         }
-        
+
         return false;
     }
 });
@@ -65,4 +66,3 @@ Template.NewAccount.helpers({});
 Template.NewAccount.onCreated(function () {});
 Template.NewAccount.onRendered(function () {});
 Template.NewAccount.onDestroyed(function () {});
-

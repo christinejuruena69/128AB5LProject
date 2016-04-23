@@ -1,7 +1,8 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.ClassCard.events({});
+Template.ClassCard.events({
+});
 
 /*****************************************************************************/
 /* Home: Helpers */
@@ -9,6 +10,9 @@ Template.ClassCard.events({});
 Template.ClassCard.helpers({
     studentCount: function() {
         return this.studens.length;
+    },
+    class: function() {
+        return Class.findOne({ userId: Meteor.userId() });
     }
 });
 
