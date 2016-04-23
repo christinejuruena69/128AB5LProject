@@ -121,7 +121,8 @@ Template.StudentListView.helpers({
     tableSettings : function() {
             return {
                 fields: [
-                    { key: 'fullname', label: 'Name', tmpl: Template.StudentCard},
+                    { key: 'pic', label: 'picture', tmpl: Template.StudentCard},
+                    { key: 'fullname', label: 'Name'},
                     { key: 'studentNumber', label: 'studentNumber'},
                     { key: 'section', label: 'Section'},
                     { key: 'points', label: 'Points'},
