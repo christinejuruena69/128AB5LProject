@@ -31,6 +31,36 @@ Template.filterPanel.events({
 			  }
 			return;
 		}
+	},
+	
+	'change #section1l' : function(){
+		var x = event.target.checked;
+		Session.set("section1l", x);
+	},
+	
+	'change #section2l' : function(){
+		var x = event.target.checked;
+		Session.set("section2l", x);
+	},
+	
+	'change #section3l' : function(){
+		var x = event.target.checked;
+		Session.set("section3l", x);
+	},
+	
+	'change #section4l' : function(){
+		var x = event.target.checked;
+		Session.set("section4l", x);
+	},
+	
+	'change #section5l' : function(){
+		var x = event.target.checked;
+		Session.set("section5l", x);
+	},
+	
+	'change #section6l' : function(){
+		var x = event.target.checked;
+		Session.set("section6l", x);
 	}
 });
 /*****************************************************************************/
@@ -41,5 +71,12 @@ Template.filterPanel.helpers({});
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.filterPanel.onCreated(function () {});
-Template.filterPanel.onRendered(function () {});
+Template.filterPanel.onRendered(function () {
+	Session.set("section1l", false);
+	Session.set("section2l", false);
+	Session.set("section3l", false);
+	Session.set("section4l", false);
+	Session.set("section5l", false);
+	Session.set("section6l", false);
+});
 Template.filterPanel.onDestroyed(function () {});
