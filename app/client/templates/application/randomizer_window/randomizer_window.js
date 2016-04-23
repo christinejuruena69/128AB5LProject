@@ -6,11 +6,47 @@ Template.RandomizerWindow.events({
     
     
     'click #randomizer-button' : function(){
+        var result=[];
+        var current;
         var data = this.students;
-        console.log(data[0]);
-        console.log(jsonQuery('[nickname=Doris].studentNumber', {data: data}));
-       
+        var sectionName = "7-L";
+        console.log(data);
+        var shit = jsonQuery(['[*section=?].fullname', sectionName], {data:data}).value;
+        console.log(shit);
         
+        
+        //Filter by sections
+        if (Session.get("section1l")){
+            current = jsonQuery(['[*section=?]', '1-L'], {data:data}).value;
+            result = result.concat(current);
+        }
+        
+        if (Session.get("section2l")){
+            current = jsonQuery(['[*section=?]', '2-L'], {data:data}).value;
+            result = result.concat(current);
+        }
+        
+        if (Session.get("section3l")){
+            current = jsonQuery(['[*section=?]', '3-L'], {data:data}).value;
+            result = result.concat(current);
+        }
+        
+        if (Session.get("section4l")){
+            current = jsonQuery(['[*section=?]', '4-L'], {data:data}).value;
+            result = result.concat(current);
+        }
+        
+        if (Session.get("section5l")){
+            current = jsonQuery(['[*section=?]', '5-L'], {data:data}).value;
+            result = result.concat(current);
+        }
+        
+        if (Session.get("section6l")){
+            current = jsonQuery(['[*section=?]', '6-L'], {data:data}).value;
+            result = result.concat(current);
+        }
+        console.log(result);
+        Session.set("list", result);
     }
 });
 /*****************************************************************************/
