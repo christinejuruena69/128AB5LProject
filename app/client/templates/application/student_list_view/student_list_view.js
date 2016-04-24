@@ -82,6 +82,7 @@ Template.StudentListView.events({
                 return throwError(error.reason);
             }
         });
+        notify('Changes saved!', 'good');
     },
 
     'click button#deleteStudent': function() {
@@ -101,7 +102,7 @@ Template.StudentListView.events({
                 });
             };
         }
-
+        notify('Student deleted!', 'good');
         $('#editModal').modal('hide');
     },
 
