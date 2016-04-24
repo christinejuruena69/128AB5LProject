@@ -2,8 +2,7 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.AdminModal.events({
-    'submit form': function(e) {
-
+    'submit form': function(e, template) {
         e.preventDefault();
 
         var class1 = {},
@@ -40,7 +39,9 @@ Template.AdminModal.events({
         class1.lecturer = lecturer;
         class1.students = [];
 
-        Meteor.call('Admin/AddClass', class1, function(error, result) {
+        var class2;
+
+        class2 = Meteor.call('Admin/AddClass', class1, function(error, result) {
 
             // if error, display error
             if (error) {
@@ -55,7 +56,29 @@ Template.AdminModal.events({
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
 
+            // clear form fields
+            template.find('form').reset();
         });
+
+        console.log(class2._id);
+
+        if (e.target.files[0] !== null) {
+            template.uploading.set(true);
+
+            Papa.parse(e.target.files[0], {
+                header: true,
+                complete(results, file) {
+                    Meteor.call('parseUpload', results.data, (error, response) => {
+                        if (error) {
+                            console.log(error.reason);
+                        } else {
+                            template.uploading.set(false);
+                            Bert.alert('Upload complete!', 'success', 'growl-top-right');
+                        }
+                    });
+                }
+            });
+        }
     }
 });
 
@@ -78,13 +101,18 @@ Template.AdminModal.helpers({
         }
 
         return years;
+    },
+    uploading: function() {
+        return Template.instance().uploading.get();
     }
 });
 
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.AdminModal.onCreated(function() {});
+Template.AdminModal.onCreated(function() {
+    Template.instance().uploading = new ReactiveVar(false);
+});
 
 Template.AdminModal.onRendered(function() {});
 
