@@ -21,7 +21,7 @@ div#select-no {
 } 
 
 div#by-section, div#select-by, div#bias-blacklist,
-div#select-bu-content, div#select-by-sex, div#select-by-batch {
+div#select-bu-content, div#select-by-sex, div#select-by-batch{
     background-color: white;
     height: 100%;
     width: 92%;
@@ -31,6 +31,15 @@ div#select-bu-content, div#select-by-sex, div#select-by-batch {
     border-radius: 5px;
 }
 
-select#select-by-dropdown {
+.sex-choices {
+    display: none;
+}
+
+.batch-choices {
+    display: none;
+}
+
+select.select-by-dropdown {
     height: 30px;
 }
+
