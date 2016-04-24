@@ -65,6 +65,23 @@ Schema.ClassSchema = new SimpleSchema({
 Class.attachSchema(Schema.ClassSchema);
 
 Meteor.methods({
+    parseUpload: function(data) {
+        check(data, Array);
+        var finalArray = [],
+            exists = Class.find({ '_id': data.classId });
+
+        for (let i = 0; i < data.length; i++) {
+            var bday = new Date(data[i].birthday);
+            data[i].birthday = bday;
+            finalArray.push(data[i]);
+        }
+
+        if (exists) {
+            Class.update(exists._id, { $set: { students: finalArray } });            
+        } else {
+            notify('Cannot add students');
+        }
+    },
     'Admin/AddClass': function(classAttributes) {
 
         var loggedInUser = Meteor.user(); //id = Meteor.userId();
