@@ -1,107 +1,50 @@
 <template name="AdminModal">
-<!-- <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="myModalLabel">Add user</h4>
-</div>
-<div class="modal-body">
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="name">Name</label>
-        <span class="">
-            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md">
-            
-        </span>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add subject</h4>
     </div>
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="email">Username</label>
-        <span class="">
-            <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
-            
-        </span>
-    </div>
-    <div class="form-group" id="emails">
-        <label class="col-md-4 control-label" for="phone">Email </label>
-        <button type="button" class="btn btn-link" id="add-email">
-        <span class="glyphicon glyphicon-plus"></span>
-        </button>
-        <span class="">
-            <input  type="email" id="emailadd" name="emailadd" placeholder="Email address" class="form-control input-md email-adress">
-        </span>
-        
-    </div>
-    <div class="form-group" id="user-type-div">
-        <label class="col-md-4 control-label" for="email">User type</label>
-        <br />
-        <div class="radio">
-            <label><input type="radio" name="usertype">Admin</label>
-            <label><input type="radio" name="usertype">Teacher</label>
-        </div>
-    </div>
-</div>
--->
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="myModalLabel">Add subject</h4>
-</div>
-<div class="modal-body">
+    <div class="modal-body">
         <h1>Add Class</h1>
         <form class="add class form">
             <!-- form portion for course information -->
+            <!-- course title -->
             <div class="form-group">
                 <label class="control-label" for="courseTitle">Course Title</label>
                 <div class="controls">
                     <input name="courseTitle" id="courseTitle" type="text" value="" placeholder="Course Title" class="form-control" />
                 </div>
             </div>
+            <!-- course code -->
             <div class="form-group">
                 <label class="control-label" for="courseCode">Course Code</label>
                 <div class="controls">
                     <input name="courseCode" id="courseCode" type="text" value="" placeholder="Course Code" class="form-control" />
                 </div>
             </div>
+            <!-- semester -->
             <div class="form-group">
                 <label class="control-label" for="semester">Semester</label>
-                <div class="controls">
-                    <input name="semester" id="semester" type="text" value="" placeholder="Semester" class="form-control" />
-                </div>
+                <select class="form-control" id="semester" name="semester">
+                    <option value="1st Sem">1st Sem</option>
+                    <option value="2nd Sem">2nd Sem</option>
+                    <option value="Mid-year">Mid-year</option>
+                </select>
             </div>
-                    <input name="lecturer" id="lecturer" type="hidden" value="{{ _id }}" placeholder="Lecturer" class="form-control" />
-            <!-- form portion for students -->
+            <!-- academic year -->
             <div class="form-group">
-                <label class="control-label" for="fullname">Full name</label>
-                <div class="controls">
-                    <input name="fullname" id="fullname" type="text" value="" placeholder="Full name" class="form-control" />
-                </div>
+                <label class="control-label" for="academicYear">Academic Year</label>
+                <select class="form-control" id="academicYear" name="academicYear">
+                    {{#each displayYear}}
+                        <option value="{{this.minYear}} - {{this.maxYear}}">{{this.minYear}} - {{this.maxYear}}</option>
+                    {{/each}}
+                </select>
             </div>
-            <div class="form-group">
-                <label class="control-label" for="studentNumber">Student Number</label>
-                <div class="controls">
-                    <input name="studentNumber" id="studentNumber" type="text" value="" placeholder="Student Number" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="nickname">Nickname</label>
-                <div class="controls">
-                    <input name="nickname" id="nickname" type="text" value="" placeholder="Nickname" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="birthday">Birthday</label>
-                <div class="controls">
-                    <input name="birthday" id="birthday" type="date" value="" placeholder="Birthday" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="section">Section</label>
-                <div class="controls">
-                    <input name="section" id="section" type="text" value="" placeholder="Section" class="form-control" />
-                </div>
-            </div>
+            <!-- lecturer -->
+            <input name="lecturer" id="lecturer" type="hidden" value="{{ _id }}" placeholder="Lecturer" class="form-control" />
             <input type="submit" value="Add Class" class="btn btn-primary" />
         </form>
-    
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <!-- <button type="submit" class="btn btn-primary">Add Class</button> -->
-</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
 </template>

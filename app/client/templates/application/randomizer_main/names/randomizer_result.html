@@ -7,32 +7,7 @@
                         Randomizer Result:
                     </h4>
                 </div>
-                <table class="table table-fixed" id="randomizer-result-table">
-                    <thead>
-                        <tr>
-                            <th width="19%">Name</th>
-                            <th width="15%"> Nickname</th>
-                            <th width="15%">Student Number</th>
-                            <th width="15%">Section</th>
-                            <th width="15%">Points</th>
-                            <th width="10%">Bias</th>
-                            <th width="10%">Blacklist</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each results}}
-                            <tr>
-                                <td width="20%">{{ results}}</td>
-                                <td width="15%">Nickname</td>
-                                <td width="15%">Student Number</td>
-                                <td width="15%">Section</td>
-                                <td width="15%">Points</td>
-                                <td width="10%">Bias</td>
-                                <td width="10%">Blacklist</td>
-                            </tr>
-                        {{/each}}
-                    </tbody>
-                </table>       
+                {{> reactiveTable collection=randomList settings=tableSettings}}      
             </div>
         </div>
     </div>

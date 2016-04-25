@@ -1,4 +1,5 @@
 <template name="filterPanel">
+
 	<!--<div id="wrapper">
         <div id="sidebar-wrapper">-->
 		    <div id="filter-tab">
@@ -9,20 +10,20 @@
 				<div class="tab-content">
 		  			<div id="n-volunteers" class="tab-pane fade in active">
 			    		<div id="select-no">
-			    			<h5>Number of students: <input type="number" name="quantity" min="1" max="100"></h5>
+			    			<h5>Number of students: <input type="number" name="quantity" min="1" max="100" id="nStudent"></h5>
 			    		</div>
 		    			<div id="by-section">
 		    				<h5>Sections: <label class="radio-inline"><input type="radio" name="optradio" id="selectAll">Select All</label>
 		    				<label class="radio-inline"><input type="radio" name="optradio" id="custom">Custom</label></h5>
 		    				<hr>
-		    				<label class="checkbox-inline"><input type="checkbox" value="">1L</label>
-							<label class="checkbox-inline"><input type="checkbox" value="">4L</label>
+		    				<label class="checkbox-inline"><input type="checkbox" value="" id="section1l" class="labSection">1-L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" id="section4l" class="labSection">4-L</label>
 							<br>
-							<label class="checkbox-inline"><input type="checkbox" value="">2L</label>
-							<label class="checkbox-inline"><input type="checkbox" value="">5L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" id="section2l" class="labSection">2-L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" id="section5l" class="labSection">5-L</label>
 							<br>
-							<label class="checkbox-inline"><input type="checkbox" value="">3L</label>
-							<label class="checkbox-inline"><input type="checkbox" value="">6L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" id="section3l" class="labSection">3-L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" id="section6l" class="labSection">6-L</label>
 		    			</div>
 		    			<div id="select-by">
 		    				<h5>Select by:
@@ -34,17 +35,16 @@
 		    				<hr>
 		    				<div class="tab-content">
 		    				<div id="sex-choices">
-		    					<label class="radio-inline"><input type="radio" name="optradio">Male</label>
-		    					<label class="radio-inline"><input type="radio" name="optradio">Female</label>
+		    					<label class="radio-inline"><input type="checkbox" name="optradio" id="male">Male</label>
+		    					<label class="radio-inline"><input type="checkbox" name="optradio" id="female">Female</label>
 		    				</div>
 		    				<div id="batch-choices">
-		    					<label class="radio-inline"><input type="radio" name="optradio">2010</label>
-			    				<label class="radio-inline"><input type="radio" name="optradio">2011</label>
-			    				<label class="radio-inline"><input type="radio" name="optradio">2012</label><br>
-			    				<label class="radio-inline"><input type="radio" name="optradio">2013</label>
-			    				<label class="radio-inline"><input type="radio" name="optradio">2014</label>
-			    				<label class="radio-inline"><input type="radio" name="optradio">2015</label><br>
-			    				<label class="radio-inline"><input type="radio" name="optradio">Others</label>
+		    					<label class="radio-inline"><input type="checkbox" name="optradio" id="2010">2010</label>
+			    				<label class="radio-inline"><input type="checkbox" name="optradio" id="2011">2011</label>
+			    				<label class="radio-inline"><input type="checkbox" name="optradio" id="2012">2012</label><br>
+			    				<label class="radio-inline"><input type="checkbox" name="optradio" id="2013">2013</label>
+			    				<label class="radio-inline"><input type="checkbox" name="optradio" id="2014">2014</label>
+			    				<label class="radio-inline"><input type="checkbox" name="optradio" id="2015">2015</label><br>
 		    				</div>
 		    				</div>	
 		    				<br>
@@ -67,14 +67,14 @@
 		    				<h5>Section: <label class="radio-inline"><input type="radio" name="optradio">Select All</label>
 		    				<label class="radio-inline"><input type="radio" name="optradio">Custom</label></h5>
 		    				<hr>
-		    				<label class="checkbox-inline"><input type="checkbox" value="">1L</label>
-							<label class="checkbox-inline"><input type="checkbox" value="">4L</label>
+		    				<label class="checkbox-inline"><input type="checkbox" value="" class="labSection">1L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" class="labSection">4L</label>
 							<br>
-							<label class="checkbox-inline"><input type="checkbox" value="">2L</label>
-							<label class="checkbox-inline"><input type="checkbox" value="">5L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" class="labSection">2L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" class="labSection">5L</label>
 							<br>
-							<label class="checkbox-inline"><input type="checkbox" value="">3L</label>
-							<label class="checkbox-inline"><input type="checkbox" value="">6L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" class="labSection">3L</label>
+							<label class="checkbox-inline"><input type="checkbox" value="" class="labSection">6L</label>
 		    			</div>
 		    			<div id="select-by">
 		    				<h5>Select by:
@@ -110,6 +110,7 @@
 		    </div>
 	<!--	</div>
 	</div>	  -->  
+
 </template>    
 
 

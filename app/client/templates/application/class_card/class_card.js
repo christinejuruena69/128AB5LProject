@@ -24,6 +24,7 @@ Template.ClassCard.events({
     $('h4.students').toggleClass('text-opacity');
     $('div.classcard').toggleClass('change-background');
   }
+
 });
 
 /*****************************************************************************/
@@ -32,6 +33,9 @@ Template.ClassCard.events({
 Template.ClassCard.helpers({
     studentCount: function() {
         return this.studens.length;
+    },
+    class: function() {
+        return Class.findOne({ userId: Meteor.userId() });
     }
 });
 

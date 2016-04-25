@@ -1,35 +1,34 @@
 <template name="ClassCard">
-  <div class="row table-row">
+<div class="row table-row">
     <a href="{{pathFor route='RandomizerWindow'}}">
-    <div class="to-shake col-md-3 col-sm-3 col-xs-3">
-     <img src="/dice.png" alt="dice" class="dice center-block"/>
-    </div>
-  </a>
-        <div class="classcard col-md-9 col-sm-9 col-xs-9">
+
+        <div class="shake col-md-3 col-sm-3 col-xs-3">
+            <img src="/dice.png" alt="dice" class="dice center-block"/>
+        </div>
+    </a>
+    <div class="account-and-classcards col-md-9 col-sm-9 col-xs-9">
         <h3 id="thumbnail-label">
+            <span class="dropdown">
+                <span class="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                    <span class="glyphicon glyphicon-option-vertical pull-right"></span>
+                </span>
 
-        <span class="dropdown">
-            <span class="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                <span class="glyphicon glyphicon-option-vertical pull-right"></span>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <li id="menu"><a data-toggle="modal" data-target="#admin-modal-editclass-{{ _id }}">Edit card details</a></li>
+                    <li id="menu"><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
+                </ul>
             </span>
-
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                <li id="menu"><a href="{{ pathFor route='EditClass' }}">Edit card details</a></li>
-                <li id="menu"><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
-            </ul>
-        </span>
-
-
-        <a href="#" class="title">{{courseCode}}</a>
-
+            <a href="#" class="title">{{courseCode}}</a>
         </h3>
         <p class="course-title">
           {{courseTitle}}
         </p>
         <button type="button" class="btn btn-default btn-circle btn-lg pull-right" onclick="window.location.href='{{pathFor route='StudentListView'}}'">
-          <span class="text-center">{{ students.length }}</span>
+            <span class="text-center">{{ students.length }}</span>
         </button>
         <h4 class="students pull-right">Students</h4>
     </div>
-  </div>
+</div>
+<!-- Modal for editing class  -->
+{{> EditClass}}
 </template>
