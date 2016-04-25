@@ -156,4 +156,22 @@ Router.route('/profile/:_id', {
     }
 });
 
+Router.route('/classView/:_id', {
+    // TODO: Add a layout template
+    name: 'ClassView',
+    layoutTemplate: 'MasterLayout',
+    controller: 'HomeController',
+    where: 'client',
+    subscriptions: function() {
+        return Meteor.subscribe('oneClass', this.params._id);
+    },
+    data: function() {
+        return Class.findOne({
+            _id: this.params._id
+        });
+    }
+});
+
+
+
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
