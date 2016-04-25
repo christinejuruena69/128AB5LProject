@@ -4,7 +4,7 @@
 
 
 Template.StudentListView.events({
-    'submit form': function (e) {
+    'submit form#addStudent': function (e) {
         e.preventDefault();
 
         var birthday = new Date($(e.target).find('[name=birthday]').val()),
@@ -23,7 +23,6 @@ Template.StudentListView.events({
             classId = this._id;
         
         var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
-        var studentsChecker = 0;
 
         for( studentEntry of this.students ){
             if( studentEntry.studentNumber === student.studentNumber ){
@@ -58,25 +57,6 @@ Template.StudentListView.events({
     'click .down': function () {
         $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
     },
-    'click tr': function () {
-        var table = document.getElementById("student-table");
-        
-        if (table != null) {
-            for (var i = 0; i < table.rows.length; i++) {
-                table.rows[i].onclick = function () {
-                    tableText(this);
-                };
-            }
-        }
-
-        function tableText(tableCell) {
-            document.getElementById("modal-full-name").innerHTML = tableCell.cells[1].innerHTML;
-            document.getElementById("modal-std-no").innerHTML = tableCell.cells[0].innerHTML;
-            document.getElementById("modal-nickname").value = tableCell.cells[2].innerHTML;
-            document.getElementById("modal-section").value = tableCell.cells[3].innerHTML;
-            document.getElementById("modal-bias").value = tableCell.cells[5].innerHTML;
-        }
-    },
 
     'click .blacklisted': function() {
         if ($('.blacklisted-check').is(':checked')) {
@@ -86,30 +66,55 @@ Template.StudentListView.events({
             $('.blacklisted-check').prop("checked", true);
         }
     },
-    'click #saveEdited': function() {
+    'click button#saveEdited': function() {
         var studentNumber,
             nickname,
             section,
             bias,
             classId = this._id;
 
-        studentNumber = document.getElementById("modal-std-no").innerHTML;
-        nickname = document.getElementById("modal-nickname").value;
-        section = document.getElementById("modal-section").value;
-        bias = document.getElementById("modal-bias").value;
-
+        studentNumber = $("#modal-std-no").html();
+        nickname = $("#modal-nickname").val();
+        section = $("#modal-section").val();
+        bias = $("#modal-bias").val();
         Meteor.call('Teacher/editStudent', studentNumber, nickname, section, bias, classId, function(error, result) {
             if (error) {
                 return throwError(error.reason);
             }
         });
+        notify('Changes saved!', 'good');
+    },
+
+    'click button#deleteStudent': function() {
+        var studentNumber = document.getElementById("modal-std-no").innerHTML;
+        var lecturer = this.lecturer;
+        var classId = this._id;
+        var message = "Delete student " + studentNumber + "?";
+
+        var verificationPrompt1 = confirm(message);
+        if(verificationPrompt1 == true){
+            var verificationPrompt2 = confirm("Are you sure?");
+            if (verificationPrompt2 == true) {
+                Meteor.call('deleteStudent', studentNumber, lecturer, classId, function(error, result) {
+                    // display the error to the user and abort
+                    if (error)
+                    return alert(error.reason);
+                });
+            };
+        }
+        notify('Student deleted!', 'good');
+        $('#editModal').modal('hide');
     },
 
     'click .reactive-table tbody tr': function (event) {
         event.preventDefault();
         //Place to trigger a modal for editing or deleting currently selected student
-    
-    
+        $('#editModal').modal('show');
+        $("#modal-full-name").html(this.fullname);
+        $("#modal-std-no").html(this.studentNumber);
+        $("#modal-nickname").val(this.nickname);
+        $("#modal-section").val(this.section);
+        $("#modal-bias").val(this.bias);    
     }
 
 });
