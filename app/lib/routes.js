@@ -66,12 +66,12 @@ Router.route('/403', {
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 // @Todo: Set data context for dynamic routes
 
-// Router.route('/classview/:_id', {
-//     name: 'ViewTeacherAccount',
-//     template: 'ViewTeacherAccount',
-//     controller: 'HomeController',
-//     where: 'client'
-// });
+ // Router.route('/classview/:_id', {
+ //     name: 'MainClassView',
+ //     template: 'MainClassView',
+ //     controller: 'HomeController',
+ //     where: 'client'
+ // });
 
 // Router.route('/ViewTeacherAccount', {
 //     name: 'ViewTeacherAccount',
@@ -172,6 +172,11 @@ Router.route('/classView/:_id', {
     }
 });
 
-
-
+/*erase this if classview is okay*/
+Router.route('/classview/', {
+     name: 'MainClassView',
+     template: 'MainClassView',
+     controller: 'HomeController',
+     where: 'client'
+ });
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});

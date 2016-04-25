@@ -13,6 +13,7 @@
                         <li>{{fullname}}</li>
                     {{/each}}
                 </ul> -->
+
                 {{#if empty}}
                     {{> reactiveTable collection=this.students settings=tableSettings}}  
                 {{else}}
