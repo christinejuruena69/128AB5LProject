@@ -65,10 +65,10 @@ Schema.ClassSchema = new SimpleSchema({
 Class.attachSchema(Schema.ClassSchema);
 
 Meteor.methods({
-    parseUpload: function(data) {
+    parseUpload: function(data, classId) {
         check(data, Array);
         var finalArray = [],
-            exists = Class.find({ '_id': data.classId });
+            exists = Class.find({ '_id': classId });
 
         for (let i = 0; i < data.length; i++) {
             var bday = new Date(data[i].birthday);
@@ -77,7 +77,7 @@ Meteor.methods({
         }
 
         if (exists) {
-            Class.update(exists._id, { $set: { students: finalArray } });            
+            Class.update(exists._id, { $set: { students: finalArray } });
         } else {
             notify('Cannot add students');
         }
@@ -111,13 +111,11 @@ Meteor.methods({
 
         // if lecturer is in the database
         if (lecturer1._id === classAttributes.lecturer) {
-            var classId = Class.insert(classAttributes);
-            return {
-                _id: classId
-            };
+            return Class.insert(classAttributes);
         } else {
             throw new Meteor.Error(404, 'Not Found');
-            return notify('Lecturer does not exist');
+            notify('Lecturer does not exist');
+            return ;
         }
     },
 
