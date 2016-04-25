@@ -38,8 +38,10 @@ div.account-and-classcards div.card {
     height: 200px;
 }
 
-div.account-and-classcards div.classcard:hover {
-    background-color: #006551;
+div.account-and-classcards div.account-and-classcards:hover {
+    /*background-color: #006551;*/
+    /*color: #e1e1e1;*/
+
 }
 
 div.account-and-classcards div.change-background {
