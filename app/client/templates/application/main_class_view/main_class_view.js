@@ -11,12 +11,15 @@ var studentsData = [{
 /* MainClassView: Event Handlers */
 /*****************************************************************************/
 Template.MainClassView.events({
+  'click .cards': function() {
+    $('.cards').toggleClass('flipped');
+  }
 });
 /*****************************************************************************/
 /* MainClassView: Helpers */
 /*****************************************************************************/
 Template.MainClassView.helpers({
-	studentslist: studentsData   
+	studentslist: studentsData
 });
 /*****************************************************************************/
 /* MainClassView: Lifecycle Hooks */

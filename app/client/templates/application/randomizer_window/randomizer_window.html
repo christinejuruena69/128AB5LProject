@@ -15,12 +15,12 @@
                 {{ > NamesList}}
             </div>
             <div id="randomize-button-div">
-                <button type="button" class="btn btn-primary btn-lg" id="randomizer-button"><h2>RANDOMIZE!</h2></button>
+                <button type="button" class="btn btn-primary btn-lg" id="randomizer-button" onclick="window.location.href='{{pathFor route='MainClassView'}}'"><h2>RANDOMIZE!</h2></button>
             </div>
             <div class="main2">
             {{ > RandomizerResult}}
             </div>
         </div>
     </div>
-</div>    
+</div>
 </template>

@@ -1,11 +1,11 @@
 <template name="ClassCard">
   <div class="row table-row">
     <a href="{{pathFor route='RandomizerWindow'}}">
-    <div class="shake col-md-3 col-sm-3 col-xs-3">
+    <div class="to-shake col-md-3 col-sm-3 col-xs-3">
      <img src="/dice.png" alt="dice" class="dice center-block"/>
     </div>
   </a>
-        <div class="account-and-classcards col-md-9 col-sm-9 col-xs-9">
+        <div class="classcard col-md-9 col-sm-9 col-xs-9">
         <h3 id="thumbnail-label">
 
         <span class="dropdown">
@@ -23,7 +23,7 @@
         <a href="#" class="title">{{courseCode}}</a>
 
         </h3>
-        <p>
+        <p class="course-title">
           {{courseTitle}}
         </p>
         <button type="button" class="btn btn-default btn-circle btn-lg pull-right" onclick="window.location.href='{{pathFor route='StudentListView'}}'">
