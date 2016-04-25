@@ -1,5 +1,5 @@
 Template.AccountCard.helpers({
-    
+
 });
 Template.AccountCard.events({});
 /*****************************************************************************/
