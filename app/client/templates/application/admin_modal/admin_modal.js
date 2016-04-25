@@ -39,14 +39,30 @@ Template.AdminModal.events({
         class1.lecturer = lecturer;
         class1.students = [];
 
-        var class2;
-
-        class2 = Meteor.call('Admin/AddClass', class1, function(error, result) {
+        Meteor.call('Admin/AddClass', class1, function(error, classId) {
 
             // if error, display error
             if (error) {
                 return notify(error.reason, 'bad');
             }
+
+            console.log(classId);
+
+            template.uploading.set(true);
+
+            Papa.parse(e.target.files[0], {
+                header: true,
+                complete(results, file) {
+                    Meteor.call('parseUpload', results.data, classId, (error, response) => {
+                        if (error) {
+                            console.log(error.reason);
+                        } else {
+                            template.uploading.set(false);
+                            Bert.alert('Upload complete!', 'success', 'growl-top-right');
+                        }
+                    });
+                }
+            });
 
             // else, display success
             notify('Successfully added class!', 'good');
@@ -59,26 +75,6 @@ Template.AdminModal.events({
             // clear form fields
             template.find('form').reset();
         });
-
-        console.log(class2._id);
-
-        if (e.target.files[0] !== null) {
-            template.uploading.set(true);
-
-            Papa.parse(e.target.files[0], {
-                header: true,
-                complete(results, file) {
-                    Meteor.call('parseUpload', results.data, (error, response) => {
-                        if (error) {
-                            console.log(error.reason);
-                        } else {
-                            template.uploading.set(false);
-                            Bert.alert('Upload complete!', 'success', 'growl-top-right');
-                        }
-                    });
-                }
-            });
-        }
     }
 });
 
