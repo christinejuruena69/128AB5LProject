@@ -12,31 +12,74 @@ Template.filterPanel.events({
     },
 
     'click #2010': function() {    
-        $('.filtered-attributes-batch').html("Batch: 2010");
+        var str = $('.filtered-attributes-batch').text()
+        if(document.getElementById('2010').checked == true){
+            $('.filtered-attributes-batch').append(" 2010");
+        }else{
+            $('.filtered-attributes-batch').each(function(){
+                $(this).html($(this).html().split("2010").join(""));
+            });
+        }
     },
 
     'click #2011': function() {    
-        $('.filtered-attributes-batch').html("Batch: 2011");
+        if(document.getElementById('2011').checked == true){
+            $('.filtered-attributes-batch').append(" 2011");
+        }else{
+            $('.filtered-attributes-batch').each(function(){
+                $(this).html($(this).html().split(" 2011").join(""));
+            });
+        }
     },
 
     'click #2012': function() {    
-        $('.filtered-attributes-batch').html("Batch: 2012");
+        if(document.getElementById('2012').checked == true){
+            $('.filtered-attributes-batch').append(" 2012");
+        }else{
+            $('.filtered-attributes-batch').each(function(){
+                $(this).html($(this).html().split(" 2012").join(""));
+            });
+        }
     },
 
     'click #2013': function() {    
-        $('.filtered-attributes-batch').html("Batch: 2013");
+        if(document.getElementById('2013').checked == true){
+            $('.filtered-attributes-batch').append(" 2013");
+        }else{
+            $('.filtered-attributes-batch').each(function(){
+                $(this).html($(this).html().split(" 2013").join(""));
+            });
+        }
     },
 
     'click #2014': function() {    
-        $('.filtered-attributes-batch').html("Batch: 2014");
+        if(document.getElementById('2014').checked == true){
+            $('.filtered-attributes-batch').append(" 2014");
+        }else{
+            $('.filtered-attributes-batch').each(function(){
+                $(this).html($(this).html().split(" 2014").join(""));
+            });
+        }    
     },
 
     'click #2015': function() {    
-        $('.filtered-attributes-batch').html("Batch: 2015");
+        if(document.getElementById('2015').checked == true){
+            $('.filtered-attributes-batch').append(" 2015");
+        }else{
+            $('.filtered-attributes-batch').each(function(){
+                $(this).html($(this).html().split(" 2015").join(""));
+            });
+        }
     },
 
     'click #others': function() {    
-        $('.filtered-attributes-batch').html("Batch: Others");
+        if(document.getElementById('2010').checked == true){
+            $('.filtered-attributes-batch').append(" Others");
+        }else{
+            $('.filtered-attributes-batch').each(function(){
+                $(this).html($(this).html().split(" Others").join(""));
+            });
+        }
     },
 
     'click .select-by-dropdown': function() {
