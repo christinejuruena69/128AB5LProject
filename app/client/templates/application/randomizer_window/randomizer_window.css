@@ -1,7 +1,8 @@
 div.randomizer-main {
     width: 69%;
-    float: left;
+    float: right;
     height: 100%;
+    margin-top: -27px;
     background-color: #e0e6e9;
 }
 
@@ -18,9 +19,12 @@ div.main2 {
 }
 
 div.filter-panel {
+    position: fixed;
     background-color: #8fa6b1;
-    height: 870px;
-    width: 30%;
+    height: 620px;
+    overflow-y: scroll; 
+    width: 25%;
+    margin-top: -27px;
     float: left;
 }
 
