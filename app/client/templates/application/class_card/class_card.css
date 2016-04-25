@@ -8,7 +8,7 @@ div.row li#menu {
   padding-bottom: 1%;
 }
 
-div.row div.account-and-classcards {
+div.row div.classcard {
   height: 200px;
   margin-top: 0px;
   background-color: #1ABC9C;
@@ -79,7 +79,7 @@ div.row h4.students {
 100% { transform: rotate(2deg) translate(-1px, 2px); }
 }
 
-img.dice:hover {
+.shake {
 -webkit-animation-name: shakeit;
 -webkit-animation-duration: 1s;
 -webkit-animation-timing-function: linear;

@@ -12,12 +12,8 @@ div.account-card li.first {
 }
 
 div.account-card {
-  background-color: #1ABC9C;
-  height: 200px;
-}
-
-div.account-card:hover {
-  background-color: #006551;
+  background-color: black;
+    height: 200px;
 }
 
 div.account-card ul.dropdown-menu {
