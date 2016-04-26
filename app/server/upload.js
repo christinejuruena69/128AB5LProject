@@ -1,24 +1,16 @@
-// /* 
-//   /server/upload.js
-// */
 // Meteor.methods({
-//     parseUpload: function(data) {
-//         check(data, Array);
-//         var final = [],
-//             exists = Class.find({'_id': 'EjBANYnhGvoZ45Ps8'});
+//   parseUpload( data ) {
+//     check( data, Array );
 
-//         for (let i = 0; i < data.length; i++) {
+//     for ( let i = 0; i < data.length; i++ ) {
+//       let item   = data[ i ],
+//           exists = Sales.findOne( { saleId: item.saleId } );
 
-//             if (exists) {
-//                 var bday = new Date(data[i].birthday);
-//                 data[i].birthday = bday;
-//                 final.push(data[i]);
-//             } else {
-//                 console.warn('Rejected. This item already exists.');
-//                 return;
-//             }
-//         }
-//         // Class.update(exists._id, {$set: {students:final}});
-//         return final;
+//       if ( !exists ) {
+//         Sales.insert( item );
+//       } else {
+//         console.warn( 'Rejected. This item already exists.' );
+//       }
 //     }
+//   }
 // });
