@@ -10,7 +10,9 @@ Template.AdminModal.events({
             courseCode = $(e.target).find('[name=courseCode]').val(),
             semester = $(e.target).find('[name=semester]').val(),
             academicYear = $(e.target).find('[name=academicYear]').val(),
-            lecturer = $(e.target).find('[name=lecturer]').val();
+            lecturer = $(e.target).find('[name=lecturer]').val(),
+            fileSelected = $(e.target).find('[name=uploadCSV]').val(),
+            classId;
 
         // check if form fields are empty
         if (courseTitle === '') {
@@ -39,30 +41,15 @@ Template.AdminModal.events({
         class1.lecturer = lecturer;
         class1.students = [];
 
-        Meteor.call('Admin/AddClass', class1, function(error, classId) {
+        var classId;
+
+        Meteor.call('Admin/AddClass', class1, function(error, result) {
 
             // if error, display error
             if (error) {
                 return notify(error.reason, 'bad');
             }
-
-            console.log(classId);
-
-            template.uploading.set(true);
-
-            Papa.parse(e.target.files[0], {
-                header: true,
-                complete(results, file) {
-                    Meteor.call('parseUpload', results.data, classId, (error, response) => {
-                        if (error) {
-                            console.log(error.reason);
-                        } else {
-                            template.uploading.set(false);
-                            Bert.alert('Upload complete!', 'success', 'growl-top-right');
-                        }
-                    });
-                }
-            });
+            classId = result;
 
             // else, display success
             notify('Successfully added class!', 'good');
@@ -75,6 +62,24 @@ Template.AdminModal.events({
             // clear form fields
             template.find('form').reset();
         });
+
+        if (fileSelected) {
+            template.uploading.set(true);
+            //FIXME
+            Papa.parse(e.target.files[0], {
+                header: true,
+                complete: function(results, file) {
+                    Meteor.call('parseUpload', results.data, classId, (error, response) => {
+                        if (error) {
+                            console.log(error.reason);
+                        } else {
+                            template.uploading.set(false);
+                            Bert.alert('Upload complete!', 'success', 'growl-top-right');
+                        }
+                    });
+                }
+            });
+        }
     }
 });
 
