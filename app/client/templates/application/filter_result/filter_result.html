@@ -1,0 +1,16 @@
+<template name="FilterResult">
+    <div class="results">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <label class="p-heading"> Filter Result</label>
+                </div>
+                {{#if empty}}
+                    {{> reactiveTable collection=this.students settings=tableSettings}}  
+                {{else}}
+                    {{> reactiveTable collection=listFilter settings=tableSettings}}     
+                {{/if}}     
+            </div>
+        </div>
+    </div>
+</template>
