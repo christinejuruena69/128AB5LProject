@@ -1,4 +1,5 @@
 <template name="RandomizerWindow">
+
 <div class="home col-md-10 col-md-offset-1">
     <div class="randomizer-window">
         <div class="filter-panel">
@@ -12,15 +13,21 @@
                         <li>{{fullname}}</li>
                     {{/each}}
                 </ul> -->
-                {{ > NamesList}}
-            </div>
-            <div id="randomize-button-div">
-                <button type="button" class="btn btn-primary btn-lg" id="randomizer-button"><h2>RANDOMIZE!</h2></button>
-            </div>
-            <div class="main2">
-            {{ > RandomizerResult}}
+
+                {{#if empty}}
+                    {{> reactiveTable collection=this.students settings=tableSettings}}  
+                {{else}}
+                    {{> reactiveTable collection=listFilter settings=tableSettings}}     
+                {{/if}}
+           
+                </div>
+                <div id="randomize-button-div">
+                    <button type="button" class="btn btn-primary btn-lg" id="randomizer-button"><h2>RANDOMIZE!</h2></button>
+                </div>
+                <div class="main2">
+                {{ > RandomizerResult}}
+                </div>
             </div>
         </div>
-    </div>
-</div>    
+    </div>    
 </template>

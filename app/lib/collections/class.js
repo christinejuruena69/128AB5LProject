@@ -17,7 +17,8 @@ Schema.StudentSchema = new SimpleSchema({
         optional: true
     },
     nickname: {
-        type: String
+        type: String,
+        optional: true
     },
     birthday: {
         type: Date, //Can be converted to date
@@ -65,10 +66,11 @@ Schema.ClassSchema = new SimpleSchema({
 Class.attachSchema(Schema.ClassSchema);
 
 Meteor.methods({
+    
     parseUpload: function(data, classId) {
         check(data, Array);
         var finalArray = [],
-            exists = Class.find({ '_id': classId });
+            exists = Class.findOne({ '_id': classId });
 
         for (let i = 0; i < data.length; i++) {
             var bday = new Date(data[i].birthday);
@@ -115,7 +117,7 @@ Meteor.methods({
         } else {
             throw new Meteor.Error(404, 'Not Found');
             notify('Lecturer does not exist');
-            return ;
+            return;
         }
     },
 
@@ -194,6 +196,10 @@ Meteor.methods({
         } else {
             throw new Meteor.Error(403, 'Forbidden');
         }
+    },
+
+    'Teacher/editStudent': function(studentNumber, nickname, section, bias, classId) {
+        Class.update({ '_id': classId, "students.studentNumber": studentNumber }, { $set: { "students.$.nickname": nickname, "students.$.section": section, "students.$.bias": bias } });
     }
 });
 
