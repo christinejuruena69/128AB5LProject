@@ -12,8 +12,8 @@ div.account-card li.first {
 }
 
 div.account-card {
-  background-color: black;
-    height: 200px;
+/*  background-color: black;
+*/    height: 200px;
 }
 
 div.account-card ul.dropdown-menu {
