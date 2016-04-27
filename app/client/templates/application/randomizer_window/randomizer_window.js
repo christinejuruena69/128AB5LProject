@@ -23,41 +23,43 @@ fisherYatesShuffle = function(assign, size){
 
 import jsonQuery from 'json-query';
 Template.RandomizerWindow.events({
-    
-    
+
+
     'click #save' : function(){
         var list = randomList.find().fetch();
         console.log(list);
 
-        Meteor.call('RemoveRandomList');   
+        Meteor.call('RemoveRandomList');
 
         for (var i=0; i<list.length; i++){
 
             Meteor.call('InsertRandomList', list[i]);
         }
 
+        notify("Successfully saved roster.", "good");
+
 
     },
     'click #randomizer-button' : function(){
-        
-        
+
+
         var result = filterList._collection.find().fetch();
         if (result.length==0){
             result = this.students;
         }
         //Select N results
-        
+
         var size = Session.get("nStudent");
         if (size==0){
             notify("Number of students is 0. Please select the number of students you wish to get.", "bad");
             return;
         }
         randomList.remove({});
-        
+
         var unique = [];
         var curr = getRand(result.length-1);
         //Get N unique random indices from the filtered result
-        if (result.length > size) { 
+        if (result.length > size) {
             for (i = 0; i < size; i++) {
                 while (_.contains(unique, curr)) {
                     curr = getRand(result.length - 1);
@@ -69,7 +71,7 @@ Template.RandomizerWindow.events({
                 newResult[i] = result[unique[i]];
             }
             //Push the randomly sorted list to the collection
-        
+
             for (var i = 0; i < newResult.length; i++) {
                 randomList.insert(newResult[i]);
             }
@@ -79,9 +81,11 @@ Template.RandomizerWindow.events({
                 randomList.insert(result[i]);
             }
         }
-  
-        
-        
+
+        notify("Randomized successfully.", "good");
+
+
+
     }
 });
 /*****************************************************************************/
@@ -100,7 +104,7 @@ Template.RandomizerWindow.helpers({
             ]
         };
     },
-    
+
     listFilter: function () {
         return filterList;
     },
@@ -119,6 +123,6 @@ Template.RandomizerWindow.onCreated(function () {
 
 });
 Template.RandomizerWindow.onRendered(function () {
-    
+
 });
 Template.RandomizerWindow.onDestroyed(function () {});
