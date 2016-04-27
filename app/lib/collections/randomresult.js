@@ -10,8 +10,12 @@ Meteor.methods({
         //     return;
         // }
         
-        RandomizerResult.remove({});
+        
         RandomizerResult.insert(list);
 
+    },
+
+    'RemoveRandomList' : function(){
+    	RandomizerResult.remove({});
     }
 });

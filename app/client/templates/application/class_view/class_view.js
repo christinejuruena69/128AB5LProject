@@ -1,9 +1,10 @@
     // var chris = randomList._collection.find().fetch();
 Meteor.subscribe('RandomizerResult');
+console.log(RandomizerResult);
 
 Template.ClassView.helpers({
 	randomList : function () {
-            return RandomizerResult.find();
+            return RandomizerResult.find({});
 	}
 
 });

@@ -29,7 +29,10 @@ Template.RandomizerWindow.events({
         var list = randomList.find().fetch();
         console.log(list);
 
+        Meteor.call('RemoveRandomList');   
+
         for (var i=0; i<list.length; i++){
+
             Meteor.call('InsertRandomList', list[i]);
         }
 

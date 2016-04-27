@@ -23,9 +23,11 @@ Template.MainClassView.events({
 /*****************************************************************************/
 Template.MainClassView.helpers({
 	// studentslist: studentsData,
-	randomList : function () {
-   	    return RandomizerResult.find();
-   }
+
+   randomList : function () {
+		console.log(RandomizerResult.find({}));
+            return RandomizerResult.find({});
+	}
 });
 /*****************************************************************************/
 /* MainClassView: Lifecycle Hooks */

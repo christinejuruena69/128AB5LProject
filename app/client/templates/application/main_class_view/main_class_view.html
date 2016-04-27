@@ -2,8 +2,8 @@
     <div id="n-student-view">
         <!--{{ >NStudentView}}-->
 
-        <div class="container">
         {{#each randomList}}
+        <div class="container">
     <!-- {{ fullname }} -->
 
         <div class="cards">
@@ -17,8 +17,9 @@
           </div>
         </div>
 
-      {{/each}}
+      <!-- {{> reactiveTable collection=randomList}} -->
       </div>
+      {{/each}}
     </div>
 
 </template>
