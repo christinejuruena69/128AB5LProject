@@ -41,45 +41,58 @@ Template.AdminModal.events({
         class1.lecturer = lecturer;
         class1.students = [];
 
-        var classId;
-
-        Meteor.call('Admin/AddClass', class1, function(error, result) {
+        Meteor.call('Admin/AddClass', class1, function(error, classId) {
 
             // if error, display error
             if (error) {
                 return notify(error.reason, 'bad');
             }
-            classId = result;
+
+            if (fileSelected !== '') {
+                template.uploading.set(true);
+                console.log(fileSelected);
+                //FIXME
+                Papa.parse(e.target.files[0], {
+                    header: true,
+                    complete: function(results, file) {
+                        Meteor.call('parseUpload', results.data, classId, (error, response) => {
+                            if (error) {
+                                console.log(error.reason);
+                            } else {
+                                template.uploading.set(false);
+                                Bert.alert('Upload complete!', 'success', 'growl-top-right');
+                            }
+                        });
+                    }
+                });
+            }
 
             // else, display success
             notify('Successfully added class!', 'good');
 
             // hide modal
-            $("#admin-modal").hide('hide');
+            $('#admin-modal').hide('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
-
-            // clear form fields
-            template.find('form').reset();
         });
 
-        if (fileSelected) {
-            template.uploading.set(true);
-            //FIXME
-            Papa.parse(e.target.files[0], {
-                header: true,
-                complete: function(results, file) {
-                    Meteor.call('parseUpload', results.data, classId, (error, response) => {
-                        if (error) {
-                            console.log(error.reason);
-                        } else {
-                            template.uploading.set(false);
-                            Bert.alert('Upload complete!', 'success', 'growl-top-right');
-                        }
-                    });
-                }
-            });
-        }
+        template.uploading.set(false);
+        // clear form fields
+        template.find('form').reset();
+
+        // Template.readCSV.events({
+        //     "click .btnReadCsv": function(event, template) {
+        //         Papa.parse(template.find('#csv-file').files[0], {
+        //             header: true,
+        //             complete: function(results) {
+        //                 _.each(results.data, function(csvData) {
+        //                     console.log(csvData.empId + ' , ' + csvData.empCode);
+        //                 });
+        //             },
+        //             skipEmptyLines: true
+        //         });
+        //     }
+        // });        
     }
 });
 

@@ -68,7 +68,10 @@ Class.attachSchema(Schema.ClassSchema);
 Meteor.methods({
     
     parseUpload: function(data, classId) {
+
         check(data, Array);
+        check(classId, String);
+        
         var finalArray = [],
             exists = Class.findOne({ '_id': classId });
 
