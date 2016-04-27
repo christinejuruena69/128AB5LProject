@@ -23,6 +23,8 @@
         <p class="course-title">
           {{courseTitle}}
         </p>
+       <a href="{{pathFor route='ClassView'}}">Class View </a>
+
 
         <button type="button" class="btn btn-default btn-circle btn-lg pull-right" onclick="window.location.href='{{pathFor route='StudentListView'}}'">
             <span class="text-center">{{ students.length }}</span>

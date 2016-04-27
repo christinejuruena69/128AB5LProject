@@ -77,6 +77,8 @@ div.section-rotate {
     -moz-perspective: 800px;
     -o-perspective: 800px;
     perspective: 800px;
+    float: left;
+    margin-right: 10px;
 }
 .cards {
     width: 100%;
