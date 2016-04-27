@@ -13,7 +13,7 @@ var studentsData = [{
 /* MainClassView: Event Handlers */
 /*****************************************************************************/
 Template.MainClassView.events({
-  'click .cards': function() {
+  'mouseover .cards': function() {
     $('.cards').toggleClass('flipped');
   }
   
