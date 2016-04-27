@@ -1,17 +1,15 @@
-    // var chris = randomList._collection.find().fetch();
 Meteor.subscribe('RandomizerResult');
-
 Template.ClassView.helpers({
-	randomList : function () {
+    randomList: function () {
         return RandomizerResult.find();
-	}
+    }
 });
+
 Template.ClassView.events({});
+
 /*****************************************************************************/
 /* ClassView: Lifecycle Hooks */
 /*****************************************************************************/
 Template.ClassView.onCreated(function () {});
-Template.ClassView.onRendered(function () {
-
-});
+Template.ClassView.onRendered(function () {});
 Template.ClassView.onDestroyed(function () {});
