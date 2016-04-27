@@ -95,6 +95,8 @@ Router.route('/randomizer/:_id', {
         })
     }
 });
+
+
 //
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',
@@ -155,5 +157,7 @@ Router.route('/profile/:_id', {
         });
     }
 });
+
+
 
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
