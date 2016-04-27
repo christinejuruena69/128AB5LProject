@@ -2,8 +2,7 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.AdminModal.events({
-    'submit form': function(e) {
-
+    'submit form': function(e, template) {
         e.preventDefault();
 
         var class1 = {},
@@ -11,7 +10,9 @@ Template.AdminModal.events({
             courseCode = $(e.target).find('[name=courseCode]').val(),
             semester = $(e.target).find('[name=semester]').val(),
             academicYear = $(e.target).find('[name=academicYear]').val(),
-            lecturer = $(e.target).find('[name=lecturer]').val();
+            lecturer = $(e.target).find('[name=lecturer]').val(),
+            fileSelected = $(e.target).find('[name=uploadCSV]').val(),
+            classId;
 
         // check if form fields are empty
         if (courseTitle === '') {
@@ -40,22 +41,58 @@ Template.AdminModal.events({
         class1.lecturer = lecturer;
         class1.students = [];
 
-        Meteor.call('Admin/AddClass', class1, function(error, result) {
+        Meteor.call('Admin/AddClass', class1, function(error, classId) {
 
             // if error, display error
             if (error) {
                 return notify(error.reason, 'bad');
             }
 
+            if (fileSelected !== '') {
+                template.uploading.set(true);
+                console.log(fileSelected);
+                //FIXME
+                Papa.parse(e.target.files[0], {
+                    header: true,
+                    complete: function(results, file) {
+                        Meteor.call('parseUpload', results.data, classId, (error, response) => {
+                            if (error) {
+                                console.log(error.reason);
+                            } else {
+                                template.uploading.set(false);
+                                Bert.alert('Upload complete!', 'success', 'growl-top-right');
+                            }
+                        });
+                    }
+                });
+            }
+
             // else, display success
             notify('Successfully added class!', 'good');
 
             // hide modal
-            $("#admin-modal").hide('hide');
+            $('#admin-modal').hide('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
-
         });
+
+        //template.uploading.set(false);
+        // clear form fields
+        template.find('form').reset();
+
+        // Template.readCSV.events({
+        //     "click .btnReadCsv": function(event, template) {
+        //         Papa.parse(template.find('#csv-file').files[0], {
+        //             header: true,
+        //             complete: function(results) {
+        //                 _.each(results.data, function(csvData) {
+        //                     console.log(csvData.empId + ' , ' + csvData.empCode);
+        //                 });
+        //             },
+        //             skipEmptyLines: true
+        //         });
+        //     }
+        // });        
     }
 });
 
@@ -78,13 +115,18 @@ Template.AdminModal.helpers({
         }
 
         return years;
+    },
+    uploading: function() {
+        return Template.instance().uploading.get();
     }
 });
 
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.AdminModal.onCreated(function() {});
+Template.AdminModal.onCreated(function() {
+    Template.instance().uploading = new ReactiveVar(false);
+});
 
 Template.AdminModal.onRendered(function() {});
 

@@ -35,12 +35,20 @@
                 <label class="control-label" for="academicYear">Academic Year</label>
                 <select class="form-control" id="academicYear" name="academicYear">
                     {{#each displayYear}}
-                        <option value="{{this.minYear}} - {{this.maxYear}}">{{this.minYear}} - {{this.maxYear}}</option>
+                    <option value="{{this.minYear}} - {{this.maxYear}}">{{this.minYear}} - {{this.maxYear}}</option>
                     {{/each}}
                 </select>
             </div>
             <!-- lecturer -->
             <input name="lecturer" id="lecturer" type="hidden" value="{{ _id }}" placeholder="Lecturer" class="form-control" />
+            <!-- upload csv -->
+            <div class="form-group">
+                <label class="control-label" for="uploadCSV">Upload Class List</label>
+                {{#unless uploading}}
+                <input class="form-control" type="file" name="uploadCSV" id="uploadCSV"> {{else}}
+                <div class="form-control"><p><i class="fa fa-spin fa-refresh"></i> Uploading files...</p></div>
+                {{/unless}}
+            </div>
             <input type="submit" value="Add Class" class="btn btn-primary" />
         </form>
     </div>
