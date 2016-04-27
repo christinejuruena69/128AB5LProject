@@ -79,6 +79,7 @@ div.section-rotate {
     perspective: 800px;
     float: left;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 .cards {
     width: 100%;
