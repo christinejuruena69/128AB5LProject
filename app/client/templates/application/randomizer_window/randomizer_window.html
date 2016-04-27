@@ -7,22 +7,18 @@
         </div>
         <div class="randomizer-main">
             <div class="main1">
-               <!--  <h3>Names</h3>
-                <ul>
-                    {{#each this.students}}
-                        <li>{{fullname}}</li>
-                    {{/each}}
-                </ul> -->
-                {{#if empty}}
+            {{ > FilterResult}}
+              
+
+                <!-- {{#if empty}}
                     {{> reactiveTable collection=this.students settings=tableSettings}}  
                 {{else}}
                     {{> reactiveTable collection=listFilter settings=tableSettings}}     
-                {{/if}}
+                {{/if}} -->
            
-                </div>
-                <div id="randomize-button-div">
-                    <button type="button" class="btn btn-primary btn-lg" id="randomizer-button"><h2>RANDOMIZE!</h2></button>
-                </div>
+            </div>
+            <button type="button" class="btn btn-danger btn-responsive" id="randomizer-button"><h5>RANDOMIZE!</h5></button>
+                
                 <div class="main2">
                 {{ > RandomizerResult}}
                 </div>

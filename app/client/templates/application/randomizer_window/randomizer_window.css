@@ -1,33 +1,46 @@
 div.randomizer-main {
     width: 69%;
-    float: left;
+    float: right;
     height: 100%;
+    margin-top: -27px;
     background-color: #e0e6e9;
+    position: relative;
+
 }
 
 div.main1 {
     width: 100%;
-    height: 480px;
+    height: 380px;
     float: left;
+    overflow: auto;
 }
 
 div.main2 {
+    margin-top:20px;
     width: 100%;
     height: 300px;
     float: left;
 }
 
 div.filter-panel {
+    position: fixed;
     background-color: #8fa6b1;
-    height: 870px;
-    width: 30%;
+    height: 620px;
+    overflow-y: scroll; 
+    width: 25%;
+    margin-top: -27px;
     float: left;
 }
 
-div#randomize-button-div {
-    padding-left: 250px;
-    height: 100%;
-    float: left;
+
+button#randomizer-button {
+    /*padding-left: 250px;*/
+    position: absolute;
+  top: 390px;
+  left: 45%;
+
+    /*height: 100%;*/
+    /*float: left;*/
 }
 
 div.names {
@@ -68,3 +81,25 @@ table#randomizer-result-table tbody td, table#randomizer-result-table thead > tr
   float: left;
   border-bottom-width: 0;
 }
+
+
+
+
+
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+    border-radius:3px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+  }
+}
+

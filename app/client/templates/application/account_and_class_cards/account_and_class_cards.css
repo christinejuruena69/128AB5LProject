@@ -39,35 +39,18 @@ div.account-and-classcards div.card {
 }
 
 div.account-and-classcards div.account-and-classcards:hover {
-    background-color: #006551;
-    color: #e1e1e1;
+    /*background-color: #006551;*/
+    /*color: #e1e1e1;*/
+
 }
 
-@-webkit-keyframes shakeit {
-0% { -webkit-transform: rotate(0deg) translate(2px, 1px); }
-10% { -webkit-transform: rotate(2deg) translate(1px, 2px); }
-20% { -webkit-transform: rotate(-2deg) translate(3px, 0px) ; }
-30% { -webkit-transform: rotate(0deg) translate(0px, -2px); }
-40% { -webkit-transform: rotate(-2deg) translate(-1px, 1px); }
-50% { -webkit-transform: rotate(2deg) translate(1px, -2px); }
-60% { -webkit-transform: rotate(0deg) translate(3px, -1px); }
-70% { -webkit-transform: rotate(2deg) translate(-2px, -1px); }
-80% { -webkit-transform: rotate(-2deg) translate(1px, 1px); }
-90% { -webkit-transform: rotate(0deg) translate(-2px, -2px); }
-100% { -webkit-transform: rotate(2deg) translate(-1px, 2px); }
+div.account-and-classcards div.change-background {
+    background-color: #006551;
 }
-@keyframes shakeit {
-0% { transform: rotate(0deg) translate(2px, 1px); }
-10% { transform: rotate(2deg) translate(1px, 2px); }
-20% { transform: rotate(-2deg) translate(3px, 0px) ; }
-30% { transform: rotate(0deg) translate(0px, -2px); }
-40% { transform: rotate(-2deg) translate(-1px, 1px); }
-50% { transform: rotate(2deg) translate(1px, -2px); }
-60% { transform: rotate(0deg) translate(3px, -1px); }
-70% { transform: rotate(2deg) translate(-2px, -1px); }
-80% { transform: rotate(-2deg) translate(1px, 1px); }
-90% { transform: rotate(0deg) translate(-2px, -2px); }
-100% { transform: rotate(2deg) translate(-1px, 2px); }
+
+div.account-and-classcards .text-opacity {
+  color: white;
+  opacity: 0.6;
 }
 
 div.account-and-classcards p {
