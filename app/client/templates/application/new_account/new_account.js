@@ -48,8 +48,9 @@ Template.NewAccount.events({
             event.target['password1'].value = "";
             event.target['password2'].value = "";
             event.target['email'].value = "";
+            
+            $("#addAccountModal").modal('hide');
 
-            $("#admin-modal").modal('hide');
         }
 
         return false;
