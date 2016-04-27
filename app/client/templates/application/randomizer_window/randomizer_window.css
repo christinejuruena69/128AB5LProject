@@ -32,12 +32,17 @@ div.filter-panel {
     float: left;
 }
 
+button#save{
+  position: absolute;
+  top: 390px;
+  left: 56%;
 
+}
 button#randomizer-button {
     /*padding-left: 250px;*/
     position: absolute;
   top: 390px;
-  left: 45%;
+  left: 40%;
 
     /*height: 100%;*/
     /*float: left;*/
