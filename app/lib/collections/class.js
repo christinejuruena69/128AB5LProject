@@ -9,8 +9,7 @@ Schema.StudentSchema = new SimpleSchema({
         type: String
     },
     studentNumber: {
-        type: String,
-        regEx: /^[0-9]{4}-[0-9]{5}$/
+        type: String
     },
     image: {
         type: String,
@@ -25,8 +24,7 @@ Schema.StudentSchema = new SimpleSchema({
         optional: true
     },
     section: {
-        type: String,
-        regEx: /\d-L/
+        type: String
     },
     points: {
         type: Number,
