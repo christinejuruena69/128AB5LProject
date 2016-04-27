@@ -25,6 +25,16 @@ import jsonQuery from 'json-query';
 Template.RandomizerWindow.events({
     
     
+    'click #save' : function(){
+        var list = randomList.find().fetch();
+        console.log(list);
+
+        for (var i=0; i<list.length; i++){
+            Meteor.call('InsertRandomList', list[i]);
+        }
+
+
+    },
     'click #randomizer-button' : function(){
         
         

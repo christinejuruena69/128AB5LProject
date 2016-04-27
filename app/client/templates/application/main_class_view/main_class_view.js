@@ -1,3 +1,5 @@
+Meteor.subscribe('RandomizerResult');
+
 var studentsData = [{
     text: 'Samantha Marasigan'
 }, {
@@ -14,12 +16,16 @@ Template.MainClassView.events({
   'click .cards': function() {
     $('.cards').toggleClass('flipped');
   }
+  
 });
 /*****************************************************************************/
 /* MainClassView: Helpers */
 /*****************************************************************************/
 Template.MainClassView.helpers({
-	studentslist: studentsData
+	// studentslist: studentsData,
+	randomList : function () {
+   	    return RandomizerResult.find();
+   }
 });
 /*****************************************************************************/
 /* MainClassView: Lifecycle Hooks */

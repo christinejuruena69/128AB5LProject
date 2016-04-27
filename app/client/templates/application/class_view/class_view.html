@@ -3,10 +3,15 @@
 <br /> 
 <br /> 
 {{ > MainClassView }}    
-<!-- its from rj's di ko mapagana huhuhu -->
+<!-- it's from rj's di ko mapagana huhuhu -->
+		<!-- {{ randomList}} -->
     
     {{#each randomList}}
-		{{ randomList.fullname }}
-    {{/each}}   
+		{{ fullname }}
+    {{/each}}  
+    <!-- {{randomList[0].fullname}} --> 
+
+        <!-- {{> reactiveTable collection=randomList}}      -->
+
     
 </template>
