@@ -24,7 +24,7 @@ div.main2 {
 
 div.filter-panel {
     position: fixed;
-    background-color: #8fa6b1;
+    /*background-color: #8fa6b1;*/
     height: 620px;
     overflow-y: scroll; 
     width: 25%;
