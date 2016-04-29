@@ -1,11 +1,10 @@
 <template name="AdminModal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add subject</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Class</h4>
     </div>
     <div class="modal-body">
         {{#unless uploading }}
-            <h1>Add Class</h1>
             <form class="add class form">
                 <!-- form portion for course information -->
                 <!-- course title -->
@@ -20,6 +19,13 @@
                     <label class="control-label" for="courseCode">Course Code</label>
                     <div class="controls">
                         <input name="courseCode" id="courseCode" type="text" value="" placeholder="Course Code" class="form-control" />
+                    </div>
+                </div>
+                <!-- section -->
+                <div class="form-group">
+                    <label class="control-label" for="courseCode">Section</label>
+                    <div class="controls">
+                        <input name="Section" id="section" type="text" value="" placeholder="AB, UV, T, U,..." class="form-control" />
                     </div>
                 </div>
                 <!-- semester -->

@@ -47,8 +47,8 @@ Meteor.methods({
             courseTitle: 'Introduction to Software Engineering',
             courseCode: 'CMSC 128',
             semester: '1st Semester AY 2015-2016',
+            section: 'AB',
             lecturer: teacher._id,
-            userId: teacher._id,
             students: studentArray
         };
 

@@ -15,6 +15,7 @@ Template.AdminModal.events({
                 semester = $('#semester').val(),
                 academicYear = $('#academicYear').val(),
                 lecturer = $('#lecturer').val(),
+                section = $('#section').val(),
                 fileSelected = $('#uploadCSV').val(),
                 courseCodeRegex = /^[A-Z]{2,4}[0-9]{1,3}$/,
                 students = [],
@@ -37,6 +38,9 @@ Template.AdminModal.events({
             }
             else if (lecturer === '') {
                 return notify('Lecturer is required', 'bad');
+            }
+            else if (section === '') {
+                return notify('Section is required', 'bad');
             }
             else if(!fileSelected) {
                 return notify('Add a CSV file', 'bad');
@@ -91,19 +95,16 @@ Template.AdminModal.events({
                         }
                     });
 
-                    console.log(students);
-
                     students = lodash.filter(students, function(o) {
                         return !!o;
                     })
-
-                    console.log(students);
 
                     // add form field values to newClass object
                     newClass = {
                         courseTitle,
                         courseCode,
                         lecturer,
+                        section,
                         students,
                         semester: semester.concat(' ' + academicYear)
                     };
