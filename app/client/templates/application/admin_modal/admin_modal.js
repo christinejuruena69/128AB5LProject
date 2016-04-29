@@ -6,93 +6,103 @@ Template.AdminModal.events({
 
         e.preventDefault();
 
-        var newClass = {},
-            courseTitle = $('#courseTitle').val(),
-            courseCode = $('#courseCode').val(),
-            semester = $('#semester').val(),
-            academicYear = $('#academicYear').val(),
-            lecturer = $('#lecturer').val(),
-            fileSelected = $('#uploadCSV').val(),
-            courseCodeRegex = /^[A-Z]{2,4}[0-9]{1,3}$/,
-            students = [],
+        function start() {
 
-            isValidCourseCode,
-            classId;
+            var newClass = {},
+                courseTitle = $('#courseTitle').val(),
+                courseCode = $('#courseCode').val(),
+                semester = $('#semester').val(),
+                academicYear = $('#academicYear').val(),
+                lecturer = $('#lecturer').val(),
+                fileSelected = $('#uploadCSV').val(),
+                courseCodeRegex = /^[A-Z]{2,4}[0-9]{1,3}$/,
+                students = [],
 
-        // check if form fields are empty
-        if (courseTitle === '') {
-            return notify('Course title is required', 'bad');
-        }
-        else if (courseCode === '') {
-            return notify('Course code is required', 'bad');
-        }
-        else if (semester === '') {
-            return notify('Semester is required', 'bad');
-        }
-        else if (academicYear === '') {
-            return notify('Academic year is required', 'bad');
-        }
-        else if (lecturer === '') {
-            return notify('Lecturer is required', 'bad');
-        }
+                isValidCourseCode,
+                classId;
 
-        // validate course code format
-        isValidCourseCode = courseCodeRegex.test(courseCode);
-
-        if(!isValidCourseCode) {
-            return notify('Invalid course code', 'bad');
-        }
-
-        // add form field values to newClass object
-        newClass = {
-            courseTitle,
-            courseCode,
-            lecturer,
-            students,
-            semester: semester.concat(' ' + academicYear)
-        };
-
-
-        console.log(newClass);
-        return;
-
-        Meteor.call('Admin/AddClass', newClass, function(error, result) {
-
-            // if error, display error
-            if (error) {
-                return notify(error.reason, 'bad');
+            // check if form fields are empty
+            if (courseTitle === '') {
+                return notify('Course title is required', 'bad');
             }
-            classId = result;
+            else if (courseCode === '') {
+                return notify('Course code is required', 'bad');
+            }
+            else if (semester === '') {
+                return notify('Semester is required', 'bad');
+            }
+            else if (academicYear === '') {
+                return notify('Academic year is required', 'bad');
+            }
+            else if (lecturer === '') {
+                return notify('Lecturer is required', 'bad');
+            }
+            else if(!fileSelected) {
+                return notify('Add a CSV file', 'bad');
+            }
 
-            // else, display success
-            notify('Successfully added class!', 'good');
+            // validate course code format
+            isValidCourseCode = courseCodeRegex.test(courseCode);
 
-            // hide modal
-            $("#admin-modal").hide('hide');
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
+            if(!isValidCourseCode) {
+                return notify('Invalid course code', 'bad');
+            }
 
-            // clear form fields
-            template.find('form').reset();
-        });
+            // Start spinner
+            Session.set('uploading', true);
 
-        if (fileSelected) {
-            template.uploading.set(true);
-            //FIXME
-            Papa.parse(e.target.files[0], {
+            console.log('Processing file now');
+
+            // Process file here
+            Papa.parse(fileSelected, {
                 header: true,
-                complete: function(results, file) {
-                    Meteor.call('parseUpload', results.data, classId, (error, response) => {
-                        if (error) {
-                            console.log(error.reason);
-                        } else {
-                            template.uploading.set(false);
-                            Bert.alert('Upload complete!', 'success', 'growl-top-right');
-                        }
-                    });
+                delimiter: ',',
+                complete: function(res, file) {
+
+                    console.log('Finished parsing');
+                    console.log(res.data);
+
+                    // add form field values to newClass object
+                    newClass = {
+                        courseTitle,
+                        courseCode,
+                        lecturer,
+                        students: res.data,
+                        semester: semester.concat(' ' + academicYear)
+                    };
+                    console.log('New Class:');
+                    console.log(newClass);
                 }
             });
         }
+
+        function uploadFile(newClass) {
+            Meteor.call('Admin/AddClass', newClass, function(error, result) {
+
+                // if error, display error
+                if (error) {
+                    return notify(error.reason, 'bad');
+                }
+                classId = result;
+
+                // else, display success
+                notify('Successfully added class!', 'good');
+
+                // clear form fields
+                template.find('form').reset();
+                // Stop spinner
+                Session.set('uploading', false);
+
+                // hide modal
+                $("#admin-modal").hide('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            });
+
+        }
+
+        start();
+
     }
 });
 
@@ -118,7 +128,7 @@ Template.AdminModal.helpers({
         return years;
     },
     uploading: function() {
-        return Template.instance().uploading.get();
+        return Session.get('uploading');
     }
 });
 
@@ -126,7 +136,7 @@ Template.AdminModal.helpers({
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.AdminModal.onCreated(function() {
-    Template.instance().uploading = new ReactiveVar(false);
+    Session.set('uploading', false);
 });
 
 Template.AdminModal.onRendered(function() {});
