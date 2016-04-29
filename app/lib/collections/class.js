@@ -2,7 +2,6 @@ Class = new Mongo.Collection('class');
 
 Schema = {};
 
-
 // Schema for student
 Schema.StudentSchema = new SimpleSchema({
     fullname: {
@@ -55,6 +54,10 @@ Schema.ClassSchema = new SimpleSchema({
         type: String,
         optional: true
     },
+    section: {
+        // AB, T, ST, etc
+        type: String
+    },
     lecturer: {
         type: String
     },
@@ -72,10 +75,13 @@ Class.after.insert(function(userId, doc) {
         'courseTitle', 'lecturer', 'section'
     ]);
 
-    viewData.lecturer = doc._id;
+    viewData.class = doc._id;
+    viewData.view = [];
 
     console.log('Added class: ');
     console.log(viewData);
+
+    View.insert(viewData);
 
 });
 
@@ -102,6 +108,7 @@ Meteor.methods({
         check(classAttributes, {
             courseTitle: String,
             courseCode: String,
+            section: String,
             semester: String,
             lecturer: String,
             students: [{
