@@ -60,14 +60,41 @@ Template.AdminModal.events({
                 delimiter: ',',
                 complete: function(res, file) {
 
+                    //Typecast birthday to Date
+                    students = lodash.map(res.data, function(student) {
+                        // In case CSV has newline, check if student is valid
+                        const validStudent = student['studentNumber'] && student['image']
+                            && student['birthday'] && student['sex'] && student['section']
+                            && student['fullname'];
+
+                        if(validStudent) {
+                            const DayArray = student.birthday.toString().split('/');
+                            student.birthday = new Date(DayArray[2], DayArray[1]-1, DayArray[0]);
+                            return student;
+                        }
+                        else {
+                            return false;
+                        }
+                    });
+
+                    console.log(students);
+
+                    students = lodash.filter(students, function(o) {
+                        return !!o;
+                    })
+
+                    console.log(students);
+
                     // add form field values to newClass object
                     newClass = {
                         courseTitle,
                         courseCode,
                         lecturer,
-                        students: res.data,
+                        students,
                         semester: semester.concat(' ' + academicYear)
                     };
+
+                    // Session.set('uploading', false);
 
                     uploadFile(newClass);
                 }
@@ -77,6 +104,7 @@ Template.AdminModal.events({
         function uploadFile(newClass) {
             Meteor.call('Admin/AddClass', newClass, function(error, result) {
 
+                Session.set('uploading', false);
                 // if error, display error
                 if (error) {
                     return notify(error.reason, 'bad');
@@ -90,7 +118,6 @@ Template.AdminModal.events({
 
                 template.find('form').reset();
                 // Stop spinner
-                Session.set('uploading', false);
                 notify('Finished "Uploading"', 'good');
 
 

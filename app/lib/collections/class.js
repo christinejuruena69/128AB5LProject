@@ -26,6 +26,9 @@ Schema.StudentSchema = new SimpleSchema({
     section: {
         type: String
     },
+    sex: {
+        type: String
+    },
     points: {
         type: Number,
         defaultValue: 0
@@ -102,7 +105,14 @@ Meteor.methods({
             courseCode: String,
             semester: String,
             lecturer: String,
-            students: [Schema.StudentSchema]
+            students: [{
+                fullname: String,
+                studentNumber: String,
+                image: String,
+                birthday: Date,
+                sex: String,
+                section: String
+            }]
         });
 
         var lecturer1 = Meteor.users.findOne({
