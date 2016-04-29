@@ -68,11 +68,19 @@ Class.attachSchema(Schema.ClassSchema);
 
 // Create a corresponding View collection after creating a new Class
 Class.after.insert(function(userId, doc) {
-    console.log(userId + ' finished inserting a class');
+    let viewData = _.pick(doc, [
+        'courseTitle', 'lecturer', 'section'
+    ]);
+
+    viewData.lecturer = doc._id;
+
+    console.log('Added class: ');
+    console.log(viewData);
+
 });
 
-Class.after.remove(function() {
-    console.log('Removed class');
+Class.after.remove(function(userId, doc) {
+    console.log('Removed class' + doc);
 });
 
 Meteor.methods({
