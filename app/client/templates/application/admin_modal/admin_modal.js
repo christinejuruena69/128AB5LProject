@@ -8,6 +8,7 @@ Template.AdminModal.events({
 
         function start() {
 
+            const MAX_SIZE = 50000;
             var newClass = {},
                 courseTitle = $('#courseTitle').val(),
                 courseCode = $('#courseCode').val(),
@@ -51,10 +52,27 @@ Template.AdminModal.events({
             // Start spinner
             Session.set('uploading', true);
 
-            // console.log('Processing file now');
-            // console.log($('#uploadCSV')[0].files[0]);
 
             // Process file here
+
+            const ext = $('#uploadCSV')[0].files[0].name.split('.').pop();
+            const size = $('#uploadCSV')[0].files[0].size;
+
+            // Check extension:
+            if(ext !== 'csv') {
+                notify('Invalid file extension' + ext, 'bad');
+                Session.set('uploading', false);
+                return;
+            }
+
+            // Check size
+            if(size > MAX_SIZE) {
+                notify('File is too large. Can only handle up to 50kb', 'bad');
+                Session.set('uploading', false);
+                return;
+            }
+
+
             Papa.parse($('#uploadCSV')[0].files[0], {
                 header: true,
                 delimiter: ',',
@@ -93,8 +111,6 @@ Template.AdminModal.events({
                         students,
                         semester: semester.concat(' ' + academicYear)
                     };
-
-                    // Session.set('uploading', false);
 
                     uploadFile(newClass);
                 }
