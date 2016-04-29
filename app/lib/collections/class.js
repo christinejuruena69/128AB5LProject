@@ -142,6 +142,7 @@ Meteor.methods({
             throw new Meteor.Error(403, 'Forbidden');
             return;
         }
+
         Class.update({ 'lecturer': Meteor.userId(), _id: classToEdit._id }, { $set: classToEdit });
     },
 
