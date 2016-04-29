@@ -52,9 +52,6 @@ Template.AdminModal.events({
             // Start spinner
             Session.set('uploading', true);
 
-
-            // Process file here
-
             const ext = $('#uploadCSV')[0].files[0].name.split('.').pop();
             const size = $('#uploadCSV')[0].files[0].size;
 
@@ -64,7 +61,6 @@ Template.AdminModal.events({
                 Session.set('uploading', false);
                 return;
             }
-
             // Check size
             if(size > MAX_SIZE) {
                 notify('File is too large. Can only handle up to 50kb', 'bad');
@@ -146,7 +142,6 @@ Template.AdminModal.events({
         }
 
         start();
-
     }
 });
 
