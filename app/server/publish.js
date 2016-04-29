@@ -72,3 +72,11 @@ Meteor.publish('myLogs', function(id) {
         return;
     }
 });
+
+Meteor.publish('RandomizerResult', function() {
+    return RandomizerResult.find();
+});
+
+Meteor.publish('teacherClasses', function(){
+    return Class.find();
+});

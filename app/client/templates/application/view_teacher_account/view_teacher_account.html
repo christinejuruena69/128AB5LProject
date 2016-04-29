@@ -13,7 +13,7 @@
         </button>
             <div class="options-right">
 
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#admin-modal"> <span class="glyphicon glyphicon-plus"></span> <label> Add user  </label> </button> 
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#admin-modal"> <span class="glyphicon glyphicon-plus"></span> <label> Add Class  </label> </button> 
             </div>
         </div>
         <!-- Modal -->
@@ -30,11 +30,20 @@
         <div class="view-teacher-account-body">
             <!-- insert account cards here -->
             <div class="main-window">
-            {{> AccountAndClassCards}}
+                {{#each classes}}
+                    <div class="account-and-classcards">
+                        <div class="col-md-4 col-sm-5 col-xs-6">
+                            <div class="thumbnail card">
+                                <div class="caption">
+                                    {{> ClassCard}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
             </div>
         </div>
     </div>
-
 
 
   <!-- Modal -->

@@ -95,6 +95,8 @@ Router.route('/randomizer/:_id', {
         })
     }
 });
+
+
 //
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',
@@ -173,12 +175,13 @@ Router.route('/classView/:_id', {
 });
 
 /*erase this if classview is okay*/
-Router.route('/classview/', {
-     name: 'MainClassView',
-     template: 'MainClassView',
-     controller: 'HomeController',
-     where: 'client'
- });
+// Router.route('/classview/', {
+//      name: 'MainClassView',
+//      template: 'MainClassView',
+//      controller: 'HomeController',
+//      where: 'client'
+//  });
+
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
 
 Router.route('/uploadCSV', {

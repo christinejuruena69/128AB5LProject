@@ -12,6 +12,11 @@ Template.ViewTeacherAccount.events({
 Template.ViewTeacherAccount.helpers({
     loadCourses : function() {
         return false;
+    },
+    classes: function(){
+        return Class.find({
+            lecturer: this._id
+        });
     }
 });
 
@@ -19,6 +24,7 @@ Template.ViewTeacherAccount.helpers({
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.ViewTeacherAccount.onCreated(function () {
+    Meteor.subscribe('teacherClasses');
 });
 
 Template.ViewTeacherAccount.onRendered(function () {

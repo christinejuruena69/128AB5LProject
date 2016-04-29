@@ -2,18 +2,24 @@
     <div id="n-student-view">
         <!--{{ >NStudentView}}-->
 
-        <div class="container">
+        {{#each randomList}}
+        <div class="container2">
+    <!-- {{ fullname }} -->
+
         <div class="cards">
           <div class="front"><img src="/card.png" alt="card-back"></div>
           <div class="back">
             <span class="id-no pull-left">101</span>
             <div class="section pull-left">AB-5L</div>
-            <div class="name text-center">JUAN DELA CRUZ</div>
+            <div class="name text-center">{{ fullname }}</div>
             <div class="section-rotate pull-right">AB-5L</div>
             <span class="id-no-rotate pull-right">101</span>
           </div>
         </div>
+
+      <!-- {{> reactiveTable collection=randomList}} -->
       </div>
+      {{/each}}
     </div>
 
 </template>
