@@ -43,7 +43,8 @@ Meteor.methods({
 
         var loggedInUser = Meteor.user();
 
-        if (loggedInUser.profile.type === 'Admin'){
+        if (loggedInUser.profile.type === 'Admin' &&
+            id !== userId){ // Cannot delete own account
             Meteor.users.remove({
                 '_id': userId
             });
