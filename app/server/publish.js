@@ -1,6 +1,6 @@
-/*
-    Add publications here
-*/
+/*****************************************************************************/
+/* Publications: Classes */
+/*****************************************************************************/
 
 Meteor.publish('myClasses', function() {
     // like return Class.find(flags);
@@ -19,6 +19,14 @@ Meteor.publish('oneClass', function(id) {
     }
 });
 
+Meteor.publish('teacherClasses', function(){
+    return Class.find();
+});
+
+/*****************************************************************************/
+/* Publications: Users/ Accounts */
+/*****************************************************************************/
+
 Meteor.publish('oneUser', function(id) {
 
     var user = Meteor.users.findOne({ _id: this.userId});
@@ -31,12 +39,8 @@ Meteor.publish('oneUser', function(id) {
     }
 });
 
-Meteor.publish('getViewStates', function() {
-    return View.find({ lecturer: this.userId });
-});
-
 Meteor.publish('allUserData', function (user) {
-
+    // Only administrator os allowed to have access to all user data
     var user = Meteor.users.findOne({ _id: this.userId});
 
     if(user && user.profile.type === 'Admin') {
@@ -49,17 +53,29 @@ Meteor.publish('allUserData', function (user) {
     }
 });
 
-Meteor.publish('oneView', function(id) {
+/*****************************************************************************/
+/* Publications: Views */
+/*****************************************************************************/
 
-    var user = Meteor.users.findOne({ _id: this.userId});
-
-    if(user && user.profile.type === 'Admin') {
-        return View.find({ lecturer: id });
-    }
-    else {
-        return;
-    }
+Meteor.publish('activeViews', function() {
+    return View.find({active: true});
 });
+
+Meteor.publish('getViewStates', function() {
+    return View.find({ lecturer: this.userId });
+});
+
+Meteor.publish('oneView', function(id) {
+    return View.find({_id: id});
+});
+
+Meteor.publish('RandomizerResult', function() {
+    return RandomizerResult.find();
+});
+
+/*****************************************************************************/
+/* Publications: Logs */
+/*****************************************************************************/
 
 Meteor.publish('myLogs', function(id) {
 
@@ -71,12 +87,4 @@ Meteor.publish('myLogs', function(id) {
     else {
         return;
     }
-});
-
-Meteor.publish('RandomizerResult', function() {
-    return RandomizerResult.find();
-});
-
-Meteor.publish('teacherClasses', function(){
-    return Class.find();
 });

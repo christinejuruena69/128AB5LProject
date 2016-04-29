@@ -15,12 +15,6 @@ Router.route('/login', {
     where: 'client'
 });
 
-// Router.route('/register', {
-//     name: 'RegisterForm',
-//     controller: 'IndexController',
-//     where: 'client'
-// });
-
 Router.route('/home', {
     name: 'Home',
     layoutTemplate: 'MasterLayout',
@@ -34,7 +28,6 @@ Router.route('/add-class', {
     controller: 'HomeController',
     where: 'client'
 });
-
 
 Router.route('/edit-class/:_id', {
     name: 'EditClass',
@@ -63,6 +56,16 @@ Router.route('/404', {
 Router.route('/403', {
     name: 'Forbidden'
 });
+
+Router.route('/view', {
+    name: 'ViewList',
+    controller: 'ViewController',
+    subscriptions: function() {
+        return Meteor.subscribe('activeViews');
+    },
+    where: 'client'
+});
+
 // @Todo: Before uncommenting this code, we have to finish dependencies (Templates that will use them)
 // @Todo: Set data context for dynamic routes
 
@@ -183,10 +186,3 @@ Router.route('/classView/:_id', {
 //  });
 
 Router.onBeforeAction('dataNotFound', {only: 'EditClass'});
-
-Router.route('/uploadCSV', {
-    name: 'UploadCSV',
-    template: 'UploadCSV',
-    controller: 'HomeController',
-    where: 'client'
-});
