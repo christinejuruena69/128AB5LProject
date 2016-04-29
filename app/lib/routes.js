@@ -35,7 +35,6 @@ Router.route('/add-class', {
     where: 'client'
 });
 
-
 Router.route('/edit-class/:_id', {
     name: 'EditClass',
     layoutTemplate: 'MasterLayout',

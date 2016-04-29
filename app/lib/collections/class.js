@@ -188,6 +188,12 @@ Meteor.methods({
             { '_id': classId, "students.studentNumber": studentNumber },
             { $set: { "students.$.nickname": nickname, "students.$.section": section, "students.$.bias": bias } }
         );
+    },
+
+    'Admin/deleteAccount': function( classId ) {
+        Class.remove({
+            _id: classId
+        });
     }
 });
 
