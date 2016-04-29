@@ -2,49 +2,49 @@
 /* StudentListView: Event Handlers */
 /*****************************************************************************/
 
+import { $ } from 'meteor/jquery';
 
 Template.StudentListView.events({
-    'submit form#addStudent': function (e) {
+    'click #addStudent': function (e) {
         e.preventDefault();
 
-        var birthday = new Date($(e.target).find('[name=birthday]').val()),
+        var birthday = new Date($('#birthday').val()),
             student = {
-                fullname: $(e.target).find('[name=fullname]').val(),
-                studentNumber: $(e.target).find('[name=studentNumber]').val(),
+                fullname: $('#fullname').val(),
+                studentNumber: $('#studentNumber').val(),
                 image: "",
-                nickname: $(e.target).find('[name=nickname]').val(),
+                nickname: $('#nickname').val(),
                 birthday: birthday,
-                section: $(e.target).find('[name=section]').val(),
+                section: $('#section').val(),
                 points: 0,
                 bias: 0,
                 isBlackListed: false
             },
             user = Meteor.user(),
             classId = this._id;
-        
+
         var studentNumberChecker =  /^[0-9]{4}-[0-9]{5}$/;
 
-        for( studentEntry of this.students ){
+        for(studentEntry of this.students) {
             if( studentEntry.studentNumber === student.studentNumber ){
                 notify('Student Number already exists!', 'bad');
                 return;
             }
         }
-        if( studentNumberChecker.test(student.studentNumber) ){
 
+        if(studentNumberChecker.test(student.studentNumber)){
             Meteor.call('addStudent', student, classId, function(error, result) {
                 if (error) {
                     return throwError(error.reason);
                 }
+
+                notify('Successfully Added Student!', 'good');
+                //Clear form
+                $('#addStudentForm').trigger('reset');
+
+                // Close modal
+                $('#add-student').modal('hide');
             });
-                    
-            notify('Successfully Added Student!', 'good'); 
-            $(e.target).find('[name=birthday]').val('');
-            $(e.target).find('[name=fullname]').val('');
-            $(e.target).find('[name=studentNumber]').val('');
-            $(e.target).find('[name=section]').val('');
-            $(e.target).find('[name=nickname]').val('');
-            
         }
         else {
             notify('Invalid Student Number', 'bad');
@@ -61,7 +61,7 @@ Template.StudentListView.events({
     'click .blacklisted': function() {
         if ($('.blacklisted-check').is(':checked')) {
             $('.blacklisted-check').prop("checked", false);
-        } 
+        }
         else {
             $('.blacklisted-check').prop("checked", true);
         }
@@ -114,7 +114,7 @@ Template.StudentListView.events({
         $("#modal-std-no").html(this.studentNumber);
         $("#modal-nickname").val(this.nickname);
         $("#modal-section").val(this.section);
-        $("#modal-bias").val(this.bias);    
+        $("#modal-bias").val(this.bias);
     }
 
 });

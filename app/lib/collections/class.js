@@ -9,8 +9,7 @@ Schema.StudentSchema = new SimpleSchema({
         type: String
     },
     studentNumber: {
-        type: String,
-        regEx: /^[0-9]{4}-[0-9]{5}$/
+        type: String
     },
     image: {
         type: String,
@@ -25,8 +24,10 @@ Schema.StudentSchema = new SimpleSchema({
         optional: true
     },
     section: {
-        type: String,
-        regEx: /\d-L/
+        type: String
+    },
+    sex: {
+        type: String
     },
     points: {
         type: Number,
@@ -86,7 +87,14 @@ Meteor.methods({
             courseCode: String,
             semester: String,
             lecturer: String,
-            students: [Schema.StudentSchema]
+            students: [{
+                fullname: String,
+                studentNumber: String,
+                image: String,
+                birthday: Date,
+                sex: String,
+                section: String
+            }]
         });
 
         var lecturer1 = Meteor.users.findOne({
@@ -95,14 +103,11 @@ Meteor.methods({
 
         // if lecturer is in the database
         if (lecturer1._id === classAttributes.lecturer) {
-            var classId = Class.insert(classAttributes);
-            return {
-                _id: classId
-            };
-        }
-        else {
+            return Class.insert(classAttributes);
+        } else {
             throw new Meteor.Error(404, 'Not Found');
-            return notify('Lecturer does not exist');
+            notify('Lecturer does not exist');
+            return;
         }
     },
 
