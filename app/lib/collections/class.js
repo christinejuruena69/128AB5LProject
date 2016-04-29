@@ -195,10 +195,24 @@ Meteor.methods({
         );
     },
 
-    'Admin/deleteAccount': function( classId ) {
-        Class.remove({
-            _id: classId
-        });
+    'Admin/deleteClass': function( classId ) {
+        var id = Meteor.userId();
+
+        if (id === null) {
+            throw new Meteor.Error(403, 'Forbidden');
+            return;
+        }
+
+        var loggedInUser = Meteor.user();
+
+        if (loggedInUser.profile.type === 'Admin'){
+            Class.remove({
+                _id: classId
+            });
+        }
+        else {
+            throw new Meteor.Error(403, 'Forbidden');
+        }
     }
 });
 
