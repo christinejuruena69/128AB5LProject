@@ -51,16 +51,14 @@ Template.AdminModal.events({
             // Start spinner
             Session.set('uploading', true);
 
-            console.log('Processing file now');
+            // console.log('Processing file now');
+            // console.log($('#uploadCSV')[0].files[0]);
 
             // Process file here
-            Papa.parse(fileSelected, {
+            Papa.parse($('#uploadCSV')[0].files[0], {
                 header: true,
                 delimiter: ',',
                 complete: function(res, file) {
-
-                    console.log('Finished parsing');
-                    console.log(res.data);
 
                     // add form field values to newClass object
                     newClass = {
@@ -70,8 +68,8 @@ Template.AdminModal.events({
                         students: res.data,
                         semester: semester.concat(' ' + academicYear)
                     };
-                    console.log('New Class:');
-                    console.log(newClass);
+
+                    uploadFile(newClass);
                 }
             });
         }
@@ -89,9 +87,12 @@ Template.AdminModal.events({
                 notify('Successfully added class!', 'good');
 
                 // clear form fields
+
                 template.find('form').reset();
                 // Stop spinner
                 Session.set('uploading', false);
+                notify('Finished "Uploading"', 'good');
+
 
                 // hide modal
                 $("#admin-modal").hide('hide');
