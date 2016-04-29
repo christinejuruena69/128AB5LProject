@@ -3,47 +3,60 @@
 /*****************************************************************************/
 Template.AdminModal.events({
     'submit form': function(e, template) {
+
         e.preventDefault();
 
-        var class1 = {},
-            courseTitle = $(e.target).find('[name=courseTitle]').val(),
-            courseCode = $(e.target).find('[name=courseCode]').val(),
-            semester = $(e.target).find('[name=semester]').val(),
-            academicYear = $(e.target).find('[name=academicYear]').val(),
-            lecturer = $(e.target).find('[name=lecturer]').val(),
-            fileSelected = $(e.target).find('[name=uploadCSV]').val(),
+        var newClass = {},
+            courseTitle = $('#courseTitle').val(),
+            courseCode = $('#courseCode').val(),
+            semester = $('#semester').val(),
+            academicYear = $('#academicYear').val(),
+            lecturer = $('#lecturer').val(),
+            fileSelected = $('#uploadCSV').val(),
+            courseCodeRegex = /^[A-Z]{2,4}[0-9]{1,3}$/,
+            students = [],
+
+            isValidCourseCode,
             classId;
 
         // check if form fields are empty
         if (courseTitle === '') {
             return notify('Course title is required', 'bad');
-        } else if (courseCode === '') {
+        }
+        else if (courseCode === '') {
             return notify('Course code is required', 'bad');
-        } else if (semester === '') {
+        }
+        else if (semester === '') {
             return notify('Semester is required', 'bad');
-        } else if (academicYear === '') {
+        }
+        else if (academicYear === '') {
             return notify('Academic year is required', 'bad');
-        } else if (lecturer === '') {
+        }
+        else if (lecturer === '') {
             return notify('Lecturer is required', 'bad');
         }
 
         // validate course code format
-        var courseCodeRegex = /^[A-Z]{2,4}[0-9]{1,3}$/,
-            isValidCourseCode = courseCodeRegex.test(courseCode);
-        if (!isValidCourseCode) {
+        isValidCourseCode = courseCodeRegex.test(courseCode);
+
+        if(!isValidCourseCode) {
             return notify('Invalid course code', 'bad');
         }
 
-        // add form field values to class1 object
-        class1.courseTitle = courseTitle;
-        class1.courseCode = courseCode;
-        class1.semester = semester.concat(' ' + academicYear);
-        class1.lecturer = lecturer;
-        class1.students = [];
+        // add form field values to newClass object
+        newClass = {
+            courseTitle,
+            courseCode,
+            lecturer,
+            students,
+            semester: semester.concat(' ' + academicYear)
+        };
 
-        var classId;
 
-        Meteor.call('Admin/AddClass', class1, function(error, result) {
+        console.log(newClass);
+        return;
+
+        Meteor.call('Admin/AddClass', newClass, function(error, result) {
 
             // if error, display error
             if (error) {
@@ -96,8 +109,9 @@ Template.AdminModal.helpers({
         for (var i = 0; i <= maxYear - minYear; i++) {
             var schoolYear = {};
 
-            schoolYear.minYear = minYear + i,
-                schoolYear.maxYear = minYear + i + 1;
+            schoolYear.minYear = minYear + i;
+            schoolYear.maxYear = minYear + i + 1;
+
             years.push(schoolYear);
         }
 

@@ -64,8 +64,8 @@ Schema.ClassSchema = new SimpleSchema({
 Class.attachSchema(Schema.ClassSchema);
 
 Meteor.methods({
-    
-    parseUpload: function(data, classId) {
+
+    'parseUpload': function(data, classId) {
         check(data, Array);
         var finalArray = [],
             exists = Class.findOne({ '_id': classId });
