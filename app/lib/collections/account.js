@@ -31,7 +31,28 @@ Meteor.methods({
             {'_id': Meteor.user()._id},
             {$set:{'profile':{'fullName': userDetails.fullname}}}
         );
+    },
+
+    'Admin/DeleteAccount': function(userId) {
+        var id = Meteor.userId();
+
+        if (id === null) {
+            throw new Meteor.Error(403, 'Forbidden');
+            return;
+        }
+
+        var loggedInUser = Meteor.user();
+
+        if (loggedInUser.profile.type === 'Admin'){
+            Meteor.users.remove({
+                '_id': userId
+            });
+        }
+        else {
+            throw new Meteor.Error(403, 'Forbidden');
+        }
     }
+
 });
 
 if (Meteor.isServer) {
@@ -47,6 +68,25 @@ if (Meteor.isServer) {
             }
             else{
                 return false;
+            }
+        },
+        remove: function(userId, doc) {
+            var user = Meteor.users.find({ _id: userId });
+            if (user.profile.type === 'Admin') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+
+    Meteor.users.deny({
+        remove: function(userId, doc) {
+            var user = Meteor.users.find({ _id: userId });
+            if (user.profile.type === 'Admin') {
+                return false;
+            } else {
+                return true;
             }
         }
     });

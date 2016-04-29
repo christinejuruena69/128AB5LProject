@@ -237,7 +237,13 @@ if (Meteor.isServer) {
             }
         },
         remove: function(userId, doc) {
-            return false;
+            var user = Meteor.users.findOne({ _id: userId });
+
+            if (user.profile.type === 'Admin') {
+                return true;
+            } else {
+                return false;
+            }
         }
     });
 
@@ -260,7 +266,12 @@ if (Meteor.isServer) {
             }
         },
         remove: function(userId, doc) {
-            return true;
+            var user = Meteor.users.find({ _id: userId });
+            if (user.profile.type === 'Admin') {
+                return false;
+            } else {
+                return true;
+            }
         }
     });
 }
