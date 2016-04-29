@@ -26,6 +26,9 @@ Schema.StudentSchema = new SimpleSchema({
     section: {
         type: String
     },
+    sex: {
+        type: String
+    },
     points: {
         type: Number,
         defaultValue: 0
@@ -84,7 +87,14 @@ Meteor.methods({
             courseCode: String,
             semester: String,
             lecturer: String,
-            students: [Schema.StudentSchema]
+            students: [{
+                fullname: String,
+                studentNumber: String,
+                image: String,
+                birthday: Date,
+                sex: String,
+                section: String
+            }]
         });
 
         var lecturer1 = Meteor.users.findOne({
@@ -93,14 +103,11 @@ Meteor.methods({
 
         // if lecturer is in the database
         if (lecturer1._id === classAttributes.lecturer) {
-            var classId = Class.insert(classAttributes);
-            return {
-                _id: classId
-            };
-        }
-        else {
+            return Class.insert(classAttributes);
+        } else {
             throw new Meteor.Error(404, 'Not Found');
-            return notify('Lecturer does not exist');
+            notify('Lecturer does not exist');
+            return;
         }
     },
 
@@ -182,10 +189,7 @@ Meteor.methods({
     },
 
     'Teacher/editStudent': function(studentNumber, nickname, section, bias, classId) {
-        Class.update(
-            { '_id': classId, "students.studentNumber": studentNumber },
-            { $set: { "students.$.nickname": nickname, "students.$.section": section, "students.$.bias": bias } }
-        );
+        Class.update({ '_id': classId, "students.studentNumber": studentNumber }, { $set: { "students.$.nickname": nickname, "students.$.section": section, "students.$.bias": bias } });
     }
 });
 

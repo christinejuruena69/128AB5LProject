@@ -35,5 +35,7 @@ standard-minifier-css
 standard-minifier-js
 aldeed:autoform
 aslagle:reactive-table
+harrison:papa-parse
 random
 webtempest:animate
+d3js:d3
