@@ -30,6 +30,9 @@
             <span class="text-center">{{ students.length }}</span>
         </button>
         <h4 class="students pull-right">Students</h4>
+        {{#if userType}}
+            <button id="DeleteClass">Delete Class</button>
+        {{/if}}
     </div>
 </div>
 <!-- Modal for editing class  -->

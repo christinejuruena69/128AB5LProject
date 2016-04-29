@@ -36,6 +36,8 @@ Template.AccountAndClassCards.helpers({
 /*****************************************************************************/
 /* AccountAndClassCards: Lifecycle Hooks */
 /*****************************************************************************/
-Template.AccountAndClassCards.onCreated(function () {});
+Template.AccountAndClassCards.onCreated(function () {
+    Meteor.subscribe('teacherClasses');
+});
 Template.AccountAndClassCards.onRendered(function () {});
 Template.AccountAndClassCards.onDestroyed(function () {});

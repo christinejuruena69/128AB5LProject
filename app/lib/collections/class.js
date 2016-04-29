@@ -189,7 +189,30 @@ Meteor.methods({
     },
 
     'Teacher/editStudent': function(studentNumber, nickname, section, bias, classId) {
-        Class.update({ '_id': classId, "students.studentNumber": studentNumber }, { $set: { "students.$.nickname": nickname, "students.$.section": section, "students.$.bias": bias } });
+        Class.update(
+            { '_id': classId, "students.studentNumber": studentNumber },
+            { $set: { "students.$.nickname": nickname, "students.$.section": section, "students.$.bias": bias } }
+        );
+    },
+
+    'Admin/deleteClass': function( classId ) {
+        var id = Meteor.userId();
+
+        if (id === null) {
+            throw new Meteor.Error(403, 'Forbidden');
+            return;
+        }
+
+        var loggedInUser = Meteor.user();
+
+        if (loggedInUser.profile.type === 'Admin'){
+            Class.remove({
+                _id: classId
+            });
+        }
+        else {
+            throw new Meteor.Error(403, 'Forbidden');
+        }
     }
 });
 
