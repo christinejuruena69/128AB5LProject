@@ -66,6 +66,15 @@ Schema.ClassSchema = new SimpleSchema({
 
 Class.attachSchema(Schema.ClassSchema);
 
+// Create a corresponding View collection after creating a new Class
+Class.after.insert(function(userId, doc) {
+    console.log(userId + ' finished inserting a class');
+});
+
+Class.after.remove(function() {
+    console.log('Removed class');
+});
+
 Meteor.methods({
     'Admin/AddClass': function(classAttributes) {
 

@@ -82,7 +82,7 @@ Router.route('/view', {
 //     controller: 'HomeController',
 //     where: 'client'
 // });
-//
+
 Router.route('/randomizer/:_id', {
     name: 'RandomizerWindow',
     layoutTemplate: 'MasterLayout',
@@ -99,8 +99,6 @@ Router.route('/randomizer/:_id', {
     }
 });
 
-
-//
 // Router.route('/mainClassView', {
 //     name: 'mainClassView',
 //     template: 'mainClassView',

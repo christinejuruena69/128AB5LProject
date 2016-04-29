@@ -42,6 +42,16 @@ Schema.ViewSchema = new SimpleSchema({
     section: {
         type: String
     },
+    class: {
+        // _id of class of corresponding class
+        type: String
+    },
+    active: {
+        type: Boolean,
+        autoValue: function() {
+            return false;
+        }
+    },
     view: {
         type: [Schema.ViewState]
     }
