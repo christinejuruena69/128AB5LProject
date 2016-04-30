@@ -102,7 +102,8 @@ Class.after.update(function(userId, doc) {
 });
 
 Class.after.remove(function(userId, doc) {
-    console.log('Removed class' + doc);
+    console.log('Removed class:');
+    console.log(doc);
 });
 
 Meteor.methods({

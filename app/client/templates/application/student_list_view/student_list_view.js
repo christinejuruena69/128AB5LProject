@@ -2,8 +2,6 @@
 /* StudentListView: Event Handlers */
 /*****************************************************************************/
 
-import { $ } from 'meteor/jquery';
-
 Template.StudentListView.events({
     'click #addStudent': function (e) {
         e.preventDefault();

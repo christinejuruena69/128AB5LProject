@@ -1,3 +1,14 @@
+// Here goes all the Meteor Methods and Hooks of Meteor accounts
+
+// Remove all classes owned by the account.
+// Views will automatically be removed once
+// the classes are removed
+Meteor.users.after.remove(function(userId, doc) {
+    var lecturer = doc._id;
+
+    Class.remove({lecturer});
+});
+
 Meteor.methods({
 
     'User/UpdateDetails': function (userDetails) {
@@ -72,7 +83,7 @@ if (Meteor.isServer) {
             }
         },
         remove: function(userId, doc) {
-            var user = Meteor.users.find({ _id: userId });
+            var user = Meteor.users.findOne({ _id: userId });
             if (user.profile.type === 'Admin') {
                 return true;
             } else {
