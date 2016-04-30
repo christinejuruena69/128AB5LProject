@@ -21,10 +21,12 @@
             <a href="#" class="title">{{courseCode}}</a>
         </h3>
         <p class="course-title">
-          {{courseTitle}}
+            {{courseTitle}}
         </p>
-       <!-- <a href="{{pathFor route='ClassView'}}">Class View </a> -->
 
+        <p class="course-title">
+            {{section}}
+        </p>
 
         <button type="button" class="btn btn-default btn-circle btn-lg pull-right" onclick="window.location.href='{{pathFor route='StudentListView'}}'">
             <span class="text-center">{{ students.length }}</span>
@@ -36,5 +38,5 @@
     </div>
 </div>
 <!-- Modal for editing class  -->
-{{> EditClass}}
+    {{> EditClass}}
 </template>
