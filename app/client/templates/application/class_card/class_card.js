@@ -1,20 +1,7 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* ClassCard: Event Handlers */
 /*****************************************************************************/
 Template.ClassCard.events({
-    // 'mouseover .classcard': function(event, template) {
-    //     $(event.target).toggleClass('change-background');
-    //     $(event.target).find('p.course-title, h4.students').toggleClass('text-opacity');
-    //     // $(event.target).find('h4.students').toggleClass('text-opacity');
-    //
-    // },
-    // 'mouseout .classcard': function(event, template) {
-    //     $(event.target).toggleClass('change-background');
-    //     $(event.target).find('p.course-title, h4.students').toggleClass('text-opacity');
-    //     // $(event.target).find('p.course-title').toggleClass('text-opacity');
-    //     // $(event.target).find('h4.students').toggleClass('text-opacity');
-    // },
-
     'mouseover p.course-title, h4.students'(event, template) {
         $(event.target).toggleClass('text-opacity');
     },
@@ -52,7 +39,7 @@ Template.ClassCard.events({
 });
 
 /*****************************************************************************/
-/* Home: Helpers */
+/* ClassCard: Helpers */
 /*****************************************************************************/
 Template.ClassCard.helpers({
     studentCount: function() {
@@ -73,7 +60,7 @@ Template.ClassCard.helpers({
 });
 
 /*****************************************************************************/
-/* Home: Lifecycle Hooks */
+/* ClassCard: Lifecycle Hooks */
 /*****************************************************************************/
 Template.ClassCard.onCreated(function () {});
 Template.ClassCard.onRendered(function () {});
