@@ -71,14 +71,33 @@ Class.attachSchema(Schema.ClassSchema);
 
 // Create a corresponding View collection after creating a new Class
 Class.after.insert(function(userId, doc) {
-    let viewData = _.pick(doc, [
-        'courseTitle', 'lecturer', 'section'
+
+    let viewData = lodash.pick(doc, [
+        'courseTitle', 'lecturer', 'section', 'courseCode'
     ]);
 
     viewData.class = doc._id;
     viewData.view = [];
 
     View.insert(viewData);
+
+});
+
+Class.after.update(function(userId, doc) {
+
+    let viewData = lodash.pick(doc, [
+        'courseTitle', 'lecturer', 'section',
+        'courseCode'
+    ]);
+
+    viewData.class = doc._id;
+    viewData.view = [];
+
+    View.update(
+        {class: viewData.class},
+        {$set: viewData},
+        {multi: false, upsert: true}
+    );
 
 });
 
