@@ -83,11 +83,11 @@ Class.after.insert(function(userId, doc) {
 
 });
 
+// Update the corresponding view from the edited class
 Class.after.update(function(userId, doc) {
 
     let viewData = lodash.pick(doc, [
-        'courseTitle', 'lecturer', 'section',
-        'courseCode'
+        'courseTitle', 'lecturer', 'section', 'courseCode'
     ]);
 
     viewData.class = doc._id;
