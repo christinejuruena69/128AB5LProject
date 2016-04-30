@@ -9,26 +9,22 @@ Template.AccountCard.events({
         });
 
         var verificationPrompt1 = confirm(message);
-        if(verificationPrompt1 == true){
-            var verificationPrompt2 = confirm("Deleting a Teacher Account will also delete classes. \nAre you sure you want to delete?");
-            if (verificationPrompt2 == true) {
-                while(classPool != undefined){
-                    Meteor.call('Admin/deleteClass', classPool._id, function(error, result) {
-                        if (error)
-                            return alert(error.reason);
-                    });
-                    classPool = Class.findOne({
-                        lecturer: this._id
-                    });
-                }
-
-                Meteor.call('Admin/DeleteAccount', this._id, function(error, result) {
-                    if (error)
-                        return alert(error.reason);
-                });
-
-            };
+        if(verificationPrompt1 === false){
+            return false;
         }
+
+        var verificationPrompt2 = confirm("Deleting a Teacher Account will also delete classes. \nAre you sure you want to delete?");
+        if (verificationPrompt2 === false) {
+            return false
+        };
+
+        Meteor.call('Admin/DeleteAccount', this._id, function(error, result) {
+            if (error){
+                return notify(error.reason, 'bad');
+            }
+
+            notify('Successfully deleted', 'good');
+        });
     }
 });
 /*****************************************************************************/

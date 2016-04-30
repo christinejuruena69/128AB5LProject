@@ -83,11 +83,11 @@ Class.after.insert(function(userId, doc) {
 
 });
 
+// Update the corresponding view from the edited class
 Class.after.update(function(userId, doc) {
 
     let viewData = lodash.pick(doc, [
-        'courseTitle', 'lecturer', 'section',
-        'courseCode'
+        'courseTitle', 'lecturer', 'section', 'courseCode'
     ]);
 
     viewData.class = doc._id;
@@ -102,7 +102,12 @@ Class.after.update(function(userId, doc) {
 });
 
 Class.after.remove(function(userId, doc) {
-    console.log('Removed class' + doc);
+
+    let viewData = lodash.pick(doc, [
+        'courseTitle', 'lecturer', 'section', 'courseCode'
+    ]);
+
+    View.remove(viewData);
 });
 
 Meteor.methods({

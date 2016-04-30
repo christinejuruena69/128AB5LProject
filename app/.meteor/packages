@@ -25,7 +25,6 @@ aldeed:collection2
 accounts-password
 accounts-ui             #Baka nga di na kakailanganin
 accounts-base
-msavin:mongol           # Help view data in database
 reactive-var
 underscore
 kadira:debug
@@ -40,3 +39,5 @@ random
 webtempest:animate
 d3js:d3
 matb33:collection-hooks
+matb33:bootstrap-glyphicons
+meteortoys:allthings
