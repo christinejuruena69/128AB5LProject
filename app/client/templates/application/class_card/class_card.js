@@ -1,48 +1,45 @@
 /*****************************************************************************/
-/* Home: Event Handlers */
+/* ClassCard: Event Handlers */
 /*****************************************************************************/
-    Template.ClassCard.events({
-    'mouseover .classcard': function() {
-        $('.to-shake').toggleClass('shake');
-        $('p.course-title').toggleClass('text-opacity');
-        $('h4.students').toggleClass('text-opacity');
+Template.ClassCard.events({
+    'mouseover p.course-title, h4.students'(event, template) {
+        $(event.target).toggleClass('text-opacity');
     },
-    'mouseout .classcard': function() {
-        $('.to-shake').toggleClass('shake');
-        $('p.course-title').toggleClass('text-opacity');
-        $('h4.students').toggleClass('text-opacity');
+
+    'mouseout p.course-title, h4.students'(event, template) {
+        $(event.target).toggleClass('text-opacity');
     },
-    'mouseover .to-shake': function() {
-        $('.to-shake').toggleClass('shake');
-        $('p.course-title').toggleClass('text-opacity');
-        $('h4.students').toggleClass('text-opacity');
-        $('div.classcard.col-md-9.col-sm-9.col-xs-9').toggleClass('change-background');
+
+    'mouseover .to-shake'(event, template) {
+        $(event.target).toggleClass('shake');
     },
-    'mouseout .to-shake': function() {
-        $('.to-shake').toggleClass('shake');
-        $('p.course-title').toggleClass('text-opacity');
-        $('h4.students').toggleClass('text-opacity');
-        $('div.classcard').toggleClass('change-background');
+
+    'mouseout .to-shake'(event, template) {
+        $(event.target).toggleClass('shake');
     },
-    'click button#DeleteClass': function () {
-    var message = "Delete " + this.courseCode + "?";
-    var verificationPrompt1 = confirm(message);
-    if (verificationPrompt1 == true) {
-        var verificationPrompt2 = confirm("Are you sure you want to delete this class?");
-        if (verificationPrompt2 == true) {
-            Meteor.call('Admin/deleteClass', this._id, function (error, result) {
-                // display the error to the user and abort
-                if (error) return alert(error.reason);
-            });
-        };
+
+    'click button#DeleteClass': function (event, template) {
+        var message = "Delete " + this.courseCode + "?";
+        var verificationPrompt1 = confirm(message);
+        if (verificationPrompt1 == true) {
+            var verificationPrompt2 = confirm("Are you sure you want to delete this class?");
+            if (verificationPrompt2 == true) {
+                Meteor.call('Admin/deleteClass', this._id, function (error, result) {
+                    // display the error to the user and abort
+                    if (error) {
+                        return notify(error.reason, 'bad');
+                    }
+                    else {
+                        return notify('Successfully Deleted Class', 'good');
+                    }
+                });
+            };
+        }
     }
-}
-
-
 });
 
 /*****************************************************************************/
-/* Home: Helpers */
+/* ClassCard: Helpers */
 /*****************************************************************************/
 Template.ClassCard.helpers({
     studentCount: function() {
@@ -63,7 +60,7 @@ Template.ClassCard.helpers({
 });
 
 /*****************************************************************************/
-/* Home: Lifecycle Hooks */
+/* ClassCard: Lifecycle Hooks */
 /*****************************************************************************/
 Template.ClassCard.onCreated(function () {});
 Template.ClassCard.onRendered(function () {});
