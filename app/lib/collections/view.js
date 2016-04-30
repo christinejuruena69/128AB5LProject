@@ -36,6 +36,9 @@ Schema.ViewSchema = new SimpleSchema({
     courseTitle: {
         type: String
     },
+    courseCode: {
+        type: String
+    },
     lecturer: {
         type: String
     },

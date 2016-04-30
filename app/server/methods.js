@@ -14,7 +14,6 @@ Meteor.methods({
             birthday: new Date(),
             section: '1-L'
         };
-        //lodash.fill(new Array(10), StudentData);
 
         var studentArray =  [
             {"studentNumber":"2015-48757","sex":"F","nickname":"Doris","fullname":"Doris Turner","birthday":"1/16/1997","section":"7-L","bias":10,"points":2,"isBlackListed":true},
@@ -45,7 +44,7 @@ Meteor.methods({
 
         var sampleClass = {
             courseTitle: 'Introduction to Software Engineering',
-            courseCode: 'CMSC 128',
+            courseCode: 'CMSC128',
             semester: '1st Semester AY 2015-2016',
             section: 'AB',
             lecturer: teacher._id,
