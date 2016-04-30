@@ -18,19 +18,12 @@ Template.AccountCard.events({
             return false
         };
 
-        // while(classPool != undefined){
-        //     Meteor.call('Admin/deleteClass', classPool._id, function(error, result) {
-        //         if (error)
-        //         return alert(error.reason);
-        //     });
-        //     classPool = Class.findOne({
-        //         lecturer: this._id
-        //     });
-        // }
-
         Meteor.call('Admin/DeleteAccount', this._id, function(error, result) {
-            if (error)
-            return alert(error.reason);
+            if (error){
+                return notify(error.reason, 'bad');
+            }
+
+            notify('Successfully deleted', 'good');
         });
     }
 });

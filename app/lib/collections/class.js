@@ -102,8 +102,12 @@ Class.after.update(function(userId, doc) {
 });
 
 Class.after.remove(function(userId, doc) {
-    console.log('Removed class:');
-    console.log(doc);
+
+    let viewData = lodash.pick(doc, [
+        'courseTitle', 'lecturer', 'section', 'courseCode'
+    ]);
+
+    View.remove(viewData);
 });
 
 Meteor.methods({
