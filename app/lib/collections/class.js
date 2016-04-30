@@ -78,9 +78,6 @@ Class.after.insert(function(userId, doc) {
     viewData.class = doc._id;
     viewData.view = [];
 
-    console.log('Added class: ');
-    console.log(viewData);
-
     View.insert(viewData);
 
 });
@@ -90,6 +87,13 @@ Class.after.remove(function(userId, doc) {
 });
 
 Meteor.methods({
+
+    /********************************************************************************
+    What:
+        Add a class to a teacher.
+    Who:
+        Admin type account.
+    ********************************************************************************/
     'Admin/AddClass': function(classAttributes) {
 
         var loggedInUser = Meteor.user(); //id = Meteor.userId();
@@ -135,15 +139,48 @@ Meteor.methods({
         }
     },
 
-    'User/editClass': function(classToEdit) {
-        //Contains two arguments: the ID of the class to edit and the details to update the class with
-        var id = Meteor.userId();
+    /********************************************************************************
+    What:
+        Edits the class details (Course Title, Course Code, Section, Semester)
+    Who:
+        Teacher who owns the class (lecturer), or admin type account.
+    ********************************************************************************/
+    'User/editClass': function(editedClass) {
+
+        var user = Meteor.user(),
+            id = Meteor.userId(),
+            accountType;
+
+        check(editedClass, {
+            _id: String,
+            courseTitle: String,
+            courseCode: String,
+            section: String,
+            lecturer: String,
+            semester: String
+        });
+
+        // If not logged in
         if (id === null) {
-            throw new Meteor.Error(403, 'Forbidden');
-            return;
+            throw new Meteor.Error(403, 'Must be logged in');
+        }
+        // Get account type
+        if(user.profile && user.profile.type) {
+            accountType = user.profile.type;
         }
 
-        Class.update({ 'lecturer': Meteor.userId(), _id: classToEdit._id }, { $set: classToEdit });
+        // If not admin or the user is not the lecturer for that class
+        if(!(accountType === 'Admin' || editedClass.lecturer === id)) {
+            throw new Meteor.Error(403, 'Invalid Privileges');
+        }
+
+        // Allow the edit to occur
+        return Class.update({
+                _id: editedClass._id
+            }, {
+                $set: editedClass
+            }
+        );
     },
 
     'deleteStudent': function(studentNumber, lecturer, classId) {

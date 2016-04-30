@@ -1,44 +1,43 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
-Template.ClassCard.events({
-  'mouseover .classcard': function() {
-    $('.to-shake').toggleClass('shake');
-    $('p.course-title').toggleClass('text-opacity');
-    $('h4.students').toggleClass('text-opacity');
-  },
-  'mouseout .classcard': function() {
-    $('.to-shake').toggleClass('shake');
-    $('p.course-title').toggleClass('text-opacity');
-    $('h4.students').toggleClass('text-opacity');
-  },
-  'mouseover .to-shake': function() {
-    $('.to-shake').toggleClass('shake');
-    $('p.course-title').toggleClass('text-opacity');
-    $('h4.students').toggleClass('text-opacity');
-    $('div.classcard.col-md-9.col-sm-9.col-xs-9').toggleClass('change-background');
-  },
-  'mouseout .to-shake': function() {
-    $('.to-shake').toggleClass('shake');
-    $('p.course-title').toggleClass('text-opacity');
-    $('h4.students').toggleClass('text-opacity');
-    $('div.classcard').toggleClass('change-background');
-  },
-    'click button#DeleteClass': function() {
-        var message = "Delete " + this.courseCode + "?";
-        
-        var verificationPrompt1 = confirm(message);
-        if(verificationPrompt1 == true){
-            var verificationPrompt2 = confirm("Are you sure you want to delete this class?");
-            if (verificationPrompt2 == true) {
-                Meteor.call('Admin/deleteClass', this._id, function(error, result) {
-                    // display the error to the user and abort
-                    if (error)
-                    return alert(error.reason);
-                });
-            };
-        }
+    Template.ClassCard.events({
+    'mouseover .classcard': function() {
+        $('.to-shake').toggleClass('shake');
+        $('p.course-title').toggleClass('text-opacity');
+        $('h4.students').toggleClass('text-opacity');
+    },
+    'mouseout .classcard': function() {
+        $('.to-shake').toggleClass('shake');
+        $('p.course-title').toggleClass('text-opacity');
+        $('h4.students').toggleClass('text-opacity');
+    },
+    'mouseover .to-shake': function() {
+        $('.to-shake').toggleClass('shake');
+        $('p.course-title').toggleClass('text-opacity');
+        $('h4.students').toggleClass('text-opacity');
+        $('div.classcard.col-md-9.col-sm-9.col-xs-9').toggleClass('change-background');
+    },
+    'mouseout .to-shake': function() {
+        $('.to-shake').toggleClass('shake');
+        $('p.course-title').toggleClass('text-opacity');
+        $('h4.students').toggleClass('text-opacity');
+        $('div.classcard').toggleClass('change-background');
+    },
+    'click button#DeleteClass': function () {
+    var message = "Delete " + this.courseCode + "?";
+    var verificationPrompt1 = confirm(message);
+    if (verificationPrompt1 == true) {
+        var verificationPrompt2 = confirm("Are you sure you want to delete this class?");
+        if (verificationPrompt2 == true) {
+            Meteor.call('Admin/deleteClass', this._id, function (error, result) {
+                // display the error to the user and abort
+                if (error) return alert(error.reason);
+            });
+        };
     }
+}
+
 
 });
 
