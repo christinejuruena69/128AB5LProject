@@ -11,14 +11,18 @@
                     </span>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                        <li id="menu"><a data-toggle="modal" data-target="#admin-modal-editclass-{{ _id }}">Edit card details</a></li>
+                        <li id="menu"><a href="#" data-toggle="modal" data-target="#admin-modal-editclass-{{ _id }}">Edit card details</a></li>
                         <li id="menu"><a href="{{pathFor route='StudentListView'}}">Modify student list</a></li>
                     </ul>
                 </span>
-                <a href="#" class="title">Course Code: {{courseCode}}</a>
+                <a href="#" class="title">{{courseCode}}</a>
             </h3>
-            <p class="course-title">Course Title: {{courseTitle}} </p>
-            <p class="course-title">Section: {{section}} </p>
+            <p class="course-title">
+                <a href="#" class="class-details">Title: {{courseTitle}}</a>
+            </p>
+            <p class="course-title">
+                <a href="#" class="class-details">Section {{section}} </a>
+            </p>
             <!-- Display the nuber of students -->
             <button type="button" class="btn btn-default btn-circle btn-lg pull-right" onclick="window.location.href='{{pathFor route='StudentListView'}}'">
                 <span class="text-center">{{ students.length }}</span>

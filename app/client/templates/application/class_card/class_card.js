@@ -14,12 +14,23 @@ Template.ClassCard.events({
     //     // $(event.target).find('p.course-title').toggleClass('text-opacity');
     //     // $(event.target).find('h4.students').toggleClass('text-opacity');
     // },
-    'mouseover .to-shake': function(event, template) {
+
+    'mouseover p.course-title, h4.students'(event, template) {
+        $(event.target).toggleClass('text-opacity');
+    },
+
+    'mouseout p.course-title, h4.students'(event, template) {
+        $(event.target).toggleClass('text-opacity');
+    },
+
+    'mouseover .to-shake'(event, template) {
         $(event.target).toggleClass('shake');
     },
-    'mouseout .to-shake': function(event, template) {
+
+    'mouseout .to-shake'(event, template) {
         $(event.target).toggleClass('shake');
     },
+
     'click button#DeleteClass': function (event, template) {
         var message = "Delete " + this.courseCode + "?";
         var verificationPrompt1 = confirm(message);
